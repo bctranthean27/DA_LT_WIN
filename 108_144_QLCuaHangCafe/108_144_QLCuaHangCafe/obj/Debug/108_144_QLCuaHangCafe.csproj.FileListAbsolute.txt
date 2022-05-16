@@ -30,3 +30,6 @@ C:\text\WinForm\108_144_QLCuaHangCafe\108_144_QLCuaHangCafe\obj\Debug\108_144_QL
 C:\text\WinForm\108_144_QLCuaHangCafe\108_144_QLCuaHangCafe\obj\Debug\108_144_QLCuaHangCafe.pdb
 C:\text\WinForm\108_144_QLCuaHangCafe\108_144_QLCuaHangCafe\obj\Debug\_108_144_QLCuaHangCafe.frm_Menu.resources
 C:\text\WinForm\108_144_QLCuaHangCafe\108_144_QLCuaHangCafe\obj\Debug\_108_144_QLCuaHangCafe.frm_NCC.resources
+C:\text\WinForm\108_144_QLCuaHangCafe\108_144_QLCuaHangCafe\obj\Debug\_108_144_QLCuaHangCafe.frm_SearchHD.resources
+C:\text\WinForm\108_144_QLCuaHangCafe\108_144_QLCuaHangCafe\obj\Debug\_108_144_QLCuaHangCafe.frm_SearchKH.resources
+C:\text\WinForm\108_144_QLCuaHangCafe\108_144_QLCuaHangCafe\obj\Debug\_108_144_QLCuaHangCafe.frm_SearchSP.resources
