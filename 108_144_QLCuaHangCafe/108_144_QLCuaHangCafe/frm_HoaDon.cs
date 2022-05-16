@@ -16,5 +16,10 @@ namespace _108_144_QLCuaHangCafe
         {
             InitializeComponent();
         }
+
+        private void frm_HoaDon_Load(object sender, EventArgs e)
+        {
+
+        }
     }
 }

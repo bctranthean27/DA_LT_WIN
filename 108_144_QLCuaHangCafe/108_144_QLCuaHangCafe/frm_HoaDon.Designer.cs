@@ -30,6 +30,11 @@
         {
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.dgv_LoaiHoaDon = new System.Windows.Forms.DataGridView();
+            this.MaHD = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.TenLoaiHD = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.KhachHang = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.NgayLap = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.TrangThai = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.cbo_LoaiHD = new System.Windows.Forms.ComboBox();
             this.label9 = new System.Windows.Forms.Label();
             this.label10 = new System.Windows.Forms.Label();
@@ -46,11 +51,6 @@
             this.btn_Xoa = new System.Windows.Forms.Button();
             this.btn_Them = new System.Windows.Forms.Button();
             this.cbo_KhachHang = new System.Windows.Forms.ComboBox();
-            this.MaHD = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.TenLoaiHD = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.KhachHang = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.NgayLap = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.TrangThai = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgv_LoaiHoaDon)).BeginInit();
             this.SuspendLayout();
@@ -82,6 +82,36 @@
             this.dgv_LoaiHoaDon.RowTemplate.Height = 24;
             this.dgv_LoaiHoaDon.Size = new System.Drawing.Size(1068, 364);
             this.dgv_LoaiHoaDon.TabIndex = 0;
+            // 
+            // MaHD
+            // 
+            this.MaHD.HeaderText = "Mã Hoá Đơn";
+            this.MaHD.MinimumWidth = 6;
+            this.MaHD.Name = "MaHD";
+            // 
+            // TenLoaiHD
+            // 
+            this.TenLoaiHD.HeaderText = "Loại Hoá Đơn";
+            this.TenLoaiHD.MinimumWidth = 6;
+            this.TenLoaiHD.Name = "TenLoaiHD";
+            // 
+            // KhachHang
+            // 
+            this.KhachHang.HeaderText = "Khách Hàng";
+            this.KhachHang.MinimumWidth = 6;
+            this.KhachHang.Name = "KhachHang";
+            // 
+            // NgayLap
+            // 
+            this.NgayLap.HeaderText = "Ngày Lập";
+            this.NgayLap.MinimumWidth = 6;
+            this.NgayLap.Name = "NgayLap";
+            // 
+            // TrangThai
+            // 
+            this.TrangThai.HeaderText = "Trạng Thái";
+            this.TrangThai.MinimumWidth = 6;
+            this.TrangThai.Name = "TrangThai";
             // 
             // cbo_LoaiHD
             // 
@@ -248,36 +278,6 @@
             this.cbo_KhachHang.Name = "cbo_KhachHang";
             this.cbo_KhachHang.Size = new System.Drawing.Size(299, 31);
             this.cbo_KhachHang.TabIndex = 113;
-            // 
-            // MaHD
-            // 
-            this.MaHD.HeaderText = "Mã Hoá Đơn";
-            this.MaHD.MinimumWidth = 6;
-            this.MaHD.Name = "MaHD";
-            // 
-            // TenLoaiHD
-            // 
-            this.TenLoaiHD.HeaderText = "Loại Hoá Đơn";
-            this.TenLoaiHD.MinimumWidth = 6;
-            this.TenLoaiHD.Name = "TenLoaiHD";
-            // 
-            // KhachHang
-            // 
-            this.KhachHang.HeaderText = "Khách Hàng";
-            this.KhachHang.MinimumWidth = 6;
-            this.KhachHang.Name = "KhachHang";
-            // 
-            // NgayLap
-            // 
-            this.NgayLap.HeaderText = "Ngày Lập";
-            this.NgayLap.MinimumWidth = 6;
-            this.NgayLap.Name = "NgayLap";
-            // 
-            // TrangThai
-            // 
-            this.TrangThai.HeaderText = "Trạng Thái";
-            this.TrangThai.MinimumWidth = 6;
-            this.TrangThai.Name = "TrangThai";
             // 
             // frm_HoaDon
             // 
