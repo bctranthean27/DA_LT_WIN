@@ -64,6 +64,7 @@ namespace _108_144_QLCuaHangCafe
         {
             Form f  = new frm_Size();
             xulyfrm(f);
+
         }
     }
 }
