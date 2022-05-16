@@ -78,35 +78,40 @@
             // mnu_LoaiSP
             // 
             this.mnu_LoaiSP.Name = "mnu_LoaiSP";
-            this.mnu_LoaiSP.Size = new System.Drawing.Size(232, 32);
+            this.mnu_LoaiSP.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.D1)));
+            this.mnu_LoaiSP.Size = new System.Drawing.Size(298, 32);
             this.mnu_LoaiSP.Text = "Loại Sản Phẩm";
             this.mnu_LoaiSP.Click += new System.EventHandler(this.mnu_LoaiSP_Click);
             // 
             // mnu_LoaiHD
             // 
             this.mnu_LoaiHD.Name = "mnu_LoaiHD";
-            this.mnu_LoaiHD.Size = new System.Drawing.Size(232, 32);
+            this.mnu_LoaiHD.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.D2)));
+            this.mnu_LoaiHD.Size = new System.Drawing.Size(298, 32);
             this.mnu_LoaiHD.Text = "Loại Hoá Đơn";
             this.mnu_LoaiHD.Click += new System.EventHandler(this.mnuLoaiHD_Click);
             // 
             // mnu_ChucVu
             // 
             this.mnu_ChucVu.Name = "mnu_ChucVu";
-            this.mnu_ChucVu.Size = new System.Drawing.Size(232, 32);
+            this.mnu_ChucVu.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.D3)));
+            this.mnu_ChucVu.Size = new System.Drawing.Size(298, 32);
             this.mnu_ChucVu.Text = "Chức Vụ";
             this.mnu_ChucVu.Click += new System.EventHandler(this.mnu_ChucVu_Click);
             // 
             // mnu_NCC
             // 
             this.mnu_NCC.Name = "mnu_NCC";
-            this.mnu_NCC.Size = new System.Drawing.Size(232, 32);
+            this.mnu_NCC.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.D4)));
+            this.mnu_NCC.Size = new System.Drawing.Size(298, 32);
             this.mnu_NCC.Text = "Nhà Cung Cấp";
             this.mnu_NCC.Click += new System.EventHandler(this.mnu_NCC_Click);
             // 
             // mnu_Size
             // 
             this.mnu_Size.Name = "mnu_Size";
-            this.mnu_Size.Size = new System.Drawing.Size(232, 32);
+            this.mnu_Size.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.D5)));
+            this.mnu_Size.Size = new System.Drawing.Size(298, 32);
             this.mnu_Size.Text = "Size";
             this.mnu_Size.Click += new System.EventHandler(this.mnu_Size_Click);
             // 

@@ -30,3 +30,23 @@ C:\text\WinForm\108_144_QLCuaHangCafe\108_144_QLCuaHangCafe\obj\Debug\108_144_QL
 C:\text\WinForm\108_144_QLCuaHangCafe\108_144_QLCuaHangCafe\obj\Debug\108_144_QLCuaHangCafe.pdb
 C:\text\WinForm\108_144_QLCuaHangCafe\108_144_QLCuaHangCafe\obj\Debug\_108_144_QLCuaHangCafe.frm_Menu.resources
 C:\text\WinForm\108_144_QLCuaHangCafe\108_144_QLCuaHangCafe\obj\Debug\_108_144_QLCuaHangCafe.frm_NCC.resources
+E:\DA c#\DA_LT_WIN\108_144_QLCuaHangCafe\108_144_QLCuaHangCafe\bin\Debug\108_144_QLCuaHangCafe.exe.config
+E:\DA c#\DA_LT_WIN\108_144_QLCuaHangCafe\108_144_QLCuaHangCafe\bin\Debug\108_144_QLCuaHangCafe.exe
+E:\DA c#\DA_LT_WIN\108_144_QLCuaHangCafe\108_144_QLCuaHangCafe\bin\Debug\108_144_QLCuaHangCafe.pdb
+E:\DA c#\DA_LT_WIN\108_144_QLCuaHangCafe\108_144_QLCuaHangCafe\obj\Debug\108_144_QLCuaHangCafe.csproj.AssemblyReference.cache
+E:\DA c#\DA_LT_WIN\108_144_QLCuaHangCafe\108_144_QLCuaHangCafe\obj\Debug\_108_144_QLCuaHangCafe.frm_ChucVu.resources
+E:\DA c#\DA_LT_WIN\108_144_QLCuaHangCafe\108_144_QLCuaHangCafe\obj\Debug\_108_144_QLCuaHangCafe.frm_HinhAnh.resources
+E:\DA c#\DA_LT_WIN\108_144_QLCuaHangCafe\108_144_QLCuaHangCafe\obj\Debug\_108_144_QLCuaHangCafe.frm_HoaDon.resources
+E:\DA c#\DA_LT_WIN\108_144_QLCuaHangCafe\108_144_QLCuaHangCafe\obj\Debug\_108_144_QLCuaHangCafe.frm_KhachHang.resources
+E:\DA c#\DA_LT_WIN\108_144_QLCuaHangCafe\108_144_QLCuaHangCafe\obj\Debug\_108_144_QLCuaHangCafe.frm_LoaiHoaDon.resources
+E:\DA c#\DA_LT_WIN\108_144_QLCuaHangCafe\108_144_QLCuaHangCafe\obj\Debug\_108_144_QLCuaHangCafe.frm_LoaiSanPham.resources
+E:\DA c#\DA_LT_WIN\108_144_QLCuaHangCafe\108_144_QLCuaHangCafe\obj\Debug\_108_144_QLCuaHangCafe.frm_Menu.resources
+E:\DA c#\DA_LT_WIN\108_144_QLCuaHangCafe\108_144_QLCuaHangCafe\obj\Debug\_108_144_QLCuaHangCafe.frm_NCC.resources
+E:\DA c#\DA_LT_WIN\108_144_QLCuaHangCafe\108_144_QLCuaHangCafe\obj\Debug\_108_144_QLCuaHangCafe.frm_NhanVien.resources
+E:\DA c#\DA_LT_WIN\108_144_QLCuaHangCafe\108_144_QLCuaHangCafe\obj\Debug\_108_144_QLCuaHangCafe.frm_Size.resources
+E:\DA c#\DA_LT_WIN\108_144_QLCuaHangCafe\108_144_QLCuaHangCafe\obj\Debug\_108_144_QLCuaHangCafe.Properties.Resources.resources
+E:\DA c#\DA_LT_WIN\108_144_QLCuaHangCafe\108_144_QLCuaHangCafe\obj\Debug\_108_144_QLCuaHangCafe.frm_SanPham.resources
+E:\DA c#\DA_LT_WIN\108_144_QLCuaHangCafe\108_144_QLCuaHangCafe\obj\Debug\108_144_QLCuaHangCafe.csproj.GenerateResource.cache
+E:\DA c#\DA_LT_WIN\108_144_QLCuaHangCafe\108_144_QLCuaHangCafe\obj\Debug\108_144_QLCuaHangCafe.csproj.CoreCompileInputs.cache
+E:\DA c#\DA_LT_WIN\108_144_QLCuaHangCafe\108_144_QLCuaHangCafe\obj\Debug\108_144_QLCuaHangCafe.exe
+E:\DA c#\DA_LT_WIN\108_144_QLCuaHangCafe\108_144_QLCuaHangCafe\obj\Debug\108_144_QLCuaHangCafe.pdb
