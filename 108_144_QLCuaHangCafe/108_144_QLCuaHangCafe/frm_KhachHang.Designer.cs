@@ -207,9 +207,9 @@
             // 
             this.groupBox1.Controls.Add(this.dgv_KhachHang);
             this.groupBox1.Font = new System.Drawing.Font("Segoe UI", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.groupBox1.Location = new System.Drawing.Point(31, 342);
+            this.groupBox1.Location = new System.Drawing.Point(8, 342);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(1038, 303);
+            this.groupBox1.Size = new System.Drawing.Size(1115, 412);
             this.groupBox1.TabIndex = 20;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Danh Sách Khách Hàng";
@@ -224,11 +224,11 @@
             this.DiaChi,
             this.DienThoai,
             this.Mail});
-            this.dgv_KhachHang.Location = new System.Drawing.Point(6, 31);
+            this.dgv_KhachHang.Location = new System.Drawing.Point(6, 20);
             this.dgv_KhachHang.Name = "dgv_KhachHang";
             this.dgv_KhachHang.RowHeadersWidth = 50;
             this.dgv_KhachHang.RowTemplate.Height = 24;
-            this.dgv_KhachHang.Size = new System.Drawing.Size(1026, 266);
+            this.dgv_KhachHang.Size = new System.Drawing.Size(1103, 384);
             this.dgv_KhachHang.TabIndex = 0;
             // 
             // MaKH
@@ -299,7 +299,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1135, 645);
+            this.ClientSize = new System.Drawing.Size(1135, 758);
             this.Controls.Add(this.cbo_DiaChi);
             this.Controls.Add(this.cbo_TrangThai);
             this.Controls.Add(this.label8);
