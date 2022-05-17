@@ -100,17 +100,9 @@
     <Compile Include="frm_NhanVien.Designer.cs">
       <DependentUpon>frm_NhanVien.cs</DependentUpon>
     </Compile>
-    <Compile Include="frm_SearchHD.cs">
+    <Compile Include="frm_SearchSP.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="frm_SearchHD.Designer.cs">
-      <DependentUpon>frm_SearchHD.cs</DependentUpon>
-    </Compile>
-    <Compile Include="frm_SearchKH.cs" />
-    <Compile Include="frm_SearchKH.Designer.cs">
-      <DependentUpon>frm_SearchKH.cs</DependentUpon>
-    </Compile>
-    <Compile Include="frm_SearchSP.cs" />
     <Compile Include="frm_SearchSP.Designer.cs">
       <DependentUpon>frm_SearchSP.cs</DependentUpon>
     </Compile>
@@ -154,15 +146,6 @@
     </EmbeddedResource>
     <EmbeddedResource Include="frm_NhanVien.resx">
       <DependentUpon>frm_NhanVien.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="frm_SearchHD.resx">
-      <DependentUpon>frm_SearchHD.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="frm_SearchKH.resx">
-      <DependentUpon>frm_SearchKH.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="frm_SearchSP.resx">
-      <DependentUpon>frm_SearchSP.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="frm_Size.resx">
       <DependentUpon>frm_Size.cs</DependentUpon>
