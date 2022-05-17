@@ -10,14 +10,14 @@ using System.Windows.Forms;
 
 namespace _108_144_QLCuaHangCafe
 {
-    public partial class frm_HoaDon : Form
+    public partial class frm_ThongKeNam : Form
     {
-        public frm_HoaDon()
+        public frm_ThongKeNam()
         {
             InitializeComponent();
         }
 
-        private void frm_HoaDon_Load(object sender, EventArgs e)
+        private void frm_ThongKeNam_Load(object sender, EventArgs e)
         {
 
         }

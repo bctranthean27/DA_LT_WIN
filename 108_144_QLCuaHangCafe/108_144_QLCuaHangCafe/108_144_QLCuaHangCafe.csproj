@@ -100,11 +100,47 @@
     <Compile Include="frm_NhanVien.Designer.cs">
       <DependentUpon>frm_NhanVien.cs</DependentUpon>
     </Compile>
+    <Compile Include="frm_SearchHD.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frm_SearchHD.Designer.cs">
+      <DependentUpon>frm_SearchHD.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frm_SearchKH.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frm_SearchKH.Designer.cs">
+      <DependentUpon>frm_SearchKH.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frm_SearchSP.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frm_SearchSP.Designer.cs">
+      <DependentUpon>frm_SearchSP.cs</DependentUpon>
+    </Compile>
     <Compile Include="frm_Size.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="frm_Size.Designer.cs">
       <DependentUpon>frm_Size.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frm_ThongKeNam.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frm_ThongKeNam.Designer.cs">
+      <DependentUpon>frm_ThongKeNam.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frm_ThongKeNV.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frm_ThongKeNV.Designer.cs">
+      <DependentUpon>frm_ThongKeNV.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frm_ThongKeThang.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frm_ThongKeThang.Designer.cs">
+      <DependentUpon>frm_ThongKeThang.cs</DependentUpon>
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -113,6 +149,12 @@
     </Compile>
     <Compile Include="frm_SanPham.Designer.cs">
       <DependentUpon>frm_SanPham.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frm_ThongKeNgay.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frm_ThongKeNgay.Designer.cs">
+      <DependentUpon>frm_ThongKeNgay.cs</DependentUpon>
     </Compile>
     <EmbeddedResource Include="frm_ChucVu.resx">
       <DependentUpon>frm_ChucVu.cs</DependentUpon>
@@ -141,8 +183,26 @@
     <EmbeddedResource Include="frm_NhanVien.resx">
       <DependentUpon>frm_NhanVien.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="frm_SearchHD.resx">
+      <DependentUpon>frm_SearchHD.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frm_SearchKH.resx">
+      <DependentUpon>frm_SearchKH.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frm_SearchSP.resx">
+      <DependentUpon>frm_SearchSP.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="frm_Size.resx">
       <DependentUpon>frm_Size.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frm_ThongKeNam.resx">
+      <DependentUpon>frm_ThongKeNam.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frm_ThongKeNV.resx">
+      <DependentUpon>frm_ThongKeNV.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frm_ThongKeThang.resx">
+      <DependentUpon>frm_ThongKeThang.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
@@ -155,6 +215,9 @@
     </Compile>
     <EmbeddedResource Include="frm_SanPham.resx">
       <DependentUpon>frm_SanPham.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frm_ThongKeNgay.resx">
+      <DependentUpon>frm_ThongKeNgay.cs</DependentUpon>
     </EmbeddedResource>
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>

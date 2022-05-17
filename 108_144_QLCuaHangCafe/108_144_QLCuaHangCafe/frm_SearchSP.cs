@@ -10,16 +10,17 @@ using System.Windows.Forms;
 
 namespace _108_144_QLCuaHangCafe
 {
-    public partial class frm_HoaDon : Form
+    public partial class frm_SearchSP : Form
     {
-        public frm_HoaDon()
+        public frm_SearchSP()
         {
             InitializeComponent();
         }
 
-        private void frm_HoaDon_Load(object sender, EventArgs e)
+        private void frm_SearchSP_Load(object sender, EventArgs e)
         {
 
         }
+
     }
 }
