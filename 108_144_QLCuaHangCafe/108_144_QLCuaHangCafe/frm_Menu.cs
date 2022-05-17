@@ -64,6 +64,7 @@ namespace _108_144_QLCuaHangCafe
         {
             Form f  = new frm_Size();
             xulyfrm(f);
+
         }
 
         private void mnu_NhanVien_Click(object sender, EventArgs e)
@@ -129,5 +130,7 @@ namespace _108_144_QLCuaHangCafe
             Form f = new frm_ThongKeNV();
             xulyfrm(f);
         }
+
+        
     }
 }
