@@ -34,7 +34,7 @@
             this.label4 = new System.Windows.Forms.Label();
             this.label5 = new System.Windows.Forms.Label();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
-            this.dgv_ListNCC = new System.Windows.Forms.DataGridView();
+            this.dgv_NCC = new System.Windows.Forms.DataGridView();
             this.STT = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.MaNCC = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.TenNCC = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -62,7 +62,7 @@
             this.Btn_Thoat = new System.Windows.Forms.Button();
             this.txt_NCC = new System.Windows.Forms.TextBox();
             this.groupBox1.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dgv_ListNCC)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dgv_NCC)).BeginInit();
             this.SuspendLayout();
             // 
             // label1
@@ -119,7 +119,8 @@
             // 
             // groupBox1
             // 
-            this.groupBox1.Controls.Add(this.dgv_ListNCC);
+            this.groupBox1.Controls.Add(this.dgv_NCC);
+            this.groupBox1.Font = new System.Drawing.Font("Segoe UI Semibold", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.groupBox1.Location = new System.Drawing.Point(8, 408);
             this.groupBox1.Name = "groupBox1";
             this.groupBox1.Size = new System.Drawing.Size(1393, 283);
@@ -127,11 +128,11 @@
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Danh sách";
             // 
-            // dgv_ListNCC
+            // dgv_NCC
             // 
-            this.dgv_ListNCC.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
-            this.dgv_ListNCC.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dgv_ListNCC.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.dgv_NCC.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
+            this.dgv_NCC.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dgv_NCC.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.STT,
             this.MaNCC,
             this.TenNCC,
@@ -141,12 +142,12 @@
             this.DiaChiMail,
             this.DiaChi,
             this.TrangThai});
-            this.dgv_ListNCC.Location = new System.Drawing.Point(10, 21);
-            this.dgv_ListNCC.Name = "dgv_ListNCC";
-            this.dgv_ListNCC.RowHeadersWidth = 50;
-            this.dgv_ListNCC.RowTemplate.Height = 24;
-            this.dgv_ListNCC.Size = new System.Drawing.Size(1377, 256);
-            this.dgv_ListNCC.TabIndex = 0;
+            this.dgv_NCC.Location = new System.Drawing.Point(10, 21);
+            this.dgv_NCC.Name = "dgv_NCC";
+            this.dgv_NCC.RowHeadersWidth = 50;
+            this.dgv_NCC.RowTemplate.Height = 24;
+            this.dgv_NCC.Size = new System.Drawing.Size(1377, 256);
+            this.dgv_NCC.TabIndex = 0;
             // 
             // STT
             // 
@@ -396,7 +397,7 @@
             this.Text = "NHẬP NHÀ CUNG CẤP";
             this.Load += new System.EventHandler(this.frm_NCC_Load);
             this.groupBox1.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.dgv_ListNCC)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dgv_NCC)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -410,7 +411,7 @@
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.GroupBox groupBox1;
-        private System.Windows.Forms.DataGridView dgv_ListNCC;
+        private System.Windows.Forms.DataGridView dgv_NCC;
         private System.Windows.Forms.Label label6;
         private System.Windows.Forms.Label label7;
         private System.Windows.Forms.Label label8;

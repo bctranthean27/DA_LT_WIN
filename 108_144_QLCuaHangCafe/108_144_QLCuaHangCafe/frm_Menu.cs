@@ -65,5 +65,69 @@ namespace _108_144_QLCuaHangCafe
             Form f  = new frm_Size();
             xulyfrm(f);
         }
+
+        private void mnu_NhanVien_Click(object sender, EventArgs e)
+        {
+            Form f = new frm_NhanVien();
+            xulyfrm(f);
+        }
+        private void mnu_SanPham_Click(object sender, EventArgs e)
+        {
+            Form f = new frm_SanPham();
+            xulyfrm(f);
+        }
+        private void mnu_KhachHang_Click(object sender, EventArgs e)
+        {
+            Form f = new frm_KhachHang();
+            xulyfrm(f);
+        }
+
+        private void mnu_HoaDon_Click(object sender, EventArgs e)
+        {
+            Form f = new frm_HoaDon();
+            xulyfrm(f);
+        }
+
+        private void mnu_SearchKH_Click(object sender, EventArgs e)
+        {
+            Form f = new frm_SearchKH();
+            xulyfrm(f);
+        }
+
+        private void mnu_SearchSP_Click(object sender, EventArgs e)
+        {
+            Form f = new frm_SearchSP();
+            xulyfrm(f);
+        }
+
+        private void mnu_SearchHD_Click(object sender, EventArgs e)
+        {
+            Form f = new frm_SearchHD();
+            xulyfrm(f);
+        }
+
+        private void mnu_ThongKeNgay_Click(object sender, EventArgs e)
+        {
+            Form f = new frm_ThongKeNgay();
+            xulyfrm(f);
+        }
+
+        private void mnu_ThongKeThang_Click(object sender, EventArgs e)
+        {
+            Form f = new frm_ThongKeThang();
+            xulyfrm(f);
+        }
+
+        private void mnu_ThongKeNam_Click(object sender, EventArgs e)
+        {
+            Form f = new frm_ThongKeNam();
+            xulyfrm(f);
+        }
+
+        private void mnu_ThongKeNV_Click(object sender, EventArgs e)
+        {
+            Form f = new frm_ThongKeNV();
+            xulyfrm(f);
+        }
     }
 }

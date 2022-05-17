@@ -29,7 +29,7 @@
         private void InitializeComponent()
         {
             this.groupBox1 = new System.Windows.Forms.GroupBox();
-            this.dgv_LoaiHoaDon = new System.Windows.Forms.DataGridView();
+            this.dgv_HoaDon = new System.Windows.Forms.DataGridView();
             this.MaHD = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.TenLoaiHD = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.KhachHang = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -52,12 +52,12 @@
             this.btn_Them = new System.Windows.Forms.Button();
             this.cbo_KhachHang = new System.Windows.Forms.ComboBox();
             this.groupBox1.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dgv_LoaiHoaDon)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dgv_HoaDon)).BeginInit();
             this.SuspendLayout();
             // 
             // groupBox1
             // 
-            this.groupBox1.Controls.Add(this.dgv_LoaiHoaDon);
+            this.groupBox1.Controls.Add(this.dgv_HoaDon);
             this.groupBox1.Font = new System.Drawing.Font("Segoe UI", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.groupBox1.Location = new System.Drawing.Point(21, 322);
             this.groupBox1.Name = "groupBox1";
@@ -66,22 +66,22 @@
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Danh Sách Hoá Đơn";
             // 
-            // dgv_LoaiHoaDon
+            // dgv_HoaDon
             // 
-            this.dgv_LoaiHoaDon.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
-            this.dgv_LoaiHoaDon.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dgv_LoaiHoaDon.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.dgv_HoaDon.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
+            this.dgv_HoaDon.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dgv_HoaDon.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.MaHD,
             this.TenLoaiHD,
             this.KhachHang,
             this.NgayLap,
             this.TrangThai});
-            this.dgv_LoaiHoaDon.Location = new System.Drawing.Point(6, 31);
-            this.dgv_LoaiHoaDon.Name = "dgv_LoaiHoaDon";
-            this.dgv_LoaiHoaDon.RowHeadersWidth = 50;
-            this.dgv_LoaiHoaDon.RowTemplate.Height = 24;
-            this.dgv_LoaiHoaDon.Size = new System.Drawing.Size(1068, 364);
-            this.dgv_LoaiHoaDon.TabIndex = 0;
+            this.dgv_HoaDon.Location = new System.Drawing.Point(6, 31);
+            this.dgv_HoaDon.Name = "dgv_HoaDon";
+            this.dgv_HoaDon.RowHeadersWidth = 50;
+            this.dgv_HoaDon.RowTemplate.Height = 24;
+            this.dgv_HoaDon.Size = new System.Drawing.Size(1068, 364);
+            this.dgv_HoaDon.TabIndex = 0;
             // 
             // MaHD
             // 
@@ -304,7 +304,7 @@
             this.Name = "frm_HoaDon";
             this.Text = "frm_HoaDon";
             this.groupBox1.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.dgv_LoaiHoaDon)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dgv_HoaDon)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -312,7 +312,7 @@
 
         #endregion
         private System.Windows.Forms.GroupBox groupBox1;
-        private System.Windows.Forms.DataGridView dgv_LoaiHoaDon;
+        private System.Windows.Forms.DataGridView dgv_HoaDon;
         private System.Windows.Forms.ComboBox cbo_LoaiHD;
         private System.Windows.Forms.Label label9;
         private System.Windows.Forms.Label label10;
