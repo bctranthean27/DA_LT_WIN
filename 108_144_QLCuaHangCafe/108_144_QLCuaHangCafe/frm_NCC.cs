@@ -10,16 +10,26 @@ using System.Windows.Forms;
 
 namespace _108_144_QLCuaHangCafe
 {
+
     public partial class frm_NCC : Form
     {
+        cls_QLCHCAFE c = new cls_QLCHCAFE();
         public frm_NCC()
         {
+
             InitializeComponent();
         }
         private void frm_NCC_Load(object sender, EventArgs e)
         {
             XuLiTextBox(true);
             XuLiButton(true);
+            loadData_DataGrid(dgv_DanhSach, "select * from NhaCungCap");
+        }
+        void loadData_DataGrid(DataGridView d, string sql)
+        {
+            DataSet ds = c.LayDuLieu(sql);
+            d.DataSource = ds.Tables[0];
+
         }
         void XuLiTextBox(Boolean t)
         {

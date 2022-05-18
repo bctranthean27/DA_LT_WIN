@@ -12,6 +12,7 @@ namespace _108_144_QLCuaHangCafe
 {
     public partial class frm_LoaiSanPham : Form
     {
+        cls_QLCHCAFE c = new cls_QLCHCAFE();
         public frm_LoaiSanPham()
         {
             InitializeComponent();
@@ -33,6 +34,13 @@ namespace _108_144_QLCuaHangCafe
         {
             XuLiTextBox(true);
             XuLiButton(true);
+            loadData_DataGrid(dgv_DanhSach, "select * from LoaiSanPham");
+        }
+        void loadData_DataGrid(DataGridView d, string sql)
+        {
+            DataSet ds = c.LayDuLieu(sql);
+            d.DataSource = ds.Tables[0];
+
         }
 
         private void btn_Them_Click(object sender, EventArgs e)

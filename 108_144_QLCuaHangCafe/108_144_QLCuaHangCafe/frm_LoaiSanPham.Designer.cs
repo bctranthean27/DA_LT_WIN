@@ -28,10 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.dgv_LoaiSanPham = new System.Windows.Forms.DataGridView();
-            this.MaLoaiSP = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.TenLoaiSP = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.TrangThai = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dgv_DanhSach = new System.Windows.Forms.DataGridView();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.txt_TenLoaiSP = new System.Windows.Forms.TextBox();
             this.cbo_TrangThai = new System.Windows.Forms.ComboBox();
@@ -45,46 +42,31 @@
             this.btn_Xoa = new System.Windows.Forms.Button();
             this.btn_Them = new System.Windows.Forms.Button();
             this.txt_MaLoaiSP = new System.Windows.Forms.TextBox();
-            ((System.ComponentModel.ISupportInitialize)(this.dgv_LoaiSanPham)).BeginInit();
+            this.MaLoaiSP = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.TenLoaiSP = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.TrangThai = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            ((System.ComponentModel.ISupportInitialize)(this.dgv_DanhSach)).BeginInit();
             this.groupBox1.SuspendLayout();
             this.SuspendLayout();
             // 
-            // dgv_LoaiSanPham
+            // dgv_DanhSach
             // 
-            this.dgv_LoaiSanPham.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
-            this.dgv_LoaiSanPham.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dgv_LoaiSanPham.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.dgv_DanhSach.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
+            this.dgv_DanhSach.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dgv_DanhSach.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.MaLoaiSP,
             this.TenLoaiSP,
             this.TrangThai});
-            this.dgv_LoaiSanPham.Location = new System.Drawing.Point(6, 29);
-            this.dgv_LoaiSanPham.Name = "dgv_LoaiSanPham";
-            this.dgv_LoaiSanPham.RowHeadersWidth = 50;
-            this.dgv_LoaiSanPham.RowTemplate.Height = 24;
-            this.dgv_LoaiSanPham.Size = new System.Drawing.Size(1026, 268);
-            this.dgv_LoaiSanPham.TabIndex = 0;
-            // 
-            // MaLoaiSP
-            // 
-            this.MaLoaiSP.HeaderText = "Mã Loại SP";
-            this.MaLoaiSP.MinimumWidth = 6;
-            this.MaLoaiSP.Name = "MaLoaiSP";
-            // 
-            // TenLoaiSP
-            // 
-            this.TenLoaiSP.HeaderText = "Tên Sản Phẩm";
-            this.TenLoaiSP.MinimumWidth = 6;
-            this.TenLoaiSP.Name = "TenLoaiSP";
-            // 
-            // TrangThai
-            // 
-            this.TrangThai.HeaderText = "Trạng Thái";
-            this.TrangThai.MinimumWidth = 6;
-            this.TrangThai.Name = "TrangThai";
+            this.dgv_DanhSach.Location = new System.Drawing.Point(6, 29);
+            this.dgv_DanhSach.Name = "dgv_DanhSach";
+            this.dgv_DanhSach.RowHeadersWidth = 50;
+            this.dgv_DanhSach.RowTemplate.Height = 24;
+            this.dgv_DanhSach.Size = new System.Drawing.Size(1026, 268);
+            this.dgv_DanhSach.TabIndex = 0;
             // 
             // groupBox1
             // 
-            this.groupBox1.Controls.Add(this.dgv_LoaiSanPham);
+            this.groupBox1.Controls.Add(this.dgv_DanhSach);
             this.groupBox1.Font = new System.Drawing.Font("Segoe UI", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.groupBox1.Location = new System.Drawing.Point(21, 321);
             this.groupBox1.Name = "groupBox1";
@@ -216,6 +198,27 @@
             this.txt_MaLoaiSP.Size = new System.Drawing.Size(299, 34);
             this.txt_MaLoaiSP.TabIndex = 70;
             // 
+            // MaLoaiSP
+            // 
+            this.MaLoaiSP.DataPropertyName = "MaLoai";
+            this.MaLoaiSP.HeaderText = "Mã Loại SP";
+            this.MaLoaiSP.MinimumWidth = 6;
+            this.MaLoaiSP.Name = "MaLoaiSP";
+            // 
+            // TenLoaiSP
+            // 
+            this.TenLoaiSP.DataPropertyName = "TenLoai";
+            this.TenLoaiSP.HeaderText = "Tên Sản Phẩm";
+            this.TenLoaiSP.MinimumWidth = 6;
+            this.TenLoaiSP.Name = "TenLoaiSP";
+            // 
+            // TrangThai
+            // 
+            this.TrangThai.DataPropertyName = "TrangThai";
+            this.TrangThai.HeaderText = "Trạng Thái";
+            this.TrangThai.MinimumWidth = 6;
+            this.TrangThai.Name = "TrangThai";
+            // 
             // frm_LoaiSanPham
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
@@ -237,7 +240,7 @@
             this.Name = "frm_LoaiSanPham";
             this.Text = "frm_LoaiSanPham";
             this.Load += new System.EventHandler(this.frm_LoaiSanPham_Load);
-            ((System.ComponentModel.ISupportInitialize)(this.dgv_LoaiSanPham)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dgv_DanhSach)).EndInit();
             this.groupBox1.ResumeLayout(false);
             this.ResumeLayout(false);
             this.PerformLayout();
@@ -245,7 +248,7 @@
         }
 
         #endregion
-        private System.Windows.Forms.DataGridView dgv_LoaiSanPham;
+        private System.Windows.Forms.DataGridView dgv_DanhSach;
         private System.Windows.Forms.GroupBox groupBox1;
         private System.Windows.Forms.TextBox txt_TenLoaiSP;
         private System.Windows.Forms.ComboBox cbo_TrangThai;
@@ -253,14 +256,14 @@
         private System.Windows.Forms.Label label10;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.DataGridViewTextBoxColumn MaLoaiSP;
-        private System.Windows.Forms.DataGridViewTextBoxColumn TenLoaiSP;
-        private System.Windows.Forms.DataGridViewTextBoxColumn TrangThai;
         private System.Windows.Forms.Button btn_Exit;
         private System.Windows.Forms.Button btn_Luu;
         private System.Windows.Forms.Button btn_Sua;
         private System.Windows.Forms.Button btn_Xoa;
         private System.Windows.Forms.Button btn_Them;
         private System.Windows.Forms.TextBox txt_MaLoaiSP;
+        private System.Windows.Forms.DataGridViewTextBoxColumn MaLoaiSP;
+        private System.Windows.Forms.DataGridViewTextBoxColumn TenLoaiSP;
+        private System.Windows.Forms.DataGridViewTextBoxColumn TrangThai;
     }
 }

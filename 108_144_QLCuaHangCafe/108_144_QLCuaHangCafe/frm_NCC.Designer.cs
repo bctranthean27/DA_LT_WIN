@@ -34,16 +34,7 @@
             this.label4 = new System.Windows.Forms.Label();
             this.label5 = new System.Windows.Forms.Label();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
-            this.dgv_NCC = new System.Windows.Forms.DataGridView();
-            this.STT = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.MaNCC = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.TenNCC = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.DienThoai = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.SoTK = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.TenTK = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.DiaChiMail = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.DiaChi = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.TrangThai = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dgv_DanhSach = new System.Windows.Forms.DataGridView();
             this.label6 = new System.Windows.Forms.Label();
             this.label7 = new System.Windows.Forms.Label();
             this.label8 = new System.Windows.Forms.Label();
@@ -61,8 +52,14 @@
             this.btn_Luu = new System.Windows.Forms.Button();
             this.Btn_Thoat = new System.Windows.Forms.Button();
             this.txt_NCC = new System.Windows.Forms.TextBox();
+            this.MaNCC = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.TenNCC = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.DChi = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.SDT = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Mail = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.TrangThai = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.groupBox1.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dgv_NCC)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dgv_DanhSach)).BeginInit();
             this.SuspendLayout();
             // 
             // label1
@@ -119,7 +116,7 @@
             // 
             // groupBox1
             // 
-            this.groupBox1.Controls.Add(this.dgv_NCC);
+            this.groupBox1.Controls.Add(this.dgv_DanhSach);
             this.groupBox1.Font = new System.Drawing.Font("Segoe UI Semibold", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.groupBox1.Location = new System.Drawing.Point(8, 408);
             this.groupBox1.Name = "groupBox1";
@@ -128,80 +125,23 @@
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Danh sách";
             // 
-            // dgv_NCC
+            // dgv_DanhSach
             // 
-            this.dgv_NCC.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
-            this.dgv_NCC.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dgv_NCC.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
-            this.STT,
+            this.dgv_DanhSach.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
+            this.dgv_DanhSach.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dgv_DanhSach.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.MaNCC,
             this.TenNCC,
-            this.DienThoai,
-            this.SoTK,
-            this.TenTK,
-            this.DiaChiMail,
-            this.DiaChi,
+            this.DChi,
+            this.SDT,
+            this.Mail,
             this.TrangThai});
-            this.dgv_NCC.Location = new System.Drawing.Point(10, 21);
-            this.dgv_NCC.Name = "dgv_NCC";
-            this.dgv_NCC.RowHeadersWidth = 50;
-            this.dgv_NCC.RowTemplate.Height = 24;
-            this.dgv_NCC.Size = new System.Drawing.Size(1377, 256);
-            this.dgv_NCC.TabIndex = 0;
-            // 
-            // STT
-            // 
-            this.STT.HeaderText = "STT";
-            this.STT.MinimumWidth = 6;
-            this.STT.Name = "STT";
-            // 
-            // MaNCC
-            // 
-            this.MaNCC.HeaderText = "Mã Nhà Cung Cấp";
-            this.MaNCC.MinimumWidth = 6;
-            this.MaNCC.Name = "MaNCC";
-            // 
-            // TenNCC
-            // 
-            this.TenNCC.HeaderText = "Tên Nhà Cung Cấp";
-            this.TenNCC.MinimumWidth = 6;
-            this.TenNCC.Name = "TenNCC";
-            // 
-            // DienThoai
-            // 
-            this.DienThoai.HeaderText = "Điện Thoại";
-            this.DienThoai.MinimumWidth = 6;
-            this.DienThoai.Name = "DienThoai";
-            // 
-            // SoTK
-            // 
-            this.SoTK.HeaderText = "Số Tài Khoản";
-            this.SoTK.MinimumWidth = 6;
-            this.SoTK.Name = "SoTK";
-            // 
-            // TenTK
-            // 
-            this.TenTK.HeaderText = "Tên Tài Khoản";
-            this.TenTK.MinimumWidth = 6;
-            this.TenTK.Name = "TenTK";
-            // 
-            // DiaChiMail
-            // 
-            this.DiaChiMail.HeaderText = "Địa Chỉ Mail";
-            this.DiaChiMail.MinimumWidth = 6;
-            this.DiaChiMail.Name = "DiaChiMail";
-            // 
-            // DiaChi
-            // 
-            this.DiaChi.HeaderText = "Địa Chỉ";
-            this.DiaChi.MinimumWidth = 6;
-            this.DiaChi.Name = "DiaChi";
-            // 
-            // TrangThai
-            // 
-            this.TrangThai.HeaderText = "Trạng Thái";
-            this.TrangThai.MinimumWidth = 6;
-            this.TrangThai.Name = "TrangThai";
+            this.dgv_DanhSach.Location = new System.Drawing.Point(10, 21);
+            this.dgv_DanhSach.Name = "dgv_DanhSach";
+            this.dgv_DanhSach.RowHeadersWidth = 50;
+            this.dgv_DanhSach.RowTemplate.Height = 24;
+            this.dgv_DanhSach.Size = new System.Drawing.Size(1377, 256);
+            this.dgv_DanhSach.TabIndex = 0;
             // 
             // label6
             // 
@@ -365,6 +305,48 @@
             this.txt_NCC.Size = new System.Drawing.Size(299, 34);
             this.txt_NCC.TabIndex = 4;
             // 
+            // MaNCC
+            // 
+            this.MaNCC.DataPropertyName = "MaNCC";
+            this.MaNCC.HeaderText = "Mã Nhà Cung Cấp";
+            this.MaNCC.MinimumWidth = 6;
+            this.MaNCC.Name = "MaNCC";
+            // 
+            // TenNCC
+            // 
+            this.TenNCC.DataPropertyName = "TenNCC";
+            this.TenNCC.HeaderText = "Tên Nhà Cung Cấp";
+            this.TenNCC.MinimumWidth = 6;
+            this.TenNCC.Name = "TenNCC";
+            // 
+            // DChi
+            // 
+            this.DChi.DataPropertyName = "DChi";
+            this.DChi.HeaderText = "Địa Chỉ";
+            this.DChi.MinimumWidth = 6;
+            this.DChi.Name = "DChi";
+            // 
+            // SDT
+            // 
+            this.SDT.DataPropertyName = "SDT";
+            this.SDT.HeaderText = "Điện Thoại";
+            this.SDT.MinimumWidth = 6;
+            this.SDT.Name = "SDT";
+            // 
+            // Mail
+            // 
+            this.Mail.DataPropertyName = "Mail";
+            this.Mail.HeaderText = "Địa Chỉ Mail";
+            this.Mail.MinimumWidth = 6;
+            this.Mail.Name = "Mail";
+            // 
+            // TrangThai
+            // 
+            this.TrangThai.DataPropertyName = "TrangThai";
+            this.TrangThai.HeaderText = "Trạng Thái";
+            this.TrangThai.MinimumWidth = 6;
+            this.TrangThai.Name = "TrangThai";
+            // 
             // frm_NCC
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
@@ -397,7 +379,7 @@
             this.Text = "NHẬP NHÀ CUNG CẤP";
             this.Load += new System.EventHandler(this.frm_NCC_Load);
             this.groupBox1.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.dgv_NCC)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dgv_DanhSach)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -411,7 +393,7 @@
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.GroupBox groupBox1;
-        private System.Windows.Forms.DataGridView dgv_NCC;
+        private System.Windows.Forms.DataGridView dgv_DanhSach;
         private System.Windows.Forms.Label label6;
         private System.Windows.Forms.Label label7;
         private System.Windows.Forms.Label label8;
@@ -424,20 +406,17 @@
         private System.Windows.Forms.TextBox txt_DienThoai;
         private System.Windows.Forms.ComboBox cbo_TrangThai;
         private System.Windows.Forms.Button btn_Them;
-        private System.Windows.Forms.DataGridViewTextBoxColumn STT;
-        private System.Windows.Forms.DataGridViewTextBoxColumn MaNCC;
-        private System.Windows.Forms.DataGridViewTextBoxColumn TenNCC;
-        private System.Windows.Forms.DataGridViewTextBoxColumn DienThoai;
-        private System.Windows.Forms.DataGridViewTextBoxColumn SoTK;
-        private System.Windows.Forms.DataGridViewTextBoxColumn TenTK;
-        private System.Windows.Forms.DataGridViewTextBoxColumn DiaChiMail;
-        private System.Windows.Forms.DataGridViewTextBoxColumn DiaChi;
-        private System.Windows.Forms.DataGridViewTextBoxColumn TrangThai;
         private System.Windows.Forms.Button btn_Xoa;
         private System.Windows.Forms.Button btn_Sua;
         private System.Windows.Forms.Button btn_Luu;
         private System.Windows.Forms.Button Btn_Thoat;
         private System.Windows.Forms.TextBox txt_NCC;
+        private System.Windows.Forms.DataGridViewTextBoxColumn MaNCC;
+        private System.Windows.Forms.DataGridViewTextBoxColumn TenNCC;
+        private System.Windows.Forms.DataGridViewTextBoxColumn DChi;
+        private System.Windows.Forms.DataGridViewTextBoxColumn SDT;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Mail;
+        private System.Windows.Forms.DataGridViewTextBoxColumn TrangThai;
     }
 }
 

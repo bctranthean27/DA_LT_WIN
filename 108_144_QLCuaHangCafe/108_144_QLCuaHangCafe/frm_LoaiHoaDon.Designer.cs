@@ -29,10 +29,7 @@
         private void InitializeComponent()
         {
             this.groupBox1 = new System.Windows.Forms.GroupBox();
-            this.dgv_LoaiHoaDon = new System.Windows.Forms.DataGridView();
-            this.MaLoaiHD = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.TenLoaiHD = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.TrangThai = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dgv_DanhSach = new System.Windows.Forms.DataGridView();
             this.txt_TenLoaiHD = new System.Windows.Forms.TextBox();
             this.cbo_TrangThai = new System.Windows.Forms.ComboBox();
             this.label9 = new System.Windows.Forms.Label();
@@ -45,13 +42,16 @@
             this.btn_Xoa = new System.Windows.Forms.Button();
             this.btn_Them = new System.Windows.Forms.Button();
             this.txt_MaLoaiHD = new System.Windows.Forms.TextBox();
+            this.MaLoaiHD = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.TenLoaiHD = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.TrangThai = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.groupBox1.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dgv_LoaiHoaDon)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dgv_DanhSach)).BeginInit();
             this.SuspendLayout();
             // 
             // groupBox1
             // 
-            this.groupBox1.Controls.Add(this.dgv_LoaiHoaDon);
+            this.groupBox1.Controls.Add(this.dgv_DanhSach);
             this.groupBox1.Font = new System.Drawing.Font("Segoe UI", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.groupBox1.Location = new System.Drawing.Point(21, 333);
             this.groupBox1.Name = "groupBox1";
@@ -60,38 +60,20 @@
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Danh Sách Hoá Đơn";
             // 
-            // dgv_LoaiHoaDon
+            // dgv_DanhSach
             // 
-            this.dgv_LoaiHoaDon.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
-            this.dgv_LoaiHoaDon.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dgv_LoaiHoaDon.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.dgv_DanhSach.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
+            this.dgv_DanhSach.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dgv_DanhSach.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.MaLoaiHD,
             this.TenLoaiHD,
             this.TrangThai});
-            this.dgv_LoaiHoaDon.Location = new System.Drawing.Point(6, 31);
-            this.dgv_LoaiHoaDon.Name = "dgv_LoaiHoaDon";
-            this.dgv_LoaiHoaDon.RowHeadersWidth = 50;
-            this.dgv_LoaiHoaDon.RowTemplate.Height = 24;
-            this.dgv_LoaiHoaDon.Size = new System.Drawing.Size(1026, 266);
-            this.dgv_LoaiHoaDon.TabIndex = 0;
-            // 
-            // MaLoaiHD
-            // 
-            this.MaLoaiHD.HeaderText = "Mã Loại Hoá Đơn";
-            this.MaLoaiHD.MinimumWidth = 6;
-            this.MaLoaiHD.Name = "MaLoaiHD";
-            // 
-            // TenLoaiHD
-            // 
-            this.TenLoaiHD.HeaderText = "Tên Loại Hoá Đơn";
-            this.TenLoaiHD.MinimumWidth = 6;
-            this.TenLoaiHD.Name = "TenLoaiHD";
-            // 
-            // TrangThai
-            // 
-            this.TrangThai.HeaderText = "Trạng Thái";
-            this.TrangThai.MinimumWidth = 6;
-            this.TrangThai.Name = "TrangThai";
+            this.dgv_DanhSach.Location = new System.Drawing.Point(6, 31);
+            this.dgv_DanhSach.Name = "dgv_DanhSach";
+            this.dgv_DanhSach.RowHeadersWidth = 50;
+            this.dgv_DanhSach.RowTemplate.Height = 24;
+            this.dgv_DanhSach.Size = new System.Drawing.Size(1026, 266);
+            this.dgv_DanhSach.TabIndex = 0;
             // 
             // txt_TenLoaiHD
             // 
@@ -216,6 +198,27 @@
             this.txt_MaLoaiHD.Size = new System.Drawing.Size(299, 34);
             this.txt_MaLoaiHD.TabIndex = 96;
             // 
+            // MaLoaiHD
+            // 
+            this.MaLoaiHD.DataPropertyName = "MaLoaiHD";
+            this.MaLoaiHD.HeaderText = "Mã Loại Hoá Đơn";
+            this.MaLoaiHD.MinimumWidth = 6;
+            this.MaLoaiHD.Name = "MaLoaiHD";
+            // 
+            // TenLoaiHD
+            // 
+            this.TenLoaiHD.DataPropertyName = "TenLoaiHD";
+            this.TenLoaiHD.HeaderText = "Tên Loại Hoá Đơn";
+            this.TenLoaiHD.MinimumWidth = 6;
+            this.TenLoaiHD.Name = "TenLoaiHD";
+            // 
+            // TrangThai
+            // 
+            this.TrangThai.DataPropertyName = "TrangThai";
+            this.TrangThai.HeaderText = "Trạng Thái";
+            this.TrangThai.MinimumWidth = 6;
+            this.TrangThai.Name = "TrangThai";
+            // 
             // frm_LoaiHoaDon
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
@@ -238,7 +241,7 @@
             this.Text = "frm_LoaiHoaDon";
             this.Load += new System.EventHandler(this.frm_LoaiHoaDon_Load);
             this.groupBox1.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.dgv_LoaiHoaDon)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dgv_DanhSach)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -246,21 +249,21 @@
 
         #endregion
         private System.Windows.Forms.GroupBox groupBox1;
-        private System.Windows.Forms.DataGridView dgv_LoaiHoaDon;
+        private System.Windows.Forms.DataGridView dgv_DanhSach;
         private System.Windows.Forms.TextBox txt_TenLoaiHD;
         private System.Windows.Forms.ComboBox cbo_TrangThai;
         private System.Windows.Forms.Label label9;
         private System.Windows.Forms.Label label10;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.DataGridViewTextBoxColumn MaLoaiHD;
-        private System.Windows.Forms.DataGridViewTextBoxColumn TenLoaiHD;
-        private System.Windows.Forms.DataGridViewTextBoxColumn TrangThai;
         private System.Windows.Forms.Button btn_Exit;
         private System.Windows.Forms.Button btn_Luu;
         private System.Windows.Forms.Button btn_Sua;
         private System.Windows.Forms.Button btn_Xoa;
         private System.Windows.Forms.Button btn_Them;
         private System.Windows.Forms.TextBox txt_MaLoaiHD;
+        private System.Windows.Forms.DataGridViewTextBoxColumn MaLoaiHD;
+        private System.Windows.Forms.DataGridViewTextBoxColumn TenLoaiHD;
+        private System.Windows.Forms.DataGridViewTextBoxColumn TrangThai;
     }
 }
