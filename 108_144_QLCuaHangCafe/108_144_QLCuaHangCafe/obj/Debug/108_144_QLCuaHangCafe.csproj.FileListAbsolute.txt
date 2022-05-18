@@ -67,3 +67,5 @@ E:\DA c#\DA_LT_WIN\108_144_QLCuaHangCafe\108_144_QLCuaHangCafe\obj\Debug\_108_14
 E:\DA c#\DA_LT_WIN\108_144_QLCuaHangCafe\108_144_QLCuaHangCafe\obj\Debug\_108_144_QLCuaHangCafe.frm_ThongKeThang.resources
 E:\DA c#\DA_LT_WIN\108_144_QLCuaHangCafe\108_144_QLCuaHangCafe\obj\Debug\_108_144_QLCuaHangCafe.frm_ThongKeNgay.resources
 >>>>>>> 0a8278faaf994c131e5c89a78674bd6d5f096032
+>>>>>>> master
+>>>>>>> 438e13c82d56caae90f9a81de4148a9b30f5a46f

@@ -10,8 +10,10 @@ using System.Windows.Forms;
 
 namespace _108_144_QLCuaHangCafe
 {
+    
     public partial class frm_ChucVu : Form
     {
+        cls_QLCHCAFE c = new cls_QLCHCAFE();
         public frm_ChucVu()
         {
             InitializeComponent();
@@ -20,6 +22,13 @@ namespace _108_144_QLCuaHangCafe
         {
             XuLiTextBox(true);
             XuLiButton(true);
+            loadData_DataGrid(dgv_DanhSach, "select * from ChucVu");
+        }
+        void loadData_DataGrid(DataGridView d, string sql)
+        {
+            DataSet ds = c.LayDuLieu(sql);
+            d.DataSource = ds.Tables[0];
+
         }
         void XuLiTextBox(Boolean t)
         {

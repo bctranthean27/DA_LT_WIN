@@ -33,10 +33,7 @@
             this.label10 = new System.Windows.Forms.Label();
             this.txt_TenCV = new System.Windows.Forms.TextBox();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
-            this.dgv_ChucVu = new System.Windows.Forms.DataGridView();
-            this.MaCV = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.TenCV = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.TrangThai = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dgv_DanhSach = new System.Windows.Forms.DataGridView();
             this.label9 = new System.Windows.Forms.Label();
             this.cbo_TrangThai = new System.Windows.Forms.ComboBox();
             this.btn_Exit = new System.Windows.Forms.Button();
@@ -45,8 +42,10 @@
             this.btn_Xoa = new System.Windows.Forms.Button();
             this.btn_Them = new System.Windows.Forms.Button();
             this.txt_MaCV = new System.Windows.Forms.TextBox();
+            this.MaChucVu = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.TenChucVu = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.groupBox1.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dgv_ChucVu)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dgv_DanhSach)).BeginInit();
             this.SuspendLayout();
             // 
             // label1
@@ -91,7 +90,7 @@
             // 
             // groupBox1
             // 
-            this.groupBox1.Controls.Add(this.dgv_ChucVu);
+            this.groupBox1.Controls.Add(this.dgv_DanhSach);
             this.groupBox1.Font = new System.Drawing.Font("Segoe UI", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.groupBox1.Location = new System.Drawing.Point(29, 327);
             this.groupBox1.Name = "groupBox1";
@@ -100,38 +99,19 @@
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Bảng Chức Vụ";
             // 
-            // dgv_ChucVu
+            // dgv_DanhSach
             // 
-            this.dgv_ChucVu.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
-            this.dgv_ChucVu.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dgv_ChucVu.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
-            this.MaCV,
-            this.TenCV,
-            this.TrangThai});
-            this.dgv_ChucVu.Location = new System.Drawing.Point(6, 31);
-            this.dgv_ChucVu.Name = "dgv_ChucVu";
-            this.dgv_ChucVu.RowHeadersWidth = 50;
-            this.dgv_ChucVu.RowTemplate.Height = 24;
-            this.dgv_ChucVu.Size = new System.Drawing.Size(1026, 266);
-            this.dgv_ChucVu.TabIndex = 0;
-            // 
-            // MaCV
-            // 
-            this.MaCV.HeaderText = "Mã Chức Vụ";
-            this.MaCV.MinimumWidth = 6;
-            this.MaCV.Name = "MaCV";
-            // 
-            // TenCV
-            // 
-            this.TenCV.HeaderText = "Tên Chức Vụ";
-            this.TenCV.MinimumWidth = 6;
-            this.TenCV.Name = "TenCV";
-            // 
-            // TrangThai
-            // 
-            this.TrangThai.HeaderText = "Trạng Thái";
-            this.TrangThai.MinimumWidth = 6;
-            this.TrangThai.Name = "TrangThai";
+            this.dgv_DanhSach.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
+            this.dgv_DanhSach.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dgv_DanhSach.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.MaChucVu,
+            this.TenChucVu});
+            this.dgv_DanhSach.Location = new System.Drawing.Point(6, 29);
+            this.dgv_DanhSach.Name = "dgv_DanhSach";
+            this.dgv_DanhSach.RowHeadersWidth = 50;
+            this.dgv_DanhSach.RowTemplate.Height = 24;
+            this.dgv_DanhSach.Size = new System.Drawing.Size(1026, 266);
+            this.dgv_DanhSach.TabIndex = 0;
             // 
             // label9
             // 
@@ -216,6 +196,20 @@
             this.txt_MaCV.Size = new System.Drawing.Size(299, 34);
             this.txt_MaCV.TabIndex = 57;
             // 
+            // MaChucVu
+            // 
+            this.MaChucVu.DataPropertyName = "MaChucVu";
+            this.MaChucVu.HeaderText = "Mã Chức Vụ";
+            this.MaChucVu.MinimumWidth = 6;
+            this.MaChucVu.Name = "MaChucVu";
+            // 
+            // TenChucVu
+            // 
+            this.TenChucVu.DataPropertyName = "TenChucVu";
+            this.TenChucVu.HeaderText = "Tên Chức Vụ";
+            this.TenChucVu.MinimumWidth = 6;
+            this.TenChucVu.Name = "TenChucVu";
+            // 
             // frm_ChucVu
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
@@ -238,7 +232,7 @@
             this.Text = "frm_HoaDon";
             this.Load += new System.EventHandler(this.frm_ChucVu_Load);
             this.groupBox1.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.dgv_ChucVu)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dgv_DanhSach)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -251,17 +245,16 @@
         private System.Windows.Forms.Label label10;
         private System.Windows.Forms.TextBox txt_TenCV;
         private System.Windows.Forms.GroupBox groupBox1;
-        private System.Windows.Forms.DataGridView dgv_ChucVu;
+        private System.Windows.Forms.DataGridView dgv_DanhSach;
         private System.Windows.Forms.Label label9;
         private System.Windows.Forms.ComboBox cbo_TrangThai;
-        private System.Windows.Forms.DataGridViewTextBoxColumn MaCV;
-        private System.Windows.Forms.DataGridViewTextBoxColumn TenCV;
-        private System.Windows.Forms.DataGridViewTextBoxColumn TrangThai;
         private System.Windows.Forms.Button btn_Exit;
         private System.Windows.Forms.Button btn_Lưu;
         private System.Windows.Forms.Button btn_Sua;
         private System.Windows.Forms.Button btn_Xoa;
         private System.Windows.Forms.Button btn_Them;
         private System.Windows.Forms.TextBox txt_MaCV;
+        private System.Windows.Forms.DataGridViewTextBoxColumn MaChucVu;
+        private System.Windows.Forms.DataGridViewTextBoxColumn TenChucVu;
     }
 }

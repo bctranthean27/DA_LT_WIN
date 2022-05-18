@@ -131,6 +131,5 @@ namespace _108_144_QLCuaHangCafe
             xulyfrm(f);
         }
 
-        
     }
 }
