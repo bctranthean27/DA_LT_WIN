@@ -30,14 +30,7 @@
         {
             this.cbo_DiaChi = new System.Windows.Forms.ComboBox();
             this.cbo_ChucVu = new System.Windows.Forms.ComboBox();
-            this.dgv_NhanVien = new System.Windows.Forms.DataGridView();
-            this.MaNV = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.TenNV = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.DiaChi = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.DienThoai = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Mail = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.NgayVaoLam = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.TenCV = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dgv_DanhSach = new System.Windows.Forms.DataGridView();
             this.label8 = new System.Windows.Forms.Label();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.btn_Thoat = new System.Windows.Forms.Button();
@@ -59,7 +52,14 @@
             this.label6 = new System.Windows.Forms.Label();
             this.dtp_NgayVaoLam = new System.Windows.Forms.DateTimePicker();
             this.txt_MaNV = new System.Windows.Forms.TextBox();
-            ((System.ComponentModel.ISupportInitialize)(this.dgv_NhanVien)).BeginInit();
+            this.MaNV = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.HoNV = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.TenNV = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.DChi = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.NgayVaoLam = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.MaChucVu = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.TrangThai = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            ((System.ComponentModel.ISupportInitialize)(this.dgv_DanhSach)).BeginInit();
             this.groupBox1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -87,66 +87,24 @@
             this.cbo_ChucVu.Size = new System.Drawing.Size(299, 31);
             this.cbo_ChucVu.TabIndex = 40;
             // 
-            // dgv_NhanVien
+            // dgv_DanhSach
             // 
-            this.dgv_NhanVien.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
-            this.dgv_NhanVien.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dgv_NhanVien.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.dgv_DanhSach.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
+            this.dgv_DanhSach.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dgv_DanhSach.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.MaNV,
+            this.HoNV,
             this.TenNV,
-            this.DiaChi,
-            this.DienThoai,
-            this.Mail,
+            this.DChi,
             this.NgayVaoLam,
-            this.TenCV});
-            this.dgv_NhanVien.Location = new System.Drawing.Point(20, 31);
-            this.dgv_NhanVien.Name = "dgv_NhanVien";
-            this.dgv_NhanVien.RowHeadersWidth = 50;
-            this.dgv_NhanVien.RowTemplate.Height = 24;
-            this.dgv_NhanVien.Size = new System.Drawing.Size(1038, 266);
-            this.dgv_NhanVien.TabIndex = 0;
-            // 
-            // MaNV
-            // 
-            this.MaNV.HeaderText = "Mã Nhân Viên";
-            this.MaNV.MinimumWidth = 6;
-            this.MaNV.Name = "MaNV";
-            // 
-            // TenNV
-            // 
-            this.TenNV.HeaderText = "Tên Nhân Viên";
-            this.TenNV.MinimumWidth = 6;
-            this.TenNV.Name = "TenNV";
-            // 
-            // DiaChi
-            // 
-            this.DiaChi.HeaderText = "Địa Chỉ";
-            this.DiaChi.MinimumWidth = 6;
-            this.DiaChi.Name = "DiaChi";
-            // 
-            // DienThoai
-            // 
-            this.DienThoai.HeaderText = "Số Điện Thoại";
-            this.DienThoai.MinimumWidth = 6;
-            this.DienThoai.Name = "DienThoai";
-            // 
-            // Mail
-            // 
-            this.Mail.HeaderText = "Email";
-            this.Mail.MinimumWidth = 6;
-            this.Mail.Name = "Mail";
-            // 
-            // NgayVaoLam
-            // 
-            this.NgayVaoLam.HeaderText = "Ngày Vào Làm";
-            this.NgayVaoLam.MinimumWidth = 6;
-            this.NgayVaoLam.Name = "NgayVaoLam";
-            // 
-            // TenCV
-            // 
-            this.TenCV.HeaderText = "Mã Chức Vụ";
-            this.TenCV.MinimumWidth = 6;
-            this.TenCV.Name = "TenCV";
+            this.MaChucVu,
+            this.TrangThai});
+            this.dgv_DanhSach.Location = new System.Drawing.Point(20, 31);
+            this.dgv_DanhSach.Name = "dgv_DanhSach";
+            this.dgv_DanhSach.RowHeadersWidth = 50;
+            this.dgv_DanhSach.RowTemplate.Height = 24;
+            this.dgv_DanhSach.Size = new System.Drawing.Size(1038, 266);
+            this.dgv_DanhSach.TabIndex = 0;
             // 
             // label8
             // 
@@ -160,7 +118,7 @@
             // 
             // groupBox1
             // 
-            this.groupBox1.Controls.Add(this.dgv_NhanVien);
+            this.groupBox1.Controls.Add(this.dgv_DanhSach);
             this.groupBox1.Font = new System.Drawing.Font("Segoe UI", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.groupBox1.Location = new System.Drawing.Point(12, 418);
             this.groupBox1.Name = "groupBox1";
@@ -354,6 +312,55 @@
             this.txt_MaNV.Size = new System.Drawing.Size(299, 34);
             this.txt_MaNV.TabIndex = 32;
             // 
+            // MaNV
+            // 
+            this.MaNV.DataPropertyName = "MaNV";
+            this.MaNV.HeaderText = "Mã Nhân Viên";
+            this.MaNV.MinimumWidth = 6;
+            this.MaNV.Name = "MaNV";
+            // 
+            // HoNV
+            // 
+            this.HoNV.DataPropertyName = "HoNV";
+            this.HoNV.HeaderText = "Họ Nhân Viên";
+            this.HoNV.MinimumWidth = 6;
+            this.HoNV.Name = "HoNV";
+            // 
+            // TenNV
+            // 
+            this.TenNV.DataPropertyName = "TenNV";
+            this.TenNV.HeaderText = "Tên Nhân Viên";
+            this.TenNV.MinimumWidth = 6;
+            this.TenNV.Name = "TenNV";
+            // 
+            // DChi
+            // 
+            this.DChi.DataPropertyName = "Dchi";
+            this.DChi.HeaderText = "Địa Chỉ";
+            this.DChi.MinimumWidth = 6;
+            this.DChi.Name = "DChi";
+            // 
+            // NgayVaoLam
+            // 
+            this.NgayVaoLam.DataPropertyName = "NgayVaoLam";
+            this.NgayVaoLam.HeaderText = "Ngày Vào Làm";
+            this.NgayVaoLam.MinimumWidth = 6;
+            this.NgayVaoLam.Name = "NgayVaoLam";
+            // 
+            // MaChucVu
+            // 
+            this.MaChucVu.DataPropertyName = "MaChucVu";
+            this.MaChucVu.HeaderText = "Mã Chức Vụ";
+            this.MaChucVu.MinimumWidth = 6;
+            this.MaChucVu.Name = "MaChucVu";
+            // 
+            // TrangThai
+            // 
+            this.TrangThai.DataPropertyName = "TrangThai";
+            this.TrangThai.HeaderText = "Trạng Thái";
+            this.TrangThai.MinimumWidth = 6;
+            this.TrangThai.Name = "TrangThai";
+            // 
             // frm_NhanVien
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
@@ -384,7 +391,8 @@
             this.Controls.Add(this.label1);
             this.Name = "frm_NhanVien";
             this.Text = "frm_NhanVien";
-            ((System.ComponentModel.ISupportInitialize)(this.dgv_NhanVien)).EndInit();
+            this.Load += new System.EventHandler(this.frm_NhanVien_Load);
+            ((System.ComponentModel.ISupportInitialize)(this.dgv_DanhSach)).EndInit();
             this.groupBox1.ResumeLayout(false);
             this.ResumeLayout(false);
             this.PerformLayout();
@@ -395,7 +403,7 @@
 
         private System.Windows.Forms.ComboBox cbo_DiaChi;
         private System.Windows.Forms.ComboBox cbo_ChucVu;
-        private System.Windows.Forms.DataGridView dgv_NhanVien;
+        private System.Windows.Forms.DataGridView dgv_DanhSach;
         private System.Windows.Forms.Label label8;
         private System.Windows.Forms.GroupBox groupBox1;
         private System.Windows.Forms.Button btn_Thoat;
@@ -416,13 +424,13 @@
         private System.Windows.Forms.ComboBox cbo_TrangThai;
         private System.Windows.Forms.Label label6;
         private System.Windows.Forms.DateTimePicker dtp_NgayVaoLam;
-        private System.Windows.Forms.DataGridViewTextBoxColumn MaNV;
-        private System.Windows.Forms.DataGridViewTextBoxColumn TenNV;
-        private System.Windows.Forms.DataGridViewTextBoxColumn DiaChi;
-        private System.Windows.Forms.DataGridViewTextBoxColumn DienThoai;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Mail;
-        private System.Windows.Forms.DataGridViewTextBoxColumn NgayVaoLam;
-        private System.Windows.Forms.DataGridViewTextBoxColumn TenCV;
         private System.Windows.Forms.TextBox txt_MaNV;
+        private System.Windows.Forms.DataGridViewTextBoxColumn MaNV;
+        private System.Windows.Forms.DataGridViewTextBoxColumn HoNV;
+        private System.Windows.Forms.DataGridViewTextBoxColumn TenNV;
+        private System.Windows.Forms.DataGridViewTextBoxColumn DChi;
+        private System.Windows.Forms.DataGridViewTextBoxColumn NgayVaoLam;
+        private System.Windows.Forms.DataGridViewTextBoxColumn MaChucVu;
+        private System.Windows.Forms.DataGridViewTextBoxColumn TrangThai;
     }
 }

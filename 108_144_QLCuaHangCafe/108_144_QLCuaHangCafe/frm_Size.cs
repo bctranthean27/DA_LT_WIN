@@ -12,6 +12,7 @@ namespace _108_144_QLCuaHangCafe
 {
     public partial class frm_Size : Form
     {
+        cls_QLCHCAFE c = new cls_QLCHCAFE();
         public frm_Size()
         {
             InitializeComponent();
@@ -20,6 +21,13 @@ namespace _108_144_QLCuaHangCafe
         {
             XuLiTextBox(true);
             XuLiButton(true);
+            loadData_DataGrid(dgv_DanhSach, "select * from Size");
+        }
+        void loadData_DataGrid(DataGridView d, string sql)
+        {
+            DataSet ds = c.LayDuLieu(sql);
+            d.DataSource = ds.Tables[0];
+
         }
         void XuLiTextBox(Boolean t)
         {

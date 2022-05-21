@@ -12,14 +12,22 @@ namespace _108_144_QLCuaHangCafe
 {
     public partial class frm_NhanVien : Form
     {
+        cls_QLCHCAFE c = new cls_QLCHCAFE();
         public frm_NhanVien()
         {
             InitializeComponent();
         }
-        private void frm_NCC_Load(object sender, EventArgs e)
+        private void frm_NhanVien_Load(object sender, EventArgs e)
         {
             XuLiTextBox(true);
             XuLiButton(true);
+            loadData_DataGrid(dgv_DanhSach, "select * from NhanVien");
+        }
+        void loadData_DataGrid(DataGridView d, string sql)
+        {
+            DataSet ds = c.LayDuLieu(sql);
+            d.DataSource = ds.Tables[0];
+
         }
         void XuLiTextBox(Boolean t)
         {
@@ -53,5 +61,7 @@ namespace _108_144_QLCuaHangCafe
             XuLiButton(false);
             btn_Luu.Enabled = true;
         }
+
+        
     }
 }

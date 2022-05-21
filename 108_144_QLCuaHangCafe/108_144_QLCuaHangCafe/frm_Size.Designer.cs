@@ -29,10 +29,7 @@
         private void InitializeComponent()
         {
             this.groupBox1 = new System.Windows.Forms.GroupBox();
-            this.dgv_Size = new System.Windows.Forms.DataGridView();
-            this.MaSize = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.TenSize = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.TrangThai = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dgv_DanhSach = new System.Windows.Forms.DataGridView();
             this.txt_TenSize = new System.Windows.Forms.TextBox();
             this.cbo_TrangThai = new System.Windows.Forms.ComboBox();
             this.label9 = new System.Windows.Forms.Label();
@@ -45,13 +42,16 @@
             this.btn_Xoa = new System.Windows.Forms.Button();
             this.btn_Them = new System.Windows.Forms.Button();
             this.txt_MaSize = new System.Windows.Forms.TextBox();
+            this.MaSize = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.TenSize = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.TrangThai = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.groupBox1.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dgv_Size)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dgv_DanhSach)).BeginInit();
             this.SuspendLayout();
             // 
             // groupBox1
             // 
-            this.groupBox1.Controls.Add(this.dgv_Size);
+            this.groupBox1.Controls.Add(this.dgv_DanhSach);
             this.groupBox1.Font = new System.Drawing.Font("Segoe UI", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.groupBox1.Location = new System.Drawing.Point(21, 329);
             this.groupBox1.Name = "groupBox1";
@@ -60,38 +60,20 @@
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Bảng Kích Cỡ";
             // 
-            // dgv_Size
+            // dgv_DanhSach
             // 
-            this.dgv_Size.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
-            this.dgv_Size.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dgv_Size.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.dgv_DanhSach.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
+            this.dgv_DanhSach.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dgv_DanhSach.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.MaSize,
             this.TenSize,
             this.TrangThai});
-            this.dgv_Size.Location = new System.Drawing.Point(6, 31);
-            this.dgv_Size.Name = "dgv_Size";
-            this.dgv_Size.RowHeadersWidth = 50;
-            this.dgv_Size.RowTemplate.Height = 24;
-            this.dgv_Size.Size = new System.Drawing.Size(1026, 266);
-            this.dgv_Size.TabIndex = 0;
-            // 
-            // MaSize
-            // 
-            this.MaSize.HeaderText = "Mã Size";
-            this.MaSize.MinimumWidth = 6;
-            this.MaSize.Name = "MaSize";
-            // 
-            // TenSize
-            // 
-            this.TenSize.HeaderText = "Tên Size";
-            this.TenSize.MinimumWidth = 6;
-            this.TenSize.Name = "TenSize";
-            // 
-            // TrangThai
-            // 
-            this.TrangThai.HeaderText = "Trạng Thái";
-            this.TrangThai.MinimumWidth = 6;
-            this.TrangThai.Name = "TrangThai";
+            this.dgv_DanhSach.Location = new System.Drawing.Point(6, 31);
+            this.dgv_DanhSach.Name = "dgv_DanhSach";
+            this.dgv_DanhSach.RowHeadersWidth = 50;
+            this.dgv_DanhSach.RowTemplate.Height = 24;
+            this.dgv_DanhSach.Size = new System.Drawing.Size(1026, 266);
+            this.dgv_DanhSach.TabIndex = 0;
             // 
             // txt_TenSize
             // 
@@ -216,6 +198,27 @@
             this.txt_MaSize.Size = new System.Drawing.Size(299, 34);
             this.txt_MaSize.TabIndex = 83;
             // 
+            // MaSize
+            // 
+            this.MaSize.DataPropertyName = "MaSize";
+            this.MaSize.HeaderText = "Mã Size";
+            this.MaSize.MinimumWidth = 6;
+            this.MaSize.Name = "MaSize";
+            // 
+            // TenSize
+            // 
+            this.TenSize.DataPropertyName = "TenSize";
+            this.TenSize.HeaderText = "Tên Size";
+            this.TenSize.MinimumWidth = 6;
+            this.TenSize.Name = "TenSize";
+            // 
+            // TrangThai
+            // 
+            this.TrangThai.DataPropertyName = "TrangThai";
+            this.TrangThai.HeaderText = "Trạng Thái";
+            this.TrangThai.MinimumWidth = 6;
+            this.TrangThai.Name = "TrangThai";
+            // 
             // frm_Size
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
@@ -238,7 +241,7 @@
             this.Text = "frm_Size";
             this.Load += new System.EventHandler(this.frm_Size_Load);
             this.groupBox1.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.dgv_Size)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dgv_DanhSach)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -246,21 +249,21 @@
 
         #endregion
         private System.Windows.Forms.GroupBox groupBox1;
-        private System.Windows.Forms.DataGridView dgv_Size;
+        private System.Windows.Forms.DataGridView dgv_DanhSach;
         private System.Windows.Forms.TextBox txt_TenSize;
         private System.Windows.Forms.ComboBox cbo_TrangThai;
         private System.Windows.Forms.Label label9;
         private System.Windows.Forms.Label label10;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.DataGridViewTextBoxColumn MaSize;
-        private System.Windows.Forms.DataGridViewTextBoxColumn TenSize;
-        private System.Windows.Forms.DataGridViewTextBoxColumn TrangThai;
         private System.Windows.Forms.Button btn_Exit;
         private System.Windows.Forms.Button btn_Lưu;
         private System.Windows.Forms.Button btn_Sua;
         private System.Windows.Forms.Button btn_Xoa;
         private System.Windows.Forms.Button btn_Them;
         private System.Windows.Forms.TextBox txt_MaSize;
+        private System.Windows.Forms.DataGridViewTextBoxColumn MaSize;
+        private System.Windows.Forms.DataGridViewTextBoxColumn TenSize;
+        private System.Windows.Forms.DataGridViewTextBoxColumn TrangThai;
     }
 }
