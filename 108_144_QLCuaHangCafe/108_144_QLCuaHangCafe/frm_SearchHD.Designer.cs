@@ -31,19 +31,19 @@
             this.btn_Search = new System.Windows.Forms.Button();
             this.cbo_TrangThai = new System.Windows.Forms.ComboBox();
             this.label3 = new System.Windows.Forms.Label();
-            this.txt_MaxNgayLapHD = new System.Windows.Forms.TextBox();
-            this.txt_MinNgayLapHD = new System.Windows.Forms.TextBox();
             this.label2 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
             this.label7 = new System.Windows.Forms.Label();
-            this.dgv_SearchHD = new System.Windows.Forms.DataGridView();
+            this.dgv_DanhSach = new System.Windows.Forms.DataGridView();
             this.MaHD = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.TenLoaiHD = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.KhachHang = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.NgayLap = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.TrangThai = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
-            ((System.ComponentModel.ISupportInitialize)(this.dgv_SearchHD)).BeginInit();
+            this.dtp_MinNgayLap = new System.Windows.Forms.DateTimePicker();
+            this.dtp_MaxNgayLap = new System.Windows.Forms.DateTimePicker();
+            ((System.ComponentModel.ISupportInitialize)(this.dgv_DanhSach)).BeginInit();
             this.groupBox1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -56,14 +56,15 @@
             this.btn_Search.TabIndex = 76;
             this.btn_Search.Text = "TÌM";
             this.btn_Search.UseVisualStyleBackColor = true;
+            this.btn_Search.Click += new System.EventHandler(this.btn_Search_Click);
             // 
             // cbo_TrangThai
             // 
             this.cbo_TrangThai.Font = new System.Drawing.Font("Microsoft Sans Serif", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.cbo_TrangThai.FormattingEnabled = true;
             this.cbo_TrangThai.Items.AddRange(new object[] {
-            "On",
-            "Off"});
+            "0",
+            "1"});
             this.cbo_TrangThai.Location = new System.Drawing.Point(212, 160);
             this.cbo_TrangThai.Name = "cbo_TrangThai";
             this.cbo_TrangThai.Size = new System.Drawing.Size(299, 37);
@@ -78,22 +79,6 @@
             this.label3.Size = new System.Drawing.Size(56, 31);
             this.label3.TabIndex = 69;
             this.label3.Text = "Đến";
-            // 
-            // txt_MaxNgayLapHD
-            // 
-            this.txt_MaxNgayLapHD.Font = new System.Drawing.Font("Microsoft Sans Serif", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txt_MaxNgayLapHD.Location = new System.Drawing.Point(681, 99);
-            this.txt_MaxNgayLapHD.Name = "txt_MaxNgayLapHD";
-            this.txt_MaxNgayLapHD.Size = new System.Drawing.Size(299, 34);
-            this.txt_MaxNgayLapHD.TabIndex = 66;
-            // 
-            // txt_MinNgayLapHD
-            // 
-            this.txt_MinNgayLapHD.Font = new System.Drawing.Font("Microsoft Sans Serif", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txt_MinNgayLapHD.Location = new System.Drawing.Point(212, 99);
-            this.txt_MinNgayLapHD.Name = "txt_MinNgayLapHD";
-            this.txt_MinNgayLapHD.Size = new System.Drawing.Size(299, 34);
-            this.txt_MinNgayLapHD.TabIndex = 67;
             // 
             // label2
             // 
@@ -128,56 +113,61 @@
             this.label7.Text = "Trạng Thái";
             this.label7.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             // 
-            // dgv_SearchHD
+            // dgv_DanhSach
             // 
-            this.dgv_SearchHD.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
-            this.dgv_SearchHD.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dgv_SearchHD.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.dgv_DanhSach.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
+            this.dgv_DanhSach.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dgv_DanhSach.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.MaHD,
             this.TenLoaiHD,
             this.KhachHang,
             this.NgayLap,
             this.TrangThai});
-            this.dgv_SearchHD.Location = new System.Drawing.Point(6, 31);
-            this.dgv_SearchHD.Name = "dgv_SearchHD";
-            this.dgv_SearchHD.RowHeadersWidth = 50;
-            this.dgv_SearchHD.RowTemplate.Height = 24;
-            this.dgv_SearchHD.Size = new System.Drawing.Size(1142, 411);
-            this.dgv_SearchHD.TabIndex = 0;
+            this.dgv_DanhSach.Location = new System.Drawing.Point(6, 31);
+            this.dgv_DanhSach.Name = "dgv_DanhSach";
+            this.dgv_DanhSach.RowHeadersWidth = 50;
+            this.dgv_DanhSach.RowTemplate.Height = 24;
+            this.dgv_DanhSach.Size = new System.Drawing.Size(1142, 411);
+            this.dgv_DanhSach.TabIndex = 0;
             // 
             // MaHD
             // 
+            this.MaHD.DataPropertyName = "MaHD";
             this.MaHD.HeaderText = "Mã Hoá Đơn";
             this.MaHD.MinimumWidth = 6;
             this.MaHD.Name = "MaHD";
             // 
             // TenLoaiHD
             // 
+            this.TenLoaiHD.DataPropertyName = "MaLoai";
             this.TenLoaiHD.HeaderText = "Loại Hoá Đơn";
             this.TenLoaiHD.MinimumWidth = 6;
             this.TenLoaiHD.Name = "TenLoaiHD";
             // 
             // KhachHang
             // 
+            this.KhachHang.DataPropertyName = "MaKH";
             this.KhachHang.HeaderText = "Khách Hàng";
             this.KhachHang.MinimumWidth = 6;
             this.KhachHang.Name = "KhachHang";
             // 
             // NgayLap
             // 
+            this.NgayLap.DataPropertyName = "NgayLap";
             this.NgayLap.HeaderText = "Ngày Lập";
             this.NgayLap.MinimumWidth = 6;
             this.NgayLap.Name = "NgayLap";
             // 
             // TrangThai
             // 
+            this.TrangThai.DataPropertyName = "TrangThai";
             this.TrangThai.HeaderText = "Trạng Thái";
             this.TrangThai.MinimumWidth = 6;
             this.TrangThai.Name = "TrangThai";
             // 
             // groupBox1
             // 
-            this.groupBox1.Controls.Add(this.dgv_SearchHD);
+            this.groupBox1.Controls.Add(this.dgv_DanhSach);
             this.groupBox1.Font = new System.Drawing.Font("Segoe UI", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.groupBox1.Location = new System.Drawing.Point(12, 216);
             this.groupBox1.Name = "groupBox1";
@@ -186,23 +176,44 @@
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Danh Sách Hoá Đơn";
             // 
+            // dtp_MinNgayLap
+            // 
+            this.dtp_MinNgayLap.Font = new System.Drawing.Font("Segoe UI Semibold", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.dtp_MinNgayLap.Format = System.Windows.Forms.DateTimePickerFormat.Short;
+            this.dtp_MinNgayLap.Location = new System.Drawing.Point(212, 97);
+            this.dtp_MinNgayLap.Name = "dtp_MinNgayLap";
+            this.dtp_MinNgayLap.Size = new System.Drawing.Size(299, 34);
+            this.dtp_MinNgayLap.TabIndex = 1;
+            this.dtp_MinNgayLap.Value = new System.DateTime(2000, 1, 1, 15, 11, 0, 0);
+            // 
+            // dtp_MaxNgayLap
+            // 
+            this.dtp_MaxNgayLap.Font = new System.Drawing.Font("Segoe UI Semibold", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.dtp_MaxNgayLap.Format = System.Windows.Forms.DateTimePickerFormat.Short;
+            this.dtp_MaxNgayLap.Location = new System.Drawing.Point(681, 99);
+            this.dtp_MaxNgayLap.Name = "dtp_MaxNgayLap";
+            this.dtp_MaxNgayLap.Size = new System.Drawing.Size(299, 34);
+            this.dtp_MaxNgayLap.TabIndex = 1;
+            this.dtp_MaxNgayLap.Value = new System.DateTime(2022, 5, 23, 15, 14, 15, 0);
+            // 
             // frm_SearchHD
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1178, 676);
+            this.Controls.Add(this.dtp_MaxNgayLap);
+            this.Controls.Add(this.dtp_MinNgayLap);
             this.Controls.Add(this.groupBox1);
             this.Controls.Add(this.btn_Search);
             this.Controls.Add(this.cbo_TrangThai);
             this.Controls.Add(this.label7);
             this.Controls.Add(this.label3);
-            this.Controls.Add(this.txt_MaxNgayLapHD);
-            this.Controls.Add(this.txt_MinNgayLapHD);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.label1);
             this.Name = "frm_SearchHD";
             this.Text = "frm_SearchHD";
-            ((System.ComponentModel.ISupportInitialize)(this.dgv_SearchHD)).EndInit();
+            this.Load += new System.EventHandler(this.frm_SearchHD_Load);
+            ((System.ComponentModel.ISupportInitialize)(this.dgv_DanhSach)).EndInit();
             this.groupBox1.ResumeLayout(false);
             this.ResumeLayout(false);
             this.PerformLayout();
@@ -214,17 +225,17 @@
         private System.Windows.Forms.Button btn_Search;
         private System.Windows.Forms.ComboBox cbo_TrangThai;
         private System.Windows.Forms.Label label3;
-        private System.Windows.Forms.TextBox txt_MaxNgayLapHD;
-        private System.Windows.Forms.TextBox txt_MinNgayLapHD;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Label label7;
-        private System.Windows.Forms.DataGridView dgv_SearchHD;
+        private System.Windows.Forms.DataGridView dgv_DanhSach;
+        private System.Windows.Forms.GroupBox groupBox1;
         private System.Windows.Forms.DataGridViewTextBoxColumn MaHD;
         private System.Windows.Forms.DataGridViewTextBoxColumn TenLoaiHD;
         private System.Windows.Forms.DataGridViewTextBoxColumn KhachHang;
         private System.Windows.Forms.DataGridViewTextBoxColumn NgayLap;
         private System.Windows.Forms.DataGridViewTextBoxColumn TrangThai;
-        private System.Windows.Forms.GroupBox groupBox1;
+        private System.Windows.Forms.DateTimePicker dtp_MinNgayLap;
+        private System.Windows.Forms.DateTimePicker dtp_MaxNgayLap;
     }
 }

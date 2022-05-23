@@ -38,18 +38,19 @@
             this.label6 = new System.Windows.Forms.Label();
             this.label7 = new System.Windows.Forms.Label();
             this.cbo_TrangThai = new System.Windows.Forms.ComboBox();
-            this.dgv_SearchSP = new System.Windows.Forms.DataGridView();
-            this.MaSP = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.TenSP = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.TenLoaiSP = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.TenNCC = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.TrangThai = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dgv_DanhSach = new System.Windows.Forms.DataGridView();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.btn_Search = new System.Windows.Forms.Button();
             this.cbo_LoaiSP = new System.Windows.Forms.ComboBox();
             this.cbo_Size = new System.Windows.Forms.ComboBox();
             this.cbo_NCC = new System.Windows.Forms.ComboBox();
-            ((System.ComponentModel.ISupportInitialize)(this.dgv_SearchSP)).BeginInit();
+            this.MaSP = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.TenSP = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.MaLoai = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.MaNCC = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.DonGia = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.TrangThai = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            ((System.ComponentModel.ISupportInitialize)(this.dgv_DanhSach)).BeginInit();
             this.groupBox1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -146,63 +147,34 @@
             this.cbo_TrangThai.Font = new System.Drawing.Font("Microsoft Sans Serif", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.cbo_TrangThai.FormattingEnabled = true;
             this.cbo_TrangThai.Items.AddRange(new object[] {
-            "On",
-            "Off"});
+            "0",
+            "1"});
             this.cbo_TrangThai.Location = new System.Drawing.Point(681, 208);
             this.cbo_TrangThai.Name = "cbo_TrangThai";
             this.cbo_TrangThai.Size = new System.Drawing.Size(299, 37);
             this.cbo_TrangThai.TabIndex = 8;
             // 
-            // dgv_SearchSP
+            // dgv_DanhSach
             // 
-            this.dgv_SearchSP.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
-            this.dgv_SearchSP.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dgv_SearchSP.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.dgv_DanhSach.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
+            this.dgv_DanhSach.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dgv_DanhSach.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.MaSP,
             this.TenSP,
-            this.TenLoaiSP,
-            this.TenNCC,
+            this.MaLoai,
+            this.MaNCC,
+            this.DonGia,
             this.TrangThai});
-            this.dgv_SearchSP.Location = new System.Drawing.Point(6, 31);
-            this.dgv_SearchSP.Name = "dgv_SearchSP";
-            this.dgv_SearchSP.RowHeadersWidth = 50;
-            this.dgv_SearchSP.RowTemplate.Height = 24;
-            this.dgv_SearchSP.Size = new System.Drawing.Size(1146, 369);
-            this.dgv_SearchSP.TabIndex = 0;
-            // 
-            // MaSP
-            // 
-            this.MaSP.HeaderText = "Mã Sản Phẩm";
-            this.MaSP.MinimumWidth = 6;
-            this.MaSP.Name = "MaSP";
-            // 
-            // TenSP
-            // 
-            this.TenSP.HeaderText = "Tên Sản Phẩm";
-            this.TenSP.MinimumWidth = 6;
-            this.TenSP.Name = "TenSP";
-            // 
-            // TenLoaiSP
-            // 
-            this.TenLoaiSP.HeaderText = "Loại Sản Phẩm";
-            this.TenLoaiSP.MinimumWidth = 6;
-            this.TenLoaiSP.Name = "TenLoaiSP";
-            // 
-            // TenNCC
-            // 
-            this.TenNCC.HeaderText = "Nhà Cung Cấp";
-            this.TenNCC.MinimumWidth = 6;
-            this.TenNCC.Name = "TenNCC";
-            // 
-            // TrangThai
-            // 
-            this.TrangThai.HeaderText = "Trạng Thái";
-            this.TrangThai.MinimumWidth = 6;
-            this.TrangThai.Name = "TrangThai";
+            this.dgv_DanhSach.Location = new System.Drawing.Point(6, 31);
+            this.dgv_DanhSach.Name = "dgv_DanhSach";
+            this.dgv_DanhSach.RowHeadersWidth = 50;
+            this.dgv_DanhSach.RowTemplate.Height = 24;
+            this.dgv_DanhSach.Size = new System.Drawing.Size(1146, 369);
+            this.dgv_DanhSach.TabIndex = 0;
             // 
             // groupBox1
             // 
-            this.groupBox1.Controls.Add(this.dgv_SearchSP);
+            this.groupBox1.Controls.Add(this.dgv_DanhSach);
             this.groupBox1.Font = new System.Drawing.Font("Segoe UI", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.groupBox1.Location = new System.Drawing.Point(8, 251);
             this.groupBox1.Name = "groupBox1";
@@ -220,6 +192,7 @@
             this.btn_Search.TabIndex = 61;
             this.btn_Search.Text = "TÌM";
             this.btn_Search.UseVisualStyleBackColor = true;
+            this.btn_Search.Click += new System.EventHandler(this.btn_Search_Click);
             // 
             // cbo_LoaiSP
             // 
@@ -247,24 +220,63 @@
             // 
             // cbo_NCC
             // 
-            this.cbo_NCC.Font = new System.Drawing.Font("Microsoft Sans Serif", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.cbo_NCC.Font = new System.Drawing.Font("Segoe UI Semibold", 13.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.cbo_NCC.FormattingEnabled = true;
-            this.cbo_NCC.Items.AddRange(new object[] {
-            "On",
-            "Off"});
             this.cbo_NCC.Location = new System.Drawing.Point(212, 208);
             this.cbo_NCC.Name = "cbo_NCC";
-            this.cbo_NCC.Size = new System.Drawing.Size(299, 37);
-            this.cbo_NCC.TabIndex = 8;
+            this.cbo_NCC.Size = new System.Drawing.Size(299, 39);
+            this.cbo_NCC.TabIndex = 62;
+            // 
+            // MaSP
+            // 
+            this.MaSP.DataPropertyName = "MaSP";
+            this.MaSP.HeaderText = "Mã Sản Phẩm";
+            this.MaSP.MinimumWidth = 6;
+            this.MaSP.Name = "MaSP";
+            // 
+            // TenSP
+            // 
+            this.TenSP.DataPropertyName = "TenSP";
+            this.TenSP.HeaderText = "Tên Sản Phẩm";
+            this.TenSP.MinimumWidth = 6;
+            this.TenSP.Name = "TenSP";
+            // 
+            // MaLoai
+            // 
+            this.MaLoai.DataPropertyName = "MaLoai";
+            this.MaLoai.HeaderText = "Loại Sản Phẩm";
+            this.MaLoai.MinimumWidth = 6;
+            this.MaLoai.Name = "MaLoai";
+            // 
+            // MaNCC
+            // 
+            this.MaNCC.DataPropertyName = "MaNCC";
+            this.MaNCC.HeaderText = "Mã Nhà Cung Cấp";
+            this.MaNCC.MinimumWidth = 6;
+            this.MaNCC.Name = "MaNCC";
+            // 
+            // DonGia
+            // 
+            this.DonGia.DataPropertyName = "DonGia";
+            this.DonGia.HeaderText = "Đơn Giá";
+            this.DonGia.MinimumWidth = 6;
+            this.DonGia.Name = "DonGia";
+            // 
+            // TrangThai
+            // 
+            this.TrangThai.DataPropertyName = "TrangThai";
+            this.TrangThai.HeaderText = "Trạng Thái";
+            this.TrangThai.MinimumWidth = 6;
+            this.TrangThai.Name = "TrangThai";
             // 
             // frm_SearchSP
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1178, 676);
+            this.Controls.Add(this.cbo_NCC);
             this.Controls.Add(this.btn_Search);
             this.Controls.Add(this.groupBox1);
-            this.Controls.Add(this.cbo_NCC);
             this.Controls.Add(this.cbo_LoaiSP);
             this.Controls.Add(this.cbo_Size);
             this.Controls.Add(this.cbo_TrangThai);
@@ -280,7 +292,7 @@
             this.Name = "frm_SearchSP";
             this.Text = "frm_SearchSP";
             this.Load += new System.EventHandler(this.frm_SearchSP_Load);
-            ((System.ComponentModel.ISupportInitialize)(this.dgv_SearchSP)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dgv_DanhSach)).EndInit();
             this.groupBox1.ResumeLayout(false);
             this.ResumeLayout(false);
             this.PerformLayout();
@@ -299,16 +311,17 @@
         private System.Windows.Forms.Label label6;
         private System.Windows.Forms.Label label7;
         private System.Windows.Forms.ComboBox cbo_TrangThai;
-        private System.Windows.Forms.DataGridView dgv_SearchSP;
-        private System.Windows.Forms.DataGridViewTextBoxColumn MaSP;
-        private System.Windows.Forms.DataGridViewTextBoxColumn TenSP;
-        private System.Windows.Forms.DataGridViewTextBoxColumn TenLoaiSP;
-        private System.Windows.Forms.DataGridViewTextBoxColumn TenNCC;
-        private System.Windows.Forms.DataGridViewTextBoxColumn TrangThai;
+        private System.Windows.Forms.DataGridView dgv_DanhSach;
         private System.Windows.Forms.GroupBox groupBox1;
         private System.Windows.Forms.Button btn_Search;
         private System.Windows.Forms.ComboBox cbo_LoaiSP;
         private System.Windows.Forms.ComboBox cbo_Size;
         private System.Windows.Forms.ComboBox cbo_NCC;
+        private System.Windows.Forms.DataGridViewTextBoxColumn MaSP;
+        private System.Windows.Forms.DataGridViewTextBoxColumn TenSP;
+        private System.Windows.Forms.DataGridViewTextBoxColumn MaLoai;
+        private System.Windows.Forms.DataGridViewTextBoxColumn MaNCC;
+        private System.Windows.Forms.DataGridViewTextBoxColumn DonGia;
+        private System.Windows.Forms.DataGridViewTextBoxColumn TrangThai;
     }
 }

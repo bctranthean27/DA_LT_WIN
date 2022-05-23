@@ -79,18 +79,22 @@
             // dtp_MinNgay
             // 
             this.dtp_MinNgay.Font = new System.Drawing.Font("Segoe UI Semibold", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.dtp_MinNgay.Format = System.Windows.Forms.DateTimePickerFormat.Short;
             this.dtp_MinNgay.Location = new System.Drawing.Point(288, 89);
             this.dtp_MinNgay.Name = "dtp_MinNgay";
             this.dtp_MinNgay.Size = new System.Drawing.Size(333, 34);
             this.dtp_MinNgay.TabIndex = 11;
+            this.dtp_MinNgay.Value = new System.DateTime(2000, 1, 1, 16, 23, 0, 0);
             // 
             // dateTimePicker1
             // 
             this.dateTimePicker1.Font = new System.Drawing.Font("Segoe UI Semibold", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.dateTimePicker1.Format = System.Windows.Forms.DateTimePickerFormat.Short;
             this.dateTimePicker1.Location = new System.Drawing.Point(722, 89);
             this.dateTimePicker1.Name = "dateTimePicker1";
             this.dateTimePicker1.Size = new System.Drawing.Size(333, 34);
             this.dateTimePicker1.TabIndex = 12;
+            this.dateTimePicker1.Value = new System.DateTime(2022, 5, 23, 16, 23, 46, 0);
             // 
             // grp_ThongKeNgay
             // 
