@@ -31,6 +31,13 @@
             this.cbo_DiaChi = new System.Windows.Forms.ComboBox();
             this.cbo_ChucVu = new System.Windows.Forms.ComboBox();
             this.dgv_DanhSach = new System.Windows.Forms.DataGridView();
+            this.MaNV = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.HoNV = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.TenNV = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.DChi = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.NgayVaoLam = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.MaChucVu = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.TrangThai = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.label8 = new System.Windows.Forms.Label();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.btn_Thoat = new System.Windows.Forms.Button();
@@ -52,13 +59,6 @@
             this.label6 = new System.Windows.Forms.Label();
             this.dtp_NgayVaoLam = new System.Windows.Forms.DateTimePicker();
             this.txt_MaNV = new System.Windows.Forms.TextBox();
-            this.MaNV = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.HoNV = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.TenNV = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.DChi = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.NgayVaoLam = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.MaChucVu = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.TrangThai = new System.Windows.Forms.DataGridViewTextBoxColumn();
             ((System.ComponentModel.ISupportInitialize)(this.dgv_DanhSach)).BeginInit();
             this.groupBox1.SuspendLayout();
             this.SuspendLayout();
@@ -105,6 +105,55 @@
             this.dgv_DanhSach.RowTemplate.Height = 24;
             this.dgv_DanhSach.Size = new System.Drawing.Size(1038, 266);
             this.dgv_DanhSach.TabIndex = 0;
+            // 
+            // MaNV
+            // 
+            this.MaNV.DataPropertyName = "MaNV";
+            this.MaNV.HeaderText = "Mã Nhân Viên";
+            this.MaNV.MinimumWidth = 6;
+            this.MaNV.Name = "MaNV";
+            // 
+            // HoNV
+            // 
+            this.HoNV.DataPropertyName = "HoNV";
+            this.HoNV.HeaderText = "Họ Nhân Viên";
+            this.HoNV.MinimumWidth = 6;
+            this.HoNV.Name = "HoNV";
+            // 
+            // TenNV
+            // 
+            this.TenNV.DataPropertyName = "TenNV";
+            this.TenNV.HeaderText = "Tên Nhân Viên";
+            this.TenNV.MinimumWidth = 6;
+            this.TenNV.Name = "TenNV";
+            // 
+            // DChi
+            // 
+            this.DChi.DataPropertyName = "Dchi";
+            this.DChi.HeaderText = "Địa Chỉ";
+            this.DChi.MinimumWidth = 6;
+            this.DChi.Name = "DChi";
+            // 
+            // NgayVaoLam
+            // 
+            this.NgayVaoLam.DataPropertyName = "NgayVaoLam";
+            this.NgayVaoLam.HeaderText = "Ngày Vào Làm";
+            this.NgayVaoLam.MinimumWidth = 6;
+            this.NgayVaoLam.Name = "NgayVaoLam";
+            // 
+            // MaChucVu
+            // 
+            this.MaChucVu.DataPropertyName = "MaChucVu";
+            this.MaChucVu.HeaderText = "Mã Chức Vụ";
+            this.MaChucVu.MinimumWidth = 6;
+            this.MaChucVu.Name = "MaChucVu";
+            // 
+            // TrangThai
+            // 
+            this.TrangThai.DataPropertyName = "TrangThai";
+            this.TrangThai.HeaderText = "Trạng Thái";
+            this.TrangThai.MinimumWidth = 6;
+            this.TrangThai.Name = "TrangThai";
             // 
             // label8
             // 
@@ -299,6 +348,7 @@
             // dtp_NgayVaoLam
             // 
             this.dtp_NgayVaoLam.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.dtp_NgayVaoLam.Format = System.Windows.Forms.DateTimePickerFormat.Short;
             this.dtp_NgayVaoLam.Location = new System.Drawing.Point(249, 267);
             this.dtp_NgayVaoLam.Name = "dtp_NgayVaoLam";
             this.dtp_NgayVaoLam.Size = new System.Drawing.Size(299, 34);
@@ -311,55 +361,6 @@
             this.txt_MaNV.Name = "txt_MaNV";
             this.txt_MaNV.Size = new System.Drawing.Size(299, 34);
             this.txt_MaNV.TabIndex = 32;
-            // 
-            // MaNV
-            // 
-            this.MaNV.DataPropertyName = "MaNV";
-            this.MaNV.HeaderText = "Mã Nhân Viên";
-            this.MaNV.MinimumWidth = 6;
-            this.MaNV.Name = "MaNV";
-            // 
-            // HoNV
-            // 
-            this.HoNV.DataPropertyName = "HoNV";
-            this.HoNV.HeaderText = "Họ Nhân Viên";
-            this.HoNV.MinimumWidth = 6;
-            this.HoNV.Name = "HoNV";
-            // 
-            // TenNV
-            // 
-            this.TenNV.DataPropertyName = "TenNV";
-            this.TenNV.HeaderText = "Tên Nhân Viên";
-            this.TenNV.MinimumWidth = 6;
-            this.TenNV.Name = "TenNV";
-            // 
-            // DChi
-            // 
-            this.DChi.DataPropertyName = "Dchi";
-            this.DChi.HeaderText = "Địa Chỉ";
-            this.DChi.MinimumWidth = 6;
-            this.DChi.Name = "DChi";
-            // 
-            // NgayVaoLam
-            // 
-            this.NgayVaoLam.DataPropertyName = "NgayVaoLam";
-            this.NgayVaoLam.HeaderText = "Ngày Vào Làm";
-            this.NgayVaoLam.MinimumWidth = 6;
-            this.NgayVaoLam.Name = "NgayVaoLam";
-            // 
-            // MaChucVu
-            // 
-            this.MaChucVu.DataPropertyName = "MaChucVu";
-            this.MaChucVu.HeaderText = "Mã Chức Vụ";
-            this.MaChucVu.MinimumWidth = 6;
-            this.MaChucVu.Name = "MaChucVu";
-            // 
-            // TrangThai
-            // 
-            this.TrangThai.DataPropertyName = "TrangThai";
-            this.TrangThai.HeaderText = "Trạng Thái";
-            this.TrangThai.MinimumWidth = 6;
-            this.TrangThai.Name = "TrangThai";
             // 
             // frm_NhanVien
             // 

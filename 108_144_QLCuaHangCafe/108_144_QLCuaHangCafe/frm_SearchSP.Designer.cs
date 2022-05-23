@@ -35,21 +35,19 @@
             this.txt_MaxGiaSP = new System.Windows.Forms.TextBox();
             this.label4 = new System.Windows.Forms.Label();
             this.label5 = new System.Windows.Forms.Label();
-            this.label6 = new System.Windows.Forms.Label();
             this.label7 = new System.Windows.Forms.Label();
             this.cbo_TrangThai = new System.Windows.Forms.ComboBox();
             this.dgv_DanhSach = new System.Windows.Forms.DataGridView();
-            this.groupBox1 = new System.Windows.Forms.GroupBox();
-            this.btn_Search = new System.Windows.Forms.Button();
-            this.cbo_LoaiSP = new System.Windows.Forms.ComboBox();
-            this.cbo_Size = new System.Windows.Forms.ComboBox();
-            this.cbo_NCC = new System.Windows.Forms.ComboBox();
             this.MaSP = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.TenSP = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.MaLoai = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.MaNCC = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.DonGia = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.TrangThai = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.btn_Search = new System.Windows.Forms.Button();
+            this.cbo_LoaiSP = new System.Windows.Forms.ComboBox();
+            this.cbo_NCC = new System.Windows.Forms.ComboBox();
             ((System.ComponentModel.ISupportInitialize)(this.dgv_DanhSach)).BeginInit();
             this.groupBox1.SuspendLayout();
             this.SuspendLayout();
@@ -122,21 +120,11 @@
             this.label5.TabIndex = 2;
             this.label5.Text = "Nhà Cung Cấp";
             // 
-            // label6
-            // 
-            this.label6.AutoSize = true;
-            this.label6.Font = new System.Drawing.Font("Segoe UI Semibold", 13.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label6.Location = new System.Drawing.Point(544, 148);
-            this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(56, 31);
-            this.label6.TabIndex = 6;
-            this.label6.Text = "Size";
-            // 
             // label7
             // 
             this.label7.AutoSize = true;
             this.label7.Font = new System.Drawing.Font("Segoe UI Semibold", 13.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label7.Location = new System.Drawing.Point(544, 208);
+            this.label7.Location = new System.Drawing.Point(544, 148);
             this.label7.Name = "label7";
             this.label7.Size = new System.Drawing.Size(123, 31);
             this.label7.TabIndex = 7;
@@ -149,7 +137,7 @@
             this.cbo_TrangThai.Items.AddRange(new object[] {
             "0",
             "1"});
-            this.cbo_TrangThai.Location = new System.Drawing.Point(681, 208);
+            this.cbo_TrangThai.Location = new System.Drawing.Point(681, 142);
             this.cbo_TrangThai.Name = "cbo_TrangThai";
             this.cbo_TrangThai.Size = new System.Drawing.Size(299, 37);
             this.cbo_TrangThai.TabIndex = 8;
@@ -171,61 +159,6 @@
             this.dgv_DanhSach.RowTemplate.Height = 24;
             this.dgv_DanhSach.Size = new System.Drawing.Size(1146, 369);
             this.dgv_DanhSach.TabIndex = 0;
-            // 
-            // groupBox1
-            // 
-            this.groupBox1.Controls.Add(this.dgv_DanhSach);
-            this.groupBox1.Font = new System.Drawing.Font("Segoe UI", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.groupBox1.Location = new System.Drawing.Point(8, 251);
-            this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(1158, 406);
-            this.groupBox1.TabIndex = 60;
-            this.groupBox1.TabStop = false;
-            this.groupBox1.Text = "Danh Sách Sản Phẩm";
-            // 
-            // btn_Search
-            // 
-            this.btn_Search.Font = new System.Drawing.Font("Segoe UI Semibold", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btn_Search.Location = new System.Drawing.Point(1002, 89);
-            this.btn_Search.Name = "btn_Search";
-            this.btn_Search.Size = new System.Drawing.Size(158, 156);
-            this.btn_Search.TabIndex = 61;
-            this.btn_Search.Text = "TÌM";
-            this.btn_Search.UseVisualStyleBackColor = true;
-            this.btn_Search.Click += new System.EventHandler(this.btn_Search_Click);
-            // 
-            // cbo_LoaiSP
-            // 
-            this.cbo_LoaiSP.Font = new System.Drawing.Font("Microsoft Sans Serif", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.cbo_LoaiSP.FormattingEnabled = true;
-            this.cbo_LoaiSP.Items.AddRange(new object[] {
-            "On",
-            "Off"});
-            this.cbo_LoaiSP.Location = new System.Drawing.Point(212, 142);
-            this.cbo_LoaiSP.Name = "cbo_LoaiSP";
-            this.cbo_LoaiSP.Size = new System.Drawing.Size(299, 37);
-            this.cbo_LoaiSP.TabIndex = 8;
-            // 
-            // cbo_Size
-            // 
-            this.cbo_Size.Font = new System.Drawing.Font("Microsoft Sans Serif", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.cbo_Size.FormattingEnabled = true;
-            this.cbo_Size.Items.AddRange(new object[] {
-            "On",
-            "Off"});
-            this.cbo_Size.Location = new System.Drawing.Point(681, 147);
-            this.cbo_Size.Name = "cbo_Size";
-            this.cbo_Size.Size = new System.Drawing.Size(299, 37);
-            this.cbo_Size.TabIndex = 8;
-            // 
-            // cbo_NCC
-            // 
-            this.cbo_NCC.Font = new System.Drawing.Font("Segoe UI Semibold", 13.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.cbo_NCC.FormattingEnabled = true;
-            this.cbo_NCC.Location = new System.Drawing.Point(212, 208);
-            this.cbo_NCC.Name = "cbo_NCC";
-            this.cbo_NCC.Size = new System.Drawing.Size(299, 39);
-            this.cbo_NCC.TabIndex = 62;
             // 
             // MaSP
             // 
@@ -269,6 +202,49 @@
             this.TrangThai.MinimumWidth = 6;
             this.TrangThai.Name = "TrangThai";
             // 
+            // groupBox1
+            // 
+            this.groupBox1.Controls.Add(this.dgv_DanhSach);
+            this.groupBox1.Font = new System.Drawing.Font("Segoe UI", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.groupBox1.Location = new System.Drawing.Point(8, 251);
+            this.groupBox1.Name = "groupBox1";
+            this.groupBox1.Size = new System.Drawing.Size(1158, 406);
+            this.groupBox1.TabIndex = 60;
+            this.groupBox1.TabStop = false;
+            this.groupBox1.Text = "Danh Sách Sản Phẩm";
+            // 
+            // btn_Search
+            // 
+            this.btn_Search.Font = new System.Drawing.Font("Segoe UI Semibold", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btn_Search.Location = new System.Drawing.Point(1002, 89);
+            this.btn_Search.Name = "btn_Search";
+            this.btn_Search.Size = new System.Drawing.Size(158, 156);
+            this.btn_Search.TabIndex = 61;
+            this.btn_Search.Text = "TÌM";
+            this.btn_Search.UseVisualStyleBackColor = true;
+            this.btn_Search.Click += new System.EventHandler(this.btn_Search_Click);
+            // 
+            // cbo_LoaiSP
+            // 
+            this.cbo_LoaiSP.Font = new System.Drawing.Font("Microsoft Sans Serif", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.cbo_LoaiSP.FormattingEnabled = true;
+            this.cbo_LoaiSP.Items.AddRange(new object[] {
+            "On",
+            "Off"});
+            this.cbo_LoaiSP.Location = new System.Drawing.Point(212, 142);
+            this.cbo_LoaiSP.Name = "cbo_LoaiSP";
+            this.cbo_LoaiSP.Size = new System.Drawing.Size(299, 37);
+            this.cbo_LoaiSP.TabIndex = 8;
+            // 
+            // cbo_NCC
+            // 
+            this.cbo_NCC.Font = new System.Drawing.Font("Segoe UI Semibold", 13.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.cbo_NCC.FormattingEnabled = true;
+            this.cbo_NCC.Location = new System.Drawing.Point(212, 208);
+            this.cbo_NCC.Name = "cbo_NCC";
+            this.cbo_NCC.Size = new System.Drawing.Size(299, 39);
+            this.cbo_NCC.TabIndex = 62;
+            // 
             // frm_SearchSP
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
@@ -278,10 +254,8 @@
             this.Controls.Add(this.btn_Search);
             this.Controls.Add(this.groupBox1);
             this.Controls.Add(this.cbo_LoaiSP);
-            this.Controls.Add(this.cbo_Size);
             this.Controls.Add(this.cbo_TrangThai);
             this.Controls.Add(this.label7);
-            this.Controls.Add(this.label6);
             this.Controls.Add(this.label3);
             this.Controls.Add(this.txt_MaxGiaSP);
             this.Controls.Add(this.label5);
@@ -308,14 +282,12 @@
         private System.Windows.Forms.TextBox txt_MaxGiaSP;
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.Label label5;
-        private System.Windows.Forms.Label label6;
         private System.Windows.Forms.Label label7;
         private System.Windows.Forms.ComboBox cbo_TrangThai;
         private System.Windows.Forms.DataGridView dgv_DanhSach;
         private System.Windows.Forms.GroupBox groupBox1;
         private System.Windows.Forms.Button btn_Search;
         private System.Windows.Forms.ComboBox cbo_LoaiSP;
-        private System.Windows.Forms.ComboBox cbo_Size;
         private System.Windows.Forms.ComboBox cbo_NCC;
         private System.Windows.Forms.DataGridViewTextBoxColumn MaSP;
         private System.Windows.Forms.DataGridViewTextBoxColumn TenSP;

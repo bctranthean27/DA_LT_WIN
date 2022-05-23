@@ -22,9 +22,8 @@ namespace _108_144_QLCuaHangCafe
         {
             loadData_DataGrid(dgv_DanhSach, "select * from SanPham");
             cbo_TrangThai.SelectedIndex = 0;
-            loadData_cbo(cbo_LoaiSP, "select MaLoai,TenLoai from LoaiSanPham", "MaLoai", "TenLoai");
-            loadData_cbo(cbo_Size, "select MaSize,TenSize from Size", "MaSize", "TenSize");
-            loadData_cbo(cbo_NCC, "select MaNCC,TenNCC from NhaCungCap", "MaNCC", "TenNCC");
+            loadData_cbo(cbo_LoaiSP, "select MaLoai from LoaiSanPham", "MaLoai", "MaLoai");
+            loadData_cbo(cbo_NCC, "select MaNCC from NhaCungCap", "MaNCC", "MaNCC");
         }
         void loadData_DataGrid(DataGridView d, string sql)
         {
@@ -45,6 +44,9 @@ namespace _108_144_QLCuaHangCafe
         private void btn_Search_Click(object sender, EventArgs e)
         {
             int giaMin = 0, giaMax = 0;
+            string dk_MaLoai = cbo_LoaiSP.Text;
+            string dk_Ncc = cbo_NCC.Text;
+            string dk_TrangThai = cbo_TrangThai.Text;
             string tk = "select * from SanPham";
             try
             {
@@ -64,7 +66,8 @@ namespace _108_144_QLCuaHangCafe
                 giaMax = int.Parse(txt_MaxGiaSP.Text);
                 tk += " where DonGia >= " + giaMin + " and DonGia <= " + giaMax;
                 }
-                tk += " and TrangThai like '" + cbo_TrangThai.Text + "'";
+                tk += "and MaLoai like '" + dk_MaLoai + "'and MaNCC like '" + dk_Ncc + "' and TrangThai like '" + dk_TrangThai + "'";
+                
                 loadData_DataGrid(dgv_DanhSach, tk);
             }
             catch (Exception ex)

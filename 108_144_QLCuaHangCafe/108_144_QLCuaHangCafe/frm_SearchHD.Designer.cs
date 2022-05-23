@@ -35,14 +35,15 @@
             this.label1 = new System.Windows.Forms.Label();
             this.label7 = new System.Windows.Forms.Label();
             this.dgv_DanhSach = new System.Windows.Forms.DataGridView();
+            this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.dtp_MinNgayLap = new System.Windows.Forms.DateTimePicker();
+            this.dtp_MaxNgayLap = new System.Windows.Forms.DateTimePicker();
             this.MaHD = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.TenLoaiHD = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.KhachHang = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.NgayLap = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.TrangThai = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.groupBox1 = new System.Windows.Forms.GroupBox();
-            this.dtp_MinNgayLap = new System.Windows.Forms.DateTimePicker();
-            this.dtp_MaxNgayLap = new System.Windows.Forms.DateTimePicker();
+            this.MaNV = new System.Windows.Forms.DataGridViewTextBoxColumn();
             ((System.ComponentModel.ISupportInitialize)(this.dgv_DanhSach)).BeginInit();
             this.groupBox1.SuspendLayout();
             this.SuspendLayout();
@@ -122,48 +123,14 @@
             this.TenLoaiHD,
             this.KhachHang,
             this.NgayLap,
-            this.TrangThai});
+            this.TrangThai,
+            this.MaNV});
             this.dgv_DanhSach.Location = new System.Drawing.Point(6, 31);
             this.dgv_DanhSach.Name = "dgv_DanhSach";
             this.dgv_DanhSach.RowHeadersWidth = 50;
             this.dgv_DanhSach.RowTemplate.Height = 24;
             this.dgv_DanhSach.Size = new System.Drawing.Size(1142, 411);
             this.dgv_DanhSach.TabIndex = 0;
-            // 
-            // MaHD
-            // 
-            this.MaHD.DataPropertyName = "MaHD";
-            this.MaHD.HeaderText = "Mã Hoá Đơn";
-            this.MaHD.MinimumWidth = 6;
-            this.MaHD.Name = "MaHD";
-            // 
-            // TenLoaiHD
-            // 
-            this.TenLoaiHD.DataPropertyName = "MaLoai";
-            this.TenLoaiHD.HeaderText = "Loại Hoá Đơn";
-            this.TenLoaiHD.MinimumWidth = 6;
-            this.TenLoaiHD.Name = "TenLoaiHD";
-            // 
-            // KhachHang
-            // 
-            this.KhachHang.DataPropertyName = "MaKH";
-            this.KhachHang.HeaderText = "Khách Hàng";
-            this.KhachHang.MinimumWidth = 6;
-            this.KhachHang.Name = "KhachHang";
-            // 
-            // NgayLap
-            // 
-            this.NgayLap.DataPropertyName = "NgayLap";
-            this.NgayLap.HeaderText = "Ngày Lập";
-            this.NgayLap.MinimumWidth = 6;
-            this.NgayLap.Name = "NgayLap";
-            // 
-            // TrangThai
-            // 
-            this.TrangThai.DataPropertyName = "TrangThai";
-            this.TrangThai.HeaderText = "Trạng Thái";
-            this.TrangThai.MinimumWidth = 6;
-            this.TrangThai.Name = "TrangThai";
             // 
             // groupBox1
             // 
@@ -195,6 +162,48 @@
             this.dtp_MaxNgayLap.Size = new System.Drawing.Size(299, 34);
             this.dtp_MaxNgayLap.TabIndex = 1;
             this.dtp_MaxNgayLap.Value = new System.DateTime(2022, 5, 23, 15, 14, 15, 0);
+            // 
+            // MaHD
+            // 
+            this.MaHD.DataPropertyName = "MaHD";
+            this.MaHD.HeaderText = "Mã Hoá Đơn";
+            this.MaHD.MinimumWidth = 6;
+            this.MaHD.Name = "MaHD";
+            // 
+            // TenLoaiHD
+            // 
+            this.TenLoaiHD.DataPropertyName = "MaLoaiHD";
+            this.TenLoaiHD.HeaderText = "Loại Hoá Đơn";
+            this.TenLoaiHD.MinimumWidth = 6;
+            this.TenLoaiHD.Name = "TenLoaiHD";
+            // 
+            // KhachHang
+            // 
+            this.KhachHang.DataPropertyName = "MaKH";
+            this.KhachHang.HeaderText = "Khách Hàng";
+            this.KhachHang.MinimumWidth = 6;
+            this.KhachHang.Name = "KhachHang";
+            // 
+            // NgayLap
+            // 
+            this.NgayLap.DataPropertyName = "NgayLap";
+            this.NgayLap.HeaderText = "Ngày Lập";
+            this.NgayLap.MinimumWidth = 6;
+            this.NgayLap.Name = "NgayLap";
+            // 
+            // TrangThai
+            // 
+            this.TrangThai.DataPropertyName = "TrangThai";
+            this.TrangThai.HeaderText = "Trạng Thái";
+            this.TrangThai.MinimumWidth = 6;
+            this.TrangThai.Name = "TrangThai";
+            // 
+            // MaNV
+            // 
+            this.MaNV.DataPropertyName = "MaNV";
+            this.MaNV.HeaderText = "Mã Nhân Viên Lập";
+            this.MaNV.MinimumWidth = 6;
+            this.MaNV.Name = "MaNV";
             // 
             // frm_SearchHD
             // 
@@ -230,12 +239,13 @@
         private System.Windows.Forms.Label label7;
         private System.Windows.Forms.DataGridView dgv_DanhSach;
         private System.Windows.Forms.GroupBox groupBox1;
+        private System.Windows.Forms.DateTimePicker dtp_MinNgayLap;
+        private System.Windows.Forms.DateTimePicker dtp_MaxNgayLap;
         private System.Windows.Forms.DataGridViewTextBoxColumn MaHD;
         private System.Windows.Forms.DataGridViewTextBoxColumn TenLoaiHD;
         private System.Windows.Forms.DataGridViewTextBoxColumn KhachHang;
         private System.Windows.Forms.DataGridViewTextBoxColumn NgayLap;
         private System.Windows.Forms.DataGridViewTextBoxColumn TrangThai;
-        private System.Windows.Forms.DateTimePicker dtp_MinNgayLap;
-        private System.Windows.Forms.DateTimePicker dtp_MaxNgayLap;
+        private System.Windows.Forms.DataGridViewTextBoxColumn MaNV;
     }
 }
