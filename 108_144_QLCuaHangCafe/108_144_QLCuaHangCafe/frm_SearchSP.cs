@@ -22,8 +22,8 @@ namespace _108_144_QLCuaHangCafe
         {
             loadData_DataGrid(dgv_DanhSach, "select * from SanPham");
             cbo_TrangThai.SelectedIndex = 0;
-            loadData_cbo(cbo_LoaiSP, "select MaLoai from LoaiSanPham", "MaLoai", "MaLoai");
-            loadData_cbo(cbo_NCC, "select MaNCC from NhaCungCap", "MaNCC", "MaNCC");
+            loadData_cbo(cbo_LoaiSP, "select MaLoai,TenLoai from LoaiSanPham", "MaLoai", "TenLoai");
+            loadData_cbo(cbo_NCC, "select MaNCC,TenNCC from NhaCungCap", "MaNCC", "TenNCC");
         }
         void loadData_DataGrid(DataGridView d, string sql)
         {
@@ -43,9 +43,10 @@ namespace _108_144_QLCuaHangCafe
         }
         private void btn_Search_Click(object sender, EventArgs e)
         {
-            int giaMin = 0, giaMax = 0;
-            string dk_MaLoai = cbo_LoaiSP.Text;
-            string dk_Ncc = cbo_NCC.Text;
+            int giaMax = 0;
+            int giaMin = txt_MinGiaSP.Text.Trim() != "" ? int.Parse(txt_MinGiaSP.Text) : 0;
+            string dk_MaLoai = ((DataRowView)cbo_LoaiSP.SelectedItem)["MaLoai"].ToString();
+            string dk_Ncc = ((DataRowView)cbo_NCC.SelectedItem)["MaNCC"].ToString();
             string dk_TrangThai = cbo_TrangThai.Text;
             string tk = "select * from SanPham";
             try
