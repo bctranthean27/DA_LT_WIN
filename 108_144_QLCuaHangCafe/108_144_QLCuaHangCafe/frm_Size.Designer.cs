@@ -30,6 +30,9 @@
         {
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.dgv_DanhSach = new System.Windows.Forms.DataGridView();
+            this.MaSize = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.TenSize = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.TrangThai = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.txt_TenSize = new System.Windows.Forms.TextBox();
             this.cbo_TrangThai = new System.Windows.Forms.ComboBox();
             this.label9 = new System.Windows.Forms.Label();
@@ -42,9 +45,6 @@
             this.btn_Xoa = new System.Windows.Forms.Button();
             this.btn_Them = new System.Windows.Forms.Button();
             this.txt_MaSize = new System.Windows.Forms.TextBox();
-            this.MaSize = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.TenSize = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.TrangThai = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgv_DanhSach)).BeginInit();
             this.SuspendLayout();
@@ -74,6 +74,28 @@
             this.dgv_DanhSach.RowTemplate.Height = 24;
             this.dgv_DanhSach.Size = new System.Drawing.Size(1026, 266);
             this.dgv_DanhSach.TabIndex = 0;
+            this.dgv_DanhSach.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgv_DanhSach_CellClick);
+            // 
+            // MaSize
+            // 
+            this.MaSize.DataPropertyName = "MaSize";
+            this.MaSize.HeaderText = "Mã Size";
+            this.MaSize.MinimumWidth = 6;
+            this.MaSize.Name = "MaSize";
+            // 
+            // TenSize
+            // 
+            this.TenSize.DataPropertyName = "TenSize";
+            this.TenSize.HeaderText = "Tên Size";
+            this.TenSize.MinimumWidth = 6;
+            this.TenSize.Name = "TenSize";
+            // 
+            // TrangThai
+            // 
+            this.TrangThai.DataPropertyName = "TrangThai";
+            this.TrangThai.HeaderText = "Trạng Thái";
+            this.TrangThai.MinimumWidth = 6;
+            this.TrangThai.Name = "TrangThai";
             // 
             // txt_TenSize
             // 
@@ -88,8 +110,8 @@
             this.cbo_TrangThai.Font = new System.Drawing.Font("Segoe UI Semibold", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.cbo_TrangThai.FormattingEnabled = true;
             this.cbo_TrangThai.Items.AddRange(new object[] {
-            "On",
-            "Off"});
+            "0",
+            "1"});
             this.cbo_TrangThai.Location = new System.Drawing.Point(255, 233);
             this.cbo_TrangThai.Name = "cbo_TrangThai";
             this.cbo_TrangThai.Size = new System.Drawing.Size(299, 31);
@@ -197,27 +219,6 @@
             this.txt_MaSize.Name = "txt_MaSize";
             this.txt_MaSize.Size = new System.Drawing.Size(299, 34);
             this.txt_MaSize.TabIndex = 83;
-            // 
-            // MaSize
-            // 
-            this.MaSize.DataPropertyName = "MaSize";
-            this.MaSize.HeaderText = "Mã Size";
-            this.MaSize.MinimumWidth = 6;
-            this.MaSize.Name = "MaSize";
-            // 
-            // TenSize
-            // 
-            this.TenSize.DataPropertyName = "TenSize";
-            this.TenSize.HeaderText = "Tên Size";
-            this.TenSize.MinimumWidth = 6;
-            this.TenSize.Name = "TenSize";
-            // 
-            // TrangThai
-            // 
-            this.TrangThai.DataPropertyName = "TrangThai";
-            this.TrangThai.HeaderText = "Trạng Thái";
-            this.TrangThai.MinimumWidth = 6;
-            this.TrangThai.Name = "TrangThai";
             // 
             // frm_Size
             // 

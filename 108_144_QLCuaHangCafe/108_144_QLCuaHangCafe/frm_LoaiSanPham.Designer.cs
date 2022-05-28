@@ -29,6 +29,9 @@
         private void InitializeComponent()
         {
             this.dgv_DanhSach = new System.Windows.Forms.DataGridView();
+            this.MaLoaiSP = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.TenLoaiSP = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.TrangThai = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.txt_TenLoaiSP = new System.Windows.Forms.TextBox();
             this.cbo_TrangThai = new System.Windows.Forms.ComboBox();
@@ -42,9 +45,6 @@
             this.btn_Xoa = new System.Windows.Forms.Button();
             this.btn_Them = new System.Windows.Forms.Button();
             this.txt_MaLoaiSP = new System.Windows.Forms.TextBox();
-            this.MaLoaiSP = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.TenLoaiSP = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.TrangThai = new System.Windows.Forms.DataGridViewTextBoxColumn();
             ((System.ComponentModel.ISupportInitialize)(this.dgv_DanhSach)).BeginInit();
             this.groupBox1.SuspendLayout();
             this.SuspendLayout();
@@ -63,6 +63,28 @@
             this.dgv_DanhSach.RowTemplate.Height = 24;
             this.dgv_DanhSach.Size = new System.Drawing.Size(1026, 268);
             this.dgv_DanhSach.TabIndex = 0;
+            this.dgv_DanhSach.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgv_DanhSach_CellClick);
+            // 
+            // MaLoaiSP
+            // 
+            this.MaLoaiSP.DataPropertyName = "MaLoai";
+            this.MaLoaiSP.HeaderText = "Mã Loại SP";
+            this.MaLoaiSP.MinimumWidth = 6;
+            this.MaLoaiSP.Name = "MaLoaiSP";
+            // 
+            // TenLoaiSP
+            // 
+            this.TenLoaiSP.DataPropertyName = "TenLoai";
+            this.TenLoaiSP.HeaderText = "Tên Sản Phẩm";
+            this.TenLoaiSP.MinimumWidth = 6;
+            this.TenLoaiSP.Name = "TenLoaiSP";
+            // 
+            // TrangThai
+            // 
+            this.TrangThai.DataPropertyName = "TrangThai";
+            this.TrangThai.HeaderText = "Trạng Thái";
+            this.TrangThai.MinimumWidth = 6;
+            this.TrangThai.Name = "TrangThai";
             // 
             // groupBox1
             // 
@@ -88,8 +110,8 @@
             this.cbo_TrangThai.Font = new System.Drawing.Font("Segoe UI Semibold", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.cbo_TrangThai.FormattingEnabled = true;
             this.cbo_TrangThai.Items.AddRange(new object[] {
-            "On",
-            "Off"});
+            "0",
+            "1"});
             this.cbo_TrangThai.Location = new System.Drawing.Point(255, 225);
             this.cbo_TrangThai.Name = "cbo_TrangThai";
             this.cbo_TrangThai.Size = new System.Drawing.Size(299, 31);
@@ -197,27 +219,6 @@
             this.txt_MaLoaiSP.Name = "txt_MaLoaiSP";
             this.txt_MaLoaiSP.Size = new System.Drawing.Size(299, 34);
             this.txt_MaLoaiSP.TabIndex = 70;
-            // 
-            // MaLoaiSP
-            // 
-            this.MaLoaiSP.DataPropertyName = "MaLoai";
-            this.MaLoaiSP.HeaderText = "Mã Loại SP";
-            this.MaLoaiSP.MinimumWidth = 6;
-            this.MaLoaiSP.Name = "MaLoaiSP";
-            // 
-            // TenLoaiSP
-            // 
-            this.TenLoaiSP.DataPropertyName = "TenLoai";
-            this.TenLoaiSP.HeaderText = "Tên Sản Phẩm";
-            this.TenLoaiSP.MinimumWidth = 6;
-            this.TenLoaiSP.Name = "TenLoaiSP";
-            // 
-            // TrangThai
-            // 
-            this.TrangThai.DataPropertyName = "TrangThai";
-            this.TrangThai.HeaderText = "Trạng Thái";
-            this.TrangThai.MinimumWidth = 6;
-            this.TrangThai.Name = "TrangThai";
             // 
             // frm_LoaiSanPham
             // 

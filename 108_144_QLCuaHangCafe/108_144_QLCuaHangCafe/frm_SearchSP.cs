@@ -13,6 +13,8 @@ namespace _108_144_QLCuaHangCafe
     public partial class frm_SearchSP : Form
     {
         cls_QLCHCAFE c = new cls_QLCHCAFE();
+        DataSet ds = new DataSet();
+        int vt = 0;
         public frm_SearchSP()
         {
             InitializeComponent();
@@ -33,7 +35,7 @@ namespace _108_144_QLCuaHangCafe
         }
         void loadData_cbo(ComboBox cbo,string sql, string valMember, string disMember)
         {
-            DataSet ds = c.LayDuLieu(sql);
+            ds = c.LayDuLieu(sql);
             for(int i=0;i<ds.Tables[0].Rows.Count;i++)
             {
                 cbo.DataSource = ds.Tables[0];
@@ -75,6 +77,8 @@ namespace _108_144_QLCuaHangCafe
             {
                 MessageBox.Show("Vui lòng nhập vào giá sản phẩm muốn tìm", "Thông báo", MessageBoxButtons.OK);
             }
-}
+        }
+
+        
     }
 }

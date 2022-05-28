@@ -81,6 +81,7 @@
             this.txt_MinGiaSP.Name = "txt_MinGiaSP";
             this.txt_MinGiaSP.Size = new System.Drawing.Size(299, 34);
             this.txt_MinGiaSP.TabIndex = 5;
+            this.txt_MinGiaSP.Text = "0";
             // 
             // label3
             // 
@@ -158,8 +159,7 @@
             this.dgv_DanhSach.RowHeadersWidth = 50;
             this.dgv_DanhSach.RowTemplate.Height = 24;
             this.dgv_DanhSach.Size = new System.Drawing.Size(1146, 369);
-            this.dgv_DanhSach.TabIndex = 0;
-            // 
+            this.dgv_DanhSach.TabIndex = 0;            // 
             // MaSP
             // 
             this.MaSP.DataPropertyName = "MaSP";

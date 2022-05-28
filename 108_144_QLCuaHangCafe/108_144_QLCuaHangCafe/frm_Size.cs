@@ -13,6 +13,8 @@ namespace _108_144_QLCuaHangCafe
     public partial class frm_Size : Form
     {
         cls_QLCHCAFE c = new cls_QLCHCAFE();
+        int vt = 0;
+        DataSet ds = new DataSet();
         public frm_Size()
         {
             InitializeComponent();
@@ -33,6 +35,7 @@ namespace _108_144_QLCuaHangCafe
         {
             txt_MaSize.ReadOnly = t;
             txt_TenSize.ReadOnly = t;
+            cbo_TrangThai.Enabled = !t;
         }
         void XuLiButton(Boolean t)
         {
@@ -58,6 +61,39 @@ namespace _108_144_QLCuaHangCafe
             XuLiTextBox(false);
             XuLiButton(false);
             btn_Lưu.Enabled = true;
+        }
+        void loadData_cboFromList(DataTable dt, ComboBox cbo, string disMember)
+        {
+
+            string value = dt.Rows[vt][disMember].ToString();
+            if (disMember == "TrangThai")
+            {
+                for (int i = 0; i < cbo.Items.Count; i++)
+                {
+                    if (cbo.Items[i].ToString() == value) cbo.SelectedIndex = i;
+                }
+            }
+            else
+            {
+                for (int i = 0; i < cbo.Items.Count; i++)
+                {
+                    if (cbo.ValueMember == value) cbo.SelectedIndex = i;
+                }
+            }
+        }
+        void hienThiTextBox(DataTable dt, int vt)
+        {
+            txt_MaSize.Text = ds.Tables[0].Rows[vt]["MaSize"].ToString();
+            txt_TenSize.Text = ds.Tables[0].Rows[vt]["TenSize"].ToString();
+            loadData_cboFromList(dt, cbo_TrangThai, "TrangThai"); 
+
+        }
+        private void dgv_DanhSach_CellClick(object sender, DataGridViewCellEventArgs e)
+        {
+            ds = c.LayDuLieu("select * from Size");
+            int vt = dgv_DanhSach.CurrentCell.RowIndex;
+            hienThiTextBox(ds.Tables[0], vt);
+
         }
     }
 }

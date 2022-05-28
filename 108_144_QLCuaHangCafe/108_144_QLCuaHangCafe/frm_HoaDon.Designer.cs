@@ -52,6 +52,8 @@
             this.btn_Them = new System.Windows.Forms.Button();
             this.cbo_KhachHang = new System.Windows.Forms.ComboBox();
             this.txt_MaHD = new System.Windows.Forms.TextBox();
+            this.label5 = new System.Windows.Forms.Label();
+            this.cbo_NhanVien = new System.Windows.Forms.ComboBox();
             this.groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgv_DanhSach)).BeginInit();
             this.SuspendLayout();
@@ -62,7 +64,7 @@
             this.groupBox1.Font = new System.Drawing.Font("Segoe UI", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.groupBox1.Location = new System.Drawing.Point(21, 322);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(1080, 401);
+            this.groupBox1.Size = new System.Drawing.Size(1157, 401);
             this.groupBox1.TabIndex = 115;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Danh Sách Hoá Đơn";
@@ -82,8 +84,9 @@
             this.dgv_DanhSach.Name = "dgv_DanhSach";
             this.dgv_DanhSach.RowHeadersWidth = 50;
             this.dgv_DanhSach.RowTemplate.Height = 24;
-            this.dgv_DanhSach.Size = new System.Drawing.Size(1068, 364);
+            this.dgv_DanhSach.Size = new System.Drawing.Size(1137, 364);
             this.dgv_DanhSach.TabIndex = 0;
+            this.dgv_DanhSach.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgv_DanhSach_CellClick);
             // 
             // MaHD
             // 
@@ -129,14 +132,14 @@
             // 
             // cbo_LoaiHD
             // 
-            this.cbo_LoaiHD.Font = new System.Drawing.Font("Segoe UI Semibold", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.cbo_LoaiHD.Font = new System.Drawing.Font("Segoe UI Semibold", 13.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.cbo_LoaiHD.FormattingEnabled = true;
             this.cbo_LoaiHD.Items.AddRange(new object[] {
             "On",
             "Off"});
             this.cbo_LoaiHD.Location = new System.Drawing.Point(241, 217);
             this.cbo_LoaiHD.Name = "cbo_LoaiHD";
-            this.cbo_LoaiHD.Size = new System.Drawing.Size(299, 31);
+            this.cbo_LoaiHD.Size = new System.Drawing.Size(299, 39);
             this.cbo_LoaiHD.TabIndex = 113;
             // 
             // label9
@@ -176,7 +179,7 @@
             this.label1.Font = new System.Drawing.Font("Segoe UI", 19.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label1.Location = new System.Drawing.Point(0, 0);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(1129, 63);
+            this.label1.Size = new System.Drawing.Size(1190, 63);
             this.label1.TabIndex = 108;
             this.label1.Text = "NHẬP HOÁ ĐƠN";
             this.label1.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -203,23 +206,24 @@
             // 
             // dtp_NgayLap
             // 
-            this.dtp_NgayLap.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.dtp_NgayLap.CalendarFont = new System.Drawing.Font("Segoe UI Semibold", 13.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.dtp_NgayLap.Font = new System.Drawing.Font("Segoe UI Semibold", 13.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.dtp_NgayLap.Format = System.Windows.Forms.DateTimePickerFormat.Short;
-            this.dtp_NgayLap.Location = new System.Drawing.Point(760, 88);
+            this.dtp_NgayLap.Location = new System.Drawing.Point(814, 88);
             this.dtp_NgayLap.Name = "dtp_NgayLap";
-            this.dtp_NgayLap.Size = new System.Drawing.Size(341, 30);
+            this.dtp_NgayLap.Size = new System.Drawing.Size(351, 38);
             this.dtp_NgayLap.TabIndex = 116;
             // 
             // cbo_TrangThai
             // 
-            this.cbo_TrangThai.Font = new System.Drawing.Font("Segoe UI Semibold", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.cbo_TrangThai.Font = new System.Drawing.Font("Segoe UI Semibold", 13.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.cbo_TrangThai.FormattingEnabled = true;
             this.cbo_TrangThai.Items.AddRange(new object[] {
-            "On",
-            "Off"});
-            this.cbo_TrangThai.Location = new System.Drawing.Point(760, 152);
+            "0",
+            "1"});
+            this.cbo_TrangThai.Location = new System.Drawing.Point(814, 152);
             this.cbo_TrangThai.Name = "cbo_TrangThai";
-            this.cbo_TrangThai.Size = new System.Drawing.Size(341, 31);
+            this.cbo_TrangThai.Size = new System.Drawing.Size(351, 39);
             this.cbo_TrangThai.TabIndex = 113;
             // 
             // btn_Exit
@@ -227,7 +231,7 @@
             this.btn_Exit.Font = new System.Drawing.Font("Segoe UI Semibold", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btn_Exit.Location = new System.Drawing.Point(900, 280);
             this.btn_Exit.Name = "btn_Exit";
-            this.btn_Exit.Size = new System.Drawing.Size(200, 36);
+            this.btn_Exit.Size = new System.Drawing.Size(264, 36);
             this.btn_Exit.TabIndex = 121;
             this.btn_Exit.Text = "Thoát";
             this.btn_Exit.UseVisualStyleBackColor = true;
@@ -277,29 +281,51 @@
             // 
             // cbo_KhachHang
             // 
-            this.cbo_KhachHang.Font = new System.Drawing.Font("Segoe UI Semibold", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.cbo_KhachHang.Font = new System.Drawing.Font("Segoe UI Semibold", 13.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.cbo_KhachHang.FormattingEnabled = true;
             this.cbo_KhachHang.Items.AddRange(new object[] {
             "On",
             "Off"});
             this.cbo_KhachHang.Location = new System.Drawing.Point(241, 152);
             this.cbo_KhachHang.Name = "cbo_KhachHang";
-            this.cbo_KhachHang.Size = new System.Drawing.Size(299, 31);
+            this.cbo_KhachHang.Size = new System.Drawing.Size(299, 39);
             this.cbo_KhachHang.TabIndex = 113;
             // 
             // txt_MaHD
             // 
-            this.txt_MaHD.Font = new System.Drawing.Font("Segoe UI Semibold", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txt_MaHD.Font = new System.Drawing.Font("Segoe UI Semibold", 13.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txt_MaHD.Location = new System.Drawing.Point(241, 88);
             this.txt_MaHD.Name = "txt_MaHD";
-            this.txt_MaHD.Size = new System.Drawing.Size(299, 34);
+            this.txt_MaHD.Size = new System.Drawing.Size(299, 38);
             this.txt_MaHD.TabIndex = 122;
+            // 
+            // label5
+            // 
+            this.label5.AutoSize = true;
+            this.label5.Font = new System.Drawing.Font("Segoe UI Semibold", 13.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label5.Location = new System.Drawing.Point(586, 217);
+            this.label5.Name = "label5";
+            this.label5.Size = new System.Drawing.Size(165, 31);
+            this.label5.TabIndex = 109;
+            this.label5.Text = "Nhân Viên Lập";
+            // 
+            // cbo_NhanVien
+            // 
+            this.cbo_NhanVien.Font = new System.Drawing.Font("Segoe UI Semibold", 13.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.cbo_NhanVien.FormattingEnabled = true;
+            this.cbo_NhanVien.Items.AddRange(new object[] {
+            "0",
+            "1"});
+            this.cbo_NhanVien.Location = new System.Drawing.Point(814, 217);
+            this.cbo_NhanVien.Name = "cbo_NhanVien";
+            this.cbo_NhanVien.Size = new System.Drawing.Size(351, 39);
+            this.cbo_NhanVien.TabIndex = 113;
             // 
             // frm_HoaDon
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1129, 735);
+            this.ClientSize = new System.Drawing.Size(1190, 726);
             this.Controls.Add(this.txt_MaHD);
             this.Controls.Add(this.btn_Exit);
             this.Controls.Add(this.btn_Luu);
@@ -308,6 +334,7 @@
             this.Controls.Add(this.btn_Them);
             this.Controls.Add(this.dtp_NgayLap);
             this.Controls.Add(this.groupBox1);
+            this.Controls.Add(this.cbo_NhanVien);
             this.Controls.Add(this.cbo_TrangThai);
             this.Controls.Add(this.cbo_KhachHang);
             this.Controls.Add(this.cbo_LoaiHD);
@@ -315,6 +342,7 @@
             this.Controls.Add(this.label4);
             this.Controls.Add(this.label3);
             this.Controls.Add(this.label10);
+            this.Controls.Add(this.label5);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.label1);
             this.Name = "frm_HoaDon";
@@ -352,5 +380,7 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn MaLoaiHD;
         private System.Windows.Forms.DataGridViewTextBoxColumn MaNV;
         private System.Windows.Forms.DataGridViewTextBoxColumn TrangThai;
+        private System.Windows.Forms.Label label5;
+        private System.Windows.Forms.ComboBox cbo_NhanVien;
     }
 }

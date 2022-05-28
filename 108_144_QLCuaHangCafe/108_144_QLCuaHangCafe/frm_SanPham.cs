@@ -13,6 +13,8 @@ namespace _108_144_QLCuaHangCafe
     public partial class frm_SanPham : Form
     {
         cls_QLCHCAFE c = new cls_QLCHCAFE();
+        int vt = 0;
+        DataSet ds = new DataSet();
         public frm_SanPham()
         {
             InitializeComponent();
@@ -23,17 +25,32 @@ namespace _108_144_QLCuaHangCafe
             XuLiTextBox(true);
             XuLiButton(true);
             loadData_DataGrid(dgv_DanhSach, "select * from SanPham");
+            loadData_cbo(cbo_LoaiSanPham, "select MaLoai,TenLoai from LoaiSanPham", "MaLoai", "TenLoai");
+            loadData_cbo(cbo_NCC, "select MaNCC,TenNCC from NhaCungCap", "MaNCC", "TenNCC");
         }      
         void loadData_DataGrid(DataGridView d, string sql)
         {
-            DataSet ds = c.LayDuLieu(sql);
+            ds = c.LayDuLieu(sql);
             d.DataSource = ds.Tables[0];
 
+        }
+        void loadData_cbo(ComboBox cbo, string sql, string valMember, string disMember)
+        {
+            ds = c.LayDuLieu(sql);
+            for (int i = 0; i < ds.Tables[0].Rows.Count; i++)
+            {
+                cbo.DataSource = ds.Tables[0];
+                cbo.ValueMember = valMember;
+                cbo.DisplayMember = disMember;
+            }
         }
         void XuLiTextBox(Boolean t)
         {
             txt_MaSP.ReadOnly = t;
             txt_TenSP.ReadOnly = t;
+            cbo_LoaiSanPham.Enabled = !t;
+            cbo_NCC.Enabled = !t;
+            cbo_TrangThai.Enabled = !t;
         }
         void XuLiButton(Boolean t)
         {
@@ -59,6 +76,40 @@ namespace _108_144_QLCuaHangCafe
             XuLiTextBox(false);
             XuLiButton(false);
             btn_Luu.Enabled = true;
+        }
+        void loadData_cboFromList(DataTable dt, ComboBox cbo, string disMember)
+        {
+
+            string value = dt.Rows[vt][disMember].ToString();
+            if (disMember == "TrangThai")
+            {
+                for (int i = 0; i < cbo.Items.Count; i++)
+                {
+                    if (cbo.Items[i].ToString() == value) cbo.SelectedIndex = i;
+                }
+            }
+            else
+            {
+                for (int i = 0; i < cbo.Items.Count; i++)
+                {
+                    if (cbo.ValueMember == value) cbo.SelectedIndex = i;
+                }
+            }
+        }
+        void hienThiTextBox(DataTable dt, int vt)
+        {
+            txt_MaSP.Text = ds.Tables[0].Rows[vt]["MaSP"].ToString();
+            txt_TenSP.Text = ds.Tables[0].Rows[vt]["TenSP"].ToString();
+            loadData_cboFromList(dt, cbo_LoaiSanPham, "MaLoai");
+            loadData_cboFromList(dt, cbo_NCC, "MaNCC");
+            loadData_cboFromList(dt, cbo_TrangThai, "TrangThai");
+        }
+        private void dgv_DanhSach_CellClick(object sender, DataGridViewCellEventArgs e)
+        {
+            ds = c.LayDuLieu("select * from SanPham");
+            int vt = dgv_DanhSach.CurrentCell.RowIndex;
+            hienThiTextBox(ds.Tables[0], vt);
+
         }
     }
 }

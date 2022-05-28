@@ -14,6 +14,8 @@ namespace _108_144_QLCuaHangCafe
     public partial class frm_ChucVu : Form
     {
         cls_QLCHCAFE c = new cls_QLCHCAFE();
+        int vt = 0;
+        DataSet ds = new DataSet();
         public frm_ChucVu()
         {
             InitializeComponent();
@@ -26,7 +28,7 @@ namespace _108_144_QLCuaHangCafe
         }
         void loadData_DataGrid(DataGridView d, string sql)
         {
-            DataSet ds = c.LayDuLieu(sql);
+            ds = c.LayDuLieu(sql);
             d.DataSource = ds.Tables[0];
 
         }
@@ -34,6 +36,7 @@ namespace _108_144_QLCuaHangCafe
         {
             txt_MaCV.ReadOnly = t;
             txt_TenCV.ReadOnly = t;
+            cbo_TrangThai.Enabled = !t;
         }
         void XuLiButton(Boolean t)
         {
@@ -59,6 +62,36 @@ namespace _108_144_QLCuaHangCafe
             XuLiTextBox(false);
             XuLiButton(false);
             btn_Lưu.Enabled = true;
+        }
+        void loadData_cboFromList(DataTable dt, ComboBox cbo, string disMember)
+        {
+
+            string value = dt.Rows[vt][disMember].ToString();
+            if (disMember == "TrangThai")
+            {
+                for (int i = 0; i < cbo.Items.Count; i++)
+                {
+                    if (cbo.Items[i].ToString() == value) cbo.SelectedIndex = i;
+                }
+            }
+            else
+            {
+                for (int i = 0; i < cbo.Items.Count; i++)
+                {
+                    if (cbo.ValueMember == value) cbo.SelectedIndex = i;
+                }
+            }
+        }
+        void hienThiTextBox(DataTable dt, int vt)
+        {
+            txt_MaCV.Text = dt.Rows[vt]["MaChucVu"].ToString();
+            txt_TenCV.Text = dt.Rows[vt]["TenChucVu"].ToString();
+            loadData_cboFromList(dt, cbo_TrangThai, "TrangThai");
+        }
+        private void dgv_DanhSach_CellClick(object sender, DataGridViewCellEventArgs e)
+        {
+            int vt = dgv_DanhSach.CurrentCell.RowIndex;
+            hienThiTextBox(ds.Tables[0], vt);
         }
     }
 }

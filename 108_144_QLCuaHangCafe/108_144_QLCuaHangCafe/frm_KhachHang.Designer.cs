@@ -44,16 +44,16 @@
             this.btn_Thoat = new System.Windows.Forms.Button();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.dgv_DanhSach = new System.Windows.Forms.DataGridView();
-            this.cbo_TrangThai = new System.Windows.Forms.ComboBox();
-            this.label8 = new System.Windows.Forms.Label();
-            this.cbo_DiaChi = new System.Windows.Forms.ComboBox();
             this.MaKH = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.TenKH = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.DChi = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.SDT = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Mail = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.TrangThai = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.cbo_TrangThai = new System.Windows.Forms.ComboBox();
+            this.label8 = new System.Windows.Forms.Label();
             this.txt_MaKH = new System.Windows.Forms.TextBox();
+            this.txt_DiaChi = new System.Windows.Forms.TextBox();
             this.groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgv_DanhSach)).BeginInit();
             this.SuspendLayout();
@@ -61,7 +61,7 @@
             // txt_DienThoai
             // 
             this.txt_DienThoai.Font = new System.Drawing.Font("Microsoft Sans Serif", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txt_DienThoai.Location = new System.Drawing.Point(770, 103);
+            this.txt_DienThoai.Location = new System.Drawing.Point(807, 103);
             this.txt_DienThoai.Name = "txt_DienThoai";
             this.txt_DienThoai.Size = new System.Drawing.Size(299, 34);
             this.txt_DienThoai.TabIndex = 12;
@@ -69,7 +69,7 @@
             // txt_Mail
             // 
             this.txt_Mail.Font = new System.Drawing.Font("Microsoft Sans Serif", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txt_Mail.Location = new System.Drawing.Point(770, 162);
+            this.txt_Mail.Location = new System.Drawing.Point(807, 162);
             this.txt_Mail.Name = "txt_Mail";
             this.txt_Mail.Size = new System.Drawing.Size(299, 34);
             this.txt_Mail.TabIndex = 13;
@@ -179,7 +179,7 @@
             // btn_Luu
             // 
             this.btn_Luu.Font = new System.Drawing.Font("Segoe UI Semibold", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btn_Luu.Location = new System.Drawing.Point(692, 300);
+            this.btn_Luu.Location = new System.Drawing.Point(712, 300);
             this.btn_Luu.Name = "btn_Luu";
             this.btn_Luu.Size = new System.Drawing.Size(158, 36);
             this.btn_Luu.TabIndex = 18;
@@ -190,7 +190,7 @@
             // btn_Thoat
             // 
             this.btn_Thoat.Font = new System.Drawing.Font("Segoe UI Semibold", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btn_Thoat.Location = new System.Drawing.Point(911, 300);
+            this.btn_Thoat.Location = new System.Drawing.Point(948, 300);
             this.btn_Thoat.Name = "btn_Thoat";
             this.btn_Thoat.Size = new System.Drawing.Size(158, 36);
             this.btn_Thoat.TabIndex = 19;
@@ -201,9 +201,9 @@
             // 
             this.groupBox1.Controls.Add(this.dgv_DanhSach);
             this.groupBox1.Font = new System.Drawing.Font("Segoe UI", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.groupBox1.Location = new System.Drawing.Point(31, 342);
+            this.groupBox1.Location = new System.Drawing.Point(12, 342);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(1038, 303);
+            this.groupBox1.Size = new System.Drawing.Size(1111, 303);
             this.groupBox1.TabIndex = 20;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Danh Sách Khách Hàng";
@@ -223,42 +223,9 @@
             this.dgv_DanhSach.Name = "dgv_DanhSach";
             this.dgv_DanhSach.RowHeadersWidth = 50;
             this.dgv_DanhSach.RowTemplate.Height = 24;
-            this.dgv_DanhSach.Size = new System.Drawing.Size(1026, 266);
+            this.dgv_DanhSach.Size = new System.Drawing.Size(1099, 266);
             this.dgv_DanhSach.TabIndex = 0;
-            // 
-            // cbo_TrangThai
-            // 
-            this.cbo_TrangThai.Font = new System.Drawing.Font("Segoe UI Semibold", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.cbo_TrangThai.FormattingEnabled = true;
-            this.cbo_TrangThai.Items.AddRange(new object[] {
-            "On",
-            "Off"});
-            this.cbo_TrangThai.Location = new System.Drawing.Point(770, 220);
-            this.cbo_TrangThai.Name = "cbo_TrangThai";
-            this.cbo_TrangThai.Size = new System.Drawing.Size(299, 31);
-            this.cbo_TrangThai.TabIndex = 22;
-            // 
-            // label8
-            // 
-            this.label8.AutoSize = true;
-            this.label8.Font = new System.Drawing.Font("Segoe UI Semibold", 13.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label8.Location = new System.Drawing.Point(608, 226);
-            this.label8.Name = "label8";
-            this.label8.Size = new System.Drawing.Size(118, 31);
-            this.label8.TabIndex = 21;
-            this.label8.Text = "Trạng thái";
-            // 
-            // cbo_DiaChi
-            // 
-            this.cbo_DiaChi.Font = new System.Drawing.Font("Microsoft Sans Serif", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.cbo_DiaChi.FormattingEnabled = true;
-            this.cbo_DiaChi.Items.AddRange(new object[] {
-            "On",
-            "Off"});
-            this.cbo_DiaChi.Location = new System.Drawing.Point(248, 220);
-            this.cbo_DiaChi.Name = "cbo_DiaChi";
-            this.cbo_DiaChi.Size = new System.Drawing.Size(299, 37);
-            this.cbo_DiaChi.TabIndex = 22;
+            this.dgv_DanhSach.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgv_DanhSach_CellClick);
             // 
             // MaKH
             // 
@@ -302,6 +269,28 @@
             this.TrangThai.MinimumWidth = 6;
             this.TrangThai.Name = "TrangThai";
             // 
+            // cbo_TrangThai
+            // 
+            this.cbo_TrangThai.Font = new System.Drawing.Font("Segoe UI Semibold", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.cbo_TrangThai.FormattingEnabled = true;
+            this.cbo_TrangThai.Items.AddRange(new object[] {
+            "0",
+            "1"});
+            this.cbo_TrangThai.Location = new System.Drawing.Point(807, 220);
+            this.cbo_TrangThai.Name = "cbo_TrangThai";
+            this.cbo_TrangThai.Size = new System.Drawing.Size(299, 31);
+            this.cbo_TrangThai.TabIndex = 22;
+            // 
+            // label8
+            // 
+            this.label8.AutoSize = true;
+            this.label8.Font = new System.Drawing.Font("Segoe UI Semibold", 13.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label8.Location = new System.Drawing.Point(608, 226);
+            this.label8.Name = "label8";
+            this.label8.Size = new System.Drawing.Size(118, 31);
+            this.label8.TabIndex = 21;
+            this.label8.Text = "Trạng thái";
+            // 
             // txt_MaKH
             // 
             this.txt_MaKH.Font = new System.Drawing.Font("Microsoft Sans Serif", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -310,12 +299,19 @@
             this.txt_MaKH.Size = new System.Drawing.Size(299, 34);
             this.txt_MaKH.TabIndex = 14;
             // 
+            // txt_DiaChi
+            // 
+            this.txt_DiaChi.Font = new System.Drawing.Font("Microsoft Sans Serif", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txt_DiaChi.Location = new System.Drawing.Point(248, 220);
+            this.txt_DiaChi.Name = "txt_DiaChi";
+            this.txt_DiaChi.Size = new System.Drawing.Size(299, 34);
+            this.txt_DiaChi.TabIndex = 14;
+            // 
             // frm_KhachHang
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1135, 645);
-            this.Controls.Add(this.cbo_DiaChi);
             this.Controls.Add(this.cbo_TrangThai);
             this.Controls.Add(this.label8);
             this.Controls.Add(this.groupBox1);
@@ -327,6 +323,7 @@
             this.Controls.Add(this.txt_DienThoai);
             this.Controls.Add(this.txt_Mail);
             this.Controls.Add(this.txt_MaKH);
+            this.Controls.Add(this.txt_DiaChi);
             this.Controls.Add(this.txt_TenKH);
             this.Controls.Add(this.label9);
             this.Controls.Add(this.label7);
@@ -363,7 +360,6 @@
         private System.Windows.Forms.DataGridView dgv_DanhSach;
         private System.Windows.Forms.ComboBox cbo_TrangThai;
         private System.Windows.Forms.Label label8;
-        private System.Windows.Forms.ComboBox cbo_DiaChi;
         private System.Windows.Forms.DataGridViewTextBoxColumn MaKH;
         private System.Windows.Forms.DataGridViewTextBoxColumn TenKH;
         private System.Windows.Forms.DataGridViewTextBoxColumn DChi;
@@ -371,5 +367,6 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn Mail;
         private System.Windows.Forms.DataGridViewTextBoxColumn TrangThai;
         private System.Windows.Forms.TextBox txt_MaKH;
+        private System.Windows.Forms.TextBox txt_DiaChi;
     }
 }

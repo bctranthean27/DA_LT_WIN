@@ -14,6 +14,8 @@ namespace _108_144_QLCuaHangCafe
     public partial class frm_NCC : Form
     {
         cls_QLCHCAFE c = new cls_QLCHCAFE();
+        int vt = 0;
+        DataSet ds = new DataSet();
         public frm_NCC()
         {
 
@@ -27,9 +29,17 @@ namespace _108_144_QLCuaHangCafe
         }
         void loadData_DataGrid(DataGridView d, string sql)
         {
-            DataSet ds = c.LayDuLieu(sql);
+            ds = c.LayDuLieu(sql);
             d.DataSource = ds.Tables[0];
 
+        }
+        void loadData_cboFromList(DataTable dt,ComboBox cbo,string disMember)
+        {
+            string value = dt.Rows[vt][disMember].ToString();
+            for (int i = 0; i < cbo.Items.Count; i++) 
+            {
+                if(cbo.Items[i].ToString() == value) cbo.SelectedIndex = i;
+            }
         }
         void XuLiTextBox(Boolean t)
         {
@@ -37,9 +47,8 @@ namespace _108_144_QLCuaHangCafe
             txt_TenNCC.ReadOnly = t;
             txt_DiaChiMail.ReadOnly = t;
             txt_DienThoai.ReadOnly = t;
-            txt_SoTK.ReadOnly = t;
-            rtxt_DiaChi.ReadOnly = t;
-            txt_TenTK.ReadOnly = t;
+            txt_DiaChi.ReadOnly = t;
+            cbo_TrangThai.Enabled = !t;
         }
         void XuLiButton(Boolean t)
         {
@@ -65,6 +74,21 @@ namespace _108_144_QLCuaHangCafe
             XuLiTextBox(false);
             XuLiButton(false);
             btn_Luu.Enabled = true;
+        }
+        void hienThiTextBox(DataTable dt, int vt)
+        {
+            txt_NCC.Text = dt.Rows[vt]["MaNCC"].ToString();
+            txt_DiaChi.Text = dt.Rows[vt]["DChi"].ToString();
+            txt_DiaChiMail.Text = dt.Rows[vt]["Mail"].ToString();
+            txt_DienThoai.Text = dt.Rows[vt]["SDT"].ToString();
+            txt_TenNCC.Text = dt.Rows[vt]["TenNCC"].ToString();
+            loadData_cboFromList(dt, cbo_TrangThai, "TrangThai");
+
+        }
+        private void dgv_DanhSach_CellClick(object sender, DataGridViewCellEventArgs e)
+        {
+            int vt = dgv_DanhSach.CurrentCell.RowIndex;
+            hienThiTextBox(ds.Tables[0], vt);
         }
     }
 }
