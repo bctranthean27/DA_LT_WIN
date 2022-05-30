@@ -25,6 +25,8 @@ namespace _108_144_QLCuaHangCafe
             XuLiButton(true);
             loadData_DataGrid(dgv_DanhSach, "select * from NhanVien");
             loadData_cbo(cbo_ChucVu, "select MaChucVu,TenChucVu from ChucVu", "MaChucVu", "TenChucVu");
+            cbo_TrangThai.SelectedIndex = 0;
+            cbo_TrangThai.DropDownStyle = ComboBoxStyle.DropDownList;
         }
         void loadData_DataGrid(DataGridView d, string sql)
         {
@@ -45,9 +47,9 @@ namespace _108_144_QLCuaHangCafe
             txt_HoNV.ReadOnly = t;
             txt_MaNV.ReadOnly = t;
             txt_DiaChi.ReadOnly = t;
-            //cbo_ChucVu.Visible = !t;
-            //cbo_TrangThai.Visible = !t;
-            //dtp_NgayVaoLam.Visible = !t;
+            cbo_ChucVu.Enabled = !t;
+            cbo_TrangThai.Enabled = !t;
+            dtp_NgayVaoLam.Enabled = !t;
         }
         void XuLiButton(Boolean t)
         {

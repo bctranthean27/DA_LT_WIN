@@ -38,6 +38,8 @@ namespace _108_144_QLCuaHangCafe
             XuLiTextBox(true);
             XuLiButton(true);
             loadData_DataGrid(dgv_DanhSach, "select * from LoaiSanPham");
+            cbo_TrangThai.SelectedIndex = 0;
+            cbo_TrangThai.DropDownStyle = ComboBoxStyle.DropDownList;
         }
         void loadData_DataGrid(DataGridView d, string sql)
         {

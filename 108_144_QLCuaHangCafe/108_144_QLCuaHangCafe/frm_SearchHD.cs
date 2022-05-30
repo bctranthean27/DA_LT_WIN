@@ -22,6 +22,8 @@ namespace _108_144_QLCuaHangCafe
         {
             loadData_DataGrid(dgv_DanhSach, "select * from HoaDon");
             cbo_TrangThai.SelectedIndex = 0;
+            cbo_TrangThai.DropDownStyle = ComboBoxStyle.DropDownList;
+            dtp_MaxNgayLap.Value = DateTime.Now;
         }
         void loadData_DataGrid(DataGridView d, string sql)
         {

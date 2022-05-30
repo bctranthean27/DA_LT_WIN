@@ -27,6 +27,8 @@ namespace _108_144_QLCuaHangCafe
             loadData_DataGrid(dgv_DanhSach, "select * from SanPham");
             loadData_cbo(cbo_LoaiSanPham, "select MaLoai,TenLoai from LoaiSanPham", "MaLoai", "TenLoai");
             loadData_cbo(cbo_NCC, "select MaNCC,TenNCC from NhaCungCap", "MaNCC", "TenNCC");
+            cbo_TrangThai.SelectedIndex = 0;
+            cbo_TrangThai.DropDownStyle= ComboBoxStyle.DropDownList;
         }      
         void loadData_DataGrid(DataGridView d, string sql)
         {

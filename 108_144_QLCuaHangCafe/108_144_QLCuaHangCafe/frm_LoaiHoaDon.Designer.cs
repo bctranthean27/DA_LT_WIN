@@ -157,8 +157,7 @@
             this.label1.Size = new System.Drawing.Size(1077, 63);
             this.label1.TabIndex = 90;
             this.label1.Text = "NHẬP LOẠI HOÁ ĐƠN";
-            this.label1.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            // 
+            this.label1.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;            // 
             // btn_Exit
             // 
             this.btn_Exit.Font = new System.Drawing.Font("Segoe UI Semibold", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));

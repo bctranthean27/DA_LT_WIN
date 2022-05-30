@@ -28,6 +28,11 @@ namespace _108_144_QLCuaHangCafe
             loadData_cbo(cbo_KhachHang, "select MaKH,TenKH from KhachHang", "MaKH", "TenKH");
             loadData_cbo(cbo_LoaiHD, "select MaLoaiHD,TenLoaiHD from LoaiHoaDon", "MaLoaiHD", "TenLoaiHD");
             loadData_cbo(cbo_NhanVien, "select MaNV,TenNV from NhanVien", "MaNV", "TenNV");
+            cbo_KhachHang.DropDownStyle = ComboBoxStyle.DropDownList;
+            cbo_LoaiHD.DropDownStyle = ComboBoxStyle.DropDownList;
+            cbo_NhanVien.DropDownStyle = ComboBoxStyle.DropDownList;
+            cbo_TrangThai.DropDownStyle = ComboBoxStyle.DropDownList;
+            cbo_TrangThai.SelectedIndex = 0;
         }
         void loadData_DataGrid(DataGridView d, string sql)
         {

@@ -26,6 +26,9 @@ namespace _108_144_QLCuaHangCafe
             cbo_TrangThai.SelectedIndex = 0;
             loadData_cbo(cbo_LoaiSP, "select MaLoai,TenLoai from LoaiSanPham", "MaLoai", "TenLoai");
             loadData_cbo(cbo_NCC, "select MaNCC,TenNCC from NhaCungCap", "MaNCC", "TenNCC");
+            cbo_LoaiSP.DropDownStyle = ComboBoxStyle.DropDownList;
+            cbo_NCC.DropDownStyle = ComboBoxStyle.DropDownList;
+            cbo_TrangThai.DropDownStyle = ComboBoxStyle.DropDownList;
         }
         void loadData_DataGrid(DataGridView d, string sql)
         {
