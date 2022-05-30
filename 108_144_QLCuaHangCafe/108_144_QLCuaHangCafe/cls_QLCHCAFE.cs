@@ -19,10 +19,15 @@ namespace _108_144_QLCuaHangCafe
             if(con.State != ConnectionState.Closed)
                 con.Open();
         }
-        //public void DongKetNoi()
-        //{
-
-        //}
+        public int CapNhatDulieu(string sql)
+        {
+            con.Open();
+            SqlCommand cmd = new SqlCommand();
+            cmd.CommandText = sql;
+            cmd.CommandType = CommandType.Text;
+            cmd.Connection = con;
+            return cmd.ExecuteNonQuery();
+        }
         public cls_QLCHCAFE ()
         {
             KetNoi();

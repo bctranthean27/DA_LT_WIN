@@ -91,9 +91,15 @@ namespace _108_144_QLCuaHangCafe
             }
             else
             {
-                for (int i = 0; i < cbo.Items.Count; i++)
+                foreach (DataRowView rowView in cbo.Items)
                 {
-                    if (cbo.ValueMember == value) cbo.SelectedIndex = i;
+                    string val = rowView.Row[0].ToString();
+                    string name = rowView.Row[1].ToString();
+                    if (val == value)
+                    {
+                        cbo.Text = name;
+                        break;
+                    }
                 }
             }
         }

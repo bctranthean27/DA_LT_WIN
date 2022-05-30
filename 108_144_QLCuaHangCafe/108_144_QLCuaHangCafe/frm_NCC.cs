@@ -16,6 +16,8 @@ namespace _108_144_QLCuaHangCafe
         cls_QLCHCAFE c = new cls_QLCHCAFE();
         int vt = 0;
         DataSet ds = new DataSet();
+        int flag = 0;
+        string Old_Value = "";
         public frm_NCC()
         {
 
@@ -61,22 +63,79 @@ namespace _108_144_QLCuaHangCafe
         }
         private void btn_Them_Click(object sender, EventArgs e)
         {
+            
             XuLiTextBox(false);
             XuLiButton(false);
+            flag = 1;
         }
-
-        private void btn_Luu_Click(object sender, EventArgs e)
-        {
-            XuLiTextBox(true);
-            XuLiButton(true);
-        }
-
         private void btn_Sua_Click(object sender, EventArgs e)
         {
             XuLiTextBox(false);
             XuLiButton(false);
             btn_Luu.Enabled = true;
+            flag = 2;
         }
+        private void btn_Luu_Click(object sender, EventArgs e)
+        {
+            XuLiTextBox(true);
+            XuLiButton(true);
+            string m1 = txt_NCC.Text;
+            string m2 = txt_TenNCC.Text;
+            string m3 = txt_DienThoai.Text;
+            string m4 = txt_DiaChiMail.Text;
+            string m5 = txt_DiaChi.Text;
+            string m6 = cbo_TrangThai.SelectedItem.ToString();
+            switch (flag)
+            {
+                case 1:
+                    {
+                        try
+                        {
+                            string sql = "insert into NhaCungCap(MaNCC,TenNCC,SDT,Mail,DChi,TrangThai) values ('" + m1 + "',N'" + m2 + "',N'" + m3 + "','" + m4 + "',N'" + m5 + "','" + 1 + "')";
+                            if (c.CapNhatDulieu(sql) > 0)
+                            {
+                                MessageBox.Show("Cập nhật thành công", "Thông báo", MessageBoxButtons.OK);
+                                frm_NCC_Load(sender, e);
+                            }
+                        }
+                        catch (Exception ex)
+                        {
+                            MessageBox.Show("Lỗi cập nhật", "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                            XuLiTextBox(false);
+                        }
+                    }
+                    break;
+                case 2:
+                    {
+                        try
+                        {
+
+                            string sql = "update NhaCungCap set ";
+                            sql += " MaNCC='" + m1;
+                            sql += "',TenNCC=N'" + m2;
+                            sql += "',SDT='" + m3;
+                            sql += "',Mail='" + m4;
+                            sql += "',DChi=N'" + m5;
+                            sql += "',TrangThai='" + m6;
+                            sql += "' where MaNCC='" + Old_Value + "'";
+
+                            if (c.CapNhatDulieu(sql) > 0)
+                            {
+                                MessageBox.Show("Cập nhật thành công", "Thông báo", MessageBoxButtons.OK);
+                                frm_NCC_Load(sender, e);
+                            }
+                        }
+                        catch (Exception ex)
+                        {
+                            MessageBox.Show("Lỗi cập nhật\nHãy chắc chắn bạn chọn đúng cột muốn sửa", "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        }
+                    }
+                    break;
+
+            }
+        }
+
+        
         void hienThiTextBox(DataTable dt, int vt)
         {
             txt_NCC.Text = dt.Rows[vt]["MaNCC"].ToString();
@@ -91,6 +150,7 @@ namespace _108_144_QLCuaHangCafe
         {
             int vt = dgv_DanhSach.CurrentCell.RowIndex;
             hienThiTextBox(ds.Tables[0], vt);
+            Old_Value = txt_NCC.Text; // lấy giá trị cũ để sửa đổi
         }
     }
 }

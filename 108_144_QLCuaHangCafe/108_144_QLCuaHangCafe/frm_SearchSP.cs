@@ -32,14 +32,22 @@ namespace _108_144_QLCuaHangCafe
         }
         void loadData_DataGrid(DataGridView d, string sql)
         {
-            DataSet ds = c.LayDuLieu(sql);
+            ds = c.LayDuLieu(sql);
             d.DataSource = ds.Tables[0];
 
         }
-        void loadData_cbo(ComboBox cbo,string sql, string valMember, string disMember)
+        void loadData_cbo(ComboBox cbo,string sql, string valMember, string disMember, bool check=true)
         {
+            
             ds = c.LayDuLieu(sql);
-            for(int i=0;i<ds.Tables[0].Rows.Count;i++)
+            if(check)
+            {
+                DataRow workRow = ds.Tables [0].NewRow();
+                workRow[valMember] = 0;
+                workRow[disMember] = "All";
+                ds.Tables[0].Rows.InsertAt(workRow, 0);
+            }
+            for (int i=0;i<ds.Tables[0].Rows.Count;i++)
             {
                 cbo.DataSource = ds.Tables[0];
                 cbo.ValueMember= valMember;
@@ -53,35 +61,26 @@ namespace _108_144_QLCuaHangCafe
             string dk_MaLoai = ((DataRowView)cbo_LoaiSP.SelectedItem)["MaLoai"].ToString();
             string dk_Ncc = ((DataRowView)cbo_NCC.SelectedItem)["MaNCC"].ToString();
             string dk_TrangThai = cbo_TrangThai.Text;
-            string tk = "select * from SanPham";
-            try
+            string tk = "select * from SanPham where DonGia >= "+giaMin;
+            if (txt_MaxGiaSP.Text != "")
             {
-                if (txt_MaxGiaSP.Text == "")
-                {
-                giaMin = int.Parse(txt_MinGiaSP.Text);
-                tk += " where DonGia >= " + giaMin ;
-                }
-                else if (txt_MinGiaSP.Text == "")
-                {
                 giaMax = int.Parse(txt_MaxGiaSP.Text);
-                tk += " where DonGia <= " + giaMax;
-                }
-                else
-                {
-                giaMin = int.Parse(txt_MinGiaSP.Text);
-                giaMax = int.Parse(txt_MaxGiaSP.Text);
-                tk += " where DonGia >= " + giaMin + " and DonGia <= " + giaMax;
-                }
-                tk += "and MaLoai like '" + dk_MaLoai + "'and MaNCC like '" + dk_Ncc + "' and TrangThai like '" + dk_TrangThai + "'";
-                
-                loadData_DataGrid(dgv_DanhSach, tk);
+                tk += " and DonGia <= " + giaMax;
             }
-            catch (Exception ex)
+            if (int.Parse(dk_MaLoai) != 0)
             {
-                MessageBox.Show("Vui lòng nhập vào giá sản phẩm muốn tìm", "Thông báo", MessageBoxButtons.OK);
+                tk += " and MaLoai = " + int.Parse(dk_MaLoai);
             }
-        }
 
-        
+            if (int.Parse(dk_Ncc) != 0)
+            {
+                tk += " and MaNCC = " + int.Parse(dk_Ncc);
+            }
+
+            tk += " and TrangThai = " + int.Parse(dk_TrangThai);
+            loadData_DataGrid(dgv_DanhSach, tk);
+        }
+            
     }
+
 }

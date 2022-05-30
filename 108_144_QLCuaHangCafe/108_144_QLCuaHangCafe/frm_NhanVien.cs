@@ -27,6 +27,7 @@ namespace _108_144_QLCuaHangCafe
             loadData_cbo(cbo_ChucVu, "select MaChucVu,TenChucVu from ChucVu", "MaChucVu", "TenChucVu");
             cbo_TrangThai.SelectedIndex = 0;
             cbo_TrangThai.DropDownStyle = ComboBoxStyle.DropDownList;
+            cbo_ChucVu.DropDownStyle = ComboBoxStyle.DropDownList;
         }
         void loadData_DataGrid(DataGridView d, string sql)
         {
@@ -76,7 +77,7 @@ namespace _108_144_QLCuaHangCafe
             XuLiButton(false);
             btn_Luu.Enabled = true;
         }
-        void loadData_cboFromList(DataTable dt, ComboBox cbo, string disMember)
+        void loadData_cboFromList(DataTable dt, ComboBox cbo, string disMember,int vt)
         {
 
             string value = dt.Rows[vt][disMember].ToString();
@@ -89,21 +90,28 @@ namespace _108_144_QLCuaHangCafe
             }
             else
             {
-                for (int i = 0; i < cbo.Items.Count; i++)
+                foreach(DataRowView rowView in cbo.Items)
                 {
-                    if (cbo.SelectedValue.ToString() == value) cbo.SelectedIndex = i;
+                    string val = rowView.Row[0].ToString();
+                    string name = rowView.Row[1].ToString();
+                    if(val == value)
+                    {
+                        cbo.Text = name;
+                        break;
+                    }
+
                 }
             }
         }
         void hienThiTextBox(DataTable dt, int vt)
         {
-            txt_MaNV.Text = ds.Tables[0].Rows[vt]["MaNV"].ToString();
-            txt_HoNV.Text = ds.Tables[0].Rows[vt]["HoNV"].ToString();
-            txt_TenNV.Text = ds.Tables[0].Rows[vt]["TenNV"].ToString();
-            txt_DiaChi.Text = ds.Tables[0].Rows[vt]["DChi"].ToString();
-            loadData_cboFromList(dt, cbo_ChucVu, "MaChucVu");
-            loadData_cboFromList(dt, cbo_TrangThai, "TrangThai");
-            dtp_NgayVaoLam.Value = DateTime.Parse(ds.Tables[0].Rows[vt]["NgayVaoLam"].ToString());
+            txt_MaNV.Text = dt.Rows[vt]["MaNV"].ToString();
+            txt_HoNV.Text = dt.Rows[vt]["HoNV"].ToString();
+            txt_TenNV.Text = dt.Rows[vt]["TenNV"].ToString();
+            txt_DiaChi.Text = dt.Rows[vt]["DChi"].ToString();
+            loadData_cboFromList(dt, cbo_ChucVu, "MaChucVu",vt);
+            loadData_cboFromList(dt, cbo_TrangThai, "TrangThai",vt);
+            dtp_NgayVaoLam.Value = DateTime.Parse(dt.Rows[vt]["NgayVaoLam"].ToString());
 
         }
         private void dgv_DanhSach_CellClick(object sender, DataGridViewCellEventArgs e)
@@ -114,9 +122,5 @@ namespace _108_144_QLCuaHangCafe
 
         }
 
-        private void dgv_DanhSach_CellValueChanged(object sender, DataGridViewCellEventArgs e)
-        {
-
-        }
     }
 }

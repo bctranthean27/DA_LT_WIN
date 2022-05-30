@@ -15,6 +15,8 @@ namespace _108_144_QLCuaHangCafe
         cls_QLCHCAFE c = new cls_QLCHCAFE();
         int vt = 0;
         DataSet ds = new DataSet();
+        int flag = 0;
+        string Old_Value = "";
         public frm_LoaiHoaDon()
         {
             InitializeComponent();
@@ -51,20 +53,72 @@ namespace _108_144_QLCuaHangCafe
         {
             XuLiTextBox(false);
             XuLiButton(false);
+            flag = 1;
         }
-
-        private void btn_Luu_Click(object sender, EventArgs e)
-        {
-            XuLiTextBox(true);
-            XuLiButton(true);
-        }
-
         private void btn_Sua_Click(object sender, EventArgs e)
         {
             XuLiTextBox(false);
             XuLiButton(false);
             btn_Luu.Enabled = true;
+            flag = 2;
         }
+        private void btn_Luu_Click(object sender, EventArgs e)
+        {
+            XuLiTextBox(true);
+            XuLiButton(true);
+            string m1 = txt_MaLoaiHD.Text;
+            string m2 = txt_TenLoaiHD.Text;
+            string m3 = cbo_TrangThai.SelectedItem.ToString();
+            switch (flag)
+            {
+                case 1:
+                    {
+                        try
+                        {
+                            string sql = "insert into LoaiHoaDon(MaLoaiHD,TenLoaiHD,TrangThai) values ('" + m1 + "',N'" + m2 + "','" + 1 + "')";
+                            if (c.CapNhatDulieu(sql) > 0)
+                            {
+                                MessageBox.Show("Cập nhật thành công", "Thông báo", MessageBoxButtons.OK);
+                                frm_LoaiHoaDon_Load(sender, e);
+
+                            }
+                        }
+                        catch (Exception ex)
+                        {
+                            MessageBox.Show("Lỗi cập nhật ", "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                            XuLiTextBox(false);
+                        }
+                    }
+                    break;
+                case 2:
+                    {
+                        try
+                        {
+
+                            string sql = "update LoaiHoaDon set ";
+                            sql += " MaLoaiHD='" + m1;
+                            sql += "',TenLoaiHD=N'" + m2;
+                            sql += "',TrangThai='" + m3;
+                            sql += "' where MaLoaiHD='" + Old_Value + "'";
+                            MessageBox.Show(sql, "Thông báo", MessageBoxButtons.OK);
+                            if (c.CapNhatDulieu(sql) > 0)
+                            {
+                                MessageBox.Show("Cập nhật thành công", "Thông báo", MessageBoxButtons.OK);
+                                frm_LoaiHoaDon_Load(sender, e);
+                            }
+                        }
+                        catch (Exception ex)
+                        {
+                            MessageBox.Show("Lỗi cập nhật \nHãy chắc chắn bạn chọn đúng cột muốn sửa", "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        }
+                    }
+                    break;
+
+            }
+
+        }
+
+        
         void loadData_cboFromList(DataTable dt, ComboBox cbo, string disMember)
         {
 
@@ -95,7 +149,7 @@ namespace _108_144_QLCuaHangCafe
             ds = c.LayDuLieu("select * from LoaiHoaDon");
             int vt = dgv_DanhSach.CurrentCell.RowIndex;
             hienThiTextBox(ds.Tables[0], vt);
-
+            Old_Value = txt_MaLoaiHD.Text; // lấy giá trị cũ để sửa đổi
         }
 
     }

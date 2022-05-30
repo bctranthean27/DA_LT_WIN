@@ -107,14 +107,14 @@
             // 
             // cbo_TrangThai
             // 
-            this.cbo_TrangThai.Font = new System.Drawing.Font("Segoe UI Semibold", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.cbo_TrangThai.Font = new System.Drawing.Font("Segoe UI Semibold", 13.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.cbo_TrangThai.FormattingEnabled = true;
             this.cbo_TrangThai.Items.AddRange(new object[] {
-            "0",
-            "1"});
+            "1",
+            "0"});
             this.cbo_TrangThai.Location = new System.Drawing.Point(255, 237);
             this.cbo_TrangThai.Name = "cbo_TrangThai";
-            this.cbo_TrangThai.Size = new System.Drawing.Size(299, 31);
+            this.cbo_TrangThai.Size = new System.Drawing.Size(299, 39);
             this.cbo_TrangThai.TabIndex = 95;
             // 
             // label9
@@ -157,7 +157,8 @@
             this.label1.Size = new System.Drawing.Size(1077, 63);
             this.label1.TabIndex = 90;
             this.label1.Text = "NHẬP LOẠI HOÁ ĐƠN";
-            this.label1.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;            // 
+            this.label1.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
             // btn_Exit
             // 
             this.btn_Exit.Font = new System.Drawing.Font("Segoe UI Semibold", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
