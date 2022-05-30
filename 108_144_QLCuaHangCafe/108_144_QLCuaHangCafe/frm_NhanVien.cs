@@ -35,12 +35,9 @@ namespace _108_144_QLCuaHangCafe
         void loadData_cbo(ComboBox cbo, string sql, string valMember, string disMember)
         {
             ds = c.LayDuLieu(sql);
-            for (int i = 0; i < ds.Tables[0].Rows.Count; i++)
-            {
-                cbo.DataSource = ds.Tables[0];
-                cbo.ValueMember = valMember;
-                cbo.DisplayMember = disMember;
-            }
+            cbo.DataSource = ds.Tables[0];
+            cbo.ValueMember = valMember;
+            cbo.DisplayMember = disMember; 
         }
         void XuLiTextBox(Boolean t)
         {
@@ -48,9 +45,9 @@ namespace _108_144_QLCuaHangCafe
             txt_HoNV.ReadOnly = t;
             txt_MaNV.ReadOnly = t;
             txt_DiaChi.ReadOnly = t;
-            cbo_ChucVu.Enabled = !t;
-            cbo_TrangThai.Enabled = !t;
-            dtp_NgayVaoLam.Enabled = !t;
+            //cbo_ChucVu.Visible = !t;
+            //cbo_TrangThai.Visible = !t;
+            //dtp_NgayVaoLam.Visible = !t;
         }
         void XuLiButton(Boolean t)
         {
@@ -92,7 +89,7 @@ namespace _108_144_QLCuaHangCafe
             {
                 for (int i = 0; i < cbo.Items.Count; i++)
                 {
-                    if (cbo.ValueMember == value) cbo.SelectedIndex = i;
+                    if (cbo.SelectedValue.ToString() == value) cbo.SelectedIndex = i;
                 }
             }
         }
@@ -112,6 +109,11 @@ namespace _108_144_QLCuaHangCafe
             ds = c.LayDuLieu("select * from NhanVien");
             int vt = dgv_DanhSach.CurrentCell.RowIndex;
             hienThiTextBox(ds.Tables[0], vt);
+
+        }
+
+        private void dgv_DanhSach_CellValueChanged(object sender, DataGridViewCellEventArgs e)
+        {
 
         }
     }

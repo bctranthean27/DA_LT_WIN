@@ -91,8 +91,7 @@
             this.dgv_DanhSach.RowTemplate.Height = 24;
             this.dgv_DanhSach.Size = new System.Drawing.Size(1116, 280);
             this.dgv_DanhSach.TabIndex = 0;
-            this.dgv_DanhSach.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgv_DanhSach_CellClick);
-            // 
+            this.dgv_DanhSach.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgv_DanhSach_CellClick);            // 
             // MaNV
             // 
             this.MaNV.DataPropertyName = "MaNV";
