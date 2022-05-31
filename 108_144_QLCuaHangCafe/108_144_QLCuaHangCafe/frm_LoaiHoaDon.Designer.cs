@@ -168,6 +168,7 @@
             this.btn_Exit.TabIndex = 80;
             this.btn_Exit.Text = "Thoát";
             this.btn_Exit.UseVisualStyleBackColor = true;
+            this.btn_Exit.Click += new System.EventHandler(this.btn_Exit_Click);
             // 
             // btn_Luu
             // 
@@ -200,6 +201,7 @@
             this.btn_Xoa.TabIndex = 77;
             this.btn_Xoa.Text = "Xoá";
             this.btn_Xoa.UseVisualStyleBackColor = true;
+            this.btn_Xoa.Click += new System.EventHandler(this.btn_Xoa_Click);
             // 
             // btn_Them
             // 

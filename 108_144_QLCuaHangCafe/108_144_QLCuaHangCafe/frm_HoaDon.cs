@@ -15,6 +15,8 @@ namespace _108_144_QLCuaHangCafe
         cls_QLCHCAFE c = new cls_QLCHCAFE();
         int vt = 0;
         DataSet ds = new DataSet();
+        int flag = 0;
+        string Old_Value = "";
         public frm_HoaDon()
         {
             InitializeComponent();
@@ -64,20 +66,98 @@ namespace _108_144_QLCuaHangCafe
         {
             XuLiTextBox(false);
             XuLiButton(false);
+            flag = 1;
         }
-
-        private void btn_Luu_Click(object sender, EventArgs e)
-        {
-            XuLiTextBox(true);
-            XuLiButton(true);
-        }
-
         private void btn_Sua_Click(object sender, EventArgs e)
         {
             XuLiTextBox(false);
             XuLiButton(false);
-            btn_Luu.Enabled = true;
+            flag = 2;
         }
+        string NgayThangNam(DateTimePicker dtp)
+        {
+            string NgayDayDu = "";
+            string ngay = dtp.Value.Day.ToString();
+            string thang = dtp.Value.Month.ToString();
+            string nam = dtp.Value.Year.ToString();
+            NgayDayDu = thang + "/" + ngay + "/" + nam;
+            return NgayDayDu;
+        }
+
+        void them(object sender, EventArgs e, string m1, string m2, string m3, string m4, string m5, string m6 = "1")
+        {
+
+            try
+            {
+                if (m1.Trim() == "" || m2.Trim() == "" || m3.Trim() == "" || m4.Trim() == "" || m5.Trim() == "" )
+                    throw new Exception("Vui lòng điền đủ thông tin");
+                string sql = "insert into HoaDon(MaHD,MaKH,NgayLap,MaLoaiHD,MaNV,TrangThai) values ('" + m1 + "',N'" + m2 + "',N'" + m3 + "','" + m4 + "',N'" + m5 + "',N'" + m6  + "')";
+                if (c.CapNhatDulieu(sql) > 0)
+                {
+                    MessageBox.Show("Cập nhật thành công", "Thông báo", MessageBoxButtons.OK);
+                    frm_HoaDon_Load(sender, e);
+                }
+            }
+            catch (Exception err)
+            {
+                MessageBox.Show(err.Message, "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                c.DongKetNoi();
+                btn_Them_Click(sender, e);
+            }
+        }
+        void sua(object sender, EventArgs e, string m1, string m2, string m3, string m4, string m5, string m6 = "1")
+        {
+            try
+            {
+                if (txt_MaHD.Text == "")
+                {
+                    throw new Exception("Lỗi cập nhật\nHãy chắc chắn bạn chọn đúng cột muốn sửa");
+                }
+                string sql = "update HoaDon set ";
+                sql += " MaHD='" + m1;
+                sql += "',MaKH='" + m2;
+                sql += "',NgayLap=N'" + m3;
+                sql += "',MaLoaiHD=N'" + m4;
+                sql += "',MaNV='" + m5;
+                sql += "',TrangThai='" + m6;
+                sql += "' where MaHD='" + Old_Value + "'";
+
+                if (c.CapNhatDulieu(sql) > 0)
+                {
+                    MessageBox.Show("Cập nhật thành công", "Thông báo", MessageBoxButtons.OK);
+                    frm_HoaDon_Load(sender, e);
+                }
+            }
+            catch (Exception err)
+            {
+                MessageBox.Show(err.Message, "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                btn_Sua_Click(sender, e);
+            }
+        }
+        private void btn_Luu_Click(object sender, EventArgs e)
+        {
+            XuLiTextBox(true);
+            XuLiButton(true);
+            string m1 = txt_MaHD.Text;
+            string m2 = cbo_KhachHang.SelectedValue.ToString();
+            string m3 = NgayThangNam(dtp_NgayLap);
+            string m4 = cbo_LoaiHD.SelectedValue.ToString();
+            string m5 = cbo_NhanVien.SelectedValue.ToString();
+            string m6 = cbo_TrangThai.SelectedItem.ToString();
+            switch (flag)
+            {
+                case 1:
+                    clearTextbox();
+                    them(sender, e, m1, m2, m3, m4, m5, m6);
+                    break;
+                case 2:
+                    sua(sender, e, m1, m2, m3, m4, m5, m6);
+                    break;
+
+            }
+        }
+
+
         void loadData_cboFromList(DataTable dt, ComboBox cbo, string disMember)
         {
             
@@ -118,9 +198,38 @@ namespace _108_144_QLCuaHangCafe
             ds = c.LayDuLieu("select * from HoaDon");
             int vt = dgv_DanhSach.CurrentCell.RowIndex;
             hienThiTextBox(ds.Tables[0], vt);
+            Old_Value = txt_MaHD.Text;
             
         }
+        void clearTextbox()
+        {
+            txt_MaHD.Text = "";
+            cbo_KhachHang.SelectedIndex = 0;
+            cbo_LoaiHD.SelectedIndex = 0;
+            cbo_NhanVien.SelectedIndex = 0;
+            cbo_TrangThai.SelectedIndex = 0;
+            dtp_NgayLap.Value = DateTime.Now;
 
-        
+        }
+        private void btn_Xoa_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                if (txt_MaHD.Text == "")
+                    throw new Exception("Lỗi cập nhật\nHãy chắc chắn bạn chọn đúng cột muốn xoá");
+                string sql = "DELETE from HoaDon where MaHD='" + Old_Value + "'";
+                if (c.CapNhatDulieu(sql) > 0)
+                {
+                    MessageBox.Show("Cập nhật thành công", "Thông báo", MessageBoxButtons.OK);
+                    frm_HoaDon_Load(sender, e);
+                    clearTextbox();
+                }
+            }
+            catch (Exception err)
+            {
+                MessageBox.Show(err.Message, "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                frm_HoaDon_Load(sender, e);
+            }
+        }
     }
 }

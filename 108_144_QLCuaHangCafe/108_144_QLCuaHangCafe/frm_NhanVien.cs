@@ -15,6 +15,8 @@ namespace _108_144_QLCuaHangCafe
         cls_QLCHCAFE c = new cls_QLCHCAFE();
         int vt = 0;
         DataSet ds = new DataSet();
+        int flag = 0;
+        string Old_Value = "";
         public frm_NhanVien()
         {
             InitializeComponent();
@@ -63,20 +65,100 @@ namespace _108_144_QLCuaHangCafe
         {
             XuLiTextBox(false);
             XuLiButton(false);
+            flag = 1;
+        }
+        private void btn_Sua_Click(object sender, EventArgs e)
+        {
+            XuLiTextBox(false);
+            XuLiButton(false);
+            flag = 2;
+        }
+        string NgayThangNam(DateTimePicker dtp)
+        {
+            string NgayDayDu = "";
+            string ngay = dtp.Value.Day.ToString();
+            string thang = dtp.Value.Month.ToString();
+            string nam = dtp.Value.Year.ToString();
+            NgayDayDu = thang + "/" + ngay + "/" + nam;
+            return NgayDayDu;
+        }
+        void them(object sender, EventArgs e, string m1, string m2, string m3, string m4, string m5, string m6, string m7  = "1")
+        {
+
+            try
+            {
+                if (m1.Trim() == "" || m2.Trim() == "" || m3.Trim() == "" || m4.Trim() == "" || m5.Trim() == "" || m6.Trim() == "")
+                    throw new Exception("Vui lòng điền đủ thông tin");
+                string sql = "insert into NhanVien(MaNV,HoNV,TenNV,DChi,NgayVaolam,MaChucVu,TrangThai) values ('" + m1 + "',N'" + m2 + "',N'" + m3 + "','" + m4 + "',N'" + m5 + "',N'" + m6 + "','" + m7 + "')";
+                if (c.CapNhatDulieu(sql) > 0)
+                {
+                    MessageBox.Show("Cập nhật thành công", "Thông báo", MessageBoxButtons.OK);
+                    frm_NhanVien_Load(sender, e);
+                }
+            }
+            catch (Exception err)
+            {
+                MessageBox.Show(err.Message, "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                c.DongKetNoi();
+                btn_Them_Click(sender, e);
+            }
+        }
+        void sua(object sender, EventArgs e, string m1, string m2, string m3, string m4, string m5, string m6, string m7 = "1")
+        {
+            try
+            {
+                if (txt_MaNV.Text == "")
+                {
+                    throw new Exception("Lỗi cập nhật\nHãy chắc chắn bạn chọn đúng cột muốn sửa");
+                }
+                string sql = "update NhanVien set ";
+                sql += " MaNV='" + m1;
+                sql += "',HoNV=N'" + m2;
+                sql += "',TenNV='" + m3;
+                sql += "',DChi=N'" + m4;
+                sql += "',NgayVaoLam=N'" + m5;
+                sql += "',MaChucVu='" + m6;
+                sql += "',TrangThai='" + m7;
+                sql += "' where MaNV='" + Old_Value + "'";
+
+                if (c.CapNhatDulieu(sql) > 0)
+                {
+                    MessageBox.Show("Cập nhật thành công", "Thông báo", MessageBoxButtons.OK);
+                    frm_NhanVien_Load(sender, e);
+                }
+            }
+            catch (Exception err)
+            {
+                MessageBox.Show(err.Message, "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                btn_Sua_Click(sender, e);
+            }
         }
 
         private void btn_Luu_Click(object sender, EventArgs e)
         {
             XuLiTextBox(true);
             XuLiButton(true);
+            string m1 = txt_MaNV.Text;
+            string m2 = txt_HoNV.Text;
+            string m3 = txt_TenNV.Text;
+            string m4 = txt_DiaChi.Text;
+            string m5 = NgayThangNam(dtp_NgayVaoLam);
+            string m6 = cbo_ChucVu.SelectedValue.ToString();
+            string m7 = cbo_TrangThai.SelectedItem.ToString();
+            switch (flag)
+            {
+                case 1:
+                    clearTextbox();
+                    them(sender, e, m1, m2, m3, m4, m5, m6);
+                    break;
+                case 2:
+                    sua(sender, e, m1, m2, m3, m4, m5, m6);
+                    break;
+
+            }
         }
 
-        private void btn_Sua_Click(object sender, EventArgs e)
-        {
-            XuLiTextBox(false);
-            XuLiButton(false);
-            btn_Luu.Enabled = true;
-        }
+        
         void loadData_cboFromList(DataTable dt, ComboBox cbo, string disMember,int vt)
         {
 
@@ -119,8 +201,43 @@ namespace _108_144_QLCuaHangCafe
             ds = c.LayDuLieu("select * from NhanVien");
             int vt = dgv_DanhSach.CurrentCell.RowIndex;
             hienThiTextBox(ds.Tables[0], vt);
-
+            Old_Value = txt_MaNV.Text; // lấy giá trị cũ để sửa đổi
+        }
+        void clearTextbox()
+        {
+            txt_MaNV.Text = "";
+            txt_HoNV.Text = "";
+            txt_TenNV.Text = "";
+            txt_DiaChi.Text = "";
+            cbo_TrangThai.SelectedIndex = 0;
+            dtp_NgayVaoLam.Value = DateTime.Now;
+            cbo_TrangThai.SelectedIndex = 0;
         }
 
+        private void btn_Xoa_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                if (txt_MaNV.Text == "")
+                    throw new Exception("Lỗi cập nhật\nHãy chắc chắn bạn chọn đúng cột muốn xoá");
+                string sql = "DELETE from NhanVien where MaNV='" + Old_Value + "'";
+                if (c.CapNhatDulieu(sql) > 0)
+                {
+                    MessageBox.Show("Cập nhật thành công", "Thông báo", MessageBoxButtons.OK);
+                    frm_NhanVien_Load(sender, e);
+                    clearTextbox();
+                }
+            }
+            catch (Exception err)
+            {
+                MessageBox.Show(err.Message, "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                frm_NhanVien_Load(sender, e);
+            }
+        }
+
+        private void btn_Thoat_Click(object sender, EventArgs e)
+        {
+            Close();
+        }
     }
 }

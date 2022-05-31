@@ -107,14 +107,14 @@
             // 
             // cbo_TrangThai
             // 
-            this.cbo_TrangThai.Font = new System.Drawing.Font("Segoe UI Semibold", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.cbo_TrangThai.Font = new System.Drawing.Font("Segoe UI Semibold", 13.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.cbo_TrangThai.FormattingEnabled = true;
             this.cbo_TrangThai.Items.AddRange(new object[] {
             "0",
             "1"});
             this.cbo_TrangThai.Location = new System.Drawing.Point(255, 233);
             this.cbo_TrangThai.Name = "cbo_TrangThai";
-            this.cbo_TrangThai.Size = new System.Drawing.Size(299, 31);
+            this.cbo_TrangThai.Size = new System.Drawing.Size(299, 39);
             this.cbo_TrangThai.TabIndex = 82;
             // 
             // label9
@@ -168,6 +168,7 @@
             this.btn_Exit.TabIndex = 80;
             this.btn_Exit.Text = "Thoát";
             this.btn_Exit.UseVisualStyleBackColor = true;
+            this.btn_Exit.Click += new System.EventHandler(this.btn_Exit_Click);
             // 
             // btn_Lưu
             // 
@@ -200,6 +201,7 @@
             this.btn_Xoa.TabIndex = 77;
             this.btn_Xoa.Text = "Xoá";
             this.btn_Xoa.UseVisualStyleBackColor = true;
+            this.btn_Xoa.Click += new System.EventHandler(this.btn_Xoa_Click);
             // 
             // btn_Them
             // 

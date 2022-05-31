@@ -62,6 +62,53 @@ namespace _108_144_QLCuaHangCafe
             btn_Luu.Enabled = true;
             flag = 2;
         }
+        void them(object sender, EventArgs e, string m1, string m2)
+        {
+            try
+            {
+                if (m1.Trim() == "" || m2.Trim() == "")
+                    throw new Exception("Vui lòng điền đủ thông tin");
+                string sql = "insert into LoaiHoaDon(MaLoaiHD,TenLoaiHD,TrangThai) values ('" + m1 + "',N'" + m2 + "','" + 1 + "')";
+                if (c.CapNhatDulieu(sql) > 0)
+                {
+                    MessageBox.Show("Cập nhật thành công", "Thông báo", MessageBoxButtons.OK);
+                    frm_LoaiHoaDon_Load(sender, e);
+                }
+            }
+            catch (Exception err)
+            {
+                MessageBox.Show(err.Message, "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                c.DongKetNoi();
+                btn_Them_Click(sender, e);
+                
+            }
+        }
+        void sua(object sender, EventArgs e, string m1, string m2, string m3 = "1")
+        {
+            try
+            {
+                if (txt_MaLoaiHD.Text == "")
+                {
+                    throw new Exception("Lỗi cập nhật\nHãy chắc chắn bạn chọn đúng cột muốn sửa");
+                }
+                string sql = "update LoaiHoaDon set ";
+                sql += " MaLoaiHD='" + m1;
+                sql += "',TenLoaiHD=N'" + m2;
+                sql += "',TrangThai='" + m3;
+                sql += "' where MaLoaiHD='" + Old_Value + "'";
+
+                if (c.CapNhatDulieu(sql) > 0)
+                {
+                    MessageBox.Show("Cập nhật thành công", "Thông báo", MessageBoxButtons.OK);
+                    frm_LoaiHoaDon_Load(sender, e);
+                }
+            }
+            catch (Exception err)
+            {
+                MessageBox.Show(err.Message, "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                btn_Sua_Click(sender, e);
+            }
+        }
         private void btn_Luu_Click(object sender, EventArgs e)
         {
             XuLiTextBox(true);
@@ -72,46 +119,11 @@ namespace _108_144_QLCuaHangCafe
             switch (flag)
             {
                 case 1:
-                    {
-                        try
-                        {
-                            string sql = "insert into LoaiHoaDon(MaLoaiHD,TenLoaiHD,TrangThai) values ('" + m1 + "',N'" + m2 + "','" + 1 + "')";
-                            if (c.CapNhatDulieu(sql) > 0)
-                            {
-                                MessageBox.Show("Cập nhật thành công", "Thông báo", MessageBoxButtons.OK);
-                                frm_LoaiHoaDon_Load(sender, e);
-
-                            }
-                        }
-                        catch (Exception ex)
-                        {
-                            MessageBox.Show("Lỗi cập nhật ", "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                            XuLiTextBox(false);
-                        }
-                    }
+                    clearTextbox();
+                    them(sender, e, m1, m2);
                     break;
                 case 2:
-                    {
-                        try
-                        {
-
-                            string sql = "update LoaiHoaDon set ";
-                            sql += " MaLoaiHD='" + m1;
-                            sql += "',TenLoaiHD=N'" + m2;
-                            sql += "',TrangThai='" + m3;
-                            sql += "' where MaLoaiHD='" + Old_Value + "'";
-                            MessageBox.Show(sql, "Thông báo", MessageBoxButtons.OK);
-                            if (c.CapNhatDulieu(sql) > 0)
-                            {
-                                MessageBox.Show("Cập nhật thành công", "Thông báo", MessageBoxButtons.OK);
-                                frm_LoaiHoaDon_Load(sender, e);
-                            }
-                        }
-                        catch (Exception ex)
-                        {
-                            MessageBox.Show("Lỗi cập nhật \nHãy chắc chắn bạn chọn đúng cột muốn sửa", "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                        }
-                    }
+                    sua(sender, e, m1, m2, m3);
                     break;
 
             }
@@ -151,6 +163,37 @@ namespace _108_144_QLCuaHangCafe
             hienThiTextBox(ds.Tables[0], vt);
             Old_Value = txt_MaLoaiHD.Text; // lấy giá trị cũ để sửa đổi
         }
+        void clearTextbox()
+        {
+            txt_MaLoaiHD.Text = "";
+            txt_TenLoaiHD.Text = "";
+            cbo_TrangThai.SelectedIndex = 0;
+        }
 
+        private void btn_Xoa_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                if (txt_MaLoaiHD.Text == "")
+                    throw new Exception("Lỗi cập nhật\nHãy chắc chắn bạn chọn đúng cột muốn xoá");
+                string sql = "DELETE from LoaiHoaDon where MaLoaiHD='" + Old_Value + "'";
+                if (c.CapNhatDulieu(sql) > 0)
+                {
+                    MessageBox.Show("Cập nhật thành công", "Thông báo", MessageBoxButtons.OK);
+                    frm_LoaiHoaDon_Load(sender, e);
+                    clearTextbox();
+                }
+            }
+            catch (Exception err)
+            {
+                MessageBox.Show(err.Message, "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                frm_LoaiHoaDon_Load(sender, e);
+            }
+        }
+
+        private void btn_Exit_Click(object sender, EventArgs e)
+        {
+            Close();
+        }
     }
 }

@@ -75,6 +75,55 @@ namespace _108_144_QLCuaHangCafe
             btn_Luu.Enabled = true;
             flag = 2;
         }
+        void them(object sender, EventArgs e, string m1, string m2, string m3, string m4, string m5, string m6 = "1")
+        {
+            try
+            {
+                if (m1.Trim() == "" || m2.Trim() == "" || m3.Trim() == "" || m4.Trim() == "" || m5.Trim() == "")
+                    throw new Exception("Vui lòng điền đủ thông tin");
+                string sql = "insert into NhaCungCap(MaNCC,TenNCC,SDT,Mail,DChi,TrangThai) values ('" + m1 + "',N'" + m2 + "',N'" + m3 + "','" + m4 + "',N'" + m5 + "','" + 1 + "')";
+                if (c.CapNhatDulieu(sql) > 0)
+                {
+                    MessageBox.Show("Cập nhật thành công", "Thông báo", MessageBoxButtons.OK);
+                    frm_NCC_Load(sender, e);
+                }
+            }
+            catch (Exception err)
+            {
+                MessageBox.Show(err.Message, "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                c.DongKetNoi();
+                btn_Them_Click(sender, e);
+            }
+        }
+        void sua(object sender, EventArgs e, string m1, string m2, string m3, string m4, string m5, string m6 = "1")
+        {
+            try
+            {
+                if (txt_NCC.Text == "")
+                {
+                    throw new Exception("Lỗi cập nhật\nHãy chắc chắn bạn chọn đúng cột muốn sửa");
+                }
+                string sql = "update NhaCungCap set ";
+                sql += " MaNCC='" + m1;
+                sql += "',TenNCC=N'" + m2;
+                sql += "',SDT='" + m3;
+                sql += "',Mail='" + m4;
+                sql += "',DChi=N'" + m5;
+                sql += "',TrangThai='" + m6;
+                sql += "' where MaNCC='" + Old_Value + "'";
+
+                if (c.CapNhatDulieu(sql) > 0)
+                {
+                    MessageBox.Show("Cập nhật thành công", "Thông báo", MessageBoxButtons.OK);
+                    frm_NCC_Load(sender, e);
+                }
+            }
+            catch (Exception err)
+            {
+                MessageBox.Show(err.Message, "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                btn_Sua_Click(sender, e);
+            }
+        }
         private void btn_Luu_Click(object sender, EventArgs e)
         {
             XuLiTextBox(true);
@@ -88,48 +137,11 @@ namespace _108_144_QLCuaHangCafe
             switch (flag)
             {
                 case 1:
-                    {
-                        try
-                        {
-                            string sql = "insert into NhaCungCap(MaNCC,TenNCC,SDT,Mail,DChi,TrangThai) values ('" + m1 + "',N'" + m2 + "',N'" + m3 + "','" + m4 + "',N'" + m5 + "','" + 1 + "')";
-                            if (c.CapNhatDulieu(sql) > 0)
-                            {
-                                MessageBox.Show("Cập nhật thành công", "Thông báo", MessageBoxButtons.OK);
-                                frm_NCC_Load(sender, e);
-                            }
-                        }
-                        catch (Exception ex)
-                        {
-                            MessageBox.Show("Lỗi cập nhật", "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                            XuLiTextBox(false);
-                        }
-                    }
+                    clearTextbox();
+                    them(sender, e, m1, m2, m3, m4, m5, m6);
                     break;
                 case 2:
-                    {
-                        try
-                        {
-
-                            string sql = "update NhaCungCap set ";
-                            sql += " MaNCC='" + m1;
-                            sql += "',TenNCC=N'" + m2;
-                            sql += "',SDT='" + m3;
-                            sql += "',Mail='" + m4;
-                            sql += "',DChi=N'" + m5;
-                            sql += "',TrangThai='" + m6;
-                            sql += "' where MaNCC='" + Old_Value + "'";
-
-                            if (c.CapNhatDulieu(sql) > 0)
-                            {
-                                MessageBox.Show("Cập nhật thành công", "Thông báo", MessageBoxButtons.OK);
-                                frm_NCC_Load(sender, e);
-                            }
-                        }
-                        catch (Exception ex)
-                        {
-                            MessageBox.Show("Lỗi cập nhật\nHãy chắc chắn bạn chọn đúng cột muốn sửa", "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                        }
-                    }
+                    sua(sender, e, m1, m2, m3, m4, m5, m6);
                     break;
 
             }
@@ -151,6 +163,41 @@ namespace _108_144_QLCuaHangCafe
             int vt = dgv_DanhSach.CurrentCell.RowIndex;
             hienThiTextBox(ds.Tables[0], vt);
             Old_Value = txt_NCC.Text; // lấy giá trị cũ để sửa đổi
+        }
+        void clearTextbox()
+        {
+            txt_NCC.Text = "";
+            txt_TenNCC.Text = "";
+            txt_DiaChi.Text = "";
+            txt_DiaChiMail.Text = "";
+            txt_DienThoai.Text = "";
+            cbo_TrangThai.SelectedIndex = 0;
+        }
+
+        private void btn_Xoa_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                if (txt_NCC.Text == "")
+                    throw new Exception("Lỗi cập nhật\nHãy chắc chắn bạn chọn đúng cột muốn xoá");
+                string sql = "DELETE from NhaCungCap where MaNCC='" + Old_Value + "'";
+                if (c.CapNhatDulieu(sql) > 0)
+                {
+                    MessageBox.Show("Cập nhật thành công", "Thông báo", MessageBoxButtons.OK);
+                    frm_NCC_Load(sender, e);
+                    clearTextbox();
+                }
+            }
+            catch (Exception err)
+            {
+                MessageBox.Show(err.Message, "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                frm_NCC_Load(sender, e);
+            }
+        }
+
+        private void Btn_Thoat_Click(object sender, EventArgs e)
+        {
+            Close();
         }
     }
 }

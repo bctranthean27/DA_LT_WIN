@@ -52,6 +52,8 @@
             this.cbo_NCC = new System.Windows.Forms.ComboBox();
             this.cbo_LoaiSanPham = new System.Windows.Forms.ComboBox();
             this.txt_MaSP = new System.Windows.Forms.TextBox();
+            this.txt_DonGia = new System.Windows.Forms.TextBox();
+            this.label7 = new System.Windows.Forms.Label();
             this.groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgv_DanhSach)).BeginInit();
             this.SuspendLayout();
@@ -61,9 +63,9 @@
             this.cbo_TrangThai.Font = new System.Drawing.Font("Segoe UI Semibold", 13.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.cbo_TrangThai.FormattingEnabled = true;
             this.cbo_TrangThai.Items.AddRange(new object[] {
-            "0",
-            "1"});
-            this.cbo_TrangThai.Location = new System.Drawing.Point(807, 162);
+            "1",
+            "0"});
+            this.cbo_TrangThai.Location = new System.Drawing.Point(807, 224);
             this.cbo_TrangThai.Name = "cbo_TrangThai";
             this.cbo_TrangThai.Size = new System.Drawing.Size(299, 39);
             this.cbo_TrangThai.TabIndex = 63;
@@ -72,7 +74,7 @@
             // 
             this.label5.AutoSize = true;
             this.label5.Font = new System.Drawing.Font("Segoe UI Semibold", 13.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label5.Location = new System.Drawing.Point(584, 165);
+            this.label5.Location = new System.Drawing.Point(584, 227);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(118, 31);
             this.label5.TabIndex = 61;
@@ -159,6 +161,7 @@
             this.btn_Exit.TabIndex = 58;
             this.btn_Exit.Text = "Thoát";
             this.btn_Exit.UseVisualStyleBackColor = true;
+            this.btn_Exit.Click += new System.EventHandler(this.btn_Exit_Click);
             // 
             // btn_Luu
             // 
@@ -199,6 +202,7 @@
             this.btn_Xoa.TabIndex = 55;
             this.btn_Xoa.Text = "Xoá";
             this.btn_Xoa.UseVisualStyleBackColor = true;
+            this.btn_Xoa.Click += new System.EventHandler(this.btn_Xoa_Click);
             // 
             // btn_Them
             // 
@@ -295,11 +299,31 @@
             this.txt_MaSP.Size = new System.Drawing.Size(299, 38);
             this.txt_MaSP.TabIndex = 65;
             // 
+            // txt_DonGia
+            // 
+            this.txt_DonGia.Font = new System.Drawing.Font("Segoe UI Semibold", 13.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txt_DonGia.Location = new System.Drawing.Point(807, 155);
+            this.txt_DonGia.Name = "txt_DonGia";
+            this.txt_DonGia.Size = new System.Drawing.Size(299, 38);
+            this.txt_DonGia.TabIndex = 67;
+            // 
+            // label7
+            // 
+            this.label7.AutoSize = true;
+            this.label7.Font = new System.Drawing.Font("Segoe UI Semibold", 13.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label7.Location = new System.Drawing.Point(584, 161);
+            this.label7.Name = "label7";
+            this.label7.Size = new System.Drawing.Size(98, 31);
+            this.label7.TabIndex = 66;
+            this.label7.Text = "Đơn Giá";
+            // 
             // frm_SanPham
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1129, 735);
+            this.Controls.Add(this.txt_DonGia);
+            this.Controls.Add(this.label7);
             this.Controls.Add(this.txt_MaSP);
             this.Controls.Add(this.cbo_NCC);
             this.Controls.Add(this.cbo_LoaiSanPham);
@@ -352,5 +376,7 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn MaNCC;
         private System.Windows.Forms.DataGridViewTextBoxColumn DonGia;
         private System.Windows.Forms.DataGridViewTextBoxColumn TrangThai;
+        private System.Windows.Forms.TextBox txt_DonGia;
+        private System.Windows.Forms.Label label7;
     }
 }

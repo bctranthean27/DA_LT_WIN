@@ -258,6 +258,7 @@
             this.btn_Xoa.TabIndex = 7;
             this.btn_Xoa.Text = "Xoá";
             this.btn_Xoa.UseVisualStyleBackColor = true;
+            this.btn_Xoa.Click += new System.EventHandler(this.btn_Xoa_Click);
             // 
             // btn_Sua
             // 
@@ -290,6 +291,7 @@
             this.Btn_Thoat.TabIndex = 7;
             this.Btn_Thoat.Text = "Thoát";
             this.Btn_Thoat.UseVisualStyleBackColor = true;
+            this.Btn_Thoat.Click += new System.EventHandler(this.Btn_Thoat_Click);
             // 
             // txt_NCC
             // 

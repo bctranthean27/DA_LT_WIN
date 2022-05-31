@@ -15,6 +15,8 @@ namespace _108_144_QLCuaHangCafe
         cls_QLCHCAFE c = new cls_QLCHCAFE();
         int vt = 0;
         DataSet ds = new DataSet();
+        int flag = 0;
+        string Old_Value = "";
         public frm_Size()
         {
             InitializeComponent();
@@ -50,19 +52,80 @@ namespace _108_144_QLCuaHangCafe
         {
             XuLiTextBox(false);
             XuLiButton(false);
+            flag = 1;
         }
 
+        void them(object sender, EventArgs e, string m1, string m2)
+        {
+            try
+            {
+                if (m1.Trim() == "" || m2.Trim() == "")
+                    throw new Exception("Vui lòng điền đủ thông tin");
+                string sql = "insert into Size(MaSize,TenSize,TrangThai) values ('" + m1 + "',N'" + m2 + "','" + 1 + "')";
+                if (c.CapNhatDulieu(sql) > 0)
+                {
+                    MessageBox.Show("Cập nhật thành công", "Thông báo", MessageBoxButtons.OK);
+                    frm_Size_Load(sender, e);
+                }
+            }
+            catch (Exception err)
+            {
+                MessageBox.Show(err.Message, "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                c.DongKetNoi();
+                btn_Them_Click(sender, e);
+            }
+        }
+        void sua(object sender, EventArgs e, string m1, string m2, string m3 = "1")
+        {
+            try
+            {
+                if (txt_MaSize.Text == "")
+                {
+                    throw new Exception("Lỗi cập nhật\nHãy chắc chắn bạn chọn đúng cột muốn sửa");
+                }
+                string sql = "update Size set ";
+                sql += " MaSize='" + m1;
+                sql += "',TenSize=N'" + m2;
+                sql += "',TrangThai='" + m3;
+                sql += "' where MaSize='" + Old_Value + "'";
+
+                if (c.CapNhatDulieu(sql) > 0)
+                {
+                    MessageBox.Show("Cập nhật thành công", "Thông báo", MessageBoxButtons.OK);
+                    frm_Size_Load(sender, e);
+                }
+            }
+            catch (Exception err)
+            {
+                MessageBox.Show(err.Message, "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                btn_Sua_Click(sender, e);
+            }
+        }
         private void btn_Luu_Click(object sender, EventArgs e)
         {
             XuLiTextBox(true);
             XuLiButton(true);
+            string m1 = txt_MaSize.Text;
+            string m2 = txt_TenSize.Text;
+            string m3 = cbo_TrangThai.SelectedItem.ToString();
+            switch (flag)
+            {
+                case 1:
+                    clearTextbox();
+                    them(sender, e, m1, m2);
+                    break;
+                case 2:
+                    sua(sender, e, m1, m2, m3);
+                    break;
+
+            }
         }
 
         private void btn_Sua_Click(object sender, EventArgs e)
         {
             XuLiTextBox(false);
             XuLiButton(false);
-            btn_Lưu.Enabled = true;
+            flag = 2;
         }
         void loadData_cboFromList(DataTable dt, ComboBox cbo, string disMember)
         {
@@ -95,7 +158,39 @@ namespace _108_144_QLCuaHangCafe
             ds = c.LayDuLieu("select * from Size");
             int vt = dgv_DanhSach.CurrentCell.RowIndex;
             hienThiTextBox(ds.Tables[0], vt);
+            Old_Value = txt_MaSize.Text; // lấy giá trị cũ để sửa đổi
+        }
+        void clearTextbox()
+        {
+            txt_MaSize.Text = "";
+            txt_TenSize.Text = "";
+            cbo_TrangThai.SelectedIndex = 0;
+        }
 
+        private void btn_Xoa_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                if (txt_MaSize.Text == "")
+                    throw new Exception("Lỗi cập nhật\nHãy chắc chắn bạn chọn đúng cột muốn xoá");
+                string sql = "DELETE from Size where MaSize='" + Old_Value + "'";
+                if (c.CapNhatDulieu(sql) > 0)
+                {
+                    MessageBox.Show("Cập nhật thành công", "Thông báo", MessageBoxButtons.OK);
+                    frm_Size_Load(sender, e);
+                    clearTextbox();
+                }
+            }
+            catch (Exception err)
+            {
+                MessageBox.Show(err.Message, "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                frm_Size_Load(sender, e);
+            }
+        }
+
+        private void btn_Exit_Click(object sender, EventArgs e)
+        {
+            Close();
         }
     }
 }

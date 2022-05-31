@@ -15,6 +15,8 @@ namespace _108_144_QLCuaHangCafe
         cls_QLCHCAFE c = new cls_QLCHCAFE();
         int vt = 0;
         DataSet ds = new DataSet();
+        int flag = 0;
+        string Old_Value = "";
         public frm_SanPham()
         {
             InitializeComponent();
@@ -50,6 +52,7 @@ namespace _108_144_QLCuaHangCafe
         {
             txt_MaSP.ReadOnly = t;
             txt_TenSP.ReadOnly = t;
+            txt_DonGia.ReadOnly = t;
             cbo_LoaiSanPham.Enabled = !t;
             cbo_NCC.Enabled = !t;
             cbo_TrangThai.Enabled = !t;
@@ -65,20 +68,88 @@ namespace _108_144_QLCuaHangCafe
         {
             XuLiTextBox(false);
             XuLiButton(false);
+            flag = 1;
         }
-
-        private void btn_Luu_Click(object sender, EventArgs e)
-        {
-            XuLiTextBox(true);
-            XuLiButton(true);
-        }
-
         private void btn_Sua_Click(object sender, EventArgs e)
         {
             XuLiTextBox(false);
             XuLiButton(false);
-            btn_Luu.Enabled = true;
+            flag = 2;
         }
+        void them(object sender, EventArgs e, string m1, string m2, string m3, string m4, string m5, string m6 = "1")
+        {
+
+            try
+            {
+                if (m1.Trim() == "" || m2.Trim() == "" || m3.Trim() == "" || m4.Trim() == "" || m5.Trim() == "")
+                    throw new Exception("Vui lòng điền đủ thông tin");
+                string sql = "insert into SanPham(MaSP,TenSP,MaLoai,MaNCC,DonGia,TrangThai) values ('" + m1 + "',N'" + m2 + "',N'" + m3 + "','" + m4 + "',N'" + m5 + "',N'" + m6  + "')";
+                if (c.CapNhatDulieu(sql) > 0)
+                {
+                    MessageBox.Show("Cập nhật thành công", "Thông báo", MessageBoxButtons.OK);
+                    frm_SanPham_Load(sender, e);
+                }
+            }
+            catch (Exception err)
+            {
+                MessageBox.Show(err.Message, "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                c.DongKetNoi();
+                btn_Them_Click(sender, e);
+            }
+        }
+        void sua(object sender, EventArgs e, string m1, string m2, string m3, string m4, string m5, string m6 = "1")
+        {
+            try
+            {
+                if (txt_MaSP.Text == "")
+                {
+                    throw new Exception("Lỗi cập nhật\nHãy chắc chắn bạn chọn đúng cột muốn sửa");
+                }
+                string sql = "update NhanVien set ";
+                sql += " MaSP='" + m1;
+                sql += "',TenSP=N'" + m2;
+                sql += "',MaLoai='" + m3;
+                sql += "',MaNCC=N'" + m4;
+                sql += "',DonGia=N'" + m5;
+                sql += "',TrangThai='" + m6;
+                sql += "' where MaSP='" + Old_Value + "'";
+
+                if (c.CapNhatDulieu(sql) > 0)
+                {
+                    MessageBox.Show("Cập nhật thành công", "Thông báo", MessageBoxButtons.OK);
+                    frm_SanPham_Load(sender, e);
+                }
+            }
+            catch (Exception err)
+            {
+                MessageBox.Show(err.Message, "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                btn_Sua_Click(sender, e);
+            }
+        }
+        private void btn_Luu_Click(object sender, EventArgs e)
+        {
+            XuLiTextBox(true);
+            XuLiButton(true);
+            string m1 = txt_MaSP.Text;
+            string m2 = txt_TenSP.Text;
+            string m3 = cbo_LoaiSanPham.SelectedValue.ToString();
+            string m4 = cbo_NCC.SelectedValue.ToString();
+            string m5 = txt_DonGia.Text;
+            string m6 = cbo_TrangThai.SelectedItem.ToString();
+            switch (flag)
+            {
+                case 1:
+                    clearTextbox();
+                    them(sender, e, m1, m2, m3, m4, m5, m6);
+                    break;
+                case 2:
+                    sua(sender, e, m1, m2, m3, m4, m5, m6);
+                    break;
+
+            }
+        }
+
+
         void loadData_cboFromList(DataTable dt, ComboBox cbo, string disMember)
         {
 
@@ -102,6 +173,7 @@ namespace _108_144_QLCuaHangCafe
         {
             txt_MaSP.Text = ds.Tables[0].Rows[vt]["MaSP"].ToString();
             txt_TenSP.Text = ds.Tables[0].Rows[vt]["TenSP"].ToString();
+            txt_DonGia.Text = ds.Tables[0].Rows[vt]["DonGia"].ToString();
             loadData_cboFromList(dt, cbo_LoaiSanPham, "MaLoai");
             loadData_cboFromList(dt, cbo_NCC, "MaNCC");
             loadData_cboFromList(dt, cbo_TrangThai, "TrangThai");
@@ -111,7 +183,42 @@ namespace _108_144_QLCuaHangCafe
             ds = c.LayDuLieu("select * from SanPham");
             int vt = dgv_DanhSach.CurrentCell.RowIndex;
             hienThiTextBox(ds.Tables[0], vt);
+            Old_Value = txt_MaSP.Text;
+        }
+        void clearTextbox()
+        {
+            txt_MaSP.Text = "";
+            txt_TenSP.Text = "";
+            txt_DonGia.Text = "";
+            cbo_NCC.SelectedIndex = 0;
+            cbo_TrangThai.SelectedIndex = 0;
+            cbo_LoaiSanPham.SelectedIndex = 0;      
+        }
 
+        private void btn_Xoa_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                if (txt_MaSP.Text == "")
+                    throw new Exception("Lỗi cập nhật\nHãy chắc chắn bạn chọn đúng cột muốn xoá");
+                string sql = "DELETE from SanPham where MaSP='" + Old_Value + "'";
+                if (c.CapNhatDulieu(sql) > 0)
+                {
+                    MessageBox.Show("Cập nhật thành công", "Thông báo", MessageBoxButtons.OK);
+                    frm_SanPham_Load(sender, e);
+                    clearTextbox();
+                }
+            }
+            catch (Exception err)
+            {
+                MessageBox.Show(err.Message, "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                frm_SanPham_Load(sender, e);
+            }
+        }
+
+        private void btn_Exit_Click(object sender, EventArgs e)
+        {
+            Close();
         }
     }
 }

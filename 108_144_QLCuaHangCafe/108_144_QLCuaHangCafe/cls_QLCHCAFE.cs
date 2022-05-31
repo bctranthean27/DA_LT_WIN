@@ -22,11 +22,21 @@ namespace _108_144_QLCuaHangCafe
         public int CapNhatDulieu(string sql)
         {
             con.Open();
+
             SqlCommand cmd = new SqlCommand();
+
             cmd.CommandText = sql;
             cmd.CommandType = CommandType.Text;
             cmd.Connection = con;
-            return cmd.ExecuteNonQuery();
+            int val = cmd.ExecuteNonQuery();
+            con.Close();
+            
+            return val;
+        }
+        public void DongKetNoi()
+        {
+            
+            con.Close();
         }
         public cls_QLCHCAFE ()
         {

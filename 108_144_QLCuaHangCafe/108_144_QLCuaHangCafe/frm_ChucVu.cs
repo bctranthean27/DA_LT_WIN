@@ -63,8 +63,54 @@ namespace _108_144_QLCuaHangCafe
             XuLiTextBox(false);
             XuLiButton(false);
             btn_Lưu.Enabled = true;
-            
             flag = 2;
+        }
+        void them(object sender,EventArgs e, string m1, string m2)
+        {
+            try
+            {
+                if (m1.Trim() == "" || m2.Trim() == "")
+                    throw new Exception("Vui lòng điền đủ thông tin");
+                string sql = "insert into ChucVu(MaChucVu,TenChucVu,TrangThai) values ('" + m1 + "',N'" + m2 + "','" + 1 + "')";
+                if (c.CapNhatDulieu(sql) > 0)
+                {
+                    MessageBox.Show("Cập nhật thành công", "Thông báo", MessageBoxButtons.OK);
+                    frm_ChucVu_Load(sender, e);
+                }
+            }
+            catch (Exception err)
+            {
+                MessageBox.Show(err.Message, "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                c.DongKetNoi();
+                btn_Them_Click(sender, e);
+                
+            }
+        }
+        void sua(object sender, EventArgs e, string m1, string m2, string m3 = "1")
+        {
+            try
+            {
+                if (txt_MaCV.Text == "")
+                {
+                    throw new Exception("Lỗi cập nhật\nHãy chắc chắn bạn chọn đúng cột muốn sửa");
+                }
+                string sql = "update ChucVu set ";
+                sql += " MaChucVu='" + m1;
+                sql += "',TenChucVu=N'" + m2;
+                sql += "',TrangThai='" + m3;
+                sql += "' where MaChucVu='" + Old_Value + "'";
+
+                if (c.CapNhatDulieu(sql) > 0)
+                {
+                    MessageBox.Show("Cập nhật thành công", "Thông báo", MessageBoxButtons.OK);
+                    frm_ChucVu_Load(sender, e);
+                }
+            }
+            catch(Exception err)
+            {
+                MessageBox.Show(err.Message, "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                btn_Sua_Click(sender, e);
+            }
         }
 
         private void btn_Luu_Click(object sender, EventArgs e)
@@ -77,46 +123,11 @@ namespace _108_144_QLCuaHangCafe
             switch (flag)
             {
                 case 1:
-                    {
-                        try
-                        {
-                            string sql = "insert into ChucVu(MaChucVu,TenChucVu,TrangThai) values ('" + m1 + "',N'" + m2 + "','" + 1 + "')";
-                            if (c.CapNhatDulieu(sql) > 0)
-                            {
-                                MessageBox.Show("Cập nhật thành công", "Thông báo", MessageBoxButtons.OK);
-                                frm_ChucVu_Load(sender, e);
-                            }
-                        }
-                        catch (Exception ex)
-                        {
-                            MessageBox.Show("Lỗi cập nhật", "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                            btn_Them_Click(sender, e);
-                        }
-                    }
+                    clearTextbox();
+                    them(sender, e, m1, m2);
                     break;
                 case 2:
-                    {
-                        try
-                        {
-
-                            string sql = "update ChucVu set ";
-                            sql += " MaChucVu='" + m1;
-                            sql += "',TenChucVu=N'" + m2;
-                            sql += "',TrangThai='" + m3;
-                            sql += "' where MaChucVu='" + Old_Value + "'";
-                            
-                            if (c.CapNhatDulieu(sql) > 0)
-                            {
-                                MessageBox.Show("Cập nhật thành công", "Thông báo", MessageBoxButtons.OK);
-                                frm_ChucVu_Load(sender, e) ;
-                            }
-                        }
-                        catch (Exception ex)
-                        {
-                            MessageBox.Show("Lỗi cập nhật\nHãy chắc chắn bạn chọn đúng cột muốn sửa", "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                            btn_Sua_Click (sender, e);
-                        }
-                    }
+                    sua(sender, e, m1, m2, m3);
                     break;
 
             }
@@ -159,6 +170,32 @@ namespace _108_144_QLCuaHangCafe
             txt_MaCV.Text = "";
             txt_TenCV.Text = "";
             cbo_TrangThai.SelectedIndex = 0;
+        }
+
+        private void btn_Xoa_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                if (txt_MaCV.Text == "")
+                    throw new Exception("Lỗi cập nhật\nHãy chắc chắn bạn chọn đúng cột muốn xoá");
+                string sql = "DELETE from ChucVu where MaChucVu='" + Old_Value + "'";
+                if (c.CapNhatDulieu(sql) > 0)
+                {
+                    MessageBox.Show("Cập nhật thành công", "Thông báo", MessageBoxButtons.OK);
+                    frm_ChucVu_Load(sender, e);
+                    clearTextbox();
+                }
+            }
+            catch (Exception err)
+            {
+                MessageBox.Show(err.Message, "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                frm_ChucVu_Load(sender, e);
+            }
+        }
+
+        private void btn_Exit_Click(object sender, EventArgs e)
+        {
+            Close();
         }
     }
 }
