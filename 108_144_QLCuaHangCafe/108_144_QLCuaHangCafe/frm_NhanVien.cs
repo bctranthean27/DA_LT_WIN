@@ -25,8 +25,8 @@ namespace _108_144_QLCuaHangCafe
         {
             XuLiTextBox(true);
             XuLiButton(true);
-            loadData_DataGrid(dgv_DanhSach, "select * from NhanVien");
-            loadData_cbo(cbo_ChucVu, "select MaChucVu,TenChucVu from ChucVu", "MaChucVu", "TenChucVu");
+            loadData_DataGrid(dgv_DanhSach, "select * from NhanVien where TrangThai='1'");
+            loadData_cbo(cbo_ChucVu, "select MaChucVu,TenChucVu from ChucVu where TrangThai='1'", "MaChucVu", "TenChucVu");
             cbo_TrangThai.SelectedIndex = 0;
             cbo_TrangThai.DropDownStyle = ComboBoxStyle.DropDownList;
             cbo_ChucVu.DropDownStyle = ComboBoxStyle.DropDownList;
@@ -61,10 +61,22 @@ namespace _108_144_QLCuaHangCafe
             btn_Xoa.Enabled = t;
             btn_Luu.Enabled = !t;
         }
+        string autoCode(DataSet ds, string pri)
+        {
+            string code = pri;
+            int pos = ds.Tables[0].Rows.Count + 1;
+            if (pos < 10) code += "0" + pos.ToString();
+            else if (pos < 100) code += "" + pos.ToString();
+            return code;
+        }
         private void btn_Them_Click(object sender, EventArgs e)
         {
+            ds = c.LayDuLieu("select * from NhanVien");
+            clearTextbox();
+            txt_MaNV.Text = autoCode(ds, "Y");
             XuLiTextBox(false);
             XuLiButton(false);
+            txt_MaNV.ReadOnly = true;
             flag = 1;
         }
         private void btn_Sua_Click(object sender, EventArgs e)
@@ -89,7 +101,7 @@ namespace _108_144_QLCuaHangCafe
             {
                 if (m1.Trim() == "" || m2.Trim() == "" || m3.Trim() == "" || m4.Trim() == "" || m5.Trim() == "" || m6.Trim() == "")
                     throw new Exception("Vui lòng điền đủ thông tin");
-                string sql = "insert into NhanVien(MaNV,HoNV,TenNV,DChi,NgayVaolam,MaChucVu,TrangThai) values ('" + m1 + "',N'" + m2 + "',N'" + m3 + "','" + m4 + "',N'" + m5 + "',N'" + m6 + "','" + m7 + "')";
+                string sql = "insert into NhanVien(MaNV,HoNV,TenNV,DChi,NgayVaolam,MaChucVu,TrangThai) values ('" + m1 + "',N'" + m2 + "',N'" + m3 + "',N'" + m4 + "',N'" + m5 + "',N'" + m6 + "','" + m7 + "')";
                 if (c.CapNhatDulieu(sql) > 0)
                 {
                     MessageBox.Show("Cập nhật thành công", "Thông báo", MessageBoxButtons.OK);
@@ -103,7 +115,7 @@ namespace _108_144_QLCuaHangCafe
                 btn_Them_Click(sender, e);
             }
         }
-        void sua(object sender, EventArgs e, string m1, string m2, string m3, string m4, string m5, string m6, string m7 = "1")
+        void sua(object sender, EventArgs e, string m1 = "", string m2 = "", string m3 = "", string m4 = "", string m5 = "", string m6 = "", string m7 = "0")
         {
             try
             {
@@ -112,13 +124,19 @@ namespace _108_144_QLCuaHangCafe
                     throw new Exception("Lỗi cập nhật\nHãy chắc chắn bạn chọn đúng cột muốn sửa");
                 }
                 string sql = "update NhanVien set ";
-                sql += " MaNV='" + m1;
-                sql += "',HoNV=N'" + m2;
-                sql += "',TenNV='" + m3;
-                sql += "',DChi=N'" + m4;
-                sql += "',NgayVaoLam=N'" + m5;
-                sql += "',MaChucVu='" + m6;
-                sql += "',TrangThai='" + m7;
+                if (m1.Trim() != "")
+                    sql += " MaNV='" + m1 + "',";
+                if (m2.Trim() != "")
+                    sql += " HoNV=N'" + m2 + "',";
+                if (m3.Trim() != "")
+                    sql += " TenNV=N'" + m3 + "',";
+                if (m4.Trim() != "")
+                    sql += " DChi=N'" + m4 + "',";
+                if (m5.Trim() != "")
+                    sql += " NgayVaoLam=N'" + m5 + "',";
+                if (m6.Trim() != "")
+                    sql += " MaChucVu='" + m6 + "',";
+                sql += " TrangThai='" + m7;
                 sql += "' where MaNV='" + Old_Value + "'";
 
                 if (c.CapNhatDulieu(sql) > 0)
@@ -198,7 +216,7 @@ namespace _108_144_QLCuaHangCafe
         }
         private void dgv_DanhSach_CellClick(object sender, DataGridViewCellEventArgs e)
         {
-            ds = c.LayDuLieu("select * from NhanVien");
+            ds = c.LayDuLieu("select * from NhanVien where TrangThai='1'");
             int vt = dgv_DanhSach.CurrentCell.RowIndex;
             hienThiTextBox(ds.Tables[0], vt);
             Old_Value = txt_MaNV.Text; // lấy giá trị cũ để sửa đổi
@@ -216,23 +234,24 @@ namespace _108_144_QLCuaHangCafe
 
         private void btn_Xoa_Click(object sender, EventArgs e)
         {
-            try
-            {
-                if (txt_MaNV.Text == "")
-                    throw new Exception("Lỗi cập nhật\nHãy chắc chắn bạn chọn đúng cột muốn xoá");
-                string sql = "DELETE from NhanVien where MaNV='" + Old_Value + "'";
-                if (c.CapNhatDulieu(sql) > 0)
-                {
-                    MessageBox.Show("Cập nhật thành công", "Thông báo", MessageBoxButtons.OK);
-                    frm_NhanVien_Load(sender, e);
-                    clearTextbox();
-                }
-            }
-            catch (Exception err)
-            {
-                MessageBox.Show(err.Message, "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                frm_NhanVien_Load(sender, e);
-            }
+            sua(sender, e);
+            //try
+            //{
+            //    if (txt_MaNV.Text == "")
+            //        throw new Exception("Lỗi cập nhật\nHãy chắc chắn bạn chọn đúng cột muốn xoá");
+            //    string sql = "DELETE from NhanVien where MaNV='" + Old_Value + "'";
+            //    if (c.CapNhatDulieu(sql) > 0)
+            //    {
+            //        MessageBox.Show("Cập nhật thành công", "Thông báo", MessageBoxButtons.OK);
+            //        frm_NhanVien_Load(sender, e);
+            //        clearTextbox();
+            //    }
+            //}
+            //catch (Exception err)
+            //{
+            //    MessageBox.Show(err.Message, "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            //    frm_NhanVien_Load(sender, e);
+            //}
         }
 
         private void btn_Thoat_Click(object sender, EventArgs e)

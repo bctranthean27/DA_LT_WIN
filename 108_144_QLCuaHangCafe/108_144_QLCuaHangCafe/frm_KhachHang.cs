@@ -26,7 +26,7 @@ namespace _108_144_QLCuaHangCafe
         {
             XuLiTextBox(true);
             XuLiButton(true);
-            loadData_DataGrid(dgv_DanhSach, "select * from KhachHang");
+            loadData_DataGrid(dgv_DanhSach, "select * from KhachHang where TrangThai ='1'");
             cbo_TrangThai.DropDownStyle = ComboBoxStyle.DropDownList;
             cbo_TrangThai.SelectedIndex = 0;
         }
@@ -52,10 +52,22 @@ namespace _108_144_QLCuaHangCafe
             btn_Xoa.Enabled = t;
             btn_Luu.Enabled = !t;
         }
+        string autoCode(DataSet ds, string pri)
+        {
+            string code = pri;
+            int pos = ds.Tables[0].Rows.Count + 1;
+            if (pos < 10) code += "0" + pos.ToString();
+            else if (pos < 100) code += "" + pos.ToString();
+            return code;
+        }
         private void btn_Them_Click(object sender, EventArgs e)
         {
+            ds = c.LayDuLieu("select * from KhachHang");
+            clearTextbox();
+            txt_MaKH.Text = autoCode(ds, "H");
             XuLiTextBox(false);
             XuLiButton(false);
+            txt_MaKH.ReadOnly = true;
             flag = 1;
         }
         private void btn_Sua_Click(object sender, EventArgs e)
@@ -70,7 +82,7 @@ namespace _108_144_QLCuaHangCafe
             {
                 if (m1.Trim() == "" || m2.Trim() == "" || m3.Trim() == "" || m4.Trim() == "" || m5.Trim() == "")
                     throw new Exception("Vui lòng điền đủ thông tin");
-                string sql = "insert into KhachHang(MaKH,TenKH,DChi,SDT,Mail,TrangThai) values ('" + m1 + "',N'" + m2 + "',N'" + m3 + "','" + m4 + "',N'" + m5 + "','" + 1 + "')";
+                string sql = "insert into KhachHang(MaKH,TenKH,DChi,SDT,Mail,TrangThai) values ('" + m1 + "',N'" + m2 + "',N'" + m3 + "','" + m4 + "',N'" + m5 + "','" + m6 + "')";
                 if (c.CapNhatDulieu(sql) > 0)
                 {
                     MessageBox.Show("Cập nhật thành công", "Thông báo", MessageBoxButtons.OK);
@@ -84,7 +96,7 @@ namespace _108_144_QLCuaHangCafe
                 btn_Them_Click(sender, e);
             }
         }
-        void sua(object sender, EventArgs e, string m1, string m2, string m3, string m4, string m5, string m6 = "1")
+        void sua(object sender, EventArgs e, string m1 = "", string m2 = "", string m3 = "", string m4 = "", string m5 = "", string m6 = "0")
         {
             try
             {
@@ -93,12 +105,17 @@ namespace _108_144_QLCuaHangCafe
                     throw new Exception("Lỗi cập nhật\nHãy chắc chắn bạn chọn đúng cột muốn sửa");
                 }
                 string sql = "update KhachHang set ";
-                sql += " MaKH='" + m1;
-                sql += "',TenKH=N'" + m2;
-                sql += "',DChi='" + m3;
-                sql += "',SDT='" + m4;
-                sql += "',Mail=N'" + m5;
-                sql += "',TrangThai='" + m6;
+                if (m1.Trim() != "")
+                    sql += " MaKH='" + m1 + "',";
+                if (m2.Trim() != "")
+                    sql += " TenKH=N'" + m2 + "',";if(m1.Trim() != "")
+                if(m3.Trim() != "")
+                sql += " DChi='" + m3 + "',";
+                if (m4.Trim() != "")
+                    sql += " SDT='" + m4 + "',";
+                if (m5.Trim() != "")
+                    sql += " Mail='" + m5 + "',";
+                sql += "TrangThai='" + m6;
                 sql += "' where MaKH='" + Old_Value + "'";
 
                 if (c.CapNhatDulieu(sql) > 0)
@@ -168,7 +185,7 @@ namespace _108_144_QLCuaHangCafe
         }
         private void dgv_DanhSach_CellClick(object sender, DataGridViewCellEventArgs e)
         {
-            ds = c.LayDuLieu("select * from KhachHang");
+            ds = c.LayDuLieu("select * from KhachHang where TrangThai = '1'");
             int vt = dgv_DanhSach.CurrentCell.RowIndex;
             hienThiTextBox(ds.Tables[0], vt);
             Old_Value = txt_MaKH.Text; // lấy giá trị cũ để sửa đổi
@@ -185,23 +202,24 @@ namespace _108_144_QLCuaHangCafe
 
         private void btn_Xoa_Click(object sender, EventArgs e)
         {
-            try
-            {
-                if (txt_MaKH.Text == "")
-                    throw new Exception("Lỗi cập nhật\nHãy chắc chắn bạn chọn đúng cột muốn xoá");
-                string sql = "DELETE from KhachHang where MaKH='" + Old_Value + "'";
-                if (c.CapNhatDulieu(sql) > 0)
-                {
-                    MessageBox.Show("Cập nhật thành công", "Thông báo", MessageBoxButtons.OK);
-                    frm_KhachHang_Load(sender, e);
-                    clearTextbox();
-                }
-            }
-            catch (Exception err)
-            {
-                MessageBox.Show(err.Message, "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                frm_KhachHang_Load(sender, e);
-            }
+            sua(sender, e);
+            //try
+            //{
+            //    if (txt_MaKH.Text == "")
+            //        throw new Exception("Lỗi cập nhật\nHãy chắc chắn bạn chọn đúng cột muốn xoá");
+            //    string sql = "DELETE from KhachHang where MaKH='" + Old_Value + "'";
+            //    if (c.CapNhatDulieu(sql) > 0)
+            //    {
+            //        MessageBox.Show("Cập nhật thành công", "Thông báo", MessageBoxButtons.OK);
+            //        frm_KhachHang_Load(sender, e);
+            //        clearTextbox();
+            //    }
+            //}
+            //catch (Exception err)
+            //{
+            //    MessageBox.Show(err.Message, "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            //    frm_KhachHang_Load(sender, e);
+            //}
         }
 
         private void btn_Thoat_Click(object sender, EventArgs e)

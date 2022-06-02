@@ -26,7 +26,7 @@ namespace _108_144_QLCuaHangCafe
         {
             XuLiTextBox(true);
             XuLiButton(true);
-            loadData_DataGrid(dgv_DanhSach, "select * from LoaiHoaDon");
+            loadData_DataGrid(dgv_DanhSach, "select * from LoaiHoaDon where TrangThai='1'");
             cbo_TrangThai.SelectedIndex = 0;
             cbo_TrangThai.DropDownStyle = ComboBoxStyle.DropDownList;
         }
@@ -49,10 +49,22 @@ namespace _108_144_QLCuaHangCafe
             btn_Xoa.Enabled = t;
             btn_Luu.Enabled = !t;
         }
+        string autoCode(DataSet ds, string pri)
+        {
+            string code = pri;
+            int pos = ds.Tables[0].Rows.Count + 1;
+            if (pos < 10) code += "0" + pos.ToString();
+            else if (pos < 100) code += "" + pos.ToString();
+            return code;
+        }
         private void btn_Them_Click(object sender, EventArgs e)
         {
+            ds = c.LayDuLieu("select * from LoaiHoaDon");
+            clearTextbox();
+            txt_MaLoaiHD.Text = autoCode(ds, "K");
             XuLiTextBox(false);
             XuLiButton(false);
+            txt_MaLoaiHD.ReadOnly = true;
             flag = 1;
         }
         private void btn_Sua_Click(object sender, EventArgs e)
@@ -83,19 +95,21 @@ namespace _108_144_QLCuaHangCafe
                 
             }
         }
-        void sua(object sender, EventArgs e, string m1, string m2, string m3 = "1")
+        void sua(object sender, EventArgs e, string m1 = "", string m2 = "", string m3 = "0")
         {
             try
             {
+                string sql = "update LoaiHoaDon set ";
                 if (txt_MaLoaiHD.Text == "")
                 {
                     throw new Exception("Lỗi cập nhật\nHãy chắc chắn bạn chọn đúng cột muốn sửa");
                 }
-                string sql = "update LoaiHoaDon set ";
-                sql += " MaLoaiHD='" + m1;
-                sql += "',TenLoaiHD=N'" + m2;
-                sql += "',TrangThai='" + m3;
-                sql += "' where MaLoaiHD='" + Old_Value + "'";
+                if (m1.Trim() != "")
+                    sql += " MaLoaiHD='" + m1 + "',";
+                if (m2.Trim() != "")
+                    sql += " TenLoaiHD=N'" + m2 + "',";
+                sql += "TrangThai='" + m3 + "' ";
+                sql += "where MaLoaiHD='" + Old_Value + "'";
 
                 if (c.CapNhatDulieu(sql) > 0)
                 {
@@ -106,6 +120,7 @@ namespace _108_144_QLCuaHangCafe
             catch (Exception err)
             {
                 MessageBox.Show(err.Message, "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                c.DongKetNoi();
                 btn_Sua_Click(sender, e);
             }
         }
@@ -158,7 +173,7 @@ namespace _108_144_QLCuaHangCafe
         }
         private void dgv_DanhSach_CellClick(object sender, DataGridViewCellEventArgs e)
         {
-            ds = c.LayDuLieu("select * from LoaiHoaDon");
+            ds = c.LayDuLieu("select * from LoaiHoaDon where TrangThai='1'");
             int vt = dgv_DanhSach.CurrentCell.RowIndex;
             hienThiTextBox(ds.Tables[0], vt);
             Old_Value = txt_MaLoaiHD.Text; // lấy giá trị cũ để sửa đổi
@@ -172,23 +187,24 @@ namespace _108_144_QLCuaHangCafe
 
         private void btn_Xoa_Click(object sender, EventArgs e)
         {
-            try
-            {
-                if (txt_MaLoaiHD.Text == "")
-                    throw new Exception("Lỗi cập nhật\nHãy chắc chắn bạn chọn đúng cột muốn xoá");
-                string sql = "DELETE from LoaiHoaDon where MaLoaiHD='" + Old_Value + "'";
-                if (c.CapNhatDulieu(sql) > 0)
-                {
-                    MessageBox.Show("Cập nhật thành công", "Thông báo", MessageBoxButtons.OK);
-                    frm_LoaiHoaDon_Load(sender, e);
-                    clearTextbox();
-                }
-            }
-            catch (Exception err)
-            {
-                MessageBox.Show(err.Message, "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                frm_LoaiHoaDon_Load(sender, e);
-            }
+            sua(sender, e);
+            //try
+            //{
+            //    if (txt_MaLoaiHD.Text == "")
+            //        throw new Exception("Lỗi cập nhật\nHãy chắc chắn bạn chọn đúng cột muốn xoá");
+            //    string sql = "DELETE from LoaiHoaDon where MaLoaiHD='" + Old_Value + "'";
+            //    if (c.CapNhatDulieu(sql) > 0)
+            //    {
+            //        MessageBox.Show("Cập nhật thành công", "Thông báo", MessageBoxButtons.OK);
+            //        frm_LoaiHoaDon_Load(sender, e);
+            //        clearTextbox();
+            //    }
+            //}
+            //catch (Exception err)
+            //{
+            //    MessageBox.Show(err.Message, "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            //    frm_LoaiHoaDon_Load(sender, e);
+            //}
         }
 
         private void btn_Exit_Click(object sender, EventArgs e)

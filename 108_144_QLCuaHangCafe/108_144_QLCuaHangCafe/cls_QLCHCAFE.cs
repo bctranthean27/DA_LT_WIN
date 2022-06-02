@@ -21,6 +21,7 @@ namespace _108_144_QLCuaHangCafe
         }
         public int CapNhatDulieu(string sql)
         {
+            
             con.Open();
 
             SqlCommand cmd = new SqlCommand();
