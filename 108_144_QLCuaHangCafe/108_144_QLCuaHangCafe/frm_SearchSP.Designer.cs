@@ -59,7 +59,7 @@
             this.label1.Font = new System.Drawing.Font("Segoe UI", 19.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label1.Location = new System.Drawing.Point(0, 0);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(1178, 63);
+            this.label1.Size = new System.Drawing.Size(1437, 63);
             this.label1.TabIndex = 1;
             this.label1.Text = "TÌM KIẾM SẢN PHẨM";
             this.label1.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -68,7 +68,7 @@
             // 
             this.label2.AutoSize = true;
             this.label2.Font = new System.Drawing.Font("Segoe UI Semibold", 13.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label2.Location = new System.Drawing.Point(25, 89);
+            this.label2.Location = new System.Drawing.Point(49, 92);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(144, 31);
             this.label2.TabIndex = 2;
@@ -77,9 +77,9 @@
             // txt_MinGiaSP
             // 
             this.txt_MinGiaSP.Font = new System.Drawing.Font("Microsoft Sans Serif", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txt_MinGiaSP.Location = new System.Drawing.Point(212, 89);
+            this.txt_MinGiaSP.Location = new System.Drawing.Point(236, 92);
             this.txt_MinGiaSP.Name = "txt_MinGiaSP";
-            this.txt_MinGiaSP.Size = new System.Drawing.Size(299, 34);
+            this.txt_MinGiaSP.Size = new System.Drawing.Size(430, 34);
             this.txt_MinGiaSP.TabIndex = 5;
             this.txt_MinGiaSP.Text = "0";
             // 
@@ -87,7 +87,7 @@
             // 
             this.label3.AutoSize = true;
             this.label3.Font = new System.Drawing.Font("Segoe UI Semibold", 13.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label3.Location = new System.Drawing.Point(544, 92);
+            this.label3.Location = new System.Drawing.Point(739, 93);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(56, 31);
             this.label3.TabIndex = 6;
@@ -96,7 +96,7 @@
             // txt_MaxGiaSP
             // 
             this.txt_MaxGiaSP.Font = new System.Drawing.Font("Microsoft Sans Serif", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txt_MaxGiaSP.Location = new System.Drawing.Point(681, 89);
+            this.txt_MaxGiaSP.Location = new System.Drawing.Point(904, 89);
             this.txt_MaxGiaSP.Name = "txt_MaxGiaSP";
             this.txt_MaxGiaSP.Size = new System.Drawing.Size(299, 34);
             this.txt_MaxGiaSP.TabIndex = 5;
@@ -105,7 +105,7 @@
             // 
             this.label4.AutoSize = true;
             this.label4.Font = new System.Drawing.Font("Segoe UI Semibold", 13.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label4.Location = new System.Drawing.Point(25, 148);
+            this.label4.Location = new System.Drawing.Point(49, 151);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(165, 31);
             this.label4.TabIndex = 2;
@@ -115,7 +115,7 @@
             // 
             this.label5.AutoSize = true;
             this.label5.Font = new System.Drawing.Font("Segoe UI Semibold", 13.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label5.Location = new System.Drawing.Point(25, 208);
+            this.label5.Location = new System.Drawing.Point(49, 211);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(163, 31);
             this.label5.TabIndex = 2;
@@ -125,7 +125,7 @@
             // 
             this.label7.AutoSize = true;
             this.label7.Font = new System.Drawing.Font("Segoe UI Semibold", 13.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label7.Location = new System.Drawing.Point(544, 148);
+            this.label7.Location = new System.Drawing.Point(739, 149);
             this.label7.Name = "label7";
             this.label7.Size = new System.Drawing.Size(123, 31);
             this.label7.TabIndex = 7;
@@ -138,7 +138,7 @@
             this.cbo_TrangThai.Items.AddRange(new object[] {
             "0",
             "1"});
-            this.cbo_TrangThai.Location = new System.Drawing.Point(681, 142);
+            this.cbo_TrangThai.Location = new System.Drawing.Point(904, 142);
             this.cbo_TrangThai.Name = "cbo_TrangThai";
             this.cbo_TrangThai.Size = new System.Drawing.Size(299, 37);
             this.cbo_TrangThai.TabIndex = 8;
@@ -159,7 +159,7 @@
             this.dgv_DanhSach.Name = "dgv_DanhSach";
             this.dgv_DanhSach.RowHeadersWidth = 50;
             this.dgv_DanhSach.RowTemplate.Height = 24;
-            this.dgv_DanhSach.Size = new System.Drawing.Size(1172, 377);
+            this.dgv_DanhSach.Size = new System.Drawing.Size(1431, 366);
             this.dgv_DanhSach.TabIndex = 0;
             // 
             // MaSP
@@ -209,9 +209,9 @@
             this.groupBox1.Controls.Add(this.dgv_DanhSach);
             this.groupBox1.Dock = System.Windows.Forms.DockStyle.Bottom;
             this.groupBox1.Font = new System.Drawing.Font("Segoe UI", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.groupBox1.Location = new System.Drawing.Point(0, 270);
+            this.groupBox1.Location = new System.Drawing.Point(0, 344);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(1178, 406);
+            this.groupBox1.Size = new System.Drawing.Size(1437, 395);
             this.groupBox1.TabIndex = 60;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Danh Sách Sản Phẩm";
@@ -219,7 +219,7 @@
             // btn_Search
             // 
             this.btn_Search.Font = new System.Drawing.Font("Segoe UI Semibold", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btn_Search.Location = new System.Drawing.Point(1002, 89);
+            this.btn_Search.Location = new System.Drawing.Point(1236, 89);
             this.btn_Search.Name = "btn_Search";
             this.btn_Search.Size = new System.Drawing.Size(158, 156);
             this.btn_Search.TabIndex = 61;
@@ -234,25 +234,24 @@
             this.cbo_LoaiSP.Items.AddRange(new object[] {
             "On",
             "Off"});
-            this.cbo_LoaiSP.Location = new System.Drawing.Point(212, 142);
+            this.cbo_LoaiSP.Location = new System.Drawing.Point(236, 145);
             this.cbo_LoaiSP.Name = "cbo_LoaiSP";
-            this.cbo_LoaiSP.Size = new System.Drawing.Size(299, 37);
+            this.cbo_LoaiSP.Size = new System.Drawing.Size(430, 37);
             this.cbo_LoaiSP.TabIndex = 8;
             // 
             // cbo_NCC
             // 
             this.cbo_NCC.Font = new System.Drawing.Font("Segoe UI Semibold", 13.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.cbo_NCC.FormattingEnabled = true;
-            this.cbo_NCC.Location = new System.Drawing.Point(212, 208);
+            this.cbo_NCC.Location = new System.Drawing.Point(236, 211);
             this.cbo_NCC.Name = "cbo_NCC";
-            this.cbo_NCC.Size = new System.Drawing.Size(299, 39);
+            this.cbo_NCC.Size = new System.Drawing.Size(430, 39);
             this.cbo_NCC.TabIndex = 62;
             // 
             // frm_SearchSP
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
-            this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1178, 676);
+            this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.None;
+            this.ClientSize = new System.Drawing.Size(1437, 739);
             this.Controls.Add(this.cbo_NCC);
             this.Controls.Add(this.btn_Search);
             this.Controls.Add(this.groupBox1);

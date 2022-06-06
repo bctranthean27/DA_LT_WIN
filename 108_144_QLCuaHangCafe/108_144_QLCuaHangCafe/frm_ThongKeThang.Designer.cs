@@ -46,9 +46,9 @@
             this.grp_ThongKeNgay.Controls.Add(this.dgv_ThongKeThang);
             this.grp_ThongKeNgay.Dock = System.Windows.Forms.DockStyle.Bottom;
             this.grp_ThongKeNgay.Font = new System.Drawing.Font("Segoe UI", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.grp_ThongKeNgay.Location = new System.Drawing.Point(0, 152);
+            this.grp_ThongKeNgay.Location = new System.Drawing.Point(0, 164);
             this.grp_ThongKeNgay.Name = "grp_ThongKeNgay";
-            this.grp_ThongKeNgay.Size = new System.Drawing.Size(1129, 583);
+            this.grp_ThongKeNgay.Size = new System.Drawing.Size(1455, 583);
             this.grp_ThongKeNgay.TabIndex = 122;
             this.grp_ThongKeNgay.TabStop = false;
             this.grp_ThongKeNgay.Text = "Bảng Thống Kế Hoá Đơn Theo Tháng";
@@ -67,7 +67,7 @@
             this.dgv_ThongKeThang.Name = "dgv_ThongKeThang";
             this.dgv_ThongKeThang.RowHeadersWidth = 50;
             this.dgv_ThongKeThang.RowTemplate.Height = 24;
-            this.dgv_ThongKeThang.Size = new System.Drawing.Size(1123, 554);
+            this.dgv_ThongKeThang.Size = new System.Drawing.Size(1449, 554);
             this.dgv_ThongKeThang.TabIndex = 0;
             // 
             // Ngay
@@ -97,10 +97,10 @@
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Font = new System.Drawing.Font("Segoe UI Semibold", 13.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label2.Location = new System.Drawing.Point(317, 85);
+            this.label2.Font = new System.Drawing.Font("Segoe UI Semibold", 16.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label2.Location = new System.Drawing.Point(585, 102);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(93, 31);
+            this.label2.Size = new System.Drawing.Size(113, 38);
             this.label2.TabIndex = 118;
             this.label2.Text = "THÁNG";
             // 
@@ -111,28 +111,27 @@
             this.label1.Font = new System.Drawing.Font("Segoe UI", 19.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label1.Location = new System.Drawing.Point(0, 0);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(1129, 63);
+            this.label1.Size = new System.Drawing.Size(1455, 63);
             this.label1.TabIndex = 117;
             this.label1.Text = "THỐNG KÊ HOÁ ĐƠN - THÁNG";
             this.label1.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // cbo_ThongKeThang
             // 
-            this.cbo_ThongKeThang.Font = new System.Drawing.Font("Segoe UI Semibold", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.cbo_ThongKeThang.Font = new System.Drawing.Font("Segoe UI Semibold", 16.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.cbo_ThongKeThang.FormattingEnabled = true;
             this.cbo_ThongKeThang.Items.AddRange(new object[] {
             "On",
             "Off"});
-            this.cbo_ThongKeThang.Location = new System.Drawing.Point(501, 89);
+            this.cbo_ThongKeThang.Location = new System.Drawing.Point(754, 95);
             this.cbo_ThongKeThang.Name = "cbo_ThongKeThang";
-            this.cbo_ThongKeThang.Size = new System.Drawing.Size(299, 31);
+            this.cbo_ThongKeThang.Size = new System.Drawing.Size(299, 45);
             this.cbo_ThongKeThang.TabIndex = 114;
             // 
             // frm_ThongKeThang
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
-            this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1129, 735);
+            this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.None;
+            this.ClientSize = new System.Drawing.Size(1455, 747);
             this.Controls.Add(this.cbo_ThongKeThang);
             this.Controls.Add(this.grp_ThongKeNgay);
             this.Controls.Add(this.label2);

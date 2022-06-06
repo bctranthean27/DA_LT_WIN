@@ -84,6 +84,7 @@ namespace _108_144_QLCuaHangCafe
         {
             XuLiTextBox(false);
             XuLiButton(false);
+            txt_MaHD.ReadOnly = true;
             flag = 2;
         }
         string NgayThangNam(DateTimePicker dtp)
@@ -103,7 +104,9 @@ namespace _108_144_QLCuaHangCafe
             {
                 if (m1.Trim() == "" || m2.Trim() == "" || m3.Trim() == "" || m4.Trim() == "" || m5.Trim() == "" )
                     throw new Exception("Vui lòng điền đủ thông tin");
-                string sql = "insert into HoaDon(MaHD,MaKH,NgayLap,MaLoaiHD,MaNV,TrangThai) values ('" + m1 + "',N'" + m2 + "',N'" + m3 + "','" + m4 + "',N'" + m5 + "',N'" + m6  + "')";
+                //string sql = "insert into HoaDon(MaHD,MaKH,NgayLap,MaLoaiHD,MaNV,TrangThai) values ('" + m1 + "',N'" + m2 + "',N'" + m3 + "','" + m4 + "',N'" + m5 + "',N'" + m6  + "')";
+                //proc
+                string sql = "EXEC them_hd @mahd = '" + m1 + "', @makh = '" + m2 + "', @ngaylap = '" + m3 + "', @maloaihd = N'" + m4 + "', @manv = '" + m5 + "';";
                 if (c.CapNhatDulieu(sql) > 0)
                 {
                     MessageBox.Show("Cập nhật thành công", "Thông báo", MessageBoxButtons.OK);
@@ -121,23 +124,29 @@ namespace _108_144_QLCuaHangCafe
         {
             try
             {
+                string sql = "";
                 if (txt_MaHD.Text == "")
                 {
                     throw new Exception("Lỗi cập nhật\nHãy chắc chắn bạn chọn đúng cột muốn sửa");
                 }
-                string sql = "update HoaDon set ";
-                if (m1.Trim() != "")
-                    sql += " MaHD='" + m1 + "',";
-                if (m2.Trim() != "")
-                    sql += " MaKH='" + m2 + "',";
-                if (m3.Trim() != "")
-                    sql += " NgayLap=N'" + m3 + "',";
-                if (m4.Trim() != "")
-                    sql += " MaLoaiHD=N'" + m4 + "',";
-                if (m5.Trim() != "")
-                    sql += " MaNV='" + m5 + "',";
-                sql += " TrangThai='" + m6;
-                sql += "' where MaHD='" + Old_Value + "'";
+                //sql = "update HoaDon set ";
+                //if (m1.Trim() != "")
+                //    sql += " MaHD='" + m1 + "',";
+                //if (m2.Trim() != "")
+                //    sql += " MaKH='" + m2 + "',";
+                //if (m3.Trim() != "")
+                //    sql += " NgayLap=N'" + m3 + "',";
+                //if (m4.Trim() != "")
+                //    sql += " MaLoaiHD=N'" + m4 + "',";
+                //if (m5.Trim() != "")
+                //    sql += " MaNV='" + m5 + "',";
+                //sql += " TrangThai='" + m6;
+                //sql += "' where MaHD='" + Old_Value + "'";
+                if (m1.Trim() == "" && m2.Trim() == "" && m3.Trim() == "" && m4.Trim() == "" && m5.Trim() == "")
+                    sql = "update HoaDon set TrangThai = '" + 0 + "'where MaHD = '" + Old_Value + "'";
+                else
+                    sql = "EXEC sua_hd @mahd = '" + m1 + "', @makh = '" + m2 + "', @ngaylap = N'" + m3 + "', @maloaihd = N'" + m4 + "', @manv = '" + m5 + "', @trangthai = '" + m6 + "';";
+
                 if (c.CapNhatDulieu(sql) > 0)
                 {
                     MessageBox.Show("Cập nhật thành công", "Thông báo", MessageBoxButtons.OK);
@@ -230,6 +239,7 @@ namespace _108_144_QLCuaHangCafe
         private void btn_Xoa_Click(object sender, EventArgs e)
         {
             sua(sender, e);
+            clearTextbox();
             //try
             //{
             //    if (txt_MaHD.Text == "")
@@ -247,6 +257,11 @@ namespace _108_144_QLCuaHangCafe
             //    MessageBox.Show(err.Message, "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
             //    frm_HoaDon_Load(sender, e);
             //}
+        }
+
+        private void label9_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }

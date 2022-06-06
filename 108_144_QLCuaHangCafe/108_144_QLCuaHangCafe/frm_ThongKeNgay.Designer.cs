@@ -51,7 +51,7 @@
             this.label1.Font = new System.Drawing.Font("Segoe UI", 19.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label1.Location = new System.Drawing.Point(0, 0);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(1178, 63);
+            this.label1.Size = new System.Drawing.Size(1448, 63);
             this.label1.TabIndex = 2;
             this.label1.Text = "THỐNG KÊ HOÁ ĐƠN - NGÀY";
             this.label1.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -60,7 +60,7 @@
             // 
             this.label3.AutoSize = true;
             this.label3.Font = new System.Drawing.Font("Segoe UI Semibold", 13.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label3.Location = new System.Drawing.Point(643, 92);
+            this.label3.Location = new System.Drawing.Point(728, 92);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(56, 31);
             this.label3.TabIndex = 10;
@@ -70,7 +70,7 @@
             // 
             this.label2.AutoSize = true;
             this.label2.Font = new System.Drawing.Font("Segoe UI Semibold", 13.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label2.Location = new System.Drawing.Point(102, 89);
+            this.label2.Location = new System.Drawing.Point(170, 89);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(166, 31);
             this.label2.TabIndex = 7;
@@ -78,22 +78,22 @@
             // 
             // dtp_MinNgay
             // 
-            this.dtp_MinNgay.Font = new System.Drawing.Font("Segoe UI Semibold", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.dtp_MinNgay.Font = new System.Drawing.Font("Segoe UI Semibold", 13.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.dtp_MinNgay.Format = System.Windows.Forms.DateTimePickerFormat.Short;
-            this.dtp_MinNgay.Location = new System.Drawing.Point(288, 89);
+            this.dtp_MinNgay.Location = new System.Drawing.Point(373, 89);
             this.dtp_MinNgay.Name = "dtp_MinNgay";
-            this.dtp_MinNgay.Size = new System.Drawing.Size(333, 34);
+            this.dtp_MinNgay.Size = new System.Drawing.Size(333, 38);
             this.dtp_MinNgay.TabIndex = 11;
             this.dtp_MinNgay.Value = new System.DateTime(2000, 1, 1, 16, 23, 0, 0);
             this.dtp_MinNgay.ValueChanged += new System.EventHandler(this.dtp_MinNgay_ValueChanged);
             // 
             // dtp_MaxNgay
             // 
-            this.dtp_MaxNgay.Font = new System.Drawing.Font("Segoe UI Semibold", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.dtp_MaxNgay.Font = new System.Drawing.Font("Segoe UI Semibold", 13.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.dtp_MaxNgay.Format = System.Windows.Forms.DateTimePickerFormat.Short;
-            this.dtp_MaxNgay.Location = new System.Drawing.Point(722, 89);
+            this.dtp_MaxNgay.Location = new System.Drawing.Point(807, 89);
             this.dtp_MaxNgay.Name = "dtp_MaxNgay";
-            this.dtp_MaxNgay.Size = new System.Drawing.Size(333, 34);
+            this.dtp_MaxNgay.Size = new System.Drawing.Size(345, 38);
             this.dtp_MaxNgay.TabIndex = 12;
             this.dtp_MaxNgay.Value = new System.DateTime(2022, 5, 23, 16, 23, 46, 0);
             // 
@@ -102,9 +102,9 @@
             this.grp_ThongKeNgay.Controls.Add(this.dgv_DanhSach);
             this.grp_ThongKeNgay.Dock = System.Windows.Forms.DockStyle.Bottom;
             this.grp_ThongKeNgay.Font = new System.Drawing.Font("Segoe UI", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.grp_ThongKeNgay.Location = new System.Drawing.Point(0, 150);
+            this.grp_ThongKeNgay.Location = new System.Drawing.Point(0, 173);
             this.grp_ThongKeNgay.Name = "grp_ThongKeNgay";
-            this.grp_ThongKeNgay.Size = new System.Drawing.Size(1178, 526);
+            this.grp_ThongKeNgay.Size = new System.Drawing.Size(1448, 563);
             this.grp_ThongKeNgay.TabIndex = 116;
             this.grp_ThongKeNgay.TabStop = false;
             this.grp_ThongKeNgay.Text = "Bảng Thống Kê Hoá Đơn Theo Ngày";
@@ -124,7 +124,7 @@
             this.dgv_DanhSach.Name = "dgv_DanhSach";
             this.dgv_DanhSach.RowHeadersWidth = 50;
             this.dgv_DanhSach.RowTemplate.Height = 24;
-            this.dgv_DanhSach.Size = new System.Drawing.Size(1172, 497);
+            this.dgv_DanhSach.Size = new System.Drawing.Size(1442, 534);
             this.dgv_DanhSach.TabIndex = 0;
             // 
             // MaHD
@@ -159,9 +159,8 @@
             // 
             // frm_ThongKeNgay
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
-            this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1178, 676);
+            this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.None;
+            this.ClientSize = new System.Drawing.Size(1448, 736);
             this.Controls.Add(this.grp_ThongKeNgay);
             this.Controls.Add(this.dtp_MaxNgay);
             this.Controls.Add(this.dtp_MinNgay);

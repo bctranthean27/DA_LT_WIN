@@ -62,7 +62,7 @@
             this.dgv_DanhSach.Name = "dgv_DanhSach";
             this.dgv_DanhSach.RowHeadersWidth = 50;
             this.dgv_DanhSach.RowTemplate.Height = 24;
-            this.dgv_DanhSach.Size = new System.Drawing.Size(1321, 420);
+            this.dgv_DanhSach.Size = new System.Drawing.Size(1321, 381);
             this.dgv_DanhSach.TabIndex = 0;
             this.dgv_DanhSach.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgv_DanhSach_CellClick);
             // 
@@ -92,9 +92,9 @@
             this.groupBox1.Controls.Add(this.dgv_DanhSach);
             this.groupBox1.Dock = System.Windows.Forms.DockStyle.Bottom;
             this.groupBox1.Font = new System.Drawing.Font("Segoe UI", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.groupBox1.Location = new System.Drawing.Point(0, 300);
+            this.groupBox1.Location = new System.Drawing.Point(0, 339);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(1327, 449);
+            this.groupBox1.Size = new System.Drawing.Size(1327, 410);
             this.groupBox1.TabIndex = 76;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Bảng Loại Sản Phẩm";
@@ -104,7 +104,7 @@
             this.txt_TenLoaiSP.Font = new System.Drawing.Font("Microsoft Sans Serif", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txt_TenLoaiSP.Location = new System.Drawing.Point(255, 153);
             this.txt_TenLoaiSP.Name = "txt_TenLoaiSP";
-            this.txt_TenLoaiSP.Size = new System.Drawing.Size(299, 34);
+            this.txt_TenLoaiSP.Size = new System.Drawing.Size(459, 34);
             this.txt_TenLoaiSP.TabIndex = 70;
             // 
             // cbo_TrangThai
@@ -116,7 +116,7 @@
             "0"});
             this.cbo_TrangThai.Location = new System.Drawing.Point(255, 225);
             this.cbo_TrangThai.Name = "cbo_TrangThai";
-            this.cbo_TrangThai.Size = new System.Drawing.Size(299, 39);
+            this.cbo_TrangThai.Size = new System.Drawing.Size(459, 39);
             this.cbo_TrangThai.TabIndex = 69;
             // 
             // label9
@@ -164,7 +164,7 @@
             // btn_Exit
             // 
             this.btn_Exit.Font = new System.Drawing.Font("Segoe UI Semibold", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btn_Exit.Location = new System.Drawing.Point(895, 151);
+            this.btn_Exit.Location = new System.Drawing.Point(1115, 153);
             this.btn_Exit.Name = "btn_Exit";
             this.btn_Exit.Size = new System.Drawing.Size(158, 36);
             this.btn_Exit.TabIndex = 80;
@@ -175,7 +175,7 @@
             // btn_Luu
             // 
             this.btn_Luu.Font = new System.Drawing.Font("Segoe UI Semibold", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btn_Luu.Location = new System.Drawing.Point(895, 88);
+            this.btn_Luu.Location = new System.Drawing.Point(1115, 90);
             this.btn_Luu.Name = "btn_Luu";
             this.btn_Luu.Size = new System.Drawing.Size(158, 36);
             this.btn_Luu.TabIndex = 79;
@@ -186,7 +186,7 @@
             // btn_Sua
             // 
             this.btn_Sua.Font = new System.Drawing.Font("Segoe UI Semibold", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btn_Sua.Location = new System.Drawing.Point(659, 225);
+            this.btn_Sua.Location = new System.Drawing.Point(879, 227);
             this.btn_Sua.Name = "btn_Sua";
             this.btn_Sua.Size = new System.Drawing.Size(158, 36);
             this.btn_Sua.TabIndex = 78;
@@ -197,7 +197,7 @@
             // btn_Xoa
             // 
             this.btn_Xoa.Font = new System.Drawing.Font("Segoe UI Semibold", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btn_Xoa.Location = new System.Drawing.Point(659, 153);
+            this.btn_Xoa.Location = new System.Drawing.Point(879, 155);
             this.btn_Xoa.Name = "btn_Xoa";
             this.btn_Xoa.Size = new System.Drawing.Size(158, 36);
             this.btn_Xoa.TabIndex = 77;
@@ -208,7 +208,7 @@
             // btn_Them
             // 
             this.btn_Them.Font = new System.Drawing.Font("Segoe UI Semibold", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btn_Them.Location = new System.Drawing.Point(659, 89);
+            this.btn_Them.Location = new System.Drawing.Point(879, 91);
             this.btn_Them.Name = "btn_Them";
             this.btn_Them.Size = new System.Drawing.Size(158, 36);
             this.btn_Them.TabIndex = 76;
@@ -221,13 +221,12 @@
             this.txt_MaLoaiSP.Font = new System.Drawing.Font("Microsoft Sans Serif", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txt_MaLoaiSP.Location = new System.Drawing.Point(255, 91);
             this.txt_MaLoaiSP.Name = "txt_MaLoaiSP";
-            this.txt_MaLoaiSP.Size = new System.Drawing.Size(299, 34);
+            this.txt_MaLoaiSP.Size = new System.Drawing.Size(459, 34);
             this.txt_MaLoaiSP.TabIndex = 70;
             // 
             // frm_LoaiSanPham
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
-            this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.None;
             this.ClientSize = new System.Drawing.Size(1327, 749);
             this.Controls.Add(this.btn_Exit);
             this.Controls.Add(this.groupBox1);

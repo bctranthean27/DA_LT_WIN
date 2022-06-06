@@ -74,6 +74,7 @@ namespace _108_144_QLCuaHangCafe
         {
             XuLiTextBox(false);
             XuLiButton(false);
+            txt_MaKH.ReadOnly = true;
             flag = 2;
         }
         void them(object sender, EventArgs e, string m1, string m2, string m3, string m4, string m5, string m6 = "1")
@@ -84,7 +85,7 @@ namespace _108_144_QLCuaHangCafe
                     throw new Exception("Vui lòng điền đủ thông tin");
                 //string sql = "insert into KhachHang(MaKH,TenKH,DChi,SDT,Mail,TrangThai) values ('" + m1 + "',N'" + m2 + "',N'" + m3 + "','" + m4 + "',N'" + m5 + "','" + m6 + "')";
                 //proc
-                string sql = "EXEC them_khach_hang @makh = '" + m1 + "', @tenkh = '" + m2 + "', @dchi = '" + m3 + "', @sdt = '" + m4 + "', @mail = '" + m5 + "';";
+                string sql = "EXEC them_khach_hang @makh = '" + m1 + "', @tenkh = N'" + m2 + "', @dchi = N'" + m3 + "', @sdt = '" + m4 + "', @mail = '" + m5 + "';";
                 if (c.CapNhatDulieu(sql) > 0)
                 {
                     MessageBox.Show("Cập nhật thành công", "Thông báo", MessageBoxButtons.OK);
@@ -123,7 +124,7 @@ namespace _108_144_QLCuaHangCafe
                 if (m1.Trim() == "" && m2.Trim() == "" && m3.Trim() == "" && m4.Trim() == "" && m5.Trim() == "")
                     sql = "update KhachHang set TrangThai = '" + 0 + "'where MaKH = '" + Old_Value + "'";
                 else
-                    sql = "EXEC sua_khach_hang @makh = '" + m1 + "', @tenkh = '" + m2 + "', @dchi = '" + m3 + "', @sdt = '" + m4 + "', @mail = '" + m5 + "',@trangthai = '" + m6 + "';";
+                    sql = "EXEC sua_khach_hang @makh = '" + m1 + "', @tenkh = N'" + m2 + "', @dchi = N'" + m3 + "', @sdt = '" + m4 + "', @mail = '" + m5 + "',@trangthai = '" + m6 + "';";
                 if (c.CapNhatDulieu(sql) > 0)
                 {
                     MessageBox.Show("Cập nhật thành công", "Thông báo", MessageBoxButtons.OK);

@@ -49,7 +49,7 @@
             // 
             this.label3.AutoSize = true;
             this.label3.Font = new System.Drawing.Font("Segoe UI Semibold", 13.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label3.Location = new System.Drawing.Point(480, 99);
+            this.label3.Location = new System.Drawing.Point(769, 96);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(159, 31);
             this.label3.TabIndex = 69;
@@ -58,7 +58,7 @@
             // txt_DienThoai
             // 
             this.txt_DienThoai.Font = new System.Drawing.Font("Microsoft Sans Serif", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txt_DienThoai.Location = new System.Drawing.Point(667, 99);
+            this.txt_DienThoai.Location = new System.Drawing.Point(956, 96);
             this.txt_DienThoai.Name = "txt_DienThoai";
             this.txt_DienThoai.Size = new System.Drawing.Size(299, 34);
             this.txt_DienThoai.TabIndex = 66;
@@ -67,7 +67,7 @@
             // txt_TenKH
             // 
             this.txt_TenKH.Font = new System.Drawing.Font("Microsoft Sans Serif", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txt_TenKH.Location = new System.Drawing.Point(164, 98);
+            this.txt_TenKH.Location = new System.Drawing.Point(453, 95);
             this.txt_TenKH.Name = "txt_TenKH";
             this.txt_TenKH.Size = new System.Drawing.Size(299, 34);
             this.txt_TenKH.TabIndex = 67;
@@ -77,7 +77,7 @@
             // 
             this.label2.AutoSize = true;
             this.label2.Font = new System.Drawing.Font("Segoe UI Semibold", 13.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label2.Location = new System.Drawing.Point(25, 99);
+            this.label2.Location = new System.Drawing.Point(314, 96);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(113, 31);
             this.label2.TabIndex = 65;
@@ -90,7 +90,7 @@
             this.label1.Font = new System.Drawing.Font("Segoe UI", 19.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label1.Location = new System.Drawing.Point(0, 0);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(1178, 63);
+            this.label1.Size = new System.Drawing.Size(1474, 63);
             this.label1.TabIndex = 62;
             this.label1.Text = "TÌM KIẾM KHÁCH HÀNG";
             this.label1.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -111,7 +111,7 @@
             this.dgv_DanhSach.Name = "dgv_DanhSach";
             this.dgv_DanhSach.RowHeadersWidth = 50;
             this.dgv_DanhSach.RowTemplate.Height = 24;
-            this.dgv_DanhSach.Size = new System.Drawing.Size(1172, 478);
+            this.dgv_DanhSach.Size = new System.Drawing.Size(1468, 525);
             this.dgv_DanhSach.TabIndex = 0;
             // 
             // MaKH
@@ -161,18 +161,17 @@
             this.groupBox1.Controls.Add(this.dgv_DanhSach);
             this.groupBox1.Dock = System.Windows.Forms.DockStyle.Bottom;
             this.groupBox1.Font = new System.Drawing.Font("Segoe UI", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.groupBox1.Location = new System.Drawing.Point(0, 169);
+            this.groupBox1.Location = new System.Drawing.Point(0, 198);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(1178, 507);
+            this.groupBox1.Size = new System.Drawing.Size(1474, 554);
             this.groupBox1.TabIndex = 77;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Danh Sách Khách Hàng";
             // 
             // frm_SearchKH
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
-            this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1178, 676);
+            this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.None;
+            this.ClientSize = new System.Drawing.Size(1474, 752);
             this.Controls.Add(this.groupBox1);
             this.Controls.Add(this.label3);
             this.Controls.Add(this.txt_DienThoai);

@@ -30,14 +30,6 @@
         {
             this.cbo_TrangThai = new System.Windows.Forms.ComboBox();
             this.label5 = new System.Windows.Forms.Label();
-            this.groupBox1 = new System.Windows.Forms.GroupBox();
-            this.dgv_DanhSach = new System.Windows.Forms.DataGridView();
-            this.MaSP = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.TenSP = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.MaLoai = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.MaNCC = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.DonGia = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.TrangThai = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.btn_Exit = new System.Windows.Forms.Button();
             this.btn_Luu = new System.Windows.Forms.Button();
             this.btn_Sua = new System.Windows.Forms.Button();
@@ -56,9 +48,19 @@
             this.label7 = new System.Windows.Forms.Label();
             this.btn_AddImage = new System.Windows.Forms.Button();
             this.pic_HinhAnh = new System.Windows.Forms.PictureBox();
+            this.groupBox2 = new System.Windows.Forms.GroupBox();
+            this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.dgv_DanhSach = new System.Windows.Forms.DataGridView();
+            this.MaSP = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.TenSP = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.MaLoai = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.MaNCC = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.DonGia = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.TrangThai = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            ((System.ComponentModel.ISupportInitialize)(this.pic_HinhAnh)).BeginInit();
+            this.groupBox2.SuspendLayout();
             this.groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgv_DanhSach)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pic_HinhAnh)).BeginInit();
             this.SuspendLayout();
             // 
             // cbo_TrangThai
@@ -82,78 +84,6 @@
             this.label5.Size = new System.Drawing.Size(118, 31);
             this.label5.TabIndex = 61;
             this.label5.Text = "Trạng thái";
-            // 
-            // groupBox1
-            // 
-            this.groupBox1.Controls.Add(this.dgv_DanhSach);
-            this.groupBox1.Font = new System.Drawing.Font("Segoe UI", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.groupBox1.Location = new System.Drawing.Point(29, 359);
-            this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(1077, 382);
-            this.groupBox1.TabIndex = 59;
-            this.groupBox1.TabStop = false;
-            this.groupBox1.Text = "Danh Sách Sản Phẩm";
-            // 
-            // dgv_DanhSach
-            // 
-            this.dgv_DanhSach.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
-            this.dgv_DanhSach.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dgv_DanhSach.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
-            this.MaSP,
-            this.TenSP,
-            this.MaLoai,
-            this.MaNCC,
-            this.DonGia,
-            this.TrangThai});
-            this.dgv_DanhSach.Location = new System.Drawing.Point(6, 31);
-            this.dgv_DanhSach.Name = "dgv_DanhSach";
-            this.dgv_DanhSach.RowHeadersWidth = 50;
-            this.dgv_DanhSach.RowTemplate.Height = 24;
-            this.dgv_DanhSach.Size = new System.Drawing.Size(1065, 333);
-            this.dgv_DanhSach.TabIndex = 0;
-            this.dgv_DanhSach.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgv_DanhSach_CellClick);
-            // 
-            // MaSP
-            // 
-            this.MaSP.DataPropertyName = "MaSP";
-            this.MaSP.HeaderText = "Mã Sản Phẩm";
-            this.MaSP.MinimumWidth = 6;
-            this.MaSP.Name = "MaSP";
-            // 
-            // TenSP
-            // 
-            this.TenSP.DataPropertyName = "TenSP";
-            this.TenSP.HeaderText = "Tên Sản Phẩm";
-            this.TenSP.MinimumWidth = 6;
-            this.TenSP.Name = "TenSP";
-            // 
-            // MaLoai
-            // 
-            this.MaLoai.DataPropertyName = "MaLoai";
-            this.MaLoai.HeaderText = "Loại Sản Phẩm";
-            this.MaLoai.MinimumWidth = 6;
-            this.MaLoai.Name = "MaLoai";
-            // 
-            // MaNCC
-            // 
-            this.MaNCC.DataPropertyName = "MaNCC";
-            this.MaNCC.HeaderText = "Nhà Cung Cấp";
-            this.MaNCC.MinimumWidth = 6;
-            this.MaNCC.Name = "MaNCC";
-            // 
-            // DonGia
-            // 
-            this.DonGia.DataPropertyName = "DonGia";
-            this.DonGia.HeaderText = "Đơn Giá";
-            this.DonGia.MinimumWidth = 6;
-            this.DonGia.Name = "DonGia";
-            // 
-            // TrangThai
-            // 
-            this.TrangThai.DataPropertyName = "TrangThai";
-            this.TrangThai.HeaderText = "Trạng Thái";
-            this.TrangThai.MinimumWidth = 6;
-            this.TrangThai.Name = "TrangThai";
             // 
             // btn_Exit
             // 
@@ -323,7 +253,7 @@
             // btn_AddImage
             // 
             this.btn_AddImage.Font = new System.Drawing.Font("Segoe UI Semibold", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btn_AddImage.Location = new System.Drawing.Point(1180, 95);
+            this.btn_AddImage.Location = new System.Drawing.Point(1180, 93);
             this.btn_AddImage.Name = "btn_AddImage";
             this.btn_AddImage.Size = new System.Drawing.Size(197, 39);
             this.btn_AddImage.TabIndex = 68;
@@ -340,39 +270,123 @@
             this.pic_HinhAnh.TabStop = false;
             this.pic_HinhAnh.MouseHover += new System.EventHandler(this.pic_HinhAnh_MouseHover);
             // 
+            // groupBox2
+            // 
+            this.groupBox2.Controls.Add(this.groupBox1);
+            this.groupBox2.Dock = System.Windows.Forms.DockStyle.Left;
+            this.groupBox2.Location = new System.Drawing.Point(0, 63);
+            this.groupBox2.Name = "groupBox2";
+            this.groupBox2.Size = new System.Drawing.Size(1139, 709);
+            this.groupBox2.TabIndex = 70;
+            this.groupBox2.TabStop = false;
+            this.groupBox2.Text = "groupBox2";
+            // 
+            // groupBox1
+            // 
+            this.groupBox1.Controls.Add(this.dgv_DanhSach);
+            this.groupBox1.Dock = System.Windows.Forms.DockStyle.Bottom;
+            this.groupBox1.Font = new System.Drawing.Font("Segoe UI", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.groupBox1.Location = new System.Drawing.Point(3, 329);
+            this.groupBox1.Name = "groupBox1";
+            this.groupBox1.Size = new System.Drawing.Size(1133, 377);
+            this.groupBox1.TabIndex = 71;
+            this.groupBox1.TabStop = false;
+            this.groupBox1.Text = "Danh Sách Sản Phẩm";
+            // 
+            // dgv_DanhSach
+            // 
+            this.dgv_DanhSach.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
+            this.dgv_DanhSach.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dgv_DanhSach.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.MaSP,
+            this.TenSP,
+            this.MaLoai,
+            this.MaNCC,
+            this.DonGia,
+            this.TrangThai});
+            this.dgv_DanhSach.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.dgv_DanhSach.Location = new System.Drawing.Point(3, 26);
+            this.dgv_DanhSach.Name = "dgv_DanhSach";
+            this.dgv_DanhSach.RowHeadersWidth = 50;
+            this.dgv_DanhSach.RowTemplate.Height = 24;
+            this.dgv_DanhSach.Size = new System.Drawing.Size(1127, 348);
+            this.dgv_DanhSach.TabIndex = 0;
+            // 
+            // MaSP
+            // 
+            this.MaSP.DataPropertyName = "MaSP";
+            this.MaSP.HeaderText = "Mã Sản Phẩm";
+            this.MaSP.MinimumWidth = 6;
+            this.MaSP.Name = "MaSP";
+            // 
+            // TenSP
+            // 
+            this.TenSP.DataPropertyName = "TenSP";
+            this.TenSP.HeaderText = "Tên Sản Phẩm";
+            this.TenSP.MinimumWidth = 6;
+            this.TenSP.Name = "TenSP";
+            // 
+            // MaLoai
+            // 
+            this.MaLoai.DataPropertyName = "MaLoai";
+            this.MaLoai.HeaderText = "Loại Sản Phẩm";
+            this.MaLoai.MinimumWidth = 6;
+            this.MaLoai.Name = "MaLoai";
+            // 
+            // MaNCC
+            // 
+            this.MaNCC.DataPropertyName = "MaNCC";
+            this.MaNCC.HeaderText = "Nhà Cung Cấp";
+            this.MaNCC.MinimumWidth = 6;
+            this.MaNCC.Name = "MaNCC";
+            // 
+            // DonGia
+            // 
+            this.DonGia.DataPropertyName = "DonGia";
+            this.DonGia.HeaderText = "Đơn Giá";
+            this.DonGia.MinimumWidth = 6;
+            this.DonGia.Name = "DonGia";
+            // 
+            // TrangThai
+            // 
+            this.TrangThai.DataPropertyName = "TrangThai";
+            this.TrangThai.HeaderText = "Trạng Thái";
+            this.TrangThai.MinimumWidth = 6;
+            this.TrangThai.Name = "TrangThai";
+            // 
             // frm_SanPham
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
-            this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.None;
             this.ClientSize = new System.Drawing.Size(1808, 772);
-            this.Controls.Add(this.pic_HinhAnh);
-            this.Controls.Add(this.btn_AddImage);
-            this.Controls.Add(this.txt_DonGia);
-            this.Controls.Add(this.label7);
-            this.Controls.Add(this.txt_MaSP);
-            this.Controls.Add(this.cbo_NCC);
-            this.Controls.Add(this.cbo_LoaiSanPham);
-            this.Controls.Add(this.cbo_TrangThai);
-            this.Controls.Add(this.label5);
-            this.Controls.Add(this.groupBox1);
             this.Controls.Add(this.btn_Exit);
             this.Controls.Add(this.btn_Luu);
             this.Controls.Add(this.btn_Sua);
-            this.Controls.Add(this.txt_TenSP);
             this.Controls.Add(this.btn_Xoa);
             this.Controls.Add(this.btn_Them);
+            this.Controls.Add(this.txt_DonGia);
+            this.Controls.Add(this.cbo_NCC);
+            this.Controls.Add(this.cbo_TrangThai);
+            this.Controls.Add(this.label5);
+            this.Controls.Add(this.label7);
             this.Controls.Add(this.label6);
+            this.Controls.Add(this.cbo_LoaiSanPham);
+            this.Controls.Add(this.txt_TenSP);
+            this.Controls.Add(this.txt_MaSP);
             this.Controls.Add(this.label4);
             this.Controls.Add(this.label3);
             this.Controls.Add(this.label2);
+            this.Controls.Add(this.groupBox2);
+            this.Controls.Add(this.pic_HinhAnh);
+            this.Controls.Add(this.btn_AddImage);
             this.Controls.Add(this.label1);
             this.Name = "frm_SanPham";
             this.Text = "SanPham";
             this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
             this.Load += new System.EventHandler(this.frm_SanPham_Load);
+            ((System.ComponentModel.ISupportInitialize)(this.pic_HinhAnh)).EndInit();
+            this.groupBox2.ResumeLayout(false);
             this.groupBox1.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.dgv_DanhSach)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pic_HinhAnh)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -381,8 +395,6 @@
         #endregion
         private System.Windows.Forms.ComboBox cbo_TrangThai;
         private System.Windows.Forms.Label label5;
-        private System.Windows.Forms.GroupBox groupBox1;
-        private System.Windows.Forms.DataGridView dgv_DanhSach;
         private System.Windows.Forms.Button btn_Exit;
         private System.Windows.Forms.Button btn_Luu;
         private System.Windows.Forms.Button btn_Sua;
@@ -397,15 +409,18 @@
         private System.Windows.Forms.ComboBox cbo_NCC;
         private System.Windows.Forms.ComboBox cbo_LoaiSanPham;
         private System.Windows.Forms.TextBox txt_MaSP;
+        private System.Windows.Forms.TextBox txt_DonGia;
+        private System.Windows.Forms.Label label7;
+        private System.Windows.Forms.Button btn_AddImage;
+        private System.Windows.Forms.PictureBox pic_HinhAnh;
+        private System.Windows.Forms.GroupBox groupBox2;
+        private System.Windows.Forms.GroupBox groupBox1;
+        private System.Windows.Forms.DataGridView dgv_DanhSach;
         private System.Windows.Forms.DataGridViewTextBoxColumn MaSP;
         private System.Windows.Forms.DataGridViewTextBoxColumn TenSP;
         private System.Windows.Forms.DataGridViewTextBoxColumn MaLoai;
         private System.Windows.Forms.DataGridViewTextBoxColumn MaNCC;
         private System.Windows.Forms.DataGridViewTextBoxColumn DonGia;
         private System.Windows.Forms.DataGridViewTextBoxColumn TrangThai;
-        private System.Windows.Forms.TextBox txt_DonGia;
-        private System.Windows.Forms.Label label7;
-        private System.Windows.Forms.Button btn_AddImage;
-        private System.Windows.Forms.PictureBox pic_HinhAnh;
     }
 }

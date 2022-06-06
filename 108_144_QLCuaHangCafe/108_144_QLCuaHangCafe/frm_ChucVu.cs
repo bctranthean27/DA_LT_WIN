@@ -74,6 +74,7 @@ namespace _108_144_QLCuaHangCafe
             XuLiTextBox(false);
             XuLiButton(false);
             btn_Lưu.Enabled = true;
+            txt_MaCV.ReadOnly = true;
             flag = 2;
         }
         void them(object sender,EventArgs e, string m1, string m2, string m3 = "1")
@@ -84,7 +85,7 @@ namespace _108_144_QLCuaHangCafe
                     throw new Exception("Vui lòng điền đủ thông tin");
                 //string sql = "insert into ChucVu(MaChucVu,TenChucVu,TrangThai) values ('" + m1 + "',N'" + m2 + "','" + m3 + "')";
                 //proc
-                string sql = "EXEC them_chuc_vu @machucvu = '" + m1 + "', @tenchucvu = '" + m2 + "';";
+                string sql = "EXEC them_chuc_vu @machucvu = '" + m1 + "', @tenchucvu = N'" + m2 + "';";
                 if (c.CapNhatDulieu(sql) > 0)
                 {
                     MessageBox.Show("Cập nhật thành công", "Thông báo", MessageBoxButtons.OK);

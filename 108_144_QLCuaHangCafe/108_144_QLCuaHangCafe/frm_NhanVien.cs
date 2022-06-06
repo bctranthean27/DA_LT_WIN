@@ -84,6 +84,7 @@ namespace _108_144_QLCuaHangCafe
             XuLiTextBox(false);
             XuLiButton(false);
             flag = 2;
+            txt_MaNV.ReadOnly = true;
         }
         string NgayThangNam(DateTimePicker dtp)
         {
@@ -101,7 +102,9 @@ namespace _108_144_QLCuaHangCafe
             {
                 if (m1.Trim() == "" || m2.Trim() == "" || m3.Trim() == "" || m4.Trim() == "" || m5.Trim() == "" || m6.Trim() == "")
                     throw new Exception("Vui lòng điền đủ thông tin");
-                string sql = "insert into NhanVien(MaNV,HoNV,TenNV,DChi,NgayVaolam,MaChucVu,TrangThai) values ('" + m1 + "',N'" + m2 + "',N'" + m3 + "',N'" + m4 + "',N'" + m5 + "',N'" + m6 + "','" + m7 + "')";
+                //string sql = "insert into NhanVien(MaNV,HoNV,TenNV,DChi,NgayVaolam,MaChucVu,TrangThai) values ('" + m1 + "',N'" + m2 + "',N'" + m3 + "',N'" + m4 + "',N'" + m5 + "',N'" + m6 + "','" + m7 + "')";
+                //proc
+                string sql = "EXEC them_nhan_vien @manv = '" + m1 + "', @honv = N'" + m2 + "', @tennv = N'" + m3 + "', @dchi = N'" + m4 + "', @ngayvaolam = '" + m5 + "', @machucvu = '" + m6 + "';";
                 if (c.CapNhatDulieu(sql) > 0)
                 {
                     MessageBox.Show("Cập nhật thành công", "Thông báo", MessageBoxButtons.OK);
@@ -119,25 +122,30 @@ namespace _108_144_QLCuaHangCafe
         {
             try
             {
+                string sql = "";
                 if (txt_MaNV.Text == "")
                 {
                     throw new Exception("Lỗi cập nhật\nHãy chắc chắn bạn chọn đúng cột muốn sửa");
                 }
-                string sql = "update NhanVien set ";
-                if (m1.Trim() != "")
-                    sql += " MaNV='" + m1 + "',";
-                if (m2.Trim() != "")
-                    sql += " HoNV=N'" + m2 + "',";
-                if (m3.Trim() != "")
-                    sql += " TenNV=N'" + m3 + "',";
-                if (m4.Trim() != "")
-                    sql += " DChi=N'" + m4 + "',";
-                if (m5.Trim() != "")
-                    sql += " NgayVaoLam=N'" + m5 + "',";
-                if (m6.Trim() != "")
-                    sql += " MaChucVu='" + m6 + "',";
-                sql += " TrangThai='" + m7;
-                sql += "' where MaNV='" + Old_Value + "'";
+                //sql = "update NhanVien set ";
+                //if (m1.Trim() != "")
+                //    sql += " MaNV='" + m1 + "',";
+                //if (m2.Trim() != "")
+                //    sql += " HoNV=N'" + m2 + "',";
+                //if (m3.Trim() != "")
+                //    sql += " TenNV=N'" + m3 + "',";
+                //if (m4.Trim() != "")
+                //    sql += " DChi=N'" + m4 + "',";
+                //if (m5.Trim() != "")
+                //    sql += " NgayVaoLam=N'" + m5 + "',";
+                //if (m6.Trim() != "")
+                //    sql += " MaChucVu='" + m6 + "',";
+                //sql += " TrangThai='" + m7;
+                //sql += "' where MaNV='" + Old_Value + "'";
+                if (m1.Trim() == "" && m2.Trim() == "" && m3.Trim() == "" && m4.Trim() == "" && m5.Trim() == "" && m6.Trim() == "")
+                    sql = "update NhanVien set TrangThai = '" + 0 + "'where MaNV = '" + Old_Value + "'";
+                else
+                    sql = "EXEC sua_nhan_vien @manv = '" + m1 + "', @honv = N'" + m2 + "', @tennv = N'" + m3 + "', @dchi = N'" + m4 + "', @ngayvaolam = '" + m5 + "', @machucvu = '" + m6 + "', @trangthai = '" + m7 + "';";
 
                 if (c.CapNhatDulieu(sql) > 0)
                 {

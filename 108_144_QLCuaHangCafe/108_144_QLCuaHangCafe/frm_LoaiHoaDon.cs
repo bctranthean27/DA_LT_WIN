@@ -71,7 +71,7 @@ namespace _108_144_QLCuaHangCafe
         {
             XuLiTextBox(false);
             XuLiButton(false);
-            btn_Luu.Enabled = true;
+            txt_MaLoaiHD.ReadOnly = true;
             flag = 2;
         }
         void them(object sender, EventArgs e, string m1, string m2)
@@ -80,7 +80,10 @@ namespace _108_144_QLCuaHangCafe
             {
                 if (m1.Trim() == "" || m2.Trim() == "")
                     throw new Exception("Vui lòng điền đủ thông tin");
-                string sql = "insert into LoaiHoaDon(MaLoaiHD,TenLoaiHD,TrangThai) values ('" + m1 + "',N'" + m2 + "','" + 1 + "')";
+                //string sql = "insert into LoaiHoaDon(MaLoaiHD,TenLoaiHD,TrangThai) values ('" + m1 + "',N'" + m2 + "','" + 1 + "')";
+                //proc
+                string sql = "EXEC them_loai_hd @maloaihd = '" + m1 + "', @tenloaihd = N'" + m2 + "';";
+
                 if (c.CapNhatDulieu(sql) > 0)
                 {
                     MessageBox.Show("Cập nhật thành công", "Thông báo", MessageBoxButtons.OK);
@@ -99,17 +102,23 @@ namespace _108_144_QLCuaHangCafe
         {
             try
             {
-                string sql = "update LoaiHoaDon set ";
+
+                string sql = "";
                 if (txt_MaLoaiHD.Text == "")
                 {
                     throw new Exception("Lỗi cập nhật\nHãy chắc chắn bạn chọn đúng cột muốn sửa");
                 }
-                if (m1.Trim() != "")
-                    sql += " MaLoaiHD='" + m1 + "',";
-                if (m2.Trim() != "")
-                    sql += " TenLoaiHD=N'" + m2 + "',";
-                sql += "TrangThai='" + m3 + "' ";
-                sql += "where MaLoaiHD='" + Old_Value + "'";
+                //sql = "update LoaiHoaDon set ";
+                //if (m1.Trim() != "")
+                //    sql += " MaLoaiHD='" + m1 + "',";
+                //if (m2.Trim() != "")
+                //    sql += " TenLoaiHD=N'" + m2 + "',";
+                //sql += "TrangThai='" + m3 + "' ";
+                //sql += "where MaLoaiHD='" + Old_Value + "'";
+                if (m1.Trim() == "" && m2.Trim() == "")
+                    sql = "update LoaiHoaDon set TrangThai = '" + 0 + "'where MaLoaiHD = '" + Old_Value + "'";
+                else
+                    sql = "EXEC sua_loai_hd @maloaihd = '" + m1 + "', @tenloaihd = N'" + m2 + "',@trangthai = '" + m3 + "';";
 
                 if (c.CapNhatDulieu(sql) > 0)
                 {
@@ -188,6 +197,7 @@ namespace _108_144_QLCuaHangCafe
         private void btn_Xoa_Click(object sender, EventArgs e)
         {
             sua(sender, e);
+            clearTextbox();
             //try
             //{
             //    if (txt_MaLoaiHD.Text == "")

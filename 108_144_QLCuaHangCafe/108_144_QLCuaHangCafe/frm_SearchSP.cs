@@ -80,7 +80,5 @@ namespace _108_144_QLCuaHangCafe
             tk += " and TrangThai = " + int.Parse(dk_TrangThai);
             loadData_DataGrid(dgv_DanhSach, tk);
         }
-            
     }
-
 }

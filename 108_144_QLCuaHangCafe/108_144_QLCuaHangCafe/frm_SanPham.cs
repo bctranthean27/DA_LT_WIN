@@ -87,6 +87,7 @@ namespace _108_144_QLCuaHangCafe
         {
             XuLiTextBox(false);
             XuLiButton(false);
+            txt_MaSP.ReadOnly = true;
             flag = 2;
         }
         void them(object sender, EventArgs e, string m1, string m2, string m3, string m4, string m5, string m6 = "1")
@@ -96,7 +97,9 @@ namespace _108_144_QLCuaHangCafe
             {
                 if (m1.Trim() == "" || m2.Trim() == "" || m3.Trim() == "" || m4.Trim() == "" || m5.Trim() == "")
                     throw new Exception("Vui lòng điền đủ thông tin");
-                string sql = "insert into SanPham(MaSP,TenSP,MaLoai,MaNCC,DonGia,TrangThai) values ('" + m1 + "',N'" + m2 + "',N'" + m3 + "','" + m4 + "',N'" + m5 + "',N'" + m6  + "')";
+                //string sql = "insert into SanPham(MaSP,TenSP,MaLoai,MaNCC,DonGia,TrangThai) values ('" + m1 + "',N'" + m2 + "',N'" + m3 + "','" + m4 + "',N'" + m5 + "',N'" + m6  + "')";
+                //proc
+                string sql = "EXEC them_sp @masp = '" + m1 + "', @tensp = N'" + m2 + "', @maloai = '" + m3 + "', @mancc = N'" + m4 + "', @dongia = '" + m5  + "';";
                 if (c.CapNhatDulieu(sql) > 0)
                 {
                     MessageBox.Show("Cập nhật thành công", "Thông báo", MessageBoxButtons.OK);
@@ -114,23 +117,29 @@ namespace _108_144_QLCuaHangCafe
         {
             try
             {
+                string sql = "";
                 if (txt_MaSP.Text == "")
                 {
                     throw new Exception("Lỗi cập nhật\nHãy chắc chắn bạn chọn đúng cột muốn sửa");
                 }
-                string sql = "update SanPham set ";
-                if (m1.Trim() != "")
-                    sql += " MaSP='" + m1 + "',";
-                if (m2.Trim() != "")
-                    sql += " TenSP=N'" + m2 + "',";
-                if (m3.Trim() != "")
-                    sql += " MaLoai='" + m3 + "',";
-                if (m4.Trim() != "")
-                    sql += " MaNCC=N'" + m4 + "',";
-                if (m5.Trim() != "")
-                    sql += " DonGia=N'" + m5 + "',";
-                sql += " TrangThai='" + m6;
-                sql += "' where MaSP='" + Old_Value + "'";
+                //sql = "update SanPham set ";
+                //if (m1.Trim() != "")
+                //    sql += " MaSP='" + m1 + "',";
+                //if (m2.Trim() != "")
+                //    sql += " TenSP=N'" + m2 + "',";
+                //if (m3.Trim() != "")
+                //    sql += " MaLoai='" + m3 + "',";
+                //if (m4.Trim() != "")
+                //    sql += " MaNCC=N'" + m4 + "',";
+                //if (m5.Trim() != "")
+                //    sql += " DonGia=N'" + m5 + "',";
+                //sql += " TrangThai='" + m6;
+                //sql += "' where MaSP='" + Old_Value + "'";
+                if (m1.Trim() == "" && m2.Trim() == "" && m3.Trim() == "" && m4.Trim() == "" && m5.Trim() == "")
+                    sql = "update SanPham set TrangThai = '" + 0 + "'where MaSP = '" + Old_Value + "'";
+                else
+                    sql = "EXEC sua_sp @masp = '" + m1 + "', @tensp = N'" + m2 + "', @maloai = N'" + m3 + "', @mancc = N'" + m4 + "', @dongia = '" + m5  + "', @trangthai = '" + m6 + "';";
+
 
                 if (c.CapNhatDulieu(sql) > 0)
                 {
@@ -217,6 +226,7 @@ namespace _108_144_QLCuaHangCafe
         private void btn_Xoa_Click(object sender, EventArgs e)
         {
             sua(sender, e);
+            clearTextbox();
             //try
             //{
             //    if (txt_MaSP.Text == "")

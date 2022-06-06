@@ -73,7 +73,10 @@ namespace _108_144_QLCuaHangCafe
             {
                 if (m1.Trim() == "" || m2.Trim() == "")
                     throw new Exception("Vui lòng điền đủ thông tin");
-                string sql = "insert into Size(MaSize,TenSize,TrangThai) values ('" + m1 + "',N'" + m2 + "','" + 1 + "')";
+                //string sql = "insert into Size(MaSize,TenSize,TrangThai) values ('" + m1 + "',N'" + m2 + "','" + 1 + "')";
+                //proc
+                string sql = "EXEC them_size @masize = '" + m1 + "', @tensize = N'" + m2 + "';";
+
                 if (c.CapNhatDulieu(sql) > 0)
                 {
                     MessageBox.Show("Cập nhật thành công", "Thông báo", MessageBoxButtons.OK);
@@ -91,17 +94,22 @@ namespace _108_144_QLCuaHangCafe
         {
             try
             {
+                string sql = "";
                 if (txt_MaSize.Text == "")
                 {
                     throw new Exception("Lỗi cập nhật\nHãy chắc chắn bạn chọn đúng cột muốn sửa");
                 }
-                string sql = "update Size set ";
-                if (m1.Trim() != "")
-                    sql += " MaSize='" + m1 + "',";
-                if (m1.Trim() != "")
-                    sql += " TenSize=N'" + m2 + "',";
-                sql += " TrangThai='" + m3;
-                sql += "' where MaSize='" + Old_Value + "'";
+                //sql = "update Size set ";
+                //if (m1.Trim() != "")
+                //    sql += " MaSize='" + m1 + "',";
+                //if (m1.Trim() != "")
+                //    sql += " TenSize=N'" + m2 + "',";
+                //sql += " TrangThai='" + m3;
+                //sql += "' where MaSize='" + Old_Value + "'";
+                if (m1.Trim() == "" && m2.Trim() == "")
+                    sql = "update Size set TrangThai = '" + 0 + "'where MaSize = '" + Old_Value + "'";
+                else
+                    sql = "EXEC sua_size @masize = '" + m1 + "', @tensize = N'" + m2 + "', @trangthai = '" + m3 + "';";
 
                 if (c.CapNhatDulieu(sql) > 0)
                 {
@@ -140,6 +148,7 @@ namespace _108_144_QLCuaHangCafe
             XuLiTextBox(false);
             XuLiButton(false);
             flag = 2;
+            txt_MaSize.ReadOnly = true;
         }
         void loadData_cboFromList(DataTable dt, ComboBox cbo, string disMember)
         {
