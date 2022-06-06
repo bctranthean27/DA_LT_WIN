@@ -81,7 +81,9 @@ namespace _108_144_QLCuaHangCafe
             {
                 if (m1.Trim() == "" || m2.Trim() == "")
                     throw new Exception("Vui lòng điền đủ thông tin");
-                string sql = "insert into LoaiSanPham(MaLoai,TenLoai,TrangThai) values ('" + m1 + "',N'" + m2 + "','" + m3 + "')";
+                //string sql = "insert into LoaiSanPham(MaLoai,TenLoai,TrangThai) values ('" + m1 + "',N'" + m2 + "','" + m3 + "')";
+                //proc
+                string sql = "EXEC them_loai_sp @maloai = '" + m1 + "', @tenloai = '" + m2 + "';";
                 if (c.CapNhatDulieu(sql) > 0)
                 {
                     MessageBox.Show("Cập nhật thành công", "Thông báo", MessageBoxButtons.OK);
@@ -100,17 +102,24 @@ namespace _108_144_QLCuaHangCafe
         {
             try
             {
-                string sql = "update LoaiSanPham set ";
+                string sql = "";
                 if (txt_MaLoaiSP.Text == "")
                 {
                     throw new Exception("Lỗi cập nhật\nHãy chắc chắn bạn chọn đúng cột muốn sửa");
                 }
-                if(m1.Trim() != "")
-                    sql += " MaLoai='" + m1 + "', ";
-                if (m2.Trim() != "")
-                    sql += "TenLoai=N'" + m2+ "', ";
-                sql += "TrangThai='" + m3 +"'";
-                sql += " where MaLoai='" + Old_Value + "'";
+                //sql = "update LoaiSanPham set ";
+                //if (m1.Trim() != "")
+                //    sql += " MaLoai='" + m1 + "', ";
+                //if (m2.Trim() != "")
+                //    sql += "TenLoai=N'" + m2 + "', ";
+                //sql += "TrangThai='" + m3 + "'";
+                //sql += " where MaLoai='" + Old_Value + "'";
+
+                //proc
+                if (m1.Trim() == "" && m2.Trim() == "")
+                    sql = "update LoaiSanPham set TrangThai = '" + 0 + "'where MaLoai = '" + Old_Value + "'";
+                else
+                    sql = "EXEC sua_loai_sp @maloai = '" + m1 + "', @tenloai = '" + m2 + "',@trangthai = '" + m3 + "';";
                 if (c.CapNhatDulieu(sql) > 0)
                 {
                     MessageBox.Show("Cập nhật thành công", "Thông báo", MessageBoxButtons.OK);
@@ -196,7 +205,7 @@ namespace _108_144_QLCuaHangCafe
         private void btn_Xoa_Click(object sender, EventArgs e)
         {
             sua(sender, e);
-            
+            clearTextbox();
             //try
             //{
             //    if (txt_MaLoaiSP.Text == "")

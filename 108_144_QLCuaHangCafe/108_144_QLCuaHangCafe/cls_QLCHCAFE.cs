@@ -5,6 +5,8 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Data.SqlClient;
 using System.Data;
+using System.Collections;
+using System.Windows.Forms;
 
 
 namespace _108_144_QLCuaHangCafe
@@ -19,14 +21,20 @@ namespace _108_144_QLCuaHangCafe
             if(con.State != ConnectionState.Closed)
                 con.Open();
         }
-        public int CapNhatDulieu(string sql)
+        public int CapNhatDulieu(string sql/*, ArrayList arl = null*/)
         {
-            
+
             con.Open();
 
             SqlCommand cmd = new SqlCommand();
 
             cmd.CommandText = sql;
+            //foreach (var i in arl )
+            //{
+            //    cmd.Parameters.Add(i);
+            //} 
+
+            //cmd.CommandType = CommandType.StoredProcedure;
             cmd.CommandType = CommandType.Text;
             cmd.Connection = con;
             int val = cmd.ExecuteNonQuery();
@@ -49,6 +57,32 @@ namespace _108_144_QLCuaHangCafe
             SqlDataAdapter da = new SqlDataAdapter(sql,con);
             da.Fill(ds);
             return ds;
+        }
+        public ArrayList laygiatri(string[]dsbien, ArrayList dsthamso)
+        {
+            ArrayList dsGiatri = new ArrayList();
+            dsGiatri = null;
+            try
+            {   
+                if(dsthamso.Count != dsbien.Length )
+                    throw new Exception("Cập nhật không thành công");
+                for(int i = 0;i< dsthamso.Count; i++)
+                {
+                    SqlParameter bien = new SqlParameter()
+                    {
+                        ParameterName = dsbien[i],
+                        Value = dsbien[i],
+                        Direction = ParameterDirection.Input,
+                    };
+                    dsGiatri.Add(bien);
+                }
+
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, "Thông báo", MessageBoxButtons.OK);
+            }
+            return dsGiatri;
         }
     }
 }

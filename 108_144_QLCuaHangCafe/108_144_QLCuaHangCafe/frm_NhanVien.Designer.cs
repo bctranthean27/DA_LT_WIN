@@ -68,9 +68,9 @@
             this.cbo_ChucVu.Items.AddRange(new object[] {
             "On",
             "Off"});
-            this.cbo_ChucVu.Location = new System.Drawing.Point(799, 203);
+            this.cbo_ChucVu.Location = new System.Drawing.Point(875, 204);
             this.cbo_ChucVu.Name = "cbo_ChucVu";
-            this.cbo_ChucVu.Size = new System.Drawing.Size(299, 39);
+            this.cbo_ChucVu.Size = new System.Drawing.Size(409, 39);
             this.cbo_ChucVu.TabIndex = 40;
             // 
             // dgv_DanhSach
@@ -85,11 +85,12 @@
             this.NgayVaoLam,
             this.MaChucVu,
             this.TrangThai});
-            this.dgv_DanhSach.Location = new System.Drawing.Point(20, 31);
+            this.dgv_DanhSach.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.dgv_DanhSach.Location = new System.Drawing.Point(3, 26);
             this.dgv_DanhSach.Name = "dgv_DanhSach";
             this.dgv_DanhSach.RowHeadersWidth = 50;
             this.dgv_DanhSach.RowTemplate.Height = 24;
-            this.dgv_DanhSach.Size = new System.Drawing.Size(1125, 331);
+            this.dgv_DanhSach.Size = new System.Drawing.Size(1305, 333);
             this.dgv_DanhSach.TabIndex = 0;
             this.dgv_DanhSach.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgv_DanhSach_CellClick);
             // 
@@ -146,7 +147,7 @@
             // 
             this.label8.AutoSize = true;
             this.label8.Font = new System.Drawing.Font("Segoe UI Semibold", 13.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label8.Location = new System.Drawing.Point(609, 209);
+            this.label8.Location = new System.Drawing.Point(685, 210);
             this.label8.Name = "label8";
             this.label8.Size = new System.Drawing.Size(100, 31);
             this.label8.TabIndex = 39;
@@ -155,10 +156,11 @@
             // groupBox1
             // 
             this.groupBox1.Controls.Add(this.dgv_DanhSach);
+            this.groupBox1.Dock = System.Windows.Forms.DockStyle.Bottom;
             this.groupBox1.Font = new System.Drawing.Font("Segoe UI", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.groupBox1.Location = new System.Drawing.Point(12, 386);
+            this.groupBox1.Location = new System.Drawing.Point(0, 402);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(1151, 362);
+            this.groupBox1.Size = new System.Drawing.Size(1311, 362);
             this.groupBox1.TabIndex = 38;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Danh Sách Nhân Viên";
@@ -166,7 +168,7 @@
             // btn_Thoat
             // 
             this.btn_Thoat.Font = new System.Drawing.Font("Segoe UI Semibold", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btn_Thoat.Location = new System.Drawing.Point(940, 325);
+            this.btn_Thoat.Location = new System.Drawing.Point(1126, 348);
             this.btn_Thoat.Name = "btn_Thoat";
             this.btn_Thoat.Size = new System.Drawing.Size(158, 36);
             this.btn_Thoat.TabIndex = 37;
@@ -177,7 +179,7 @@
             // btn_Luu
             // 
             this.btn_Luu.Font = new System.Drawing.Font("Segoe UI Semibold", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btn_Luu.Location = new System.Drawing.Point(692, 325);
+            this.btn_Luu.Location = new System.Drawing.Point(858, 348);
             this.btn_Luu.Name = "btn_Luu";
             this.btn_Luu.Size = new System.Drawing.Size(158, 36);
             this.btn_Luu.TabIndex = 36;
@@ -188,7 +190,7 @@
             // btn_Sua
             // 
             this.btn_Sua.Font = new System.Drawing.Font("Segoe UI Semibold", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btn_Sua.Location = new System.Drawing.Point(467, 325);
+            this.btn_Sua.Location = new System.Drawing.Point(569, 348);
             this.btn_Sua.Name = "btn_Sua";
             this.btn_Sua.Size = new System.Drawing.Size(158, 36);
             this.btn_Sua.TabIndex = 35;
@@ -199,7 +201,7 @@
             // btn_Xoa
             // 
             this.btn_Xoa.Font = new System.Drawing.Font("Segoe UI Semibold", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btn_Xoa.Location = new System.Drawing.Point(248, 325);
+            this.btn_Xoa.Location = new System.Drawing.Point(300, 348);
             this.btn_Xoa.Name = "btn_Xoa";
             this.btn_Xoa.Size = new System.Drawing.Size(158, 36);
             this.btn_Xoa.TabIndex = 34;
@@ -210,7 +212,7 @@
             // btn_Them
             // 
             this.btn_Them.Font = new System.Drawing.Font("Segoe UI Semibold", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btn_Them.Location = new System.Drawing.Point(32, 325);
+            this.btn_Them.Location = new System.Drawing.Point(32, 348);
             this.btn_Them.Name = "btn_Them";
             this.btn_Them.Size = new System.Drawing.Size(158, 36);
             this.btn_Them.TabIndex = 33;
@@ -221,9 +223,9 @@
             // txt_TenNV
             // 
             this.txt_TenNV.Font = new System.Drawing.Font("Microsoft Sans Serif", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txt_TenNV.Location = new System.Drawing.Point(799, 144);
+            this.txt_TenNV.Location = new System.Drawing.Point(875, 145);
             this.txt_TenNV.Name = "txt_TenNV";
-            this.txt_TenNV.Size = new System.Drawing.Size(299, 34);
+            this.txt_TenNV.Size = new System.Drawing.Size(409, 34);
             this.txt_TenNV.TabIndex = 32;
             // 
             // label4
@@ -240,7 +242,7 @@
             // 
             this.label3.AutoSize = true;
             this.label3.Font = new System.Drawing.Font("Segoe UI Semibold", 13.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label3.Location = new System.Drawing.Point(609, 147);
+            this.label3.Location = new System.Drawing.Point(685, 148);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(164, 31);
             this.label3.TabIndex = 26;
@@ -263,7 +265,7 @@
             this.label1.Font = new System.Drawing.Font("Segoe UI", 19.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label1.Location = new System.Drawing.Point(0, 0);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(1175, 63);
+            this.label1.Size = new System.Drawing.Size(1311, 63);
             this.label1.TabIndex = 23;
             this.label1.Text = "NHẬP THÔNG TIN NHÂN VIÊN";
             this.label1.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -272,7 +274,7 @@
             // 
             this.label5.AutoSize = true;
             this.label5.Font = new System.Drawing.Font("Segoe UI Semibold", 13.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label5.Location = new System.Drawing.Point(609, 269);
+            this.label5.Location = new System.Drawing.Point(685, 270);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(118, 31);
             this.label5.TabIndex = 39;
@@ -285,9 +287,9 @@
             this.cbo_TrangThai.Items.AddRange(new object[] {
             "1",
             "0"});
-            this.cbo_TrangThai.Location = new System.Drawing.Point(799, 269);
+            this.cbo_TrangThai.Location = new System.Drawing.Point(875, 270);
             this.cbo_TrangThai.Name = "cbo_TrangThai";
-            this.cbo_TrangThai.Size = new System.Drawing.Size(299, 39);
+            this.cbo_TrangThai.Size = new System.Drawing.Size(409, 39);
             this.cbo_TrangThai.TabIndex = 40;
             // 
             // label6
@@ -306,7 +308,7 @@
             this.dtp_NgayVaoLam.Format = System.Windows.Forms.DateTimePickerFormat.Short;
             this.dtp_NgayVaoLam.Location = new System.Drawing.Point(249, 267);
             this.dtp_NgayVaoLam.Name = "dtp_NgayVaoLam";
-            this.dtp_NgayVaoLam.Size = new System.Drawing.Size(299, 38);
+            this.dtp_NgayVaoLam.Size = new System.Drawing.Size(401, 38);
             this.dtp_NgayVaoLam.TabIndex = 42;
             // 
             // txt_MaNV
@@ -314,7 +316,7 @@
             this.txt_MaNV.Font = new System.Drawing.Font("Segoe UI Semibold", 13.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txt_MaNV.Location = new System.Drawing.Point(248, 84);
             this.txt_MaNV.Name = "txt_MaNV";
-            this.txt_MaNV.Size = new System.Drawing.Size(299, 38);
+            this.txt_MaNV.Size = new System.Drawing.Size(402, 38);
             this.txt_MaNV.TabIndex = 32;
             // 
             // txt_DiaChi
@@ -322,7 +324,7 @@
             this.txt_DiaChi.Font = new System.Drawing.Font("Segoe UI Semibold", 13.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txt_DiaChi.Location = new System.Drawing.Point(249, 206);
             this.txt_DiaChi.Name = "txt_DiaChi";
-            this.txt_DiaChi.Size = new System.Drawing.Size(299, 38);
+            this.txt_DiaChi.Size = new System.Drawing.Size(401, 38);
             this.txt_DiaChi.TabIndex = 43;
             // 
             // label7
@@ -340,14 +342,14 @@
             this.txt_HoNV.Font = new System.Drawing.Font("Segoe UI Semibold", 13.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txt_HoNV.Location = new System.Drawing.Point(248, 141);
             this.txt_HoNV.Name = "txt_HoNV";
-            this.txt_HoNV.Size = new System.Drawing.Size(299, 38);
+            this.txt_HoNV.Size = new System.Drawing.Size(402, 38);
             this.txt_HoNV.TabIndex = 32;
             // 
             // frm_NhanVien
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1175, 760);
+            this.ClientSize = new System.Drawing.Size(1311, 764);
             this.Controls.Add(this.txt_DiaChi);
             this.Controls.Add(this.dtp_NgayVaoLam);
             this.Controls.Add(this.cbo_TrangThai);
@@ -371,6 +373,7 @@
             this.Controls.Add(this.label1);
             this.Name = "frm_NhanVien";
             this.Text = "frm_NhanVien";
+            this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
             this.Load += new System.EventHandler(this.frm_NhanVien_Load);
             ((System.ComponentModel.ISupportInitialize)(this.dgv_DanhSach)).EndInit();
             this.groupBox1.ResumeLayout(false);

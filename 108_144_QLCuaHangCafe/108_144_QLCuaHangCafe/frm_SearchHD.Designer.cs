@@ -35,15 +35,15 @@
             this.label1 = new System.Windows.Forms.Label();
             this.label7 = new System.Windows.Forms.Label();
             this.dgv_DanhSach = new System.Windows.Forms.DataGridView();
-            this.groupBox1 = new System.Windows.Forms.GroupBox();
-            this.dtp_MinNgayLap = new System.Windows.Forms.DateTimePicker();
-            this.dtp_MaxNgayLap = new System.Windows.Forms.DateTimePicker();
             this.MaHD = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.TenLoaiHD = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.KhachHang = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.NgayLap = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.TrangThai = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.MaNV = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.dtp_MinNgayLap = new System.Windows.Forms.DateTimePicker();
+            this.dtp_MaxNgayLap = new System.Windows.Forms.DateTimePicker();
             ((System.ComponentModel.ISupportInitialize)(this.dgv_DanhSach)).BeginInit();
             this.groupBox1.SuspendLayout();
             this.SuspendLayout();
@@ -125,43 +125,13 @@
             this.NgayLap,
             this.TrangThai,
             this.MaNV});
-            this.dgv_DanhSach.Location = new System.Drawing.Point(6, 31);
+            this.dgv_DanhSach.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.dgv_DanhSach.Location = new System.Drawing.Point(3, 26);
             this.dgv_DanhSach.Name = "dgv_DanhSach";
             this.dgv_DanhSach.RowHeadersWidth = 50;
             this.dgv_DanhSach.RowTemplate.Height = 24;
-            this.dgv_DanhSach.Size = new System.Drawing.Size(1142, 411);
+            this.dgv_DanhSach.Size = new System.Drawing.Size(1172, 419);
             this.dgv_DanhSach.TabIndex = 0;
-            // 
-            // groupBox1
-            // 
-            this.groupBox1.Controls.Add(this.dgv_DanhSach);
-            this.groupBox1.Font = new System.Drawing.Font("Segoe UI", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.groupBox1.Location = new System.Drawing.Point(12, 216);
-            this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(1154, 448);
-            this.groupBox1.TabIndex = 116;
-            this.groupBox1.TabStop = false;
-            this.groupBox1.Text = "Danh Sách Hoá Đơn";
-            // 
-            // dtp_MinNgayLap
-            // 
-            this.dtp_MinNgayLap.Font = new System.Drawing.Font("Segoe UI Semibold", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.dtp_MinNgayLap.Format = System.Windows.Forms.DateTimePickerFormat.Short;
-            this.dtp_MinNgayLap.Location = new System.Drawing.Point(212, 97);
-            this.dtp_MinNgayLap.Name = "dtp_MinNgayLap";
-            this.dtp_MinNgayLap.Size = new System.Drawing.Size(299, 34);
-            this.dtp_MinNgayLap.TabIndex = 1;
-            this.dtp_MinNgayLap.Value = new System.DateTime(2000, 1, 1, 15, 11, 0, 0);
-            // 
-            // dtp_MaxNgayLap
-            // 
-            this.dtp_MaxNgayLap.Font = new System.Drawing.Font("Segoe UI Semibold", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.dtp_MaxNgayLap.Format = System.Windows.Forms.DateTimePickerFormat.Short;
-            this.dtp_MaxNgayLap.Location = new System.Drawing.Point(681, 99);
-            this.dtp_MaxNgayLap.Name = "dtp_MaxNgayLap";
-            this.dtp_MaxNgayLap.Size = new System.Drawing.Size(299, 34);
-            this.dtp_MaxNgayLap.TabIndex = 1;
-            this.dtp_MaxNgayLap.Value = new System.DateTime(2022, 5, 23, 15, 14, 15, 0);
             // 
             // MaHD
             // 
@@ -205,6 +175,38 @@
             this.MaNV.MinimumWidth = 6;
             this.MaNV.Name = "MaNV";
             // 
+            // groupBox1
+            // 
+            this.groupBox1.Controls.Add(this.dgv_DanhSach);
+            this.groupBox1.Dock = System.Windows.Forms.DockStyle.Bottom;
+            this.groupBox1.Font = new System.Drawing.Font("Segoe UI", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.groupBox1.Location = new System.Drawing.Point(0, 228);
+            this.groupBox1.Name = "groupBox1";
+            this.groupBox1.Size = new System.Drawing.Size(1178, 448);
+            this.groupBox1.TabIndex = 116;
+            this.groupBox1.TabStop = false;
+            this.groupBox1.Text = "Danh Sách Hoá Đơn";
+            // 
+            // dtp_MinNgayLap
+            // 
+            this.dtp_MinNgayLap.Font = new System.Drawing.Font("Segoe UI Semibold", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.dtp_MinNgayLap.Format = System.Windows.Forms.DateTimePickerFormat.Short;
+            this.dtp_MinNgayLap.Location = new System.Drawing.Point(212, 97);
+            this.dtp_MinNgayLap.Name = "dtp_MinNgayLap";
+            this.dtp_MinNgayLap.Size = new System.Drawing.Size(299, 34);
+            this.dtp_MinNgayLap.TabIndex = 1;
+            this.dtp_MinNgayLap.Value = new System.DateTime(2000, 1, 1, 15, 11, 0, 0);
+            // 
+            // dtp_MaxNgayLap
+            // 
+            this.dtp_MaxNgayLap.Font = new System.Drawing.Font("Segoe UI Semibold", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.dtp_MaxNgayLap.Format = System.Windows.Forms.DateTimePickerFormat.Short;
+            this.dtp_MaxNgayLap.Location = new System.Drawing.Point(681, 99);
+            this.dtp_MaxNgayLap.Name = "dtp_MaxNgayLap";
+            this.dtp_MaxNgayLap.Size = new System.Drawing.Size(299, 34);
+            this.dtp_MaxNgayLap.TabIndex = 1;
+            this.dtp_MaxNgayLap.Value = new System.DateTime(2022, 5, 23, 15, 14, 15, 0);
+            // 
             // frm_SearchHD
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
@@ -221,6 +223,7 @@
             this.Controls.Add(this.label1);
             this.Name = "frm_SearchHD";
             this.Text = "frm_SearchHD";
+            this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
             this.Load += new System.EventHandler(this.frm_SearchHD_Load);
             ((System.ComponentModel.ISupportInitialize)(this.dgv_DanhSach)).EndInit();
             this.groupBox1.ResumeLayout(false);

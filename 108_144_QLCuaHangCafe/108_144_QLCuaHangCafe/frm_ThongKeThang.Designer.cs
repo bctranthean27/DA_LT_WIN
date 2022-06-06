@@ -30,12 +30,12 @@
         {
             this.grp_ThongKeNgay = new System.Windows.Forms.GroupBox();
             this.dgv_ThongKeThang = new System.Windows.Forms.DataGridView();
-            this.label2 = new System.Windows.Forms.Label();
-            this.label1 = new System.Windows.Forms.Label();
             this.Ngay = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.SoLuongDon = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.TongTien = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.TrungBinh = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.label2 = new System.Windows.Forms.Label();
+            this.label1 = new System.Windows.Forms.Label();
             this.cbo_ThongKeThang = new System.Windows.Forms.ComboBox();
             this.grp_ThongKeNgay.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgv_ThongKeThang)).BeginInit();
@@ -44,10 +44,11 @@
             // grp_ThongKeNgay
             // 
             this.grp_ThongKeNgay.Controls.Add(this.dgv_ThongKeThang);
+            this.grp_ThongKeNgay.Dock = System.Windows.Forms.DockStyle.Bottom;
             this.grp_ThongKeNgay.Font = new System.Drawing.Font("Segoe UI", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.grp_ThongKeNgay.Location = new System.Drawing.Point(8, 140);
+            this.grp_ThongKeNgay.Location = new System.Drawing.Point(0, 152);
             this.grp_ThongKeNgay.Name = "grp_ThongKeNgay";
-            this.grp_ThongKeNgay.Size = new System.Drawing.Size(1109, 583);
+            this.grp_ThongKeNgay.Size = new System.Drawing.Size(1129, 583);
             this.grp_ThongKeNgay.TabIndex = 122;
             this.grp_ThongKeNgay.TabStop = false;
             this.grp_ThongKeNgay.Text = "Bảng Thống Kế Hoá Đơn Theo Tháng";
@@ -61,34 +62,13 @@
             this.SoLuongDon,
             this.TongTien,
             this.TrungBinh});
-            this.dgv_ThongKeThang.Location = new System.Drawing.Point(15, 31);
+            this.dgv_ThongKeThang.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.dgv_ThongKeThang.Location = new System.Drawing.Point(3, 26);
             this.dgv_ThongKeThang.Name = "dgv_ThongKeThang";
             this.dgv_ThongKeThang.RowHeadersWidth = 50;
             this.dgv_ThongKeThang.RowTemplate.Height = 24;
-            this.dgv_ThongKeThang.Size = new System.Drawing.Size(1088, 546);
+            this.dgv_ThongKeThang.Size = new System.Drawing.Size(1123, 554);
             this.dgv_ThongKeThang.TabIndex = 0;
-            // 
-            // label2
-            // 
-            this.label2.AutoSize = true;
-            this.label2.Font = new System.Drawing.Font("Segoe UI Semibold", 13.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label2.Location = new System.Drawing.Point(317, 85);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(93, 31);
-            this.label2.TabIndex = 118;
-            this.label2.Text = "THÁNG";
-            // 
-            // label1
-            // 
-            this.label1.BackColor = System.Drawing.Color.White;
-            this.label1.Dock = System.Windows.Forms.DockStyle.Top;
-            this.label1.Font = new System.Drawing.Font("Segoe UI", 19.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.Location = new System.Drawing.Point(0, 0);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(1129, 63);
-            this.label1.TabIndex = 117;
-            this.label1.Text = "THỐNG KÊ HOÁ ĐƠN - THÁNG";
-            this.label1.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // Ngay
             // 
@@ -114,6 +94,28 @@
             this.TrungBinh.MinimumWidth = 6;
             this.TrungBinh.Name = "TrungBinh";
             // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.Font = new System.Drawing.Font("Segoe UI Semibold", 13.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label2.Location = new System.Drawing.Point(317, 85);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(93, 31);
+            this.label2.TabIndex = 118;
+            this.label2.Text = "THÁNG";
+            // 
+            // label1
+            // 
+            this.label1.BackColor = System.Drawing.Color.White;
+            this.label1.Dock = System.Windows.Forms.DockStyle.Top;
+            this.label1.Font = new System.Drawing.Font("Segoe UI", 19.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label1.Location = new System.Drawing.Point(0, 0);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(1129, 63);
+            this.label1.TabIndex = 117;
+            this.label1.Text = "THỐNG KÊ HOÁ ĐƠN - THÁNG";
+            this.label1.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
             // cbo_ThongKeThang
             // 
             this.cbo_ThongKeThang.Font = new System.Drawing.Font("Segoe UI Semibold", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -137,6 +139,7 @@
             this.Controls.Add(this.label1);
             this.Name = "frm_ThongKeThang";
             this.Text = "frm_ThongKeThang";
+            this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
             this.grp_ThongKeNgay.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.dgv_ThongKeThang)).EndInit();
             this.ResumeLayout(false);

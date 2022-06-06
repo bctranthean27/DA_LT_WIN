@@ -82,7 +82,9 @@ namespace _108_144_QLCuaHangCafe
             {
                 if (m1.Trim() == "" || m2.Trim() == "" || m3.Trim() == "" || m4.Trim() == "" || m5.Trim() == "")
                     throw new Exception("Vui lòng điền đủ thông tin");
-                string sql = "insert into KhachHang(MaKH,TenKH,DChi,SDT,Mail,TrangThai) values ('" + m1 + "',N'" + m2 + "',N'" + m3 + "','" + m4 + "',N'" + m5 + "','" + m6 + "')";
+                //string sql = "insert into KhachHang(MaKH,TenKH,DChi,SDT,Mail,TrangThai) values ('" + m1 + "',N'" + m2 + "',N'" + m3 + "','" + m4 + "',N'" + m5 + "','" + m6 + "')";
+                //proc
+                string sql = "EXEC them_khach_hang @makh = '" + m1 + "', @tenkh = '" + m2 + "', @dchi = '" + m3 + "', @sdt = '" + m4 + "', @mail = '" + m5 + "';";
                 if (c.CapNhatDulieu(sql) > 0)
                 {
                     MessageBox.Show("Cập nhật thành công", "Thông báo", MessageBoxButtons.OK);
@@ -100,24 +102,28 @@ namespace _108_144_QLCuaHangCafe
         {
             try
             {
+                string sql = "";
                 if (txt_MaKH.Text == "")
                 {
                     throw new Exception("Lỗi cập nhật\nHãy chắc chắn bạn chọn đúng cột muốn sửa");
                 }
-                string sql = "update KhachHang set ";
-                if (m1.Trim() != "")
-                    sql += " MaKH='" + m1 + "',";
-                if (m2.Trim() != "")
-                    sql += " TenKH=N'" + m2 + "',";if(m1.Trim() != "")
-                if(m3.Trim() != "")
-                sql += " DChi='" + m3 + "',";
-                if (m4.Trim() != "")
-                    sql += " SDT='" + m4 + "',";
-                if (m5.Trim() != "")
-                    sql += " Mail='" + m5 + "',";
-                sql += "TrangThai='" + m6;
-                sql += "' where MaKH='" + Old_Value + "'";
-
+                //string sql = "update KhachHang set ";
+                //if (m1.Trim() != "")
+                //    sql += " MaKH='" + m1 + "',";
+                //if (m2.Trim() != "")
+                //    sql += " TenKH=N'" + m2 + "',";if(m1.Trim() != "")
+                //if(m3.Trim() != "")
+                //sql += " DChi='" + m3 + "',";
+                //if (m4.Trim() != "")
+                //    sql += " SDT='" + m4 + "',";
+                //if (m5.Trim() != "")
+                //    sql += " Mail='" + m5 + "',";
+                //sql += "TrangThai='" + m6;
+                //sql += "' where MaKH='" + Old_Value + "'";
+                if (m1.Trim() == "" && m2.Trim() == "" && m3.Trim() == "" && m4.Trim() == "" && m5.Trim() == "")
+                    sql = "update KhachHang set TrangThai = '" + 0 + "'where MaKH = '" + Old_Value + "'";
+                else
+                    sql = "EXEC sua_khach_hang @makh = '" + m1 + "', @tenkh = '" + m2 + "', @dchi = '" + m3 + "', @sdt = '" + m4 + "', @mail = '" + m5 + "',@trangthai = '" + m6 + "';";
                 if (c.CapNhatDulieu(sql) > 0)
                 {
                     MessageBox.Show("Cập nhật thành công", "Thông báo", MessageBoxButtons.OK);

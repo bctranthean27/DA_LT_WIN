@@ -61,17 +61,17 @@
             // txt_DienThoai
             // 
             this.txt_DienThoai.Font = new System.Drawing.Font("Microsoft Sans Serif", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txt_DienThoai.Location = new System.Drawing.Point(807, 103);
+            this.txt_DienThoai.Location = new System.Drawing.Point(880, 106);
             this.txt_DienThoai.Name = "txt_DienThoai";
-            this.txt_DienThoai.Size = new System.Drawing.Size(299, 34);
+            this.txt_DienThoai.Size = new System.Drawing.Size(418, 34);
             this.txt_DienThoai.TabIndex = 12;
             // 
             // txt_Mail
             // 
             this.txt_Mail.Font = new System.Drawing.Font("Microsoft Sans Serif", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txt_Mail.Location = new System.Drawing.Point(807, 162);
+            this.txt_Mail.Location = new System.Drawing.Point(880, 165);
             this.txt_Mail.Name = "txt_Mail";
-            this.txt_Mail.Size = new System.Drawing.Size(299, 34);
+            this.txt_Mail.Size = new System.Drawing.Size(418, 34);
             this.txt_Mail.TabIndex = 13;
             // 
             // txt_TenKH
@@ -79,14 +79,14 @@
             this.txt_TenKH.Font = new System.Drawing.Font("Microsoft Sans Serif", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txt_TenKH.Location = new System.Drawing.Point(248, 161);
             this.txt_TenKH.Name = "txt_TenKH";
-            this.txt_TenKH.Size = new System.Drawing.Size(299, 34);
+            this.txt_TenKH.Size = new System.Drawing.Size(400, 34);
             this.txt_TenKH.TabIndex = 14;
             // 
             // label9
             // 
             this.label9.AutoSize = true;
             this.label9.Font = new System.Drawing.Font("Segoe UI Semibold", 13.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label9.Location = new System.Drawing.Point(608, 162);
+            this.label9.Location = new System.Drawing.Point(681, 165);
             this.label9.Name = "label9";
             this.label9.Size = new System.Drawing.Size(70, 31);
             this.label9.TabIndex = 6;
@@ -96,7 +96,7 @@
             // 
             this.label7.AutoSize = true;
             this.label7.Font = new System.Drawing.Font("Segoe UI Semibold", 13.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label7.Location = new System.Drawing.Point(608, 101);
+            this.label7.Location = new System.Drawing.Point(681, 104);
             this.label7.Name = "label7";
             this.label7.Size = new System.Drawing.Size(159, 31);
             this.label7.TabIndex = 7;
@@ -129,7 +129,7 @@
             this.label1.Font = new System.Drawing.Font("Segoe UI", 19.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label1.Location = new System.Drawing.Point(0, 0);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(1135, 63);
+            this.label1.Size = new System.Drawing.Size(1323, 63);
             this.label1.TabIndex = 1;
             this.label1.Text = "NHẬP THÔNG TIN KHÁCH HÀNG";
             this.label1.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -158,7 +158,7 @@
             // btn_Xoa
             // 
             this.btn_Xoa.Font = new System.Drawing.Font("Segoe UI Semibold", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btn_Xoa.Location = new System.Drawing.Point(248, 300);
+            this.btn_Xoa.Location = new System.Drawing.Point(318, 300);
             this.btn_Xoa.Name = "btn_Xoa";
             this.btn_Xoa.Size = new System.Drawing.Size(158, 36);
             this.btn_Xoa.TabIndex = 16;
@@ -169,7 +169,7 @@
             // btn_Sua
             // 
             this.btn_Sua.Font = new System.Drawing.Font("Segoe UI Semibold", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btn_Sua.Location = new System.Drawing.Point(467, 300);
+            this.btn_Sua.Location = new System.Drawing.Point(592, 300);
             this.btn_Sua.Name = "btn_Sua";
             this.btn_Sua.Size = new System.Drawing.Size(158, 36);
             this.btn_Sua.TabIndex = 17;
@@ -180,7 +180,7 @@
             // btn_Luu
             // 
             this.btn_Luu.Font = new System.Drawing.Font("Segoe UI Semibold", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btn_Luu.Location = new System.Drawing.Point(712, 300);
+            this.btn_Luu.Location = new System.Drawing.Point(878, 300);
             this.btn_Luu.Name = "btn_Luu";
             this.btn_Luu.Size = new System.Drawing.Size(158, 36);
             this.btn_Luu.TabIndex = 18;
@@ -191,7 +191,7 @@
             // btn_Thoat
             // 
             this.btn_Thoat.Font = new System.Drawing.Font("Segoe UI Semibold", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btn_Thoat.Location = new System.Drawing.Point(948, 300);
+            this.btn_Thoat.Location = new System.Drawing.Point(1140, 300);
             this.btn_Thoat.Name = "btn_Thoat";
             this.btn_Thoat.Size = new System.Drawing.Size(158, 36);
             this.btn_Thoat.TabIndex = 19;
@@ -202,10 +202,11 @@
             // groupBox1
             // 
             this.groupBox1.Controls.Add(this.dgv_DanhSach);
+            this.groupBox1.Dock = System.Windows.Forms.DockStyle.Bottom;
             this.groupBox1.Font = new System.Drawing.Font("Segoe UI", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.groupBox1.Location = new System.Drawing.Point(12, 342);
+            this.groupBox1.Location = new System.Drawing.Point(0, 342);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(1111, 303);
+            this.groupBox1.Size = new System.Drawing.Size(1323, 404);
             this.groupBox1.TabIndex = 20;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Danh Sách Khách Hàng";
@@ -221,11 +222,12 @@
             this.SDT,
             this.Mail,
             this.TrangThai});
-            this.dgv_DanhSach.Location = new System.Drawing.Point(6, 31);
+            this.dgv_DanhSach.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.dgv_DanhSach.Location = new System.Drawing.Point(3, 26);
             this.dgv_DanhSach.Name = "dgv_DanhSach";
             this.dgv_DanhSach.RowHeadersWidth = 50;
             this.dgv_DanhSach.RowTemplate.Height = 24;
-            this.dgv_DanhSach.Size = new System.Drawing.Size(1099, 266);
+            this.dgv_DanhSach.Size = new System.Drawing.Size(1317, 375);
             this.dgv_DanhSach.TabIndex = 0;
             this.dgv_DanhSach.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgv_DanhSach_CellClick);
             // 
@@ -278,16 +280,16 @@
             this.cbo_TrangThai.Items.AddRange(new object[] {
             "1",
             "0"});
-            this.cbo_TrangThai.Location = new System.Drawing.Point(807, 220);
+            this.cbo_TrangThai.Location = new System.Drawing.Point(880, 223);
             this.cbo_TrangThai.Name = "cbo_TrangThai";
-            this.cbo_TrangThai.Size = new System.Drawing.Size(299, 39);
+            this.cbo_TrangThai.Size = new System.Drawing.Size(418, 39);
             this.cbo_TrangThai.TabIndex = 22;
             // 
             // label8
             // 
             this.label8.AutoSize = true;
             this.label8.Font = new System.Drawing.Font("Segoe UI Semibold", 13.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label8.Location = new System.Drawing.Point(608, 226);
+            this.label8.Location = new System.Drawing.Point(681, 229);
             this.label8.Name = "label8";
             this.label8.Size = new System.Drawing.Size(118, 31);
             this.label8.TabIndex = 21;
@@ -298,7 +300,7 @@
             this.txt_MaKH.Font = new System.Drawing.Font("Microsoft Sans Serif", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txt_MaKH.Location = new System.Drawing.Point(248, 103);
             this.txt_MaKH.Name = "txt_MaKH";
-            this.txt_MaKH.Size = new System.Drawing.Size(299, 34);
+            this.txt_MaKH.Size = new System.Drawing.Size(400, 34);
             this.txt_MaKH.TabIndex = 14;
             // 
             // txt_DiaChi
@@ -306,14 +308,14 @@
             this.txt_DiaChi.Font = new System.Drawing.Font("Microsoft Sans Serif", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txt_DiaChi.Location = new System.Drawing.Point(248, 220);
             this.txt_DiaChi.Name = "txt_DiaChi";
-            this.txt_DiaChi.Size = new System.Drawing.Size(299, 34);
+            this.txt_DiaChi.Size = new System.Drawing.Size(400, 34);
             this.txt_DiaChi.TabIndex = 14;
             // 
             // frm_KhachHang
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1135, 645);
+            this.ClientSize = new System.Drawing.Size(1323, 746);
             this.Controls.Add(this.cbo_TrangThai);
             this.Controls.Add(this.label8);
             this.Controls.Add(this.groupBox1);
@@ -335,6 +337,7 @@
             this.Controls.Add(this.label1);
             this.Name = "frm_KhachHang";
             this.Text = "frm_KhachHang";
+            this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
             this.Load += new System.EventHandler(this.frm_KhachHang_Load);
             this.groupBox1.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.dgv_DanhSach)).EndInit();

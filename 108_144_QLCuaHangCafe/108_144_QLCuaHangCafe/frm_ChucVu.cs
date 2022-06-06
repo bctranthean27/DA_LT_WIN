@@ -82,7 +82,9 @@ namespace _108_144_QLCuaHangCafe
             {
                 if (m1.Trim() == "" || m2.Trim() == "")
                     throw new Exception("Vui lòng điền đủ thông tin");
-                string sql = "insert into ChucVu(MaChucVu,TenChucVu,TrangThai) values ('" + m1 + "',N'" + m2 + "','" + m3 + "')";
+                //string sql = "insert into ChucVu(MaChucVu,TenChucVu,TrangThai) values ('" + m1 + "',N'" + m2 + "','" + m3 + "')";
+                //proc
+                string sql = "EXEC them_chuc_vu @machucvu = '" + m1 + "', @tenchucvu = '" + m2 + "';";
                 if (c.CapNhatDulieu(sql) > 0)
                 {
                     MessageBox.Show("Cập nhật thành công", "Thông báo", MessageBoxButtons.OK);
@@ -99,20 +101,26 @@ namespace _108_144_QLCuaHangCafe
         }
         void sua(object sender, EventArgs e, string m1 = "", string m2 = "", string m3 = "0")
         {
-            string sql = "update ChucVu set ";
+            string sql = "";
             try
             {
                 if (txt_MaCV.Text == "")
                 {
                     throw new Exception("Lỗi cập nhật\nHãy chắc chắn bạn chọn đúng cột muốn sửa");
                 }
-                if (m1.Trim() != "")
-                    sql += " MaChucVu='" + m1;
-                if (m2.Trim() != "")
-                    sql += "',TenChucVu=N'" + m2;
-                sql += "',TrangThai='" + m3;
-                sql += "' where MaChucVu='" + Old_Value + "'";
+                //string sql = "update ChucVu set ";
+                //if (m1.Trim() != "")
+                //    sql += " MaChucVu='" + m1;
+                //if (m2.Trim() != "")
+                //    sql += "',TenChucVu=N'" + m2;
+                //sql += "',TrangThai='" + m3;
+                //sql += "' where MaChucVu='" + Old_Value + "'";
 
+                //proc
+                if (m1.Trim() == "" && m2.Trim() == "")
+                    sql = "update ChucVu set TrangThai = '" + 0 + "'where MaChucVu = '" + Old_Value +"'";
+                else
+                    sql = "EXEC sua_chuc_vu @machucvu = '" + m1 + "', @tenchucvu = N'" + m2 + "',@trangthai = '" + m3 + "';";
                 if (c.CapNhatDulieu(sql) > 0)
                 {
                     MessageBox.Show("Cập nhật thành công", "Thông báo", MessageBoxButtons.OK);
@@ -195,10 +203,8 @@ namespace _108_144_QLCuaHangCafe
 
         private void btn_Xoa_Click(object sender, EventArgs e)
         {
-            string m1 = txt_MaCV.Text;
-            string m2 = txt_TenCV.Text;
-            string m3 = cbo_TrangThai.SelectedItem.ToString();
             sua(sender, e);
+            clearTextbox();
             //try
             //{
             //    if (txt_MaCV.Text == "")

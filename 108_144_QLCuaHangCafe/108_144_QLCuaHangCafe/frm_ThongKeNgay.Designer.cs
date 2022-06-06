@@ -100,10 +100,11 @@
             // grp_ThongKeNgay
             // 
             this.grp_ThongKeNgay.Controls.Add(this.dgv_DanhSach);
+            this.grp_ThongKeNgay.Dock = System.Windows.Forms.DockStyle.Bottom;
             this.grp_ThongKeNgay.Font = new System.Drawing.Font("Segoe UI", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.grp_ThongKeNgay.Location = new System.Drawing.Point(12, 138);
+            this.grp_ThongKeNgay.Location = new System.Drawing.Point(0, 150);
             this.grp_ThongKeNgay.Name = "grp_ThongKeNgay";
-            this.grp_ThongKeNgay.Size = new System.Drawing.Size(1154, 526);
+            this.grp_ThongKeNgay.Size = new System.Drawing.Size(1178, 526);
             this.grp_ThongKeNgay.TabIndex = 116;
             this.grp_ThongKeNgay.TabStop = false;
             this.grp_ThongKeNgay.Text = "Bảng Thống Kê Hoá Đơn Theo Ngày";
@@ -118,11 +119,12 @@
             this.SoLuong,
             this.DonGia,
             this.ThanhTien});
-            this.dgv_DanhSach.Location = new System.Drawing.Point(6, 31);
+            this.dgv_DanhSach.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.dgv_DanhSach.Location = new System.Drawing.Point(3, 26);
             this.dgv_DanhSach.Name = "dgv_DanhSach";
             this.dgv_DanhSach.RowHeadersWidth = 50;
             this.dgv_DanhSach.RowTemplate.Height = 24;
-            this.dgv_DanhSach.Size = new System.Drawing.Size(1142, 489);
+            this.dgv_DanhSach.Size = new System.Drawing.Size(1172, 497);
             this.dgv_DanhSach.TabIndex = 0;
             // 
             // MaHD
@@ -168,6 +170,7 @@
             this.Controls.Add(this.label1);
             this.Name = "frm_ThongKeNgay";
             this.Text = "ThongKeNgay";
+            this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
             this.Load += new System.EventHandler(this.frm_ThongKeNgay_Load);
             this.grp_ThongKeNgay.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.dgv_DanhSach)).EndInit();

@@ -31,12 +31,12 @@
             this.label2 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
             this.dgv_ThongKeNV = new System.Windows.Forms.DataGridView();
-            this.groupBox1 = new System.Windows.Forms.GroupBox();
-            this.txt_ThongKeNam = new System.Windows.Forms.TextBox();
             this.Ngay = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.SoLuongDon = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.TongTien = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.TrungBinh = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.txt_ThongKeNam = new System.Windows.Forms.TextBox();
             ((System.ComponentModel.ISupportInitialize)(this.dgv_ThongKeNV)).BeginInit();
             this.groupBox1.SuspendLayout();
             this.SuspendLayout();
@@ -72,31 +72,13 @@
             this.SoLuongDon,
             this.TongTien,
             this.TrungBinh});
-            this.dgv_ThongKeNV.Location = new System.Drawing.Point(15, 31);
+            this.dgv_ThongKeNV.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.dgv_ThongKeNV.Location = new System.Drawing.Point(3, 26);
             this.dgv_ThongKeNV.Name = "dgv_ThongKeNV";
             this.dgv_ThongKeNV.RowHeadersWidth = 50;
             this.dgv_ThongKeNV.RowTemplate.Height = 24;
-            this.dgv_ThongKeNV.Size = new System.Drawing.Size(1088, 546);
+            this.dgv_ThongKeNV.Size = new System.Drawing.Size(1123, 554);
             this.dgv_ThongKeNV.TabIndex = 0;
-            // 
-            // groupBox1
-            // 
-            this.groupBox1.Controls.Add(this.dgv_ThongKeNV);
-            this.groupBox1.Font = new System.Drawing.Font("Segoe UI", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.groupBox1.Location = new System.Drawing.Point(8, 149);
-            this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(1109, 583);
-            this.groupBox1.TabIndex = 130;
-            this.groupBox1.TabStop = false;
-            this.groupBox1.Text = "Bảng Thống Kê Hoá Đơn Theo Nhân Viên";
-            // 
-            // txt_ThongKeNam
-            // 
-            this.txt_ThongKeNam.Font = new System.Drawing.Font("Segoe UI Semibold", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txt_ThongKeNam.Location = new System.Drawing.Point(509, 94);
-            this.txt_ThongKeNam.Name = "txt_ThongKeNam";
-            this.txt_ThongKeNam.Size = new System.Drawing.Size(279, 34);
-            this.txt_ThongKeNam.TabIndex = 131;
             // 
             // Ngay
             // 
@@ -122,6 +104,26 @@
             this.TrungBinh.MinimumWidth = 6;
             this.TrungBinh.Name = "TrungBinh";
             // 
+            // groupBox1
+            // 
+            this.groupBox1.Controls.Add(this.dgv_ThongKeNV);
+            this.groupBox1.Dock = System.Windows.Forms.DockStyle.Bottom;
+            this.groupBox1.Font = new System.Drawing.Font("Segoe UI", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.groupBox1.Location = new System.Drawing.Point(0, 152);
+            this.groupBox1.Name = "groupBox1";
+            this.groupBox1.Size = new System.Drawing.Size(1129, 583);
+            this.groupBox1.TabIndex = 130;
+            this.groupBox1.TabStop = false;
+            this.groupBox1.Text = "Bảng Thống Kê Hoá Đơn Theo Nhân Viên";
+            // 
+            // txt_ThongKeNam
+            // 
+            this.txt_ThongKeNam.Font = new System.Drawing.Font("Segoe UI Semibold", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txt_ThongKeNam.Location = new System.Drawing.Point(509, 94);
+            this.txt_ThongKeNam.Name = "txt_ThongKeNam";
+            this.txt_ThongKeNam.Size = new System.Drawing.Size(279, 34);
+            this.txt_ThongKeNam.TabIndex = 131;
+            // 
             // frm_ThongKeNV
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
@@ -133,6 +135,7 @@
             this.Controls.Add(this.txt_ThongKeNam);
             this.Name = "frm_ThongKeNV";
             this.Text = "frm_ThongKeNV";
+            this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
             ((System.ComponentModel.ISupportInitialize)(this.dgv_ThongKeNV)).EndInit();
             this.groupBox1.ResumeLayout(false);
             this.ResumeLayout(false);

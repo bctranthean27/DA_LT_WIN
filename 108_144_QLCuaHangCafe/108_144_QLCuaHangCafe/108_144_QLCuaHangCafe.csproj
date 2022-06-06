@@ -53,12 +53,6 @@
     <Compile Include="frm_ChucVu.Designer.cs">
       <DependentUpon>frm_ChucVu.cs</DependentUpon>
     </Compile>
-    <Compile Include="frm_HinhAnh.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="frm_HinhAnh.Designer.cs">
-      <DependentUpon>frm_HinhAnh.cs</DependentUpon>
-    </Compile>
     <Compile Include="frm_HoaDon.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -159,9 +153,6 @@
     </Compile>
     <EmbeddedResource Include="frm_ChucVu.resx">
       <DependentUpon>frm_ChucVu.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="frm_HinhAnh.resx">
-      <DependentUpon>frm_HinhAnh.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="frm_HoaDon.resx">
       <DependentUpon>frm_HoaDon.cs</DependentUpon>

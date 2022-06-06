@@ -256,6 +256,7 @@
             this.MainMenuStrip = this.menuStrip1;
             this.Name = "frm_Menu";
             this.Text = "frm_Menu";
+            this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
             this.Load += new System.EventHandler(this.frm_Menu_Load);
             this.menuStrip1.ResumeLayout(false);
             this.menuStrip1.PerformLayout();

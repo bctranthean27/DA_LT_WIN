@@ -92,7 +92,9 @@ namespace _108_144_QLCuaHangCafe
             {
                 if (m1.Trim() == "" || m2.Trim() == "" || m3.Trim() == "" || m4.Trim() == "" || m5.Trim() == "")
                     throw new Exception("Vui lòng điền đủ thông tin");
-                string sql = "insert into NhaCungCap(MaNCC,TenNCC,SDT,Mail,DChi,TrangThai) values ('" + m1 + "',N'" + m2 + "',N'" + m3 + "','" + m4 + "',N'" + m5 + "','" + m6 + "')";
+                //string sql = "insert into NhaCungCap(MaNCC,TenNCC,SDT,Mail,DChi,TrangThai) values ('" + m1 + "',N'" + m2 + "',N'" + m3 + "','" + m4 + "',N'" + m5 + "','" + m6 + "')";
+                //proc
+                    string sql = "EXEC them_ncc @mancc = '" + m1 + "', @tenncc = N'" + m2 + "', @dchi = N'" + m3 + "', @sdt = '" + m4 + "', @mail = '" + m5 + "';";
                 if (c.CapNhatDulieu(sql) > 0)
                 {
                     MessageBox.Show("Cập nhật thành công", "Thông báo", MessageBoxButtons.OK);
@@ -110,24 +112,28 @@ namespace _108_144_QLCuaHangCafe
         {
             try
             {
+                string sql = "";
                 if (txt_NCC.Text == "")
                 {
                     throw new Exception("Lỗi cập nhật\nHãy chắc chắn bạn chọn đúng cột muốn sửa");
                 }
-                string sql = "update NhaCungCap set ";
-                if (m1.Trim() != "")
-                    sql += " MaNCC='" + m1 + "',";
-                if (m2.Trim() != "")
-                    sql += " TenNCC=N'" + m2 + "',";
-                if (m3.Trim() != "")
-                    sql += " SDT='" + m3 + "',";
-                if (m4.Trim() != "")
-                    sql += " Mail='" + m4 + "',";
-                if (m5.Trim() != "")
-                    sql += " DChi=N'" + m5 + "',";
-                sql += "TrangThai='" + m6;
-                sql += "' where MaNCC='" + Old_Value + "'";
-
+                //sql = "update NhaCungCap set ";
+                //if (m1.Trim() != "")
+                //    sql += " MaNCC='" + m1 + "',";
+                //if (m2.Trim() != "")
+                //    sql += " TenNCC=N'" + m2 + "',";
+                //if (m3.Trim() != "")
+                //    sql += " SDT='" + m3 + "',";
+                //if (m4.Trim() != "")
+                //    sql += " Mail='" + m4 + "',";
+                //if (m5.Trim() != "")
+                //    sql += " DChi=N'" + m5 + "',";
+                //sql += "TrangThai='" + m6;
+                //sql += "' where MaNCC='" + Old_Value + "'";
+                if (m1.Trim() == "" && m2.Trim() == "" && m3.Trim() == "" && m4.Trim() == "" && m5.Trim() == "")
+                    sql = "update NhaCungCap set TrangThai = '" + 0 + "'where MaNCC = '" + Old_Value + "'";
+                else
+                    sql = "EXEC sua_ncc @mancc = '" + m1 + "', @tenncc = N'" + m2 + "', @dchi = N'" + m3 + "', @sdt = '" + m4 + "', @mail = '" + m5 + "',@trangthai = '" + m6 + "';";
                 if (c.CapNhatDulieu(sql) > 0)
                 {
                     MessageBox.Show("Cập nhật thành công", "Thông báo", MessageBoxButtons.OK);
@@ -193,6 +199,7 @@ namespace _108_144_QLCuaHangCafe
         private void btn_Xoa_Click(object sender, EventArgs e)
         {
             sua(sender, e);
+            clearTextbox();
             //try
             //{
             //    if (txt_NCC.Text == "")

@@ -56,7 +56,7 @@
             this.label1.Font = new System.Drawing.Font("Segoe UI", 19.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label1.Location = new System.Drawing.Point(0, 0);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(1090, 63);
+            this.label1.Size = new System.Drawing.Size(1320, 63);
             this.label1.TabIndex = 24;
             this.label1.Text = "NHẬP THÔNG TIN CHỨC VỤ";
             this.label1.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -92,10 +92,11 @@
             // groupBox1
             // 
             this.groupBox1.Controls.Add(this.dgv_DanhSach);
+            this.groupBox1.Dock = System.Windows.Forms.DockStyle.Bottom;
             this.groupBox1.Font = new System.Drawing.Font("Segoe UI", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.groupBox1.Location = new System.Drawing.Point(8, 290);
+            this.groupBox1.Location = new System.Drawing.Point(0, 304);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(1070, 363);
+            this.groupBox1.Size = new System.Drawing.Size(1320, 446);
             this.groupBox1.TabIndex = 63;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Bảng Chức Vụ";
@@ -108,11 +109,12 @@
             this.MaChucVu,
             this.TenChucVu,
             this.TrangThai});
-            this.dgv_DanhSach.Location = new System.Drawing.Point(6, 29);
+            this.dgv_DanhSach.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.dgv_DanhSach.Location = new System.Drawing.Point(3, 26);
             this.dgv_DanhSach.Name = "dgv_DanhSach";
             this.dgv_DanhSach.RowHeadersWidth = 50;
             this.dgv_DanhSach.RowTemplate.Height = 24;
-            this.dgv_DanhSach.Size = new System.Drawing.Size(1058, 328);
+            this.dgv_DanhSach.Size = new System.Drawing.Size(1314, 417);
             this.dgv_DanhSach.TabIndex = 0;
             this.dgv_DanhSach.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgv_DanhSach_CellClick);
             // 
@@ -149,6 +151,7 @@
             // 
             // cbo_TrangThai
             // 
+            this.cbo_TrangThai.DisplayMember = "1";
             this.cbo_TrangThai.Font = new System.Drawing.Font("Segoe UI Semibold", 13.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.cbo_TrangThai.FormattingEnabled = true;
             this.cbo_TrangThai.Items.AddRange(new object[] {
@@ -226,7 +229,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1090, 665);
+            this.ClientSize = new System.Drawing.Size(1320, 750);
             this.Controls.Add(this.btn_Exit);
             this.Controls.Add(this.groupBox1);
             this.Controls.Add(this.btn_Lưu);
@@ -242,6 +245,7 @@
             this.Controls.Add(this.label1);
             this.Name = "frm_ChucVu";
             this.Text = "frm_HoaDon";
+            this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
             this.Load += new System.EventHandler(this.frm_ChucVu_Load);
             this.groupBox1.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.dgv_DanhSach)).EndInit();

@@ -57,11 +57,12 @@
             this.MaLoaiSP,
             this.TenLoaiSP,
             this.TrangThai});
-            this.dgv_DanhSach.Location = new System.Drawing.Point(6, 29);
+            this.dgv_DanhSach.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.dgv_DanhSach.Location = new System.Drawing.Point(3, 26);
             this.dgv_DanhSach.Name = "dgv_DanhSach";
             this.dgv_DanhSach.RowHeadersWidth = 50;
             this.dgv_DanhSach.RowTemplate.Height = 24;
-            this.dgv_DanhSach.Size = new System.Drawing.Size(1026, 268);
+            this.dgv_DanhSach.Size = new System.Drawing.Size(1321, 420);
             this.dgv_DanhSach.TabIndex = 0;
             this.dgv_DanhSach.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgv_DanhSach_CellClick);
             // 
@@ -89,10 +90,11 @@
             // groupBox1
             // 
             this.groupBox1.Controls.Add(this.dgv_DanhSach);
+            this.groupBox1.Dock = System.Windows.Forms.DockStyle.Bottom;
             this.groupBox1.Font = new System.Drawing.Font("Segoe UI", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.groupBox1.Location = new System.Drawing.Point(21, 321);
+            this.groupBox1.Location = new System.Drawing.Point(0, 300);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(1038, 303);
+            this.groupBox1.Size = new System.Drawing.Size(1327, 449);
             this.groupBox1.TabIndex = 76;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Bảng Loại Sản Phẩm";
@@ -154,7 +156,7 @@
             this.label1.Font = new System.Drawing.Font("Segoe UI", 19.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label1.Location = new System.Drawing.Point(0, 0);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(1077, 63);
+            this.label1.Size = new System.Drawing.Size(1327, 63);
             this.label1.TabIndex = 64;
             this.label1.Text = "NHẬP LOẠI SẢN PHẨM";
             this.label1.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -226,7 +228,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1077, 640);
+            this.ClientSize = new System.Drawing.Size(1327, 749);
             this.Controls.Add(this.btn_Exit);
             this.Controls.Add(this.groupBox1);
             this.Controls.Add(this.btn_Luu);
@@ -242,6 +244,7 @@
             this.Controls.Add(this.label1);
             this.Name = "frm_LoaiSanPham";
             this.Text = "frm_LoaiSanPham";
+            this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
             this.Load += new System.EventHandler(this.frm_LoaiSanPham_Load);
             ((System.ComponentModel.ISupportInitialize)(this.dgv_DanhSach)).EndInit();
             this.groupBox1.ResumeLayout(false);

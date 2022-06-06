@@ -7,6 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using System.IO;
 
 namespace _108_144_QLCuaHangCafe
 {
@@ -238,6 +239,36 @@ namespace _108_144_QLCuaHangCafe
         private void btn_Exit_Click(object sender, EventArgs e)
         {
             Close();
+        }
+
+        private void btn_AddImage_Click(object sender, EventArgs e)
+        {
+            //tạo hộp thoại nhập hình ảnh
+            OpenFileDialog Odlg_HinhAnh = new OpenFileDialog();
+            Odlg_HinhAnh.InitialDirectory = Path.GetFullPath("Image") + @"\";
+            Odlg_HinhAnh.ShowDialog();
+            //hiển thị ảnh từ file đã chọn
+            string ten_anh = Odlg_HinhAnh.FileName;
+            Bitmap bitmap = new Bitmap(ten_anh);
+
+            pic_HinhAnh.Image = bitmap;
+            pic_HinhAnh.SizeMode = PictureBoxSizeMode.StretchImage;
+            string[] ten = ten_anh.Split('\\');
+
+            tool_HinhAnh = ten[ten.Length - 2] + "\\"+ten[ten.Length - 1];
+        }
+        string tool_HinhAnh = "";
+        private void pic_HinhAnh_MouseHover(object sender, EventArgs e)
+        {
+            ToolTip tool = new ToolTip();
+            tool.AutoPopDelay = 5000;
+            tool.InitialDelay = 500;
+            tool.ReshowDelay = 500;
+            tool.ToolTipIcon = ToolTipIcon.Info;
+            tool.ToolTipTitle = "Chú ý";
+
+            tool.SetToolTip(pic_HinhAnh, tool_HinhAnh); // Bạn cần hiển thị gì thì lấy trong cơ sở dữ liệu ra ném vào đó là được
+            //tool.IsBalloon = true;
         }
     }
 }

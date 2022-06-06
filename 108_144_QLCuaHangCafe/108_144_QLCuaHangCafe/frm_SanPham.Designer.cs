@@ -54,8 +54,11 @@
             this.txt_MaSP = new System.Windows.Forms.TextBox();
             this.txt_DonGia = new System.Windows.Forms.TextBox();
             this.label7 = new System.Windows.Forms.Label();
+            this.btn_AddImage = new System.Windows.Forms.Button();
+            this.pic_HinhAnh = new System.Windows.Forms.PictureBox();
             this.groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgv_DanhSach)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pic_HinhAnh)).BeginInit();
             this.SuspendLayout();
             // 
             // cbo_TrangThai
@@ -157,7 +160,7 @@
             this.btn_Exit.Font = new System.Drawing.Font("Segoe UI Semibold", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btn_Exit.Location = new System.Drawing.Point(909, 296);
             this.btn_Exit.Name = "btn_Exit";
-            this.btn_Exit.Size = new System.Drawing.Size(158, 36);
+            this.btn_Exit.Size = new System.Drawing.Size(197, 36);
             this.btn_Exit.TabIndex = 58;
             this.btn_Exit.Text = "Thoát";
             this.btn_Exit.UseVisualStyleBackColor = true;
@@ -262,7 +265,7 @@
             this.label1.Font = new System.Drawing.Font("Segoe UI", 19.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label1.Location = new System.Drawing.Point(0, 0);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(1129, 63);
+            this.label1.Size = new System.Drawing.Size(1808, 63);
             this.label1.TabIndex = 43;
             this.label1.Text = "NHẬP SẢN PHẨM";
             this.label1.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -317,11 +320,33 @@
             this.label7.TabIndex = 66;
             this.label7.Text = "Đơn Giá";
             // 
+            // btn_AddImage
+            // 
+            this.btn_AddImage.Font = new System.Drawing.Font("Segoe UI Semibold", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btn_AddImage.Location = new System.Drawing.Point(1180, 95);
+            this.btn_AddImage.Name = "btn_AddImage";
+            this.btn_AddImage.Size = new System.Drawing.Size(197, 39);
+            this.btn_AddImage.TabIndex = 68;
+            this.btn_AddImage.Text = "Nhập Hình Ảnh";
+            this.btn_AddImage.UseVisualStyleBackColor = true;
+            this.btn_AddImage.Click += new System.EventHandler(this.btn_AddImage_Click);
+            // 
+            // pic_HinhAnh
+            // 
+            this.pic_HinhAnh.Location = new System.Drawing.Point(1180, 155);
+            this.pic_HinhAnh.Name = "pic_HinhAnh";
+            this.pic_HinhAnh.Size = new System.Drawing.Size(557, 568);
+            this.pic_HinhAnh.TabIndex = 69;
+            this.pic_HinhAnh.TabStop = false;
+            this.pic_HinhAnh.MouseHover += new System.EventHandler(this.pic_HinhAnh_MouseHover);
+            // 
             // frm_SanPham
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1129, 735);
+            this.ClientSize = new System.Drawing.Size(1808, 772);
+            this.Controls.Add(this.pic_HinhAnh);
+            this.Controls.Add(this.btn_AddImage);
             this.Controls.Add(this.txt_DonGia);
             this.Controls.Add(this.label7);
             this.Controls.Add(this.txt_MaSP);
@@ -343,9 +368,11 @@
             this.Controls.Add(this.label1);
             this.Name = "frm_SanPham";
             this.Text = "SanPham";
+            this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
             this.Load += new System.EventHandler(this.frm_SanPham_Load);
             this.groupBox1.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.dgv_DanhSach)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pic_HinhAnh)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -378,5 +405,7 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn TrangThai;
         private System.Windows.Forms.TextBox txt_DonGia;
         private System.Windows.Forms.Label label7;
+        private System.Windows.Forms.Button btn_AddImage;
+        private System.Windows.Forms.PictureBox pic_HinhAnh;
     }
 }
