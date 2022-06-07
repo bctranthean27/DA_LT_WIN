@@ -131,5 +131,10 @@ namespace _108_144_QLCuaHangCafe
             xulyfrm(f);
         }
 
+        private void mnu_DangNhap_Click(object sender, EventArgs e)
+        {
+            Form f = new DangNhap();
+            xulyfrm((DangNhap)f);
+        }
     }
 }

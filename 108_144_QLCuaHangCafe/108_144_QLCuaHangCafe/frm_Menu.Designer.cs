@@ -49,6 +49,7 @@
             this.mnu_ThongKeThang = new System.Windows.Forms.ToolStripMenuItem();
             this.mnu_ThongKeNam = new System.Windows.Forms.ToolStripMenuItem();
             this.mnu_ThongKeNV = new System.Windows.Forms.ToolStripMenuItem();
+            this.mnu_DangNhap = new System.Windows.Forms.ToolStripMenuItem();
             this.menuStrip1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -70,7 +71,8 @@
             this.menuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.mnu_NhapThongTin,
             this.mnu_TimKiem,
-            this.mnu_ThongKe});
+            this.mnu_ThongKe,
+            this.mnu_DangNhap});
             this.menuStrip1.Location = new System.Drawing.Point(0, 0);
             this.menuStrip1.Name = "menuStrip1";
             this.menuStrip1.Size = new System.Drawing.Size(1737, 36);
@@ -245,6 +247,15 @@
             this.mnu_ThongKeNV.Text = "Nhân Viên";
             this.mnu_ThongKeNV.Click += new System.EventHandler(this.mnu_ThongKeNV_Click);
             // 
+            // mnu_DangNhap
+            // 
+            this.mnu_DangNhap.Alignment = System.Windows.Forms.ToolStripItemAlignment.Right;
+            this.mnu_DangNhap.Font = new System.Drawing.Font("Segoe UI Semibold", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.mnu_DangNhap.Name = "mnu_DangNhap";
+            this.mnu_DangNhap.Size = new System.Drawing.Size(126, 32);
+            this.mnu_DangNhap.Text = "Đăng nhập";
+            this.mnu_DangNhap.Click += new System.EventHandler(this.mnu_DangNhap_Click);
+            // 
             // frm_Menu
             // 
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.None;
@@ -287,5 +298,6 @@
         private System.Windows.Forms.ToolStripMenuItem mnu_ThongKeThang;
         private System.Windows.Forms.ToolStripMenuItem mnu_ThongKeNam;
         private System.Windows.Forms.ToolStripMenuItem mnu_ThongKeNV;
+        private System.Windows.Forms.ToolStripMenuItem mnu_DangNhap;
     }
 }
