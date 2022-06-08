@@ -65,9 +65,6 @@
             // 
             this.cbo_ChucVu.Font = new System.Drawing.Font("Segoe UI Semibold", 13.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.cbo_ChucVu.FormattingEnabled = true;
-            this.cbo_ChucVu.Items.AddRange(new object[] {
-            "On",
-            "Off"});
             this.cbo_ChucVu.Location = new System.Drawing.Point(875, 204);
             this.cbo_ChucVu.Name = "cbo_ChucVu";
             this.cbo_ChucVu.Size = new System.Drawing.Size(409, 39);

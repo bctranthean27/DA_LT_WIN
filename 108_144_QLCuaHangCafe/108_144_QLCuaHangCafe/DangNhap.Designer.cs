@@ -30,8 +30,8 @@
         {
             this.label1 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
-            this.textBox1 = new System.Windows.Forms.TextBox();
-            this.textBox2 = new System.Windows.Forms.TextBox();
+            this.txtTK = new System.Windows.Forms.TextBox();
+            this.txtMK = new System.Windows.Forms.TextBox();
             this.label3 = new System.Windows.Forms.Label();
             this.btn_Submit = new System.Windows.Forms.Button();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
@@ -58,29 +58,30 @@
             this.label2.ForeColor = System.Drawing.Color.White;
             this.label2.Location = new System.Drawing.Point(58, 91);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(373, 38);
+            this.label2.Size = new System.Drawing.Size(213, 38);
             this.label2.TabIndex = 5;
-            this.label2.Text = "Nhập mã nhân viên của bạn";
+            this.label2.Text = "Nhập tài khoản";
             // 
-            // textBox1
+            // txtTK
             // 
-            this.textBox1.AutoCompleteCustomSource.AddRange(new string[] {
+            this.txtTK.AutoCompleteCustomSource.AddRange(new string[] {
             "sdas"});
-            this.textBox1.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.textBox1.Font = new System.Drawing.Font("Segoe UI", 16.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.textBox1.Location = new System.Drawing.Point(65, 147);
-            this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(438, 36);
-            this.textBox1.TabIndex = 6;
+            this.txtTK.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.txtTK.Font = new System.Drawing.Font("Segoe UI", 16.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtTK.Location = new System.Drawing.Point(65, 147);
+            this.txtTK.Name = "txtTK";
+            this.txtTK.Size = new System.Drawing.Size(438, 36);
+            this.txtTK.TabIndex = 6;
             // 
-            // textBox2
+            // txtMK
             // 
-            this.textBox2.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.textBox2.Font = new System.Drawing.Font("Segoe UI", 16.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.textBox2.Location = new System.Drawing.Point(65, 287);
-            this.textBox2.Name = "textBox2";
-            this.textBox2.Size = new System.Drawing.Size(438, 36);
-            this.textBox2.TabIndex = 8;
+            this.txtMK.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.txtMK.Font = new System.Drawing.Font("Segoe UI", 16.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtMK.Location = new System.Drawing.Point(65, 287);
+            this.txtMK.Name = "txtMK";
+            this.txtMK.Size = new System.Drawing.Size(438, 36);
+            this.txtMK.TabIndex = 8;
+            this.txtMK.UseSystemPasswordChar = true;
             // 
             // label3
             // 
@@ -106,6 +107,7 @@
             this.btn_Submit.TabIndex = 9;
             this.btn_Submit.Text = "Đăng nhập";
             this.btn_Submit.UseVisualStyleBackColor = false;
+            this.btn_Submit.Click += new System.EventHandler(this.btn_Submit_Click);
             // 
             // pictureBox1
             // 
@@ -125,13 +127,14 @@
             this.ClientSize = new System.Drawing.Size(1006, 476);
             this.Controls.Add(this.pictureBox1);
             this.Controls.Add(this.btn_Submit);
-            this.Controls.Add(this.textBox2);
+            this.Controls.Add(this.txtMK);
             this.Controls.Add(this.label3);
-            this.Controls.Add(this.textBox1);
+            this.Controls.Add(this.txtTK);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.label1);
             this.Name = "DangNhap";
             this.Text = "DangNhap";
+            this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.DangNhap_FormClosing);
             this.Load += new System.EventHandler(this.DangNhap_Load);
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.ResumeLayout(false);
@@ -143,8 +146,8 @@
 
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Label label2;
-        private System.Windows.Forms.TextBox textBox1;
-        private System.Windows.Forms.TextBox textBox2;
+        private System.Windows.Forms.TextBox txtTK;
+        private System.Windows.Forms.TextBox txtMK;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Button btn_Submit;
         private System.Windows.Forms.PictureBox pictureBox1;

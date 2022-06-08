@@ -14,9 +14,19 @@ namespace _108_144_QLCuaHangCafe
         [STAThread]
         static void Main()
         {
+            
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new frm_Menu());
+            //DangNhap dn = new DangNhap();
+            //Application.Run(dn);
+            //if (dn.Islogin)
+            //{
+            //    frm_Menu menu = new frm_Menu();
+            //    menu.idUser = dn.idUser;
+
+            //}
+            Application.Run(new DangNhap ());
+
         }
     }
 }
