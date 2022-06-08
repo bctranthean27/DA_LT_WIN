@@ -16,7 +16,7 @@ namespace _108_144_QLCuaHangCafe
         SqlConnection con = new SqlConnection();
         public void KetNoi()
         {
-            con.ConnectionString = @"Data source=ADMIN;Initial Catalog=QL_CH_CAFE;integrated Security=True";
+            con.ConnectionString = @"Data source=BC27\SQLEXPRESS;Initial Catalog=QL_CH_CAFE;integrated Security=True";
             if(con.State != ConnectionState.Closed)
                 con.Open();
         }
