@@ -25,7 +25,7 @@ namespace _108_144_QLCuaHangCafe
 
         private void btn_Submit_Click(object sender, EventArgs e)
         {
-            string query = "SELECT * FROM TaiKhoan WHERE taikhoan= '" + txtTK.Text + "' AND matkhau= '" + txtMK.Text + "'";
+            string query = "SELECT * FROM TaiKhoan WHERE taikhoan= '" + txtTK.Text.Trim() + "' AND matkhau= '" + txtMK.Text.Trim() + "'";
             //frm_Menu menu = new frm_Menu();
             //menu.Show();
             //this.Hide();
