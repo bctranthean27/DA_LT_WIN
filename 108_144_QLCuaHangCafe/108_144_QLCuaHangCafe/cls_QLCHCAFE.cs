@@ -14,10 +14,9 @@ namespace _108_144_QLCuaHangCafe
     public class cls_QLCHCAFE
     {
         SqlConnection con = new SqlConnection();
-
         public void KetNoi()
         {
-            con.ConnectionString = @"Data source=BC27\SQLEXPRESS;Initial Catalog=QL_CH_CAFE;integrated Security=True";
+            con.ConnectionString = @"Data source=ADMIN;Initial Catalog=QL_CH_CAFE;integrated Security=True";
             if(con.State != ConnectionState.Closed)
                 con.Open();
         }
@@ -58,6 +57,27 @@ namespace _108_144_QLCuaHangCafe
             da.Fill(ds);
             return ds;
         }
+
+        //public void GetUser(string sql)
+        //{
+        //    con.Open();
+        //    SqlCommand cmd = new SqlCommand();
+
+        //    cmd.CommandText = sql;
+        //    cmd.CommandType = CommandType.Text;
+        //    cmd.Connection = con;
+        //    SqlDataReader dta = cmd.ExecuteReader();
+
+        //    if (dta.Read())
+        //    {
+        //        MessageBox.Show("Success!");
+        //        MessageBox.Show(dta.ToString());
+        //    }
+        //    else {
+        //        MessageBox.Show("Fail!");
+        //    }
+        //    con.Close();
+        //}
         public ArrayList laygiatri(string[]dsbien, ArrayList dsthamso)
         {
             ArrayList dsGiatri = new ArrayList();

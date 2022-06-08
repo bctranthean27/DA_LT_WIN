@@ -14,6 +14,10 @@ namespace _108_144_QLCuaHangCafe
     {
         Form frm;
         Boolean check = false;
+        cls_QLCHCAFE c = new cls_QLCHCAFE();
+        public string idUser { get; set; }
+        public string roles { get; set; }
+        bool isExit = true;
 
         void xulyfrm(Form f) {
             if (check)
@@ -27,6 +31,31 @@ namespace _108_144_QLCuaHangCafe
             frm = f;
             frm.MdiParent = this;
             frm.Show();
+        }
+
+        void phanQuyen(string role) {
+            if (role.ToUpper() == "NV") {
+                mnu_NhanVien.Visible = false;
+                mnu_ThongKe.Visible = false;
+            }
+        }
+
+        private void frm_Menu_Load(object sender, EventArgs e)
+        {
+            string query = "SELECT * FROM NhanVien WHERE MaNV= '" + idUser + "'";
+            DataSet data = c.LayDuLieu(query);
+
+            if (data.Tables[0].Rows.Count == 1)
+            {
+                //set ma chuc vu de phan quyen
+                roles = data.Tables[0].Rows[0]["MaChucVu"].ToString();
+                phanQuyen(roles);
+            }
+            else
+            {
+                MessageBox.Show("Nhan vien chua duoc phan cong");
+            }
+            
         }
         public frm_Menu()
         {
@@ -48,6 +77,7 @@ namespace _108_144_QLCuaHangCafe
         {
             Form f  = new frm_ChucVu();
             xulyfrm(f);
+            MessageBox.Show(idUser);
         }
 
         private void mnu_NCC_Click(object sender, EventArgs e)
@@ -56,10 +86,7 @@ namespace _108_144_QLCuaHangCafe
             xulyfrm(f);
         }
 
-        private void frm_Menu_Load(object sender, EventArgs e)
-        {
-
-        }
+        
         private void mnu_Size_Click(object sender, EventArgs e)
         {
             Form f  = new frm_Size();
@@ -131,10 +158,28 @@ namespace _108_144_QLCuaHangCafe
             xulyfrm(f);
         }
 
-        private void mnu_DangNhap_Click(object sender, EventArgs e)
+        private void mnu_DangXuat_Click(object sender, EventArgs e)
         {
-            Form f = new DangNhap();
-            xulyfrm((DangNhap)f);
+            DialogResult result = MessageBox.Show("Ban co muon dang xuat khong?", "Thong bao", MessageBoxButtons.YesNo);
+            if (result == DialogResult.Yes)
+            {
+                isExit = false;
+                this.Close();
+                DangNhap dangNhap = new DangNhap();
+
+                dangNhap.Show();
+            }
+            
+            
+            
+        }
+
+        private void frm_Menu_FormClosing(object sender, FormClosingEventArgs e)
+        {
+            if (isExit) {
+                Application.Exit();
+            }
+            
         }
     }
 }
