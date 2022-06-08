@@ -21,5 +21,10 @@ namespace _108_144_QLCuaHangCafe
         {
 
         }
+
+        private void DangNhap_Load(object sender, EventArgs e)
+        {
+
+        }
     }
 }
