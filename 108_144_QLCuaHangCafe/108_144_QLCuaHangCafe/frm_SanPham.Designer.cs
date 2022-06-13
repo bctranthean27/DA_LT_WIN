@@ -312,6 +312,7 @@
             this.dgv_DanhSach.Size = new System.Drawing.Size(1086, 348);
             this.dgv_DanhSach.TabIndex = 0;
             this.dgv_DanhSach.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgv_DanhSach_CellClick);
+            this.dgv_DanhSach.CellValueChanged += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgv_DanhSach_CellValueChanged);
             // 
             // MaSP
             // 
@@ -319,6 +320,7 @@
             this.MaSP.HeaderText = "Mã Sản Phẩm";
             this.MaSP.MinimumWidth = 6;
             this.MaSP.Name = "MaSP";
+            this.MaSP.ReadOnly = true;
             // 
             // TenSP
             // 

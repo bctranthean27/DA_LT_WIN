@@ -61,6 +61,7 @@ namespace _108_144_QLCuaHangCafe
             btn_Sua.Enabled = t;
             btn_Xoa.Enabled = t;
             btn_Luu.Enabled = !t;
+            dgv_DanhSach.Enabled = t;
         }
         string autoCode(DataSet ds, string pri)
         {
@@ -183,9 +184,9 @@ namespace _108_144_QLCuaHangCafe
         }
 
 
-        void loadData_cboFromList(DataTable dt, ComboBox cbo, string disMember)
+        void loadData_cboFromList(DataTable dt, ComboBox cbo, string disMember, int vt)
         {
-            
+
             string value = dt.Rows[vt][disMember].ToString();
             if (disMember == "TrangThai")
             {
@@ -205,17 +206,32 @@ namespace _108_144_QLCuaHangCafe
                         cbo.Text = name;
                         break;
                     }
+
                 }
             }
         }
         void hienThiTextBox(DataTable dt, int vt)
         {
-            txt_MaHD.Text = ds.Tables[0].Rows[vt]["MaHD"].ToString();
-            loadData_cboFromList(dt, cbo_KhachHang, "MaKH");
-            loadData_cboFromList(dt, cbo_LoaiHD, "MaLoaiHD");
-            loadData_cboFromList(dt, cbo_NhanVien, "MaNV");
-            loadData_cboFromList(dt, cbo_TrangThai, "TrangThai");
-            dtp_NgayLap.Value = DateTime.Parse(ds.Tables[0].Rows[vt]["NgayLap"].ToString());
+            
+            if (dgv_DanhSach.CurrentRow != null)
+            {
+                DataGridViewRow row = dgv_DanhSach.CurrentRow;
+                if (row.Cells["MaHD"].Value == DBNull.Value)
+                {
+                    txt_MaHD.Text = "";
+                    btn_Sua.Enabled = false;
+                    btn_Xoa.Enabled = false;
+                }
+                else
+                {
+                    txt_MaHD.Text = ds.Tables[0].Rows[vt]["MaHD"].ToString();
+                    loadData_cboFromList(dt, cbo_KhachHang, "MaKH",vt);
+                    loadData_cboFromList(dt, cbo_LoaiHD, "MaLoaiHD",vt);
+                    loadData_cboFromList(dt, cbo_NhanVien, "MaNV",vt);
+                    loadData_cboFromList(dt, cbo_TrangThai, "TrangThai",vt);
+                    dtp_NgayLap.Value = DateTime.Parse(ds.Tables[0].Rows[vt]["NgayLap"].ToString());
+                }
+            }
 
         }
         private void dgv_DanhSach_CellClick(object sender, DataGridViewCellEventArgs e)
@@ -259,9 +275,29 @@ namespace _108_144_QLCuaHangCafe
             //}
         }
 
-        private void label9_Click(object sender, EventArgs e)
+        private void dgv_DanhSach_CellValueChanged(object sender, DataGridViewCellEventArgs e)
         {
+            ds = c.LayDuLieu("select * from HoaDon");
 
+            if (dgv_DanhSach.CurrentRow != null)
+            {
+                DataGridViewRow row = dgv_DanhSach.CurrentRow;//get row at select row
+                string m2 = row.Cells["MaKH"].Value == DBNull.Value ? "K01" : row.Cells["MaKH"].Value.ToString();
+                string m3 = row.Cells["NgayLap"].Value == DBNull.Value ? "1/1/2020" : row.Cells["NgayLap"].Value.ToString();
+                string m4 = row.Cells["MaLoaiHD"].Value == DBNull.Value ? "K01" : row.Cells["MaLoaiHD"].Value.ToString();
+                string m5 = row.Cells["MaNV"].Value == DBNull.Value ? "Y03" : row.Cells["MaNV"].Value.ToString();
+                string m1 = row.Cells["MaHD"].Value == DBNull.Value ? autoCode(ds, "P") : row.Cells["MaHD"].Value.ToString();
+
+                if (row.Cells["MaHD"].Value == DBNull.Value)
+                {
+                    them(sender, e, m1, m2, m3, m4, m5);
+                }
+                else
+                {
+                    sua(sender, e, m1, m2, m3, m4, m5);
+                }
+
+            }
         }
     }
 }

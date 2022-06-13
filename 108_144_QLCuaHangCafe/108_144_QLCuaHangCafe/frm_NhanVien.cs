@@ -30,7 +30,7 @@ namespace _108_144_QLCuaHangCafe
             cbo_TrangThai.SelectedIndex = 0;
             cbo_TrangThai.DropDownStyle = ComboBoxStyle.DropDownList;
             cbo_ChucVu.DropDownStyle = ComboBoxStyle.DropDownList;
-            
+            cbo_ChucVu.SelectedIndex = 1;
         }
         void loadData_DataGrid(DataGridView d, string sql)
         {
@@ -106,20 +106,27 @@ namespace _108_144_QLCuaHangCafe
             string matKhau = "123";
             try
             {
-                if (m1.Trim() == "" || m2.Trim() == "" || m3.Trim() == "" || m4.Trim() == "" || m5.Trim() == "" || m6.Trim() == "")
+                if (m1.Trim() == "" )
                     throw new Exception("Vui lòng điền đủ thông tin");
                 //string sql = "insert into NhanVien(MaNV,HoNV,TenNV,DChi,NgayVaolam,MaChucVu,TrangThai) values ('" + m1 + "',N'" + m2 + "',N'" + m3 + "',N'" + m4 + "',N'" + m5 + "',N'" + m6 + "','" + m7 + "')";
                 //proc
                 
                 string sql = "EXEC them_nhan_vien @manv = '" + m1 + "', @honv = N'" + m2 + "', @tennv = N'" + m3 + "', @dchi = N'" + m4 + "', @ngayvaolam = '" + m5 + "', @machucvu = '" + m6 + "', @roles = '" + roles + "';";
-                string sql_role = "EXEC tao_tai_khoan @matk = '" + maTK + "', @taikhoan = N'" + taiKhoan + "', @mk = N'" + matKhau + "', @manv = N'" + m1 +  "';";
+                string sql_role = "EXEC tao_tai_khoan @matk = '" + maTK + "', @taikhoan = N'" + taiKhoan + "', @mk = N'" + matKhau + "', @manv = N'" + m1 + "', @trangthai = N'" + 1 +  "';";
 
 
-                if (c.CapNhatDulieu(sql) > 0 && c.CapNhatDulieu(sql_role) > 0)
+                if (c.CapNhatDulieu(sql) > 0)
                 {
-                    MessageBox.Show("Cập nhật thành công", "Thông báo", MessageBoxButtons.OK);
+                    MessageBox.Show("Cập nhật nhân viên thành công", "Thông báo", MessageBoxButtons.OK);
                     frm_NhanVien_Load(sender, e);
                 }
+                if (c.CapNhatDulieu(sql_role) > 0)
+                {
+                    MessageBox.Show("Cập nhật tài khoản thành công", "Thông báo", MessageBoxButtons.OK);
+                    frm_NhanVien_Load(sender, e);
+                }
+
+                
             }
             catch (Exception err)
             {
@@ -164,11 +171,12 @@ namespace _108_144_QLCuaHangCafe
                     sql = "EXEC sua_nhan_vien @manv = '" + m1 + "', @honv = N'" + m2 + "', @tennv = N'" + m3 + "', @dchi = N'" + m4 + "', @ngayvaolam = '" + m5 + "', @machucvu = '" + m6 + "', @roles = '" + roles + "', @trangthai = '" + 1 + "';";
 
                 }
-                if (c.CapNhatDulieu(sql) > 0 && c.CapNhatDulieu(sql_role) > 0)
+                if (c.CapNhatDulieu(sql) > 0 )
                 {
                     MessageBox.Show("Cập nhật thành công", "Thông báo", MessageBoxButtons.OK);
                     frm_NhanVien_Load(sender, e);
                 }
+
             }
             catch (Exception err)
             {
@@ -183,29 +191,7 @@ namespace _108_144_QLCuaHangCafe
             XuLiButton(true);
             string m1 = txt_MaNV.Text;
             string m2 = txt_HoNV.Text;
-            string m3 = txt_TenNV.Text;
-            string m4 = txt_DiaChi.Text;
-            string m5 = NgayThangNam(dtp_NgayVaoLam);
-            string m6 = cbo_ChucVu.SelectedValue.ToString();
-            string roles = "";
-            if (m6 == "C01") roles = "QL";
-            if (m6 == "C02") roles = "NV";
-            string m7 = cbo_TrangThai.SelectedItem.ToString();
-            switch (flag)
-            {
-                case 1:
-                    clearTextbox();
-                    them(sender, e, m1, m2, m3, m4, m5, m6, roles);
-                    break;
-                case 2:
-                    sua(sender, e, m1, m2, m3, m4, m5, m6, roles);
-                    break;
-
-            }
-        }
-
-        
-        void loadData_cboFromList(DataTable dt, ComboBox cbo, string disMember,int vt)
+ void loadData_cboFromList(DataTable dt, ComboBox cbo, string disMember,int vt)
         {
 
             string value = dt.Rows[vt][disMember].ToString();
@@ -230,7 +216,54 @@ namespace _108_144_QLCuaHangCafe
 
                 }
             }
+        }           string m3 = txt_TenNV.Text;
+            string m4 = txt_DiaChi.Text;
+            string m5 = NgayThangNam(dtp_NgayVaoLam);
+            string m6 = cbo_ChucVu.SelectedValue.ToString();
+            string roles = "";
+            if (m6 == "C01") roles = "QL";
+            if (m6 == "C02") roles = "NV";
+            string m7 = cbo_TrangThai.SelectedItem.ToString();
+            switch (flag)
+            {
+                case 1:
+                    clearTextbox();
+                    them(sender, e, m1, m2, m3, m4, m5, m6, roles);
+                    break;
+                case 2:
+                    sua(sender, e, m1, m2, m3, m4, m5, m6, roles);
+                    break;
+
+            }
         }
+
+        void loadData_cboFromList(DataTable dt, ComboBox cbo, string disMember, int vt)
+        {
+
+            string value = dt.Rows[vt][disMember].ToString();
+            if (disMember == "TrangThai")
+            {
+                for (int i = 0; i < cbo.Items.Count; i++)
+                {
+                    if (cbo.Items[i].ToString() == value) cbo.SelectedIndex = i;
+                }
+            }
+            else
+            {
+                foreach (DataRowView rowView in cbo.Items)
+                {
+                    string val = rowView.Row[0].ToString();
+                    string name = rowView.Row[1].ToString();
+                    if (val == value)
+                    {
+                        cbo.Text = name;
+                        break;
+                    }
+
+                }
+            }
+        }
+
         void hienThiTextBox(DataTable dt, int vt)
         {
             
@@ -316,27 +349,20 @@ namespace _108_144_QLCuaHangCafe
                 string m2 = row.Cells["HoNV"].Value == DBNull.Value ? "" : row.Cells["HoNV"].Value.ToString();
                 string m3 = row.Cells["TenNV"].Value == DBNull.Value ? "" : row.Cells["TenNV"].Value.ToString();
                 string m4 = row.Cells["DChi"].Value == DBNull.Value ? "" : row.Cells["DChi"].Value.ToString();
-                string m5 = row.Cells["NgayVaoLam"].Value == DBNull.Value ? DateTime.Today.ToString() : row.Cells["NgayVaoLam"].Value.ToString();
+                string m5 = row.Cells["NgayVaoLam"].Value == DBNull.Value ? "1/1/2000" : row.Cells["NgayVaoLam"].Value.ToString();
                 string m6 = row.Cells["MaChucVu"].Value == DBNull.Value ? "C02" : row.Cells["MaChucVu"].Value.ToString();
                 string roles = "";
                 if (m6 == "C01") roles = "QL";
                 if (m6 == "C02") roles = "NV";
-                string m1 = row.Cells["MaNV"].Value == DBNull.Value ? "" : row.Cells["MaNV"].Value.ToString();
-                string maTK = autoCode(dstk, "TK");
-                string taiKhoan = m1.ToUpper() + "@gmail.com";
-                string matKhau = "123";
+                string m1 = row.Cells["MaNV"].Value == DBNull.Value ? autoCode(ds, "Y") : row.Cells["MaNV"].Value.ToString();
+
                 if (row.Cells["MaNV"].Value == DBNull.Value)
                 {
-
-                    string sql = "EXEC them_nhan_vien @manv = '" + m1 + "', @honv = N'" + m2 + "', @tennv = N'" + m3 + "', @dchi = N'" + m4 + "', @ngayvaolam = '" + m5 + "', @machucvu = '" + m6 + "', @roles = '" + roles + "';";
-                    string sql_role = "EXEC tao_tai_khoan @matk = '" + maTK + "', @taikhoan = N'" + taiKhoan + "', @mk = N'" + matKhau + "', @manv = N'" + m1 + "';";
-                    MessageBox.Show(sql, sql_role, MessageBoxButtons.OK, MessageBoxIcon.Error);
-                    if (c.CapNhatDulieu(sql) > 0 && c.CapNhatDulieu(sql_role) > 0)
-                        frm_NhanVien_Load(sender, e);
+                    them(sender,null, m1, m2, m3, m4, m5, m6,roles);
                 }
                 else
                 {
-                    sua(sender, null, m1, m2, m3, m4, m5, m6);
+                    sua(sender, null, m1, m2, m3, m4, m5, m6, roles);
                 }
 
             }

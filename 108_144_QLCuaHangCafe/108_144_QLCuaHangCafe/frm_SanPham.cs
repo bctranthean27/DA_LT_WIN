@@ -64,6 +64,7 @@ namespace _108_144_QLCuaHangCafe
             btn_Sua.Enabled = t;
             btn_Xoa.Enabled = t;
             btn_Luu.Enabled = !t;
+            dgv_DanhSach.Enabled = t;
         }
         string autoCode(DataSet ds, string pri)
         {
@@ -178,7 +179,7 @@ namespace _108_144_QLCuaHangCafe
         }
 
 
-        void loadData_cboFromList(DataTable dt, ComboBox cbo, string disMember)
+        void loadData_cboFromList(DataTable dt, ComboBox cbo, string disMember, int vt)
         {
 
             string value = dt.Rows[vt][disMember].ToString();
@@ -191,20 +192,43 @@ namespace _108_144_QLCuaHangCafe
             }
             else
             {
-                for (int i = 0; i < cbo.Items.Count; i++)
+                foreach (DataRowView rowView in cbo.Items)
                 {
-                    if (cbo.ValueMember == value) cbo.SelectedIndex = i;
+                    string val = rowView.Row[0].ToString();
+                    string name = rowView.Row[1].ToString();
+                    if (val == value)
+                    {
+                        cbo.Text = name;
+                        break;
+                    }
+
                 }
             }
         }
         void hienThiTextBox(DataTable dt, int vt)
         {
-            txt_MaSP.Text = ds.Tables[0].Rows[vt]["MaSP"].ToString();
-            txt_TenSP.Text = ds.Tables[0].Rows[vt]["TenSP"].ToString();
-            txt_DonGia.Text = ds.Tables[0].Rows[vt]["DonGia"].ToString();
-            loadData_cboFromList(dt, cbo_LoaiSanPham, "MaLoai");
-            loadData_cboFromList(dt, cbo_NCC, "MaNCC");
-            loadData_cboFromList(dt, cbo_TrangThai, "TrangThai");
+            
+            if (dgv_DanhSach.CurrentRow != null)
+            {
+                DataGridViewRow row = dgv_DanhSach.CurrentRow;
+                if (row.Cells["MaSP"].Value == DBNull.Value)
+                {
+                    txt_MaSP.Text = "";
+                    txt_TenSP.Text = "";
+                    txt_DonGia.Text = "";
+                    btn_Sua.Enabled = false;
+                    btn_Xoa.Enabled = false;
+                }
+                else
+                {
+                    txt_MaSP.Text = ds.Tables[0].Rows[vt]["MaSP"].ToString();
+                    txt_TenSP.Text = ds.Tables[0].Rows[vt]["TenSP"].ToString();
+                    txt_DonGia.Text = ds.Tables[0].Rows[vt]["DonGia"].ToString();
+                    loadData_cboFromList(dt, cbo_LoaiSanPham, "MaLoai",vt);
+                    loadData_cboFromList(dt, cbo_NCC, "MaNCC",vt);
+                    loadData_cboFromList(dt, cbo_TrangThai, "TrangThai",vt);
+                }
+            }
         }
         private void dgv_DanhSach_CellClick(object sender, DataGridViewCellEventArgs e)
         {
@@ -250,14 +274,14 @@ namespace _108_144_QLCuaHangCafe
         {
             Close();
         }
-
         private void btn_AddImage_Click(object sender, EventArgs e)
         {
             //tạo hộp thoại nhập hình ảnh
             OpenFileDialog Odlg_HinhAnh = new OpenFileDialog();
             Odlg_HinhAnh.InitialDirectory = Path.GetFullPath("Image") + @"\";
-            Odlg_HinhAnh.ShowDialog();
             //hiển thị ảnh từ file đã chọn
+            if(Odlg_HinhAnh.ShowDialog() == DialogResult.Cancel)
+                Odlg_HinhAnh.ShowDialog();
             string ten_anh = Odlg_HinhAnh.FileName;
             Bitmap bitmap = new Bitmap(ten_anh);
 
@@ -279,6 +303,30 @@ namespace _108_144_QLCuaHangCafe
 
             tool.SetToolTip(pic_HinhAnh, tool_HinhAnh); // Bạn cần hiển thị gì thì lấy trong cơ sở dữ liệu ra ném vào đó là được
             //tool.IsBalloon = true;
+        }
+        private void dgv_DanhSach_CellValueChanged(object sender, DataGridViewCellEventArgs e)
+        {
+            ds = c.LayDuLieu("select * from SanPham");
+
+            if (dgv_DanhSach.CurrentRow != null)
+            {
+                DataGridViewRow row = dgv_DanhSach.CurrentRow;//get row at select row
+                string m2 = row.Cells["TenSP"].Value == DBNull.Value ? "" : row.Cells["TenSP"].Value.ToString();
+                string m3 = row.Cells["MaLoai"].Value == DBNull.Value ? "L01" : row.Cells["MaLoai"].Value.ToString();
+                string m4 = row.Cells["MaNCC"].Value == DBNull.Value ? "N01" : row.Cells["MaNCC"].Value.ToString();
+                string m5 = row.Cells["DonGia"].Value == DBNull.Value ? "0" : row.Cells["DonGia"].Value.ToString();
+                string m1 = row.Cells["MaSP"].Value == DBNull.Value ? autoCode(ds, "X") : row.Cells["MaSP"].Value.ToString();
+
+                if (row.Cells["MaSP"].Value == DBNull.Value)
+                {
+                    them(sender, null, m1, m2, m3, m4, m5, "1");
+                }
+                else
+                {
+                    sua(sender, null, m1, m2, m3, m4, m5, "1");
+                }
+
+            }
         }
     }
 }
