@@ -60,6 +60,7 @@ namespace _108_144_QLCuaHangCafe
             btn_Sua.Enabled = t;
             btn_Xoa.Enabled = t;
             btn_Luu.Enabled = !t;
+            dgv_DanhSach.Enabled = t;
         }
         string autoCode(DataSet ds, string pri)
         {
@@ -103,7 +104,7 @@ namespace _108_144_QLCuaHangCafe
             }
             catch (Exception err)
             {
-                MessageBox.Show(err.Message, "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show(err.Message, "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 c.DongKetNoi();
                 btn_Them_Click(sender, e);
             }
@@ -172,12 +173,30 @@ namespace _108_144_QLCuaHangCafe
         
         void hienThiTextBox(DataTable dt, int vt)
         {
-            txt_NCC.Text = dt.Rows[vt]["MaNCC"].ToString();
-            txt_DiaChi.Text = dt.Rows[vt]["DChi"].ToString();
-            txt_DiaChiMail.Text = dt.Rows[vt]["Mail"].ToString();
-            txt_DienThoai.Text = dt.Rows[vt]["SDT"].ToString();
-            txt_TenNCC.Text = dt.Rows[vt]["TenNCC"].ToString();
-            loadData_cboFromList(dt, cbo_TrangThai, "TrangThai");
+            
+            if (dgv_DanhSach.CurrentRow != null)
+            {
+                DataGridViewRow row = dgv_DanhSach.CurrentRow;
+                if (row.Cells["MaNCC"].Value == DBNull.Value)
+                {
+                    txt_NCC.Text = "";
+                    txt_DiaChi.Text= "";
+                    txt_DiaChiMail.Text = "";
+                    txt_DienThoai.Text = "";
+                    txt_TenNCC.Text = "";
+                    btn_Sua.Enabled = false;
+                    btn_Xoa.Enabled = false;
+                }
+                else
+                {
+                    txt_NCC.Text = dt.Rows[vt]["MaNCC"].ToString();
+                    txt_DiaChi.Text = dt.Rows[vt]["DChi"].ToString();
+                    txt_DiaChiMail.Text = dt.Rows[vt]["Mail"].ToString();
+                    txt_DienThoai.Text = dt.Rows[vt]["SDT"].ToString();
+                    txt_TenNCC.Text = dt.Rows[vt]["TenNCC"].ToString();
+                    loadData_cboFromList(dt, cbo_TrangThai, "TrangThai");
+                }
+            }
 
         }
         private void dgv_DanhSach_CellClick(object sender, DataGridViewCellEventArgs e)
@@ -200,28 +219,36 @@ namespace _108_144_QLCuaHangCafe
         {
             sua(sender, e);
             clearTextbox();
-            //try
-            //{
-            //    if (txt_NCC.Text == "")
-            //        throw new Exception("Lỗi cập nhật\nHãy chắc chắn bạn chọn đúng cột muốn xoá");
-            //    string sql = "DELETE from NhaCungCap where MaNCC='" + Old_Value + "'";
-            //    if (c.CapNhatDulieu(sql) > 0)
-            //    {
-            //        MessageBox.Show("Cập nhật thành công", "Thông báo", MessageBoxButtons.OK);
-            //        frm_NCC_Load(sender, e);
-            //        clearTextbox();
-            //    }
-            //}
-            //catch (Exception err)
-            //{
-            //    MessageBox.Show(err.Message, "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
-            //    frm_NCC_Load(sender, e);
-            //}
         }
 
         private void Btn_Thoat_Click(object sender, EventArgs e)
         {
             Close();
+        }
+        private void dgv_DanhSach_CellValueChanged(object sender, DataGridViewCellEventArgs e)
+        {
+            ds = c.LayDuLieu("select * from NhaCungCap");
+            if (dgv_DanhSach.CurrentRow != null)
+            {
+                DataGridViewRow row = dgv_DanhSach.CurrentRow;//get row at select row
+                string val1 = row.Cells["TenNCC"].Value == DBNull.Value ? "" : row.Cells["TenNCC"].Value.ToString();
+                string val2 = row.Cells["DChi"].Value == DBNull.Value ? "" : row.Cells["DChi"].Value.ToString();
+                string val3 = row.Cells["SDT"].Value == DBNull.Value ? "" : row.Cells["SDT"].Value.ToString();
+                string val4 = row.Cells["Mail"].Value == DBNull.Value ? "" : row.Cells["Mail"].Value.ToString();
+                string val5 = row.Cells["TrangThai"].Value == DBNull.Value ? "" : row.Cells["TrangThai"].Value.ToString();
+                string ma = row.Cells["MaNCC"].Value == DBNull.Value ? "" : row.Cells["MaNCC"].Value.ToString();
+                if (row.Cells["MaNCC"].Value == DBNull.Value)
+                {
+                    string sql = "EXEC them_ncc @mancc = '" + autoCode(ds,"N") + "', @tenncc = N'" + val1 + "', @dchi = N'" + val2 + "', @sdt = '" + val3 + "', @mail = '" + val4 + "';";
+                    if (c.CapNhatDulieu(sql) > 0)
+                        frm_NCC_Load(sender, e);
+                }
+                else
+                {
+                    sua(sender, e, ma, val1, val2, val3, val4, val5);
+                }
+                
+            }
         }
     }
 }

@@ -47,8 +47,11 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="cls_QLCHCAFE.cs" />
-    <Compile Include="ElipseControl.cs">
-      <SubType>Component</SubType>
+    <Compile Include="DangNhap.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="DangNhap.Designer.cs">
+      <DependentUpon>DangNhap.cs</DependentUpon>
     </Compile>
     <Compile Include="frm_ChucVu.cs">
       <SubType>Form</SubType>
@@ -154,6 +157,9 @@
     <Compile Include="frm_ThongKeNgay.Designer.cs">
       <DependentUpon>frm_ThongKeNgay.cs</DependentUpon>
     </Compile>
+    <EmbeddedResource Include="DangNhap.resx">
+      <DependentUpon>DangNhap.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="frm_ChucVu.resx">
       <DependentUpon>frm_ChucVu.cs</DependentUpon>
     </EmbeddedResource>

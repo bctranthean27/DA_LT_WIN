@@ -30,6 +30,7 @@ namespace _108_144_QLCuaHangCafe
             cbo_TrangThai.SelectedIndex = 0;
             cbo_TrangThai.DropDownStyle = ComboBoxStyle.DropDownList;
             cbo_ChucVu.DropDownStyle = ComboBoxStyle.DropDownList;
+            
         }
         void loadData_DataGrid(DataGridView d, string sql)
         {
@@ -60,6 +61,7 @@ namespace _108_144_QLCuaHangCafe
             btn_Sua.Enabled = t;
             btn_Xoa.Enabled = t;
             btn_Luu.Enabled = !t;
+            dgv_DanhSach.Enabled = t;
         }
         string autoCode(DataSet ds, string pri)
         {
@@ -231,13 +233,31 @@ namespace _108_144_QLCuaHangCafe
         }
         void hienThiTextBox(DataTable dt, int vt)
         {
-            txt_MaNV.Text = dt.Rows[vt]["MaNV"].ToString();
-            txt_HoNV.Text = dt.Rows[vt]["HoNV"].ToString();
-            txt_TenNV.Text = dt.Rows[vt]["TenNV"].ToString();
-            txt_DiaChi.Text = dt.Rows[vt]["DChi"].ToString();
-            loadData_cboFromList(dt, cbo_ChucVu, "MaChucVu",vt);
-            loadData_cboFromList(dt, cbo_TrangThai, "TrangThai",vt);
-            dtp_NgayVaoLam.Value = DateTime.Parse(dt.Rows[vt]["NgayVaoLam"].ToString());
+            
+
+            if (dgv_DanhSach.CurrentRow != null)
+            {
+                DataGridViewRow row = dgv_DanhSach.CurrentRow;
+                if (row.Cells["MaNV"].Value == DBNull.Value)
+                {
+                    txt_MaNV.Text = "";
+                    txt_HoNV.Text = "";
+                    txt_TenNV.Text = "";
+                    txt_DiaChi.Text = "";
+                    btn_Sua.Enabled = false;
+                    btn_Xoa.Enabled = false;
+                }
+                else
+                {
+                    txt_MaNV.Text = dt.Rows[vt]["MaNV"].ToString();
+                    txt_HoNV.Text = dt.Rows[vt]["HoNV"].ToString();
+                    txt_TenNV.Text = dt.Rows[vt]["TenNV"].ToString();
+                    txt_DiaChi.Text = dt.Rows[vt]["DChi"].ToString();
+                    loadData_cboFromList(dt, cbo_ChucVu, "MaChucVu", vt);
+                    loadData_cboFromList(dt, cbo_TrangThai, "TrangThai", vt);
+                    dtp_NgayVaoLam.Value = DateTime.Parse(dt.Rows[vt]["NgayVaoLam"].ToString());
+                }
+            }
 
         }
         private void dgv_DanhSach_CellClick(object sender, DataGridViewCellEventArgs e)
@@ -284,6 +304,42 @@ namespace _108_144_QLCuaHangCafe
         private void btn_Thoat_Click(object sender, EventArgs e)
         {
             Close();
+        }
+        private void dgv_DanhSach_CellValueChanged(object sender, DataGridViewCellEventArgs e)
+        {
+            ds = c.LayDuLieu("select * from NhanVien");
+            DataSet dstk = c.LayDuLieu("select * from TaiKhoan");
+            
+            if (dgv_DanhSach.CurrentRow != null)
+            {
+                DataGridViewRow row = dgv_DanhSach.CurrentRow;//get row at select row
+                string m2 = row.Cells["HoNV"].Value == DBNull.Value ? "" : row.Cells["HoNV"].Value.ToString();
+                string m3 = row.Cells["TenNV"].Value == DBNull.Value ? "" : row.Cells["TenNV"].Value.ToString();
+                string m4 = row.Cells["DChi"].Value == DBNull.Value ? "" : row.Cells["DChi"].Value.ToString();
+                string m5 = row.Cells["NgayVaoLam"].Value == DBNull.Value ? DateTime.Today.ToString() : row.Cells["NgayVaoLam"].Value.ToString();
+                string m6 = row.Cells["MaChucVu"].Value == DBNull.Value ? "C02" : row.Cells["MaChucVu"].Value.ToString();
+                string roles = "";
+                if (m6 == "C01") roles = "QL";
+                if (m6 == "C02") roles = "NV";
+                string m1 = row.Cells["MaNV"].Value == DBNull.Value ? "" : row.Cells["MaNV"].Value.ToString();
+                string maTK = autoCode(dstk, "TK");
+                string taiKhoan = m1.ToUpper() + "@gmail.com";
+                string matKhau = "123";
+                if (row.Cells["MaNV"].Value == DBNull.Value)
+                {
+
+                    string sql = "EXEC them_nhan_vien @manv = '" + m1 + "', @honv = N'" + m2 + "', @tennv = N'" + m3 + "', @dchi = N'" + m4 + "', @ngayvaolam = '" + m5 + "', @machucvu = '" + m6 + "', @roles = '" + roles + "';";
+                    string sql_role = "EXEC tao_tai_khoan @matk = '" + maTK + "', @taikhoan = N'" + taiKhoan + "', @mk = N'" + matKhau + "', @manv = N'" + m1 + "';";
+                    MessageBox.Show(sql, sql_role, MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    if (c.CapNhatDulieu(sql) > 0 && c.CapNhatDulieu(sql_role) > 0)
+                        frm_NhanVien_Load(sender, e);
+                }
+                else
+                {
+                    sua(sender, null, m1, m2, m3, m4, m5, m6);
+                }
+
+            }
         }
     }
 }

@@ -48,6 +48,7 @@ namespace _108_144_QLCuaHangCafe
             btn_Sua.Enabled = t;
             btn_Xoa.Enabled = t;
             btn_Luu.Enabled = !t;
+            dgv_DanhSach.Enabled = t;
         }
         string autoCode(DataSet ds, string pri)
         {
@@ -176,9 +177,23 @@ namespace _108_144_QLCuaHangCafe
         }
         void hienThiTextBox(DataTable dt, int vt)
         {
-            txt_MaLoaiHD.Text = ds.Tables[0].Rows[vt]["MaLoaiHD"].ToString();
-            txt_TenLoaiHD.Text = ds.Tables[0].Rows[vt]["TenLoaiHD"].ToString();
-            loadData_cboFromList(dt, cbo_TrangThai, "TrangThai");
+            if (dgv_DanhSach.CurrentRow != null)
+            {
+                DataGridViewRow row = dgv_DanhSach.CurrentRow;
+                if (row.Cells["MaLoaiHD"].Value == DBNull.Value)
+                {
+                    txt_MaLoaiHD.Text = "";
+                    txt_TenLoaiHD.Text = "";
+                    btn_Sua.Enabled = false;
+                    btn_Xoa.Enabled = false;
+                }
+                else
+                {
+                    txt_MaLoaiHD.Text = row.Cells["MaLoaiHD"].Value.ToString();
+                    txt_TenLoaiHD.Text = row.Cells["TenLoaiHD"].Value.ToString();
+                    loadData_cboFromList(dt, cbo_TrangThai, "TrangThai");
+                }
+            }
         }
         private void dgv_DanhSach_CellClick(object sender, DataGridViewCellEventArgs e)
         {
@@ -221,6 +236,25 @@ namespace _108_144_QLCuaHangCafe
         {
             Close();
         }
+        private void dgv_DanhSach_CellValueChanged(object sender, DataGridViewCellEventArgs e)
+        {
+            ds = c.LayDuLieu("select * from LoaiHoaDon");
+            if (dgv_DanhSach.CurrentRow != null)
+            {
+                DataGridViewRow row = dgv_DanhSach.CurrentRow;//get row at select row
+                string val1 = row.Cells["TenLoaiHD"].Value == DBNull.Value ? "" : row.Cells["TenLoaiHD"].Value.ToString();
+                string val2 = row.Cells["TrangThai"].Value == DBNull.Value ? "" : row.Cells["TrangThai"].Value.ToString();
+                string ma = row.Cells["MaLoaiHD"].Value == DBNull.Value ? "" : row.Cells["MaLoaiHD"].Value.ToString();
+                if (row.Cells["MaLoaiHD"].Value == DBNull.Value)
+                {
+                    them(sender, null, autoCode(ds, "K"), val1);
+                }
+                else
+                {
+                    sua(sender, null, ma, val1, val2);
+                }
 
+            }
+        }
     }
 }

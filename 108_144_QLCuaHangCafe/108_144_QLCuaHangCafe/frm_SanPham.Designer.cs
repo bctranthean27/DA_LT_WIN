@@ -72,7 +72,7 @@
             "0"});
             this.cbo_TrangThai.Location = new System.Drawing.Point(807, 224);
             this.cbo_TrangThai.Name = "cbo_TrangThai";
-            this.cbo_TrangThai.Size = new System.Drawing.Size(299, 39);
+            this.cbo_TrangThai.Size = new System.Drawing.Size(272, 39);
             this.cbo_TrangThai.TabIndex = 63;
             // 
             // label5
@@ -90,7 +90,7 @@
             this.btn_Exit.Font = new System.Drawing.Font("Segoe UI Semibold", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btn_Exit.Location = new System.Drawing.Point(909, 296);
             this.btn_Exit.Name = "btn_Exit";
-            this.btn_Exit.Size = new System.Drawing.Size(197, 36);
+            this.btn_Exit.Size = new System.Drawing.Size(170, 36);
             this.btn_Exit.TabIndex = 58;
             this.btn_Exit.Text = "Thoát";
             this.btn_Exit.UseVisualStyleBackColor = true;
@@ -195,7 +195,7 @@
             this.label1.Font = new System.Drawing.Font("Segoe UI", 19.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label1.Location = new System.Drawing.Point(0, 0);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(1808, 63);
+            this.label1.Size = new System.Drawing.Size(1576, 63);
             this.label1.TabIndex = 43;
             this.label1.Text = "NHẬP SẢN PHẨM";
             this.label1.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -209,7 +209,7 @@
             "Off"});
             this.cbo_NCC.Location = new System.Drawing.Point(807, 95);
             this.cbo_NCC.Name = "cbo_NCC";
-            this.cbo_NCC.Size = new System.Drawing.Size(299, 39);
+            this.cbo_NCC.Size = new System.Drawing.Size(272, 39);
             this.cbo_NCC.TabIndex = 64;
             // 
             // cbo_LoaiSanPham
@@ -237,7 +237,7 @@
             this.txt_DonGia.Font = new System.Drawing.Font("Segoe UI Semibold", 13.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txt_DonGia.Location = new System.Drawing.Point(807, 155);
             this.txt_DonGia.Name = "txt_DonGia";
-            this.txt_DonGia.Size = new System.Drawing.Size(299, 38);
+            this.txt_DonGia.Size = new System.Drawing.Size(272, 38);
             this.txt_DonGia.TabIndex = 67;
             // 
             // label7
@@ -253,7 +253,7 @@
             // btn_AddImage
             // 
             this.btn_AddImage.Font = new System.Drawing.Font("Segoe UI Semibold", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btn_AddImage.Location = new System.Drawing.Point(1180, 93);
+            this.btn_AddImage.Location = new System.Drawing.Point(1123, 95);
             this.btn_AddImage.Name = "btn_AddImage";
             this.btn_AddImage.Size = new System.Drawing.Size(197, 39);
             this.btn_AddImage.TabIndex = 68;
@@ -263,9 +263,9 @@
             // 
             // pic_HinhAnh
             // 
-            this.pic_HinhAnh.Location = new System.Drawing.Point(1180, 155);
+            this.pic_HinhAnh.Location = new System.Drawing.Point(1123, 155);
             this.pic_HinhAnh.Name = "pic_HinhAnh";
-            this.pic_HinhAnh.Size = new System.Drawing.Size(557, 568);
+            this.pic_HinhAnh.Size = new System.Drawing.Size(400, 400);
             this.pic_HinhAnh.TabIndex = 69;
             this.pic_HinhAnh.TabStop = false;
             this.pic_HinhAnh.MouseHover += new System.EventHandler(this.pic_HinhAnh_MouseHover);
@@ -276,7 +276,7 @@
             this.groupBox2.Dock = System.Windows.Forms.DockStyle.Left;
             this.groupBox2.Location = new System.Drawing.Point(0, 63);
             this.groupBox2.Name = "groupBox2";
-            this.groupBox2.Size = new System.Drawing.Size(1139, 709);
+            this.groupBox2.Size = new System.Drawing.Size(1098, 676);
             this.groupBox2.TabIndex = 70;
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "groupBox2";
@@ -286,9 +286,9 @@
             this.groupBox1.Controls.Add(this.dgv_DanhSach);
             this.groupBox1.Dock = System.Windows.Forms.DockStyle.Bottom;
             this.groupBox1.Font = new System.Drawing.Font("Segoe UI", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.groupBox1.Location = new System.Drawing.Point(3, 329);
+            this.groupBox1.Location = new System.Drawing.Point(3, 296);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(1133, 377);
+            this.groupBox1.Size = new System.Drawing.Size(1092, 377);
             this.groupBox1.TabIndex = 71;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Danh Sách Sản Phẩm";
@@ -309,8 +309,9 @@
             this.dgv_DanhSach.Name = "dgv_DanhSach";
             this.dgv_DanhSach.RowHeadersWidth = 50;
             this.dgv_DanhSach.RowTemplate.Height = 24;
-            this.dgv_DanhSach.Size = new System.Drawing.Size(1127, 348);
+            this.dgv_DanhSach.Size = new System.Drawing.Size(1086, 348);
             this.dgv_DanhSach.TabIndex = 0;
+            this.dgv_DanhSach.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgv_DanhSach_CellClick);
             // 
             // MaSP
             // 
@@ -357,7 +358,7 @@
             // frm_SanPham
             // 
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.None;
-            this.ClientSize = new System.Drawing.Size(1808, 772);
+            this.ClientSize = new System.Drawing.Size(1576, 739);
             this.Controls.Add(this.btn_Exit);
             this.Controls.Add(this.btn_Luu);
             this.Controls.Add(this.btn_Sua);

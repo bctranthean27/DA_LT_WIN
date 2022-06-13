@@ -50,6 +50,7 @@ namespace _108_144_QLCuaHangCafe
             btn_Sua.Enabled = t;
             btn_Xoa.Enabled = t;
             btn_Lưu.Enabled = !t;
+            dgv_DanhSach.Enabled = t;
         }
         string autoCode(DataSet ds, string pri)
         {
@@ -73,8 +74,8 @@ namespace _108_144_QLCuaHangCafe
         {
             XuLiTextBox(false);
             XuLiButton(false);
-            btn_Lưu.Enabled = true;
             txt_MaCV.ReadOnly = true;
+            
             flag = 2;
         }
         void them(object sender,EventArgs e, string m1, string m2, string m3 = "1")
@@ -176,24 +177,34 @@ namespace _108_144_QLCuaHangCafe
                 }
             }
         }
-        void hienThiTextBox(DataTable dt, int vt)
+        void hienThiTextBox(DataTable dt)
         {
-            txt_MaCV.Text = dt.Rows[vt]["MaChucVu"].ToString();
-            txt_TenCV.Text = dt.Rows[vt]["TenChucVu"].ToString();
-            loadData_cboFromList(dt, cbo_TrangThai, "TrangThai");
+            if (dgv_DanhSach.CurrentRow != null)
+            {
+                DataGridViewRow row = dgv_DanhSach.CurrentRow;
+                if (row.Cells["MaChucVu"].Value == DBNull.Value)
+                {
+                    txt_MaCV.Text = "";
+                    txt_TenCV.Text = "";
+                    btn_Sua.Enabled = false;
+                    btn_Xoa.Enabled = false;
+                }
+                else
+                {
+                    txt_MaCV.Text = row.Cells["MaChucVu"].Value.ToString();
+                    txt_TenCV.Text = row.Cells["TenChucVu"].Value.ToString();
+                    loadData_cboFromList(dt, cbo_TrangThai, "TrangThai");
+                }
+            }
+
+
+
         }
         private void dgv_DanhSach_CellClick(object sender, DataGridViewCellEventArgs e)
         {
-            try
-            {
-                int vt = dgv_DanhSach.CurrentCell.RowIndex;
-                hienThiTextBox(ds.Tables[0], vt);
-                Old_Value = txt_MaCV.Text; // lấy giá trị cũ để sửa đổi
-            }
-            catch (Exception err)
-            {
-                MessageBox.Show("Vui lòng không chọn dòng trống", "Thông báo", MessageBoxButtons.OK);
-            }
+            int vt = dgv_DanhSach.CurrentCell.RowIndex;
+            hienThiTextBox(ds.Tables[0]);
+            Old_Value = txt_MaCV.Text; // lấy giá trị cũ để sửa đổi
         }
         void clearTextbox()
         {
@@ -224,10 +235,31 @@ namespace _108_144_QLCuaHangCafe
             //    frm_ChucVu_Load(sender, e);
             //}
         }
+        private void dgv_DanhSach_CellValueChanged(object sender, DataGridViewCellEventArgs e)
+        {
+            ds = c.LayDuLieu("select * from LoaiSanPham");
+            if (dgv_DanhSach.CurrentRow != null)
+            {
+                DataGridViewRow row = dgv_DanhSach.CurrentRow;//get row at select row
+                string val1 = row.Cells["TenChucVu"].Value == DBNull.Value ? "" : row.Cells["TenChucVu"].Value.ToString();
+                string val2 = row.Cells["TrangThai"].Value == DBNull.Value ? "" : row.Cells["TrangThai"].Value.ToString();
+                string ma = row.Cells["MaChucVu"].Value == DBNull.Value ? "" : row.Cells["MaChucVu"].Value.ToString();
+                if (row.Cells["MaChucVu"].Value == DBNull.Value)
+                {
+                    them(sender, null, autoCode(ds, "C"), val1);
+                }
+                else
+                {
+                    sua(sender, null, ma, val1, val2);
+                }
+
+            }
+        }
 
         private void btn_Exit_Click(object sender, EventArgs e)
         {
             Close();
         }
+
     }
 }

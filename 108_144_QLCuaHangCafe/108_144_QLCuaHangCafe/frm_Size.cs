@@ -47,6 +47,7 @@ namespace _108_144_QLCuaHangCafe
             btn_Sua.Enabled = t;
             btn_Xoa.Enabled = t;
             btn_Lưu.Enabled = !t;
+            dgv_DanhSach.Enabled = t;
         }
         string autoCode(DataSet ds, string pri)
         {
@@ -171,10 +172,23 @@ namespace _108_144_QLCuaHangCafe
         }
         void hienThiTextBox(DataTable dt, int vt)
         {
-            txt_MaSize.Text = ds.Tables[0].Rows[vt]["MaSize"].ToString();
-            txt_TenSize.Text = ds.Tables[0].Rows[vt]["TenSize"].ToString();
-            loadData_cboFromList(dt, cbo_TrangThai, "TrangThai"); 
-
+            if (dgv_DanhSach.CurrentRow != null)
+            {
+                DataGridViewRow row = dgv_DanhSach.CurrentRow;
+                if (row.Cells["MaSize"].Value == DBNull.Value)
+                {
+                    txt_MaSize.Text = "";
+                    txt_TenSize.Text = "";
+                    btn_Sua.Enabled = false;
+                    btn_Xoa.Enabled = false;
+                }
+                else
+                {
+                    txt_MaSize.Text = row.Cells["MaSize"].Value.ToString();
+                    txt_TenSize.Text = row.Cells["TenSize"].Value.ToString();
+                    loadData_cboFromList(dt, cbo_TrangThai, "TrangThai");
+                }
+            }
         }
         private void dgv_DanhSach_CellClick(object sender, DataGridViewCellEventArgs e)
         {
@@ -211,7 +225,26 @@ namespace _108_144_QLCuaHangCafe
             //    frm_Size_Load(sender, e);
             //}
         }
+        private void dgv_DanhSach_CellValueChanged(object sender, DataGridViewCellEventArgs e)
+        {
+            ds = c.LayDuLieu("select * from Size");
+            if (dgv_DanhSach.CurrentRow != null)
+            {
+                DataGridViewRow row = dgv_DanhSach.CurrentRow;//get row at select row
+                string val1 = row.Cells["TenSize"].Value == DBNull.Value ? "" : row.Cells["TenSize"].Value.ToString();
+                string val2 = row.Cells["TrangThai"].Value == DBNull.Value ? "" : row.Cells["TrangThai"].Value.ToString();
+                string ma = row.Cells["MaSize"].Value == DBNull.Value ? "" : row.Cells["MaSize"].Value.ToString();
+                if (row.Cells["MaSize"].Value == DBNull.Value)
+                {
+                    them(sender, null, autoCode(ds, "S"), val1);
+                }
+                else
+                {
+                    sua(sender, null, ma, val1, val2);
+                }
 
+            }
+        }
         private void btn_Exit_Click(object sender, EventArgs e)
         {
             Close();

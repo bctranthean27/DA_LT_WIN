@@ -33,6 +33,7 @@ namespace _108_144_QLCuaHangCafe
             btn_Sua.Enabled = t;
             btn_Xoa.Enabled = t;
             btn_Luu.Enabled = !t;
+            dgv_DanhSach.Enabled = t;
         }
 
         private void frm_LoaiSanPham_Load(object sender, EventArgs e)
@@ -173,26 +174,33 @@ namespace _108_144_QLCuaHangCafe
         }
         void hienThiTextBox(DataTable dt, int vt)
         {
-            
-            txt_MaLoaiSP.Text = ds.Tables[0].Rows[vt]["MaLoai"].ToString();
-            txt_TenLoaiSP.Text = ds.Tables[0].Rows[vt]["TenLoai"].ToString();
-            loadData_cboFromList(dt, cbo_TrangThai, "TrangThai");
-
+            if (dgv_DanhSach.CurrentRow != null)
+            {
+                DataGridViewRow row = dgv_DanhSach.CurrentRow;
+                if (row.Cells["MaLoai"].Value == DBNull.Value)
+                {
+                    txt_MaLoaiSP.Text = "";
+                    txt_TenLoaiSP.Text = "";
+                    btn_Sua.Enabled = false;
+                    btn_Xoa.Enabled = false;
+                }
+                else
+                {
+                    txt_MaLoaiSP.Text = row.Cells["MaLoai"].Value.ToString();
+                    txt_TenLoaiSP.Text = row.Cells["TenLoai"].Value.ToString();
+                    loadData_cboFromList(dt, cbo_TrangThai, "TrangThai");
+                }
+            }
         }
         private void dgv_DanhSach_CellClick(object sender, DataGridViewCellEventArgs e)
         {
-            try
-            {
+            
 
                 ds = c.LayDuLieu("select * from LoaiSanPham where TrangThai = '1'");
                 int vt = dgv_DanhSach.CurrentCell.RowIndex;
                 hienThiTextBox(ds.Tables[0], vt);
                 Old_Value = txt_MaLoaiSP.Text; // lấy giá trị cũ để sửa đổi
-            }
-            catch (Exception err)
-            {
-                MessageBox.Show("Vui lòng không chọn dòng trống", "Thông báo", MessageBoxButtons.OK);
-            }
+            
 
 
         }
@@ -229,6 +237,26 @@ namespace _108_144_QLCuaHangCafe
         private void btn_Exit_Click(object sender, EventArgs e)
         {
             Close();
+        }
+        private void dgv_DanhSach_CellValueChanged(object sender, DataGridViewCellEventArgs e)
+        {
+            ds = c.LayDuLieu("select * from LoaiSanPham");
+            if (dgv_DanhSach.CurrentRow != null)
+            {
+                DataGridViewRow row = dgv_DanhSach.CurrentRow;//get row at select row
+                string val1 = row.Cells["TenLoai"].Value == DBNull.Value ? "" : row.Cells["TenLoai"].Value.ToString();
+                string val2 = row.Cells["TrangThai"].Value == DBNull.Value ? "" : row.Cells["TrangThai"].Value.ToString();
+                string ma = row.Cells["MaLoai"].Value == DBNull.Value ? "" : row.Cells["MaLoai"].Value.ToString();
+                if (row.Cells["MaLoai"].Value == DBNull.Value)
+                {
+                    them(sender, null, autoCode(ds, "L"), val1);
+                }
+                else
+                {
+                    sua(sender, null, ma, val1, val2);
+                }
+
+            }
         }
     }
 }
