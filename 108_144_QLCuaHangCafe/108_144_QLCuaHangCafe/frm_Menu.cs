@@ -82,7 +82,7 @@ namespace _108_144_QLCuaHangCafe
         {
             Form f  = new frm_ChucVu();
             xulyfrm(f);
-            MessageBox.Show(idUser);
+
         }
 
         private void mnu_NCC_Click(object sender, EventArgs e)
@@ -107,11 +107,6 @@ namespace _108_144_QLCuaHangCafe
         private void mnu_SanPham_Click(object sender, EventArgs e)
         {
             Form f = new frm_SanPham();
-            xulyfrm(f);
-        }
-        private void mnu_KhachHang_Click(object sender, EventArgs e)
-        {
-            Form f = new frm_KhachHang();
             xulyfrm(f);
         }
 

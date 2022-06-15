@@ -27,10 +27,10 @@ namespace _108_144_QLCuaHangCafe
             XuLiTextBox(true);
             XuLiButton(true);
             loadData_DataGrid(dgv_DanhSach, "select * from HoaDon where TrangThai='1'");
-            loadData_cbo(cbo_KhachHang, "select MaKH,TenKH from KhachHang where TrangThai='1'", "MaKH", "TenKH");
+
             loadData_cbo(cbo_LoaiHD, "select MaLoaiHD,TenLoaiHD from LoaiHoaDon where TrangThai='1'", "MaLoaiHD", "TenLoaiHD");
             loadData_cbo(cbo_NhanVien, "select MaNV,TenNV from NhanVien where TrangThai='1'", "MaNV", "TenNV");
-            cbo_KhachHang.DropDownStyle = ComboBoxStyle.DropDownList;
+
             cbo_LoaiHD.DropDownStyle = ComboBoxStyle.DropDownList;
             cbo_NhanVien.DropDownStyle = ComboBoxStyle.DropDownList;
             cbo_TrangThai.DropDownStyle = ComboBoxStyle.DropDownList;
@@ -98,16 +98,16 @@ namespace _108_144_QLCuaHangCafe
             return NgayDayDu;
         }
 
-        void them(object sender, EventArgs e, string m1, string m2, string m3, string m4, string m5, string m6 = "1")
+        void them(object sender, EventArgs e, string m1, string m3, string m4, string m5, string m6 = "1")
         {
 
             try
             {
-                if (m1.Trim() == "" || m2.Trim() == "" || m3.Trim() == "" || m4.Trim() == "" || m5.Trim() == "" )
+                if (m1.Trim() == "" || m3.Trim() == "" || m4.Trim() == "" || m5.Trim() == "" )
                     throw new Exception("Vui lòng điền đủ thông tin");
-                //string sql = "insert into HoaDon(MaHD,MaKH,NgayLap,MaLoaiHD,MaNV,TrangThai) values ('" + m1 + "',N'" + m2 + "',N'" + m3 + "','" + m4 + "',N'" + m5 + "',N'" + m6  + "')";
+                //string sql = "insert into HoaDon(MaHD,NgayLap,MaLoaiHD,MaNV,TrangThai) values ('" + m1 + "',N'" + m2 + "',N'" + m3 + "','" + m4 + "',N'" + m5 + "',N'" + m6  + "')";
                 //proc
-                string sql = "EXEC them_hd @mahd = '" + m1 + "', @makh = '" + m2 + "', @ngaylap = '" + m3 + "', @maloaihd = N'" + m4 + "', @manv = '" + m5 + "';";
+                string sql = "EXEC them_hd @mahd = '" + m1 + "', @ngaylap = '" + m3 + "', @maloaihd = N'" + m4 + "', @manv = '" + m5 + "';";
                 if (c.CapNhatDulieu(sql) > 0)
                 {
                     MessageBox.Show("Cập nhật thành công", "Thông báo", MessageBoxButtons.OK);
@@ -121,7 +121,7 @@ namespace _108_144_QLCuaHangCafe
                 btn_Them_Click(sender, e);
             }
         }
-        void sua(object sender, EventArgs e, string m1 = "", string m2 = "", string m3 = "", string m4 = "", string m5 = "", string m6 = "")
+        void sua(object sender, EventArgs e, string m1 = "", string m3 = "", string m4 = "", string m5 = "", string m6 = "")
         {
             try
             {
@@ -143,10 +143,10 @@ namespace _108_144_QLCuaHangCafe
                 //    sql += " MaNV='" + m5 + "',";
                 //sql += " TrangThai='" + m6;
                 //sql += "' where MaHD='" + Old_Value + "'";
-                if (m1.Trim() == "" && m2.Trim() == "" && m3.Trim() == "" && m4.Trim() == "" && m5.Trim() == "")
+                if (m1.Trim() == "" && m3.Trim() == "" && m4.Trim() == "" && m5.Trim() == "")
                     sql = "update HoaDon set TrangThai = '" + 0 + "'where MaHD = '" + Old_Value + "'";
                 else
-                    sql = "EXEC sua_hd @mahd = '" + m1 + "', @makh = '" + m2 + "', @ngaylap = N'" + m3 + "', @maloaihd = N'" + m4 + "', @manv = '" + m5 + "', @trangthai = '" + m6 + "';";
+                    sql = "EXEC sua_hd @mahd = '" + m1 +  "', @ngaylap = N'" + m3 + "', @maloaihd = N'" + m4 + "', @manv = '" + m5 + "', @trangthai = '" + m6 + "';";
 
                 if (c.CapNhatDulieu(sql) > 0)
                 {
@@ -165,7 +165,6 @@ namespace _108_144_QLCuaHangCafe
             XuLiTextBox(true);
             XuLiButton(true);
             string m1 = txt_MaHD.Text;
-            string m2 = cbo_KhachHang.SelectedValue.ToString();
             string m3 = NgayThangNam(dtp_NgayLap);
             string m4 = cbo_LoaiHD.SelectedValue.ToString();
             string m5 = cbo_NhanVien.SelectedValue.ToString();
@@ -174,10 +173,10 @@ namespace _108_144_QLCuaHangCafe
             {
                 case 1:
                     clearTextbox();
-                    them(sender, e, m1, m2, m3, m4, m5, m6);
+                    them(sender, e, m1, m3, m4, m5, m6);
                     break;
                 case 2:
-                    sua(sender, e, m1, m2, m3, m4, m5, m6);
+                    sua(sender, e, m1, m3, m4, m5, m6);
                     break;
 
             }
@@ -225,7 +224,6 @@ namespace _108_144_QLCuaHangCafe
                 else
                 {
                     txt_MaHD.Text = ds.Tables[0].Rows[vt]["MaHD"].ToString();
-                    loadData_cboFromList(dt, cbo_KhachHang, "MaKH",vt);
                     loadData_cboFromList(dt, cbo_LoaiHD, "MaLoaiHD",vt);
                     loadData_cboFromList(dt, cbo_NhanVien, "MaNV",vt);
                     loadData_cboFromList(dt, cbo_TrangThai, "TrangThai",vt);
@@ -245,7 +243,6 @@ namespace _108_144_QLCuaHangCafe
         void clearTextbox()
         {
             txt_MaHD.Text = "";
-            cbo_KhachHang.SelectedIndex = 0;
             cbo_LoaiHD.SelectedIndex = 0;
             cbo_NhanVien.SelectedIndex = 0;
             cbo_TrangThai.SelectedIndex = 0;
@@ -282,7 +279,6 @@ namespace _108_144_QLCuaHangCafe
             if (dgv_DanhSach.CurrentRow != null)
             {
                 DataGridViewRow row = dgv_DanhSach.CurrentRow;//get row at select row
-                string m2 = row.Cells["MaKH"].Value == DBNull.Value ? "K01" : row.Cells["MaKH"].Value.ToString();
                 string m3 = row.Cells["NgayLap"].Value == DBNull.Value ? "1/1/2020" : row.Cells["NgayLap"].Value.ToString();
                 string m4 = row.Cells["MaLoaiHD"].Value == DBNull.Value ? "K01" : row.Cells["MaLoaiHD"].Value.ToString();
                 string m5 = row.Cells["MaNV"].Value == DBNull.Value ? "Y03" : row.Cells["MaNV"].Value.ToString();
@@ -290,11 +286,11 @@ namespace _108_144_QLCuaHangCafe
 
                 if (row.Cells["MaHD"].Value == DBNull.Value)
                 {
-                    them(sender, e, m1, m2, m3, m4, m5);
+                    them(sender, e, m1, m3, m4, m5);
                 }
                 else
                 {
-                    sua(sender, e, m1, m2, m3, m4, m5);
+                    sua(sender, e, m1, m3, m4, m5);
                 }
 
             }

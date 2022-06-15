@@ -57,6 +57,7 @@
             this.MaNCC = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.DonGia = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.TrangThai = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.groupBox3 = new System.Windows.Forms.GroupBox();
             ((System.ComponentModel.ISupportInitialize)(this.pic_HinhAnh)).BeginInit();
             this.groupBox2.SuspendLayout();
             this.groupBox1.SuspendLayout();
@@ -279,7 +280,6 @@
             this.groupBox2.Size = new System.Drawing.Size(1098, 676);
             this.groupBox2.TabIndex = 70;
             this.groupBox2.TabStop = false;
-            this.groupBox2.Text = "groupBox2";
             // 
             // groupBox1
             // 
@@ -357,6 +357,14 @@
             this.TrangThai.MinimumWidth = 6;
             this.TrangThai.Name = "TrangThai";
             // 
+            // groupBox3
+            // 
+            this.groupBox3.Location = new System.Drawing.Point(1104, 63);
+            this.groupBox3.Name = "groupBox3";
+            this.groupBox3.Size = new System.Drawing.Size(460, 676);
+            this.groupBox3.TabIndex = 71;
+            this.groupBox3.TabStop = false;
+            // 
             // frm_SanPham
             // 
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.None;
@@ -382,6 +390,7 @@
             this.Controls.Add(this.pic_HinhAnh);
             this.Controls.Add(this.btn_AddImage);
             this.Controls.Add(this.label1);
+            this.Controls.Add(this.groupBox3);
             this.Name = "frm_SanPham";
             this.Text = "SanPham";
             this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
@@ -425,5 +434,6 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn MaNCC;
         private System.Windows.Forms.DataGridViewTextBoxColumn DonGia;
         private System.Windows.Forms.DataGridViewTextBoxColumn TrangThai;
+        private System.Windows.Forms.GroupBox groupBox3;
     }
 }

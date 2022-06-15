@@ -49,10 +49,5 @@ namespace _108_144_QLCuaHangCafe
         {
             Application.Exit();
         }
-
-        private void DangNhap_Load(object sender, EventArgs e)
-        {
-
-        }
     }
 }
