@@ -19,7 +19,7 @@ namespace _108_144_QLCuaHangCafe
             Application.SetCompatibleTextRenderingDefault(false);
            
            // Application.Run(new DangNhap ());
-            Application.Run(new DangNhap());
+            Application.Run(new frm_HoaDon());
 
         }
     }

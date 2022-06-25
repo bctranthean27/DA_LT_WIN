@@ -166,7 +166,12 @@ namespace _108_144_QLCuaHangCafe
 
         private void btn_XuatHD_Click(object sender, EventArgs e)
         {
-
+            Form frm_hienThiHoaDon= new HienThiHoaDon();
+          
+            frm_hienThiHoaDon.Controls["p_hoaDon"].BackColor = Color.White;
+            frm_hienThiHoaDon.Controls["p_hoaDon"].Height = frm_hienThiHoaDon.ClientSize.Height;
+            frm_hienThiHoaDon.Controls["p_hoaDon"].Left = (frm_hienThiHoaDon.ClientSize.Width - frm_hienThiHoaDon.Controls["p_hoaDon"].Width) / 2;
+            frm_hienThiHoaDon.Show();
         }
         void AddRowHoaDon(string tenKH = "Unknown")
         {
@@ -204,7 +209,9 @@ namespace _108_144_QLCuaHangCafe
             XuLiButton_ct(false, false, true, true);
             XuLiTextBox_ct(true);
             ResetTextBox_CT();
-
+            txt_SoLuong.Text = "1";
+            txt_KhuyenMai.Text = "0";
+            cbo_Size.SelectedIndex = 0;
         }
 
         private void btn_SuaCT_Click(object sender, EventArgs e)
@@ -216,15 +223,15 @@ namespace _108_144_QLCuaHangCafe
         {
 
         }
-        string getDonGia(string masp, string masize)
+        double getDonGia(string masp, string masize)
         {
-            string dongia = "0";
+            double dongia = 0;
             if (masp != "" && masize != "")
             {
                 string mactsp = masp + masize;
-                DataSet dataSet = new DataSet();
-                dataSet = c.LayDuLieu("select * from ChiTietSanPham where MaCTSP = '" + mactsp + "' ");
-                dongia = dataSet.Tables[0].Rows[0]["GiaBan"].ToString();
+                DataSet data = c.LayDuLieu("select * from ChiTietSanPham where MaCTSP = '" + mactsp + "' ");
+
+                dongia = double.Parse(data.Tables[0].Rows[0]["GiaBan"].ToString());
             }
             return dongia;
         }
@@ -234,17 +241,17 @@ namespace _108_144_QLCuaHangCafe
             string khuyenmai = txt_KhuyenMai.Text;
             string maSP = cbo_SanPham.SelectedValue.ToString();
             string maSize = cbo_Size.SelectedValue.ToString();
-            string dongia = getDonGia(maSP, maSize);
+            double dongia = getDonGia(maSP, maSize);
             string maCTHD = txt_MaHD.Text + maSP + maSize;
-            capNhatGia(cbo_SanPham.SelectedValue.ToString(), cbo_Size.SelectedValue.ToString(), txt_SoLuong.Text, txt_KhuyenMai.Text);
+            capNhatGia(cbo_SanPham.SelectedValue.ToString(), cbo_Size.SelectedValue.ToString(), int.Parse(txt_SoLuong.Text), int.Parse(txt_KhuyenMai.Text));
             string giagoc = txt_GiaGoc.Text;
             string thanhtien = txt_ThanhTien.Text;
-            dgv_CTHD.Rows.Add(maCTHD, maSP, maSize, soluong, dongia, giagoc, khuyenmai, thanhtien);
+            dgv_CTHD.Rows.Add(maCTHD, maSP, maSize, soluong, dongia.ToString(), giagoc, khuyenmai, thanhtien);
         }
         void ResetTextBox_CT()
         {
             cbo_SanPham.SelectedIndex = -1;
-            cbo_Size.SelectedIndex = -1;
+            cbo_Size.SelectedIndex = 0;
             txt_SoLuong.Text = "0";
             txt_KhuyenMai.Text = "0";
         }
@@ -254,7 +261,8 @@ namespace _108_144_QLCuaHangCafe
             int SoLuong = Convert.ToInt32(txt_SoLuong.Text);
             txt_SoLuong.Text = (++SoLuong).ToString();
             if (SoLuong == 10) txt_SoLuong.Text = "10";
-            capNhatGia(cbo_SanPham.SelectedValue.ToString(), cbo_Size.SelectedValue.ToString(), txt_SoLuong.Text, txt_KhuyenMai.Text);
+            capNhatGia(cbo_SanPham.SelectedValue.ToString(), cbo_Size.SelectedValue.ToString(), int.Parse(txt_SoLuong.Text), int.Parse(txt_KhuyenMai.Text));
+            //, txt_SoLuong.Text, txt_KhuyenMai.Text
         }
         private void btn_giamSL_Click(object sender, EventArgs e)
         {
@@ -262,14 +270,14 @@ namespace _108_144_QLCuaHangCafe
             if (SoLuong > 0)
                 txt_SoLuong.Text = (--SoLuong).ToString();
             if (SoLuong == 0) txt_SoLuong.Text = "0";
-            capNhatGia(cbo_SanPham.SelectedValue.ToString(), cbo_Size.SelectedValue.ToString(), txt_SoLuong.Text, txt_KhuyenMai.Text);
+            capNhatGia(cbo_SanPham.SelectedValue.ToString(), cbo_Size.SelectedValue.ToString(), int.Parse(txt_SoLuong.Text), int.Parse(txt_KhuyenMai.Text));
         }
 
         private void btn_themKM_Click(object sender, EventArgs e)
         {
             int KM = Convert.ToInt32(txt_KhuyenMai.Text);
             txt_KhuyenMai.Text = (KM += 5).ToString();
-            capNhatGia(cbo_SanPham.SelectedValue.ToString(), cbo_Size.SelectedValue.ToString(), txt_SoLuong.Text, txt_KhuyenMai.Text);
+            capNhatGia(cbo_SanPham.SelectedValue.ToString(), cbo_Size.SelectedValue.ToString(),int.Parse(txt_SoLuong.Text),int.Parse(txt_KhuyenMai.Text));
         }
 
         private void btn_GiamKM_Click(object sender, EventArgs e)
@@ -278,26 +286,33 @@ namespace _108_144_QLCuaHangCafe
             if (KM > 0)
                 txt_KhuyenMai.Text = (KM -= 5).ToString();
             if (KM == 0) txt_KhuyenMai.Text = "0";
-            capNhatGia(cbo_SanPham.SelectedValue.ToString(), cbo_Size.SelectedValue.ToString(), txt_SoLuong.Text, txt_KhuyenMai.Text);
+            capNhatGia(cbo_SanPham.SelectedValue.ToString(), cbo_Size.SelectedValue.ToString(), int.Parse(txt_SoLuong.Text), int.Parse(txt_KhuyenMai.Text));
         }
 
-        void capNhatGia(string maSP, string maSize, string soluong, string khuyenmai)
+        void capNhatGia(string maSP, string maSize, int soluong = 1, int khuyenmai = 0)
         {
-            string dongia = getDonGia(maSP, maSize);
-            int giagoc = Convert.ToInt32(dongia) * Convert.ToInt32(soluong);
+            double dongia = getDonGia(maSP, maSize);
+            double giagoc = dongia * soluong;
             txt_GiaGoc.Text = giagoc.ToString();
-            int thanhtien = (100 - Convert.ToInt32(khuyenmai)) * giagoc / 100;
+            double thanhtien = (100 - Convert.ToInt32(khuyenmai)) * giagoc / 100;
             txt_ThanhTien.Text = thanhtien.ToString();
         }
         private void btn_LuuCT_Click(object sender, EventArgs e)
         {
             AddRowCTHoaDon();
             XuLiButton_ct(true, false, false, false);
+            dgv_DanhSach.Rows[0].Cells["TongTien"].Value = (double.Parse(dgv_DanhSach.Rows[0].Cells["TongTien"].Value.ToString()) + double.Parse(txt_ThanhTien.Text)).ToString();
         }
 
         private void cbo_SanPham_SelectedIndexChanged(object sender, EventArgs e)
         {
             
+        }
+
+        private void cbo_SanPham_SelectionChangeCommitted(object sender, EventArgs e)
+        {
+            if (cbo_Size.SelectedValue.ToString() == "") return;
+            capNhatGia(cbo_SanPham.SelectedValue.ToString(), cbo_Size.SelectedValue.ToString());
         }
     }
 }
