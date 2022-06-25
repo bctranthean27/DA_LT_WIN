@@ -17,15 +17,9 @@ namespace _108_144_QLCuaHangCafe
             
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            //DangNhap dn = new DangNhap();
-            //Application.Run(dn);
-            //if (dn.Islogin)
-            //{
-            //    frm_Menu menu = new frm_Menu();
-            //    menu.idUser = dn.idUser;
-
-            //}
-            Application.Run(new DangNhap ());
+           
+           // Application.Run(new DangNhap ());
+            Application.Run(new DangNhap());
 
         }
     }

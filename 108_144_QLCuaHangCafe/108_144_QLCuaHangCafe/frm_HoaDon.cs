@@ -17,29 +17,34 @@ namespace _108_144_QLCuaHangCafe
         DataSet ds = new DataSet();
         int flag = 0;
         string Old_Value = "";
+        public string roles;
         public frm_HoaDon()
         {
+            InitializeComponent();
+        }
+        public frm_HoaDon(string roles)
+        {
+            this.roles = roles;
             InitializeComponent();
         }
 
         private void frm_HoaDon_Load(object sender, EventArgs e)
         {
-            XuLiTextBox(true);
-            XuLiButton(true);
-            loadData_DataGrid(dgv_DanhSach, "select * from HoaDon where TrangThai='1'");
-
+            XuLiTextBox_hd(false);
+            XuLiButton_ct(false, false, false, false);
+            XuLiTextBox_ct(false);
+            XuLiTextBox_hd(false);
+            //loadData_DataGrid(dgv_DanhSach, "select * from HoaDon where TrangThai='1'");
             loadData_cbo(cbo_LoaiHD, "select MaLoaiHD,TenLoaiHD from LoaiHoaDon where TrangThai='1'", "MaLoaiHD", "TenLoaiHD");
             loadData_cbo(cbo_NhanVien, "select MaNV,TenNV from NhanVien where TrangThai='1'", "MaNV", "TenNV");
-
-            cbo_LoaiHD.DropDownStyle = ComboBoxStyle.DropDownList;
-            cbo_NhanVien.DropDownStyle = ComboBoxStyle.DropDownList;
-            cbo_TrangThai.DropDownStyle = ComboBoxStyle.DropDownList;
-            cbo_TrangThai.SelectedIndex = 0;
+            loadData_cbo(cbo_SanPham, "select MaSP,TenSP from SanPham where TrangThai='1'", "MaSP", "TenSP");
+            loadData_cbo(cbo_Size, "select MaSize,TenSize from Size where TrangThai='1'", "MaSize", "TenSize");
         }
-        void loadData_DataGrid(DataGridView d, string sql)
+        int SoLuongTon(string maSP, string maSize)
         {
-            ds = c.LayDuLieu(sql);
-            d.DataSource = ds.Tables[0];
+            string maCTSP = maSP + maSize;
+            DataSet dk = c.LayDuLieu("select * from ChiTietSanPham where MaCTSP = '" + maCTSP + "' ");
+            return Convert.ToInt32(dk.Tables[0].Rows[0]["SoLuong"]);
         }
         void loadData_cbo(ComboBox cbo, string sql, string valMember, string disMember)
         {
@@ -51,135 +56,43 @@ namespace _108_144_QLCuaHangCafe
                 cbo.DisplayMember = disMember;
             }
         }
-        void XuLiTextBox(Boolean t)
+        void XuLiButton_ct(bool key_them, bool key_xoa, bool key_sua, bool key_sp)
         {
-            txt_MaHD.ReadOnly = t;
+            btn_ThemCT.Enabled = key_them;
+            btn_LuuCT.Enabled = !key_them;
+            btn_XoaCT.Enabled = key_xoa;
+            btn_SuaCT.Enabled = key_sua;
+            btn_tangSL.Enabled = btn_giamSL.Enabled = key_sp;
+            btn_GiamKM.Enabled = btn_themKM.Enabled = key_sp;
         }
-        void XuLiButton(Boolean t)
+        void XuLiTextBox_hd(bool key)
         {
-            btn_Them.Enabled = t;
-            btn_Sua.Enabled = t;
-            btn_Xoa.Enabled = t;
-            btn_Luu.Enabled = !t;
-            dgv_DanhSach.Enabled = t;
+            cbo_LoaiHD.Enabled = key;
+            cbo_NhanVien.Enabled = key;
+            txt_tenKH.ReadOnly = !key;
         }
-        string autoCode(DataSet ds, string pri)
+        void XuLiTextBox_ct(bool key)
         {
+            cbo_SanPham.Enabled = key;
+            cbo_Size.Enabled = key;
+        }
+        string autoCode(string pri)
+        {
+            DataSet ds = c.LayDuLieu("select * from HoaDon");
             string code = pri;
             int pos = ds.Tables[0].Rows.Count + 1;
             if (pos < 10) code += "0" + pos.ToString();
             else if (pos < 100) code += "" + pos.ToString();
             return code;
         }
-        private void btn_Them_Click(object sender, EventArgs e)
+
+        string NgayHienTai()
         {
-            ds = c.LayDuLieu("select * from HoaDon");
-            clearTextbox();
-            txt_MaHD.Text = autoCode(ds, "P");
-            XuLiTextBox(false);
-            XuLiButton(false);
-            txt_MaHD.ReadOnly = true;
-            flag = 1;
-        }
-        private void btn_Sua_Click(object sender, EventArgs e)
-        {
-            XuLiTextBox(false);
-            XuLiButton(false);
-            txt_MaHD.ReadOnly = true;
-            flag = 2;
-        }
-        string NgayThangNam(DateTimePicker dtp)
-        {
-            string NgayDayDu = "";
-            string ngay = dtp.Value.Day.ToString();
-            string thang = dtp.Value.Month.ToString();
-            string nam = dtp.Value.Year.ToString();
-            NgayDayDu = thang + "/" + ngay + "/" + nam;
+            string ngay = DateTime.Now.Day.ToString();
+            string thang = DateTime.Now.Month.ToString();
+            string nam = DateTime.Now.Year.ToString();
+            string NgayDayDu = ngay + "/" + thang + "/" + nam;
             return NgayDayDu;
-        }
-
-        void them(object sender, EventArgs e, string m1, string m3, string m4, string m5, string m6 = "1")
-        {
-
-            try
-            {
-                if (m1.Trim() == "" || m3.Trim() == "" || m4.Trim() == "" || m5.Trim() == "" )
-                    throw new Exception("Vui lòng điền đủ thông tin");
-                //string sql = "insert into HoaDon(MaHD,NgayLap,MaLoaiHD,MaNV,TrangThai) values ('" + m1 + "',N'" + m2 + "',N'" + m3 + "','" + m4 + "',N'" + m5 + "',N'" + m6  + "')";
-                //proc
-                string sql = "EXEC them_hd @mahd = '" + m1 + "', @ngaylap = '" + m3 + "', @maloaihd = N'" + m4 + "', @manv = '" + m5 + "';";
-                if (c.CapNhatDulieu(sql) > 0)
-                {
-                    MessageBox.Show("Cập nhật thành công", "Thông báo", MessageBoxButtons.OK);
-                    frm_HoaDon_Load(sender, e);
-                }
-            }
-            catch (Exception err)
-            {
-                MessageBox.Show(err.Message, "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                c.DongKetNoi();
-                btn_Them_Click(sender, e);
-            }
-        }
-        void sua(object sender, EventArgs e, string m1 = "", string m3 = "", string m4 = "", string m5 = "", string m6 = "")
-        {
-            try
-            {
-                string sql = "";
-                if (txt_MaHD.Text == "")
-                {
-                    throw new Exception("Lỗi cập nhật\nHãy chắc chắn bạn chọn đúng cột muốn sửa");
-                }
-                //sql = "update HoaDon set ";
-                //if (m1.Trim() != "")
-                //    sql += " MaHD='" + m1 + "',";
-                //if (m2.Trim() != "")
-                //    sql += " MaKH='" + m2 + "',";
-                //if (m3.Trim() != "")
-                //    sql += " NgayLap=N'" + m3 + "',";
-                //if (m4.Trim() != "")
-                //    sql += " MaLoaiHD=N'" + m4 + "',";
-                //if (m5.Trim() != "")
-                //    sql += " MaNV='" + m5 + "',";
-                //sql += " TrangThai='" + m6;
-                //sql += "' where MaHD='" + Old_Value + "'";
-                if (m1.Trim() == "" && m3.Trim() == "" && m4.Trim() == "" && m5.Trim() == "")
-                    sql = "update HoaDon set TrangThai = '" + 0 + "'where MaHD = '" + Old_Value + "'";
-                else
-                    sql = "EXEC sua_hd @mahd = '" + m1 +  "', @ngaylap = N'" + m3 + "', @maloaihd = N'" + m4 + "', @manv = '" + m5 + "', @trangthai = '" + m6 + "';";
-
-                if (c.CapNhatDulieu(sql) > 0)
-                {
-                    MessageBox.Show("Cập nhật thành công", "Thông báo", MessageBoxButtons.OK);
-                    frm_HoaDon_Load(sender, e);
-                }
-            }
-            catch (Exception err)
-            {
-                MessageBox.Show(err.Message, "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                btn_Sua_Click(sender, e);
-            }
-        }
-        private void btn_Luu_Click(object sender, EventArgs e)
-        {
-            XuLiTextBox(true);
-            XuLiButton(true);
-            string m1 = txt_MaHD.Text;
-            string m3 = NgayThangNam(dtp_NgayLap);
-            string m4 = cbo_LoaiHD.SelectedValue.ToString();
-            string m5 = cbo_NhanVien.SelectedValue.ToString();
-            string m6 = cbo_TrangThai.SelectedItem.ToString();
-            switch (flag)
-            {
-                case 1:
-                    clearTextbox();
-                    them(sender, e, m1, m3, m4, m5, m6);
-                    break;
-                case 2:
-                    sua(sender, e, m1, m3, m4, m5, m6);
-                    break;
-
-            }
         }
 
 
@@ -211,89 +124,180 @@ namespace _108_144_QLCuaHangCafe
         }
         void hienThiTextBox(DataTable dt, int vt)
         {
-            
+
             if (dgv_DanhSach.CurrentRow != null)
             {
                 DataGridViewRow row = dgv_DanhSach.CurrentRow;
                 if (row.Cells["MaHD"].Value == DBNull.Value)
                 {
                     txt_MaHD.Text = "";
-                    btn_Sua.Enabled = false;
-                    btn_Xoa.Enabled = false;
+                    btn_Reset.Enabled = false;
                 }
                 else
                 {
                     txt_MaHD.Text = ds.Tables[0].Rows[vt]["MaHD"].ToString();
-                    loadData_cboFromList(dt, cbo_LoaiHD, "MaLoaiHD",vt);
-                    loadData_cboFromList(dt, cbo_NhanVien, "MaNV",vt);
-                    loadData_cboFromList(dt, cbo_TrangThai, "TrangThai",vt);
-                    dtp_NgayLap.Value = DateTime.Parse(ds.Tables[0].Rows[vt]["NgayLap"].ToString());
+                    loadData_cboFromList(dt, cbo_LoaiHD, "MaLoaiHD", vt);
+                    loadData_cboFromList(dt, cbo_NhanVien, "MaNV", vt);
                 }
             }
 
         }
         private void dgv_DanhSach_CellClick(object sender, DataGridViewCellEventArgs e)
         {
-            ds = c.LayDuLieu("select * from HoaDon  where TrangThai='1'");
-            int vt = dgv_DanhSach.CurrentCell.RowIndex;
-            hienThiTextBox(ds.Tables[0], vt);
-            Old_Value = txt_MaHD.Text;
-            
+
+
         }
         void clearTextbox()
         {
             txt_MaHD.Text = "";
             cbo_LoaiHD.SelectedIndex = 0;
             cbo_NhanVien.SelectedIndex = 0;
-            cbo_TrangThai.SelectedIndex = 0;
-            dtp_NgayLap.Value = DateTime.Now;
 
         }
-        private void btn_Xoa_Click(object sender, EventArgs e)
+        private void btn_ThemHD_Click(object sender, EventArgs e)
         {
-            sua(sender, e);
             clearTextbox();
-            //try
-            //{
-            //    if (txt_MaHD.Text == "")
-            //        throw new Exception("Lỗi cập nhật\nHãy chắc chắn bạn chọn đúng cột muốn xoá");
-            //    string sql = "DELETE from HoaDon where MaHD='" + Old_Value + "'";
-            //    if (c.CapNhatDulieu(sql) > 0)
-            //    {
-            //        MessageBox.Show("Cập nhật thành công", "Thông báo", MessageBoxButtons.OK);
-            //        frm_HoaDon_Load(sender, e);
-            //        clearTextbox();
-            //    }
-            //}
-            //catch (Exception err)
-            //{
-            //    MessageBox.Show(err.Message, "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
-            //    frm_HoaDon_Load(sender, e);
-            //}
+            txt_MaHD.Text = autoCode("P");
+            AddRowHoaDon();
+            btn_Reset.Enabled = true;
+            btn_ThemCT.Enabled = true;
         }
 
-        private void dgv_DanhSach_CellValueChanged(object sender, DataGridViewCellEventArgs e)
+
+        private void btn_XuatHD_Click(object sender, EventArgs e)
         {
-            ds = c.LayDuLieu("select * from HoaDon");
 
-            if (dgv_DanhSach.CurrentRow != null)
+        }
+        void AddRowHoaDon(string tenKH = "Unknown")
+        {
+            string maHD = autoCode("P");
+            string loaiHD = cbo_LoaiHD.SelectedValue.ToString();
+            string maNV = cbo_NhanVien.SelectedValue.ToString();
+            string tongtien = "0";
+            string trangthai = "1";
+            dgv_DanhSach.Rows.Add(maHD, NgayHienTai(), loaiHD, maNV, tenKH, tongtien, trangthai);
+            XuLiButton_ct(true, false, false, false);
+        }
+        private void cbo_NhanVien_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            DataGridViewRow row = new DataGridViewRow();
+            if (dgv_DanhSach != null)
+                row = dgv_DanhSach.CurrentRow;
+            if (row != null)
+                row.Cells["MaNV"].Value = cbo_NhanVien.SelectedValue.ToString();
+        }
+        private void txt_tenKH_TextChanged(object sender, EventArgs e)
+        {
+            DataGridViewRow row = new DataGridViewRow();
+            if (dgv_DanhSach != null)
+                row = dgv_DanhSach.CurrentRow;
+            if (row != null)
             {
-                DataGridViewRow row = dgv_DanhSach.CurrentRow;//get row at select row
-                string m3 = row.Cells["NgayLap"].Value == DBNull.Value ? "1/1/2020" : row.Cells["NgayLap"].Value.ToString();
-                string m4 = row.Cells["MaLoaiHD"].Value == DBNull.Value ? "K01" : row.Cells["MaLoaiHD"].Value.ToString();
-                string m5 = row.Cells["MaNV"].Value == DBNull.Value ? "Y03" : row.Cells["MaNV"].Value.ToString();
-                string m1 = row.Cells["MaHD"].Value == DBNull.Value ? autoCode(ds, "P") : row.Cells["MaHD"].Value.ToString();
-
-                if (row.Cells["MaHD"].Value == DBNull.Value)
-                {
-                    them(sender, e, m1, m3, m4, m5);
-                }
-                else
-                {
-                    sua(sender, e, m1, m3, m4, m5);
-                }
-
+                row.Cells["TenKhachHang"].Value = txt_tenKH.Text;
+                if (txt_tenKH.Text == "")
+                    row.Cells["TenKhachHang"].Value = "Unknown";
             }
+        }
+
+        private void btn_ThemCT_Click(object sender, EventArgs e)
+        {
+            XuLiButton_ct(false, false, true, true);
+            XuLiTextBox_ct(true);
+            ResetTextBox_CT();
+
+        }
+
+        private void btn_SuaCT_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void btn_XoaCT_Click(object sender, EventArgs e)
+        {
+
+        }
+        string getDonGia(string masp, string masize)
+        {
+            string dongia = "0";
+            if (masp != "" && masize != "")
+            {
+                string mactsp = masp + masize;
+                DataSet dataSet = new DataSet();
+                dataSet = c.LayDuLieu("select * from ChiTietSanPham where MaCTSP = '" + mactsp + "' ");
+                dongia = dataSet.Tables[0].Rows[0]["GiaBan"].ToString();
+            }
+            return dongia;
+        }
+        void AddRowCTHoaDon()
+        {
+            string soluong = txt_SoLuong.Text;
+            string khuyenmai = txt_KhuyenMai.Text;
+            string maSP = cbo_SanPham.SelectedValue.ToString();
+            string maSize = cbo_Size.SelectedValue.ToString();
+            string dongia = getDonGia(maSP, maSize);
+            string maCTHD = txt_MaHD.Text + maSP + maSize;
+            capNhatGia(cbo_SanPham.SelectedValue.ToString(), cbo_Size.SelectedValue.ToString(), txt_SoLuong.Text, txt_KhuyenMai.Text);
+            string giagoc = txt_GiaGoc.Text;
+            string thanhtien = txt_ThanhTien.Text;
+            dgv_CTHD.Rows.Add(maCTHD, maSP, maSize, soluong, dongia, giagoc, khuyenmai, thanhtien);
+        }
+        void ResetTextBox_CT()
+        {
+            cbo_SanPham.SelectedIndex = -1;
+            cbo_Size.SelectedIndex = -1;
+            txt_SoLuong.Text = "0";
+            txt_KhuyenMai.Text = "0";
+        }
+
+        private void btn_tangSL_Click(object sender, EventArgs e)
+        {
+            int SoLuong = Convert.ToInt32(txt_SoLuong.Text);
+            txt_SoLuong.Text = (++SoLuong).ToString();
+            if (SoLuong == 10) txt_SoLuong.Text = "10";
+            capNhatGia(cbo_SanPham.SelectedValue.ToString(), cbo_Size.SelectedValue.ToString(), txt_SoLuong.Text, txt_KhuyenMai.Text);
+        }
+        private void btn_giamSL_Click(object sender, EventArgs e)
+        {
+            int SoLuong = Convert.ToInt32(txt_SoLuong.Text);
+            if (SoLuong > 0)
+                txt_SoLuong.Text = (--SoLuong).ToString();
+            if (SoLuong == 0) txt_SoLuong.Text = "0";
+            capNhatGia(cbo_SanPham.SelectedValue.ToString(), cbo_Size.SelectedValue.ToString(), txt_SoLuong.Text, txt_KhuyenMai.Text);
+        }
+
+        private void btn_themKM_Click(object sender, EventArgs e)
+        {
+            int KM = Convert.ToInt32(txt_KhuyenMai.Text);
+            txt_KhuyenMai.Text = (KM += 5).ToString();
+            capNhatGia(cbo_SanPham.SelectedValue.ToString(), cbo_Size.SelectedValue.ToString(), txt_SoLuong.Text, txt_KhuyenMai.Text);
+        }
+
+        private void btn_GiamKM_Click(object sender, EventArgs e)
+        {
+            int KM = Convert.ToInt32(txt_KhuyenMai.Text);
+            if (KM > 0)
+                txt_KhuyenMai.Text = (KM -= 5).ToString();
+            if (KM == 0) txt_KhuyenMai.Text = "0";
+            capNhatGia(cbo_SanPham.SelectedValue.ToString(), cbo_Size.SelectedValue.ToString(), txt_SoLuong.Text, txt_KhuyenMai.Text);
+        }
+
+        void capNhatGia(string maSP, string maSize, string soluong, string khuyenmai)
+        {
+            string dongia = getDonGia(maSP, maSize);
+            int giagoc = Convert.ToInt32(dongia) * Convert.ToInt32(soluong);
+            txt_GiaGoc.Text = giagoc.ToString();
+            int thanhtien = (100 - Convert.ToInt32(khuyenmai)) * giagoc / 100;
+            txt_ThanhTien.Text = thanhtien.ToString();
+        }
+        private void btn_LuuCT_Click(object sender, EventArgs e)
+        {
+            AddRowCTHoaDon();
+            XuLiButton_ct(true, false, false, false);
+        }
+
+        private void cbo_SanPham_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            
         }
     }
 }
