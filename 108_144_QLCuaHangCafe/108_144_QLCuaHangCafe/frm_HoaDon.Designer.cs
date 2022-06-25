@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frm_HoaDon));
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.dgv_DanhSach = new System.Windows.Forms.DataGridView();
             this.MaHD = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -47,7 +48,7 @@
             this.cbo_NhanVien = new System.Windows.Forms.ComboBox();
             this.cbo_LoaiHD = new System.Windows.Forms.ComboBox();
             this.label4 = new System.Windows.Forms.Label();
-            this.label5 = new System.Windows.Forms.Label();
+            this.lbl_nhanVien = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.groupBox3 = new System.Windows.Forms.GroupBox();
             this.btn_LuuCT = new System.Windows.Forms.Button();
@@ -82,6 +83,8 @@
             this.GiaGoc = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.KhuyenMai = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.ThanhTien = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.printPreviewDialog1 = new System.Windows.Forms.PrintPreviewDialog();
+            this.printDocument1 = new System.Drawing.Printing.PrintDocument();
             this.groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgv_DanhSach)).BeginInit();
             this.groupBox2.SuspendLayout();
@@ -205,7 +208,7 @@
             this.groupBox2.Controls.Add(this.cbo_NhanVien);
             this.groupBox2.Controls.Add(this.cbo_LoaiHD);
             this.groupBox2.Controls.Add(this.label4);
-            this.groupBox2.Controls.Add(this.label5);
+            this.groupBox2.Controls.Add(this.lbl_nhanVien);
             this.groupBox2.Controls.Add(this.label2);
             this.groupBox2.Location = new System.Drawing.Point(10, 51);
             this.groupBox2.Name = "groupBox2";
@@ -309,16 +312,16 @@
             this.label4.TabIndex = 125;
             this.label4.Text = "Loại Hoá Đơn";
             // 
-            // label5
+            // lbl_nhanVien
             // 
-            this.label5.AutoSize = true;
-            this.label5.Font = new System.Drawing.Font("Segoe UI Semibold", 13.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label5.ForeColor = System.Drawing.Color.Black;
-            this.label5.Location = new System.Drawing.Point(8, 183);
-            this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(175, 32);
-            this.label5.TabIndex = 123;
-            this.label5.Text = "Nhân Viên Lập";
+            this.lbl_nhanVien.AutoSize = true;
+            this.lbl_nhanVien.Font = new System.Drawing.Font("Segoe UI Semibold", 13.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lbl_nhanVien.ForeColor = System.Drawing.Color.Black;
+            this.lbl_nhanVien.Location = new System.Drawing.Point(8, 183);
+            this.lbl_nhanVien.Name = "lbl_nhanVien";
+            this.lbl_nhanVien.Size = new System.Drawing.Size(175, 32);
+            this.lbl_nhanVien.TabIndex = 123;
+            this.lbl_nhanVien.Text = "Nhân Viên Lập";
             // 
             // label2
             // 
@@ -711,6 +714,20 @@
             this.ThanhTien.MinimumWidth = 6;
             this.ThanhTien.Name = "ThanhTien";
             // 
+            // printPreviewDialog1
+            // 
+            this.printPreviewDialog1.AutoScrollMargin = new System.Drawing.Size(0, 0);
+            this.printPreviewDialog1.AutoScrollMinSize = new System.Drawing.Size(0, 0);
+            this.printPreviewDialog1.ClientSize = new System.Drawing.Size(400, 300);
+            this.printPreviewDialog1.Enabled = true;
+            this.printPreviewDialog1.Icon = ((System.Drawing.Icon)(resources.GetObject("printPreviewDialog1.Icon")));
+            this.printPreviewDialog1.Name = "printPreviewDialog1";
+            this.printPreviewDialog1.Visible = false;
+            // 
+            // printDocument1
+            // 
+            this.printDocument1.PrintPage += new System.Drawing.Printing.PrintPageEventHandler(this.printDocument1_PrintPage);
+            // 
             // frm_HoaDon
             // 
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.None;
@@ -752,7 +769,7 @@
         private System.Windows.Forms.ComboBox cbo_NhanVien;
         private System.Windows.Forms.ComboBox cbo_LoaiHD;
         private System.Windows.Forms.Label label4;
-        private System.Windows.Forms.Label label5;
+        private System.Windows.Forms.Label lbl_nhanVien;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.GroupBox groupBox3;
         private System.Windows.Forms.TextBox txt_KhuyenMai;
@@ -794,5 +811,7 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn GiaGoc;
         private System.Windows.Forms.DataGridViewTextBoxColumn KhuyenMai;
         private System.Windows.Forms.DataGridViewTextBoxColumn ThanhTien;
+        private System.Windows.Forms.PrintPreviewDialog printPreviewDialog1;
+        private System.Drawing.Printing.PrintDocument printDocument1;
     }
 }

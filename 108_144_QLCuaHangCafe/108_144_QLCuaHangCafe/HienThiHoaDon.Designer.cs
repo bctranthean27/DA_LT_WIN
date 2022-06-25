@@ -29,23 +29,13 @@ namespace _108_144_QLCuaHangCafe
         /// </summary>
         private void InitializeComponent()
         {
-            this.p_hoaDon = new System.Windows.Forms.Panel();
             this.SuspendLayout();
-            // 
-            // p_hoaDon
-            // 
-            this.p_hoaDon.AutoScroll = true;
-            this.p_hoaDon.Location = new System.Drawing.Point(46, 1);
-            this.p_hoaDon.Name = "p_hoaDon";
-            this.p_hoaDon.Size = new System.Drawing.Size(482, 160);
-            this.p_hoaDon.TabIndex = 0;
             // 
             // HienThiHoaDon
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(751, 450);
-            this.Controls.Add(this.p_hoaDon);
             this.Name = "HienThiHoaDon";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "HienThiHoaDon";
@@ -54,7 +44,5 @@ namespace _108_144_QLCuaHangCafe
         }
 
         #endregion
-
-        private System.Windows.Forms.Panel p_hoaDon;
     }
 }

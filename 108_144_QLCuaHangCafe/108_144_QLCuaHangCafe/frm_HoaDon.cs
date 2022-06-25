@@ -166,12 +166,17 @@ namespace _108_144_QLCuaHangCafe
 
         private void btn_XuatHD_Click(object sender, EventArgs e)
         {
-            Form frm_hienThiHoaDon= new HienThiHoaDon();
+            printPreviewDialog1.Document = printDocument1;
+            printPreviewDialog1.ShowDialog();
+           // Form frm_hienThiHoaDon= new HienThiHoaDon();
           
-            frm_hienThiHoaDon.Controls["p_hoaDon"].BackColor = Color.White;
-            frm_hienThiHoaDon.Controls["p_hoaDon"].Height = frm_hienThiHoaDon.ClientSize.Height;
-            frm_hienThiHoaDon.Controls["p_hoaDon"].Left = (frm_hienThiHoaDon.ClientSize.Width - frm_hienThiHoaDon.Controls["p_hoaDon"].Width) / 2;
-            frm_hienThiHoaDon.Show();
+            //frm_hienThiHoaDon.Controls["p_hoaDon"].BackColor = Color.White;
+            //frm_hienThiHoaDon.Controls["p_hoaDon"].Height = frm_hienThiHoaDon.ClientSize.Height;
+            //frm_hienThiHoaDon.Controls["p_hoaDon"].Left = (frm_hienThiHoaDon.ClientSize.Width - frm_hienThiHoaDon.Controls["p_hoaDon"].Width) / 2;
+
+            //Label lb = new Label();
+
+           // frm_hienThiHoaDon.Show();
         }
         void AddRowHoaDon(string tenKH = "Unknown")
         {
@@ -313,6 +318,39 @@ namespace _108_144_QLCuaHangCafe
         {
             if (cbo_Size.SelectedValue.ToString() == "") return;
             capNhatGia(cbo_SanPham.SelectedValue.ToString(), cbo_Size.SelectedValue.ToString());
+        }
+
+        private void printDocument1_PrintPage(object sender, System.Drawing.Printing.PrintPageEventArgs e)
+        {
+            if (dgv_DanhSach.Rows.Count <= 0) return;
+            e.Graphics.DrawString("Ngay: "+DateTime.Now,new Font("Arial",16,FontStyle.Regular),Brushes.Black, new Point(10,10));
+            e.Graphics.DrawString("Nhan Vien Lap: " + lbl_nhanVien.Text, new Font("Arial", 16, FontStyle.Regular), Brushes.Black, new Point(10, 40));
+            e.Graphics.DrawString("-----------------------------------------------------------------------------------------------------------------", new Font("Arial", 16, FontStyle.Regular), Brushes.Black, new Point(10, 80));
+            e.Graphics.DrawString("Ten San Pham", new Font("Arial", 16, FontStyle.Regular), Brushes.Black, new Point(10, 100));
+            e.Graphics.DrawString("So Luong", new Font("Arial", 16, FontStyle.Regular), Brushes.Black, new Point(200, 100));
+            e.Graphics.DrawString("Size", new Font("Arial", 16, FontStyle.Regular), Brushes.Black, new Point(340, 100));
+            e.Graphics.DrawString("Don Gia", new Font("Arial", 16, FontStyle.Regular), Brushes.Black, new Point(420, 100));
+            e.Graphics.DrawString("Khuyen Mai", new Font("Arial", 16, FontStyle.Regular), Brushes.Black, new Point(530, 100));
+            e.Graphics.DrawString("Thanh Tien", new Font("Arial", 16, FontStyle.Regular), Brushes.Black, new Point(680, 100));
+            e.Graphics.DrawString("-----------------------------------------------------------------------------------------------------------------", new Font("Arial", 16, FontStyle.Regular), Brushes.Black, new Point(10, 130));
+
+            int yPos = 160;
+            
+            for (int i = 0; i < dgv_CTHD.Rows.Count; i++) {
+                DataSet getSize = c.LayDuLieu("Select * from Size where MaSize = '" + dgv_CTHD.Rows[i].Cells["MaSize"].Value.ToString() + "'");
+                DataSet getTenSanPham = c.LayDuLieu("Select * from SanPham where MaSP = '" + dgv_CTHD.Rows[i].Cells["MaSP"].Value.ToString() + "'");
+                string size = getSize.Tables[0].Rows[0]["TenSize"].ToString();
+                string tenSP = getTenSanPham.Tables[0].Rows[0]["TenSP"].ToString();
+                e.Graphics.DrawString(tenSP, new Font("Arial", 16, FontStyle.Regular), Brushes.Black, new Point(10, yPos));
+                e.Graphics.DrawString(dgv_CTHD.Rows[i].Cells["SoLuong"].Value.ToString(), new Font("Arial", 16, FontStyle.Regular), Brushes.Black, new Point(230, yPos));
+                e.Graphics.DrawString(size, new Font("Arial", 16, FontStyle.Regular), Brushes.Black, new Point(340, yPos));
+                e.Graphics.DrawString(dgv_CTHD.Rows[i].Cells["DonGia"].Value.ToString(), new Font("Arial", 16, FontStyle.Regular), Brushes.Black, new Point(420, yPos));
+                e.Graphics.DrawString(dgv_CTHD.Rows[i].Cells["KhuyenMai"].Value.ToString() + "%", new Font("Arial", 16, FontStyle.Regular), Brushes.Black, new Point(530, yPos));
+                e.Graphics.DrawString(dgv_CTHD.Rows[i].Cells["ThanhTien"].Value.ToString(), new Font("Arial", 16, FontStyle.Regular), Brushes.Black, new Point(680, yPos));
+                yPos += 30;
+            }
+            e.Graphics.DrawString("-----------------------------------------------------------------------------------------------------------------", new Font("Arial", 16, FontStyle.Regular), Brushes.Black, new Point(10, yPos));
+           e.Graphics.DrawString("Tong Phai Tra: " + dgv_DanhSach.Rows[0].Cells["TongTien"].Value.ToString() + "VND", new Font("Arial", 16, FontStyle.Regular), Brushes.Black, new Point(600, yPos +30));
         }
     }
 }
