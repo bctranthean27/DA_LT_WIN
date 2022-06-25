@@ -48,6 +48,7 @@ namespace _108_144_QLCuaHangCafe
         private void frm_Menu_Load(object sender, EventArgs e)
         {
             string query = "SELECT * FROM NhanVien WHERE MaNV= '" + idUser + "'";
+            
             DataSet data = c.LayDuLieu(query);
 
             if (data.Tables[0].Rows.Count == 1)
@@ -82,7 +83,7 @@ namespace _108_144_QLCuaHangCafe
         {
             Form f  = new frm_ChucVu();
             xulyfrm(f);
-            MessageBox.Show(idUser);
+
         }
 
         private void mnu_NCC_Click(object sender, EventArgs e)
@@ -109,15 +110,10 @@ namespace _108_144_QLCuaHangCafe
             Form f = new frm_SanPham();
             xulyfrm(f);
         }
-        private void mnu_KhachHang_Click(object sender, EventArgs e)
-        {
-            Form f = new frm_KhachHang();
-            xulyfrm(f);
-        }
 
         private void mnu_HoaDon_Click(object sender, EventArgs e)
         {
-            Form f = new frm_HoaDon();
+            Form f = new frm_HoaDon(roles);
             xulyfrm(f);
         }
 

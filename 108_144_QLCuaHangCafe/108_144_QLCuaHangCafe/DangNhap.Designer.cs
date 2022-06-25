@@ -35,6 +35,7 @@
             this.label3 = new System.Windows.Forms.Label();
             this.btn_Submit = new System.Windows.Forms.Button();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
+            this.chk_password = new System.Windows.Forms.CheckBox();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.SuspendLayout();
             // 
@@ -118,6 +119,19 @@
             this.pictureBox1.TabIndex = 10;
             this.pictureBox1.TabStop = false;
             // 
+            // chk_password
+            // 
+            this.chk_password.AutoSize = true;
+            this.chk_password.Font = new System.Drawing.Font("Segoe UI Semibold", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.chk_password.ForeColor = System.Drawing.Color.White;
+            this.chk_password.Location = new System.Drawing.Point(65, 330);
+            this.chk_password.Name = "chk_password";
+            this.chk_password.Size = new System.Drawing.Size(146, 27);
+            this.chk_password.TabIndex = 11;
+            this.chk_password.Text = "Hiện mật khẩu";
+            this.chk_password.UseVisualStyleBackColor = true;
+            this.chk_password.CheckedChanged += new System.EventHandler(this.checkBox1_CheckedChanged);
+            // 
             // DangNhap
             // 
             this.AcceptButton = this.btn_Submit;
@@ -125,6 +139,7 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(193)))), ((int)(((byte)(170)))), ((int)(((byte)(94)))));
             this.ClientSize = new System.Drawing.Size(1006, 476);
+            this.Controls.Add(this.chk_password);
             this.Controls.Add(this.pictureBox1);
             this.Controls.Add(this.btn_Submit);
             this.Controls.Add(this.txtMK);
@@ -151,5 +166,6 @@
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Button btn_Submit;
         private System.Windows.Forms.PictureBox pictureBox1;
+        private System.Windows.Forms.CheckBox chk_password;
     }
 }

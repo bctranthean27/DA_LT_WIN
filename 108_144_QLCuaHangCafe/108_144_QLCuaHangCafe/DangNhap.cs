@@ -50,6 +50,11 @@ namespace _108_144_QLCuaHangCafe
             Application.Exit();
         }
 
+        private void checkBox1_CheckedChanged(object sender, EventArgs e)
+        {
+            txtMK.UseSystemPasswordChar = !chk_password.Checked;
+        }
+
         private void DangNhap_Load(object sender, EventArgs e)
         {
 
