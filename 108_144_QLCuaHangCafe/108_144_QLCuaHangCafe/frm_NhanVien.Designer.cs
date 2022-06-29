@@ -57,6 +57,7 @@
             this.NgayVaoLam = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.MaChucVu = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.TrangThai = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.roles = new System.Windows.Forms.DataGridViewTextBoxColumn();
             ((System.ComponentModel.ISupportInitialize)(this.dgv_DanhSach)).BeginInit();
             this.groupBox1.SuspendLayout();
             this.SuspendLayout();
@@ -81,7 +82,8 @@
             this.DChi,
             this.NgayVaoLam,
             this.MaChucVu,
-            this.TrangThai});
+            this.TrangThai,
+            this.roles});
             this.dgv_DanhSach.Dock = System.Windows.Forms.DockStyle.Fill;
             this.dgv_DanhSach.Location = new System.Drawing.Point(3, 26);
             this.dgv_DanhSach.Name = "dgv_DanhSach";
@@ -344,6 +346,14 @@
             this.TrangThai.MinimumWidth = 6;
             this.TrangThai.Name = "TrangThai";
             // 
+            // roles
+            // 
+            this.roles.DataPropertyName = "roles";
+            this.roles.HeaderText = "roles";
+            this.roles.MinimumWidth = 6;
+            this.roles.Name = "roles";
+            this.roles.Visible = false;
+            // 
             // frm_NhanVien
             // 
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.None;
@@ -410,5 +420,6 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn NgayVaoLam;
         private System.Windows.Forms.DataGridViewTextBoxColumn MaChucVu;
         private System.Windows.Forms.DataGridViewTextBoxColumn TrangThai;
+        private System.Windows.Forms.DataGridViewTextBoxColumn roles;
     }
 }
