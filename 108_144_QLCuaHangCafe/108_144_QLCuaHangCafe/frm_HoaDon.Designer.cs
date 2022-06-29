@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frm_HoaDon));
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.dgv_DanhSach = new System.Windows.Forms.DataGridView();
             this.MaHD = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -47,7 +48,7 @@
             this.cbo_NhanVien = new System.Windows.Forms.ComboBox();
             this.cbo_LoaiHD = new System.Windows.Forms.ComboBox();
             this.label4 = new System.Windows.Forms.Label();
-            this.label5 = new System.Windows.Forms.Label();
+            this.lbl_nhanVien = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.groupBox3 = new System.Windows.Forms.GroupBox();
             this.btn_LuuCT = new System.Windows.Forms.Button();
@@ -74,6 +75,10 @@
             this.label3 = new System.Windows.Forms.Label();
             this.groupBox4 = new System.Windows.Forms.GroupBox();
             this.dgv_CTHD = new System.Windows.Forms.DataGridView();
+            this.printPreviewDialog1 = new System.Windows.Forms.PrintPreviewDialog();
+            this.printDocument1 = new System.Drawing.Printing.PrintDocument();
+            this.txt_TongTien = new System.Windows.Forms.TextBox();
+            this.lbl = new System.Windows.Forms.Label();
             this.MaCTHD = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.MaSP = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.MaSize = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -205,7 +210,7 @@
             this.groupBox2.Controls.Add(this.cbo_NhanVien);
             this.groupBox2.Controls.Add(this.cbo_LoaiHD);
             this.groupBox2.Controls.Add(this.label4);
-            this.groupBox2.Controls.Add(this.label5);
+            this.groupBox2.Controls.Add(this.lbl_nhanVien);
             this.groupBox2.Controls.Add(this.label2);
             this.groupBox2.Location = new System.Drawing.Point(10, 51);
             this.groupBox2.Name = "groupBox2";
@@ -216,7 +221,6 @@
             // 
             // txt_tenKH
             // 
-            this.txt_tenKH.Enabled = false;
             this.txt_tenKH.Font = new System.Drawing.Font("Segoe UI Semibold", 13.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txt_tenKH.Location = new System.Drawing.Point(155, 133);
             this.txt_tenKH.Name = "txt_tenKH";
@@ -310,16 +314,16 @@
             this.label4.TabIndex = 125;
             this.label4.Text = "Loại Hoá Đơn";
             // 
-            // label5
+            // lbl_nhanVien
             // 
-            this.label5.AutoSize = true;
-            this.label5.Font = new System.Drawing.Font("Segoe UI Semibold", 13.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label5.ForeColor = System.Drawing.Color.Black;
-            this.label5.Location = new System.Drawing.Point(8, 183);
-            this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(165, 31);
-            this.label5.TabIndex = 123;
-            this.label5.Text = "Nhân Viên Lập";
+            this.lbl_nhanVien.AutoSize = true;
+            this.lbl_nhanVien.Font = new System.Drawing.Font("Segoe UI Semibold", 13.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lbl_nhanVien.ForeColor = System.Drawing.Color.Black;
+            this.lbl_nhanVien.Location = new System.Drawing.Point(8, 183);
+            this.lbl_nhanVien.Name = "lbl_nhanVien";
+            this.lbl_nhanVien.Size = new System.Drawing.Size(165, 31);
+            this.lbl_nhanVien.TabIndex = 123;
+            this.lbl_nhanVien.Text = "Nhân Viên Lập";
             // 
             // label2
             // 
@@ -653,6 +657,43 @@
             this.dgv_CTHD.RowTemplate.Height = 24;
             this.dgv_CTHD.Size = new System.Drawing.Size(880, 406);
             this.dgv_CTHD.TabIndex = 0;
+            this.dgv_CTHD.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgv_CTHD_CellClick);
+            // 
+            // printPreviewDialog1
+            // 
+            this.printPreviewDialog1.AutoScrollMargin = new System.Drawing.Size(0, 0);
+            this.printPreviewDialog1.AutoScrollMinSize = new System.Drawing.Size(0, 0);
+            this.printPreviewDialog1.ClientSize = new System.Drawing.Size(400, 300);
+            this.printPreviewDialog1.Enabled = true;
+            this.printPreviewDialog1.Icon = ((System.Drawing.Icon)(resources.GetObject("printPreviewDialog1.Icon")));
+            this.printPreviewDialog1.Name = "printPreviewDialog1";
+            this.printPreviewDialog1.Visible = false;
+            // 
+            // printDocument1
+            // 
+            this.printDocument1.PrintPage += new System.Drawing.Printing.PrintPageEventHandler(this.printDocument1_PrintPage);
+            // 
+            // txt_TongTien
+            // 
+            this.txt_TongTien.Font = new System.Drawing.Font("Segoe UI Semibold", 13.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txt_TongTien.Location = new System.Drawing.Point(1220, 753);
+            this.txt_TongTien.Name = "txt_TongTien";
+            this.txt_TongTien.ReadOnly = true;
+            this.txt_TongTien.Size = new System.Drawing.Size(292, 38);
+            this.txt_TongTien.TabIndex = 147;
+            this.txt_TongTien.Text = "0";
+            this.txt_TongTien.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
+            // 
+            // lbl
+            // 
+            this.lbl.AutoSize = true;
+            this.lbl.Font = new System.Drawing.Font("Segoe UI Semibold", 13.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lbl.ForeColor = System.Drawing.Color.Black;
+            this.lbl.Location = new System.Drawing.Point(1072, 753);
+            this.lbl.Name = "lbl";
+            this.lbl.Size = new System.Drawing.Size(113, 31);
+            this.lbl.TabIndex = 146;
+            this.lbl.Text = "Tổng tiền";
             // 
             // MaCTHD
             // 
@@ -715,7 +756,9 @@
             // 
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.None;
             this.BackColor = System.Drawing.SystemColors.Control;
-            this.ClientSize = new System.Drawing.Size(1526, 740);
+            this.ClientSize = new System.Drawing.Size(1526, 768);
+            this.Controls.Add(this.txt_TongTien);
+            this.Controls.Add(this.lbl);
             this.Controls.Add(this.groupBox4);
             this.Controls.Add(this.groupBox3);
             this.Controls.Add(this.label6);
@@ -736,6 +779,7 @@
             this.groupBox4.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.dgv_CTHD)).EndInit();
             this.ResumeLayout(false);
+            this.PerformLayout();
 
         }
 
@@ -752,7 +796,7 @@
         private System.Windows.Forms.ComboBox cbo_NhanVien;
         private System.Windows.Forms.ComboBox cbo_LoaiHD;
         private System.Windows.Forms.Label label4;
-        private System.Windows.Forms.Label label5;
+        private System.Windows.Forms.Label lbl_nhanVien;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.GroupBox groupBox3;
         private System.Windows.Forms.TextBox txt_KhuyenMai;
@@ -786,6 +830,10 @@
         private System.Windows.Forms.Button btn_giamSL;
         private System.Windows.Forms.Button btn_tangSL;
         private System.Windows.Forms.Button btn_LuuCT;
+        private System.Windows.Forms.PrintPreviewDialog printPreviewDialog1;
+        private System.Drawing.Printing.PrintDocument printDocument1;
+        private System.Windows.Forms.TextBox txt_TongTien;
+        private System.Windows.Forms.Label lbl;
         private System.Windows.Forms.DataGridViewTextBoxColumn MaCTHD;
         private System.Windows.Forms.DataGridViewTextBoxColumn MaSP;
         private System.Windows.Forms.DataGridViewTextBoxColumn MaSize;

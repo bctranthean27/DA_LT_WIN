@@ -68,6 +68,7 @@ namespace _108_144_QLCuaHangCafe
         {
             cbo_LoaiHD.Enabled = key;
             cbo_NhanVien.Enabled = key;
+            txt_tenKH.ReadOnly = !key;
         }
         void XuLiTextBox_ct(bool key)
         {
@@ -157,21 +158,23 @@ namespace _108_144_QLCuaHangCafe
             clearTextbox();
             btn_ThemHD.Enabled = false;
             txt_MaHD.Text = autoCode("P");
-            txt_tenKH.Enabled = true;
             AddRowHoaDon();
             btn_Reset.Enabled = true;
             btn_ThemCT.Enabled = true;
+            XuLiTextBox_hd(true);
         }
 
 
         private void btn_XuatHD_Click(object sender, EventArgs e)
         {
-            //Form frm_hienThiHoaDon= new HienThiHoaDon();
-          
-            //frm_hienThiHoaDon.Controls["p_hoaDon"].BackColor = Color.White;
-            //frm_hienThiHoaDon.Controls["p_hoaDon"].Height = frm_hienThiHoaDon.ClientSize.Height;
-            //frm_hienThiHoaDon.Controls["p_hoaDon"].Left = (frm_hienThiHoaDon.ClientSize.Width - frm_hienThiHoaDon.Controls["p_hoaDon"].Width) / 2;
-            //frm_hienThiHoaDon.Show();
+            if (dgv_CTHD.Rows.Count == 0)
+                MessageBox.Show("Vui lòng không xuất hoá đơn trống", "Lưu ý", MessageBoxButtons.OK);
+            else
+            {
+                printPreviewDialog1.Document = printDocument1;
+                printPreviewDialog1.ShowDialog();
+                frm_HoaDon_Load(sender, e);
+            }
         }
         void AddRowHoaDon(string tenKH = "Unknown")
         {
@@ -234,12 +237,11 @@ namespace _108_144_QLCuaHangCafe
             return dongia;
         }
         void AddRowCTHoaDon(object sender, EventArgs e)
-        {
-            string maSP = "";
+        {;
             string soluong = txt_SoLuong.Text;
             string khuyenmai = txt_KhuyenMai.Text;
             string maSize = cbo_Size.SelectedValue.ToString();
-            maSP = cbo_SanPham.SelectedValue.ToString();
+            string maSP = cbo_SanPham.SelectedValue.ToString();
             string dongia = getDonGia(maSP, maSize);
             string maCTHD = txt_MaHD.Text + maSP + maSize;
             capNhatGia(cbo_SanPham.SelectedValue.ToString(), cbo_Size.SelectedValue.ToString(), int.Parse(txt_SoLuong.Text), int.Parse(txt_KhuyenMai.Text));
@@ -278,7 +280,7 @@ namespace _108_144_QLCuaHangCafe
         {
             int KM = Convert.ToInt32(txt_KhuyenMai.Text);
             txt_KhuyenMai.Text = (KM += 5).ToString();
-            capNhatGia(cbo_SanPham.SelectedValue.ToString(), cbo_Size.SelectedValue.ToString(),int.Parse(txt_SoLuong.Text),int.Parse(txt_KhuyenMai.Text));
+            capNhatGia(cbo_SanPham.SelectedValue.ToString(), cbo_Size.SelectedValue.ToString(), int.Parse(txt_SoLuong.Text), int.Parse(txt_KhuyenMai.Text));
         }
 
         private void btn_GiamKM_Click(object sender, EventArgs e)
@@ -299,44 +301,126 @@ namespace _108_144_QLCuaHangCafe
             txt_ThanhTien.Text = thanhtien.ToString();
         }
         private void btn_LuuCT_Click(object sender, EventArgs e)
-        {      
+        {
+            string masp = cbo_SanPham.SelectedValue.ToString();
+            string masize = cbo_Size.SelectedValue.ToString();
             XuLiButton_ct(true, false, false, false);
+            //if (kiemTraGiong(masp, masize))
+            //{
+                //MessageBox.Show("có sản phẩm trùng lặp", "thông báo");
+            //    ThemTienCTHD_CTHD(txt_SoLuong.Text,txt_GiaGoc.Text,txt_ThanhTien.Text, masp, masize);
+            //}
+            //else
             AddRowCTHoaDon(sender, e);
             dgv_DanhSach.Rows[0].Cells["TongTien"].Value = (double.Parse(dgv_DanhSach.Rows[0].Cells["TongTien"].Value.ToString()) + double.Parse(txt_ThanhTien.Text)).ToString();
+            txt_TongTien.Text = dgv_DanhSach.Rows[0].Cells["TongTien"].Value.ToString();
             dgv_CTHD.Enabled = true;
+            XuLiTextBox_ct(false);
         }
         private void cbo_SanPham_SelectionChangeCommitted(object sender, EventArgs e)
         {
             if (cbo_Size.SelectedValue.ToString() == "") return;
-            //if (txt_SoLuong.Text != "0")
-                capNhatGia(cbo_SanPham.SelectedValue.ToString(), cbo_Size.SelectedValue.ToString());
-            //else
-            //{
-                //txt_GiaGoc.Text = "0";    
-                //txt_ThanhTien.Text = "0";
-            //}
+            if (txt_SoLuong.Text != "0")
+            capNhatGia(cbo_SanPham.SelectedValue.ToString(), cbo_Size.SelectedValue.ToString());
+            else
+            {
+                txt_GiaGoc.Text = "0";
+                txt_ThanhTien.Text = "0";
+            }
         }
         bool kiemTraGiong(string masp, string masize)
         {
-            string mactsp = masp + masize;
-            for(int i=0;i<dgv_CTHD.Rows.Count;i++)
+            bool kq = false;
+            
+
+            for (int i = 0; i < dgv_CTHD.Rows.Count; i++)
             {
-                if (mactsp == dgv_CTHD.Rows[i].Cells["MaCTHD"].Value.ToString())
-                    return true;
+                string masp2 = dgv_CTHD.Rows[i].Cells["MaSP"].Value.ToString();
+                string masize2 = dgv_CTHD.Rows[i].Cells["MaSize"].Value.ToString();
+                //MessageBox.Show(masp + " " + masp2, masize + " " + masize2);
+                if (masp == masp2 && masize == masize2)
+                    kq = true;
+                
             }
-            return false;
+            return kq;
         }
-        void tangSL_CTHD(string slthem, string masp, string masize)
+        void ThemTienCTHD_CTHD(string slthem,string giagocthem, string thanhtienthem, string masp, string masize)
         {
             for (int i = 0; i < dgv_CTHD.Rows.Count; i++)
             {
-                if (masp == dgv_CTHD.Rows[i].Cells["MaSP"].Value.ToString())
+                if (masp == dgv_CTHD.Rows[i].Cells["MaSP"].Value.ToString() && masize == dgv_CTHD.Rows[i].Cells["MaSize"].Value.ToString())
                 {
-                    int slcosan =Convert.ToInt32(dgv_CTHD.Rows[i].Cells["SoLuong"].Value);
+                    int slcosan = Convert.ToInt32(dgv_CTHD.Rows[i].Cells["SoLuong"].Value);
                     slcosan += Convert.ToInt32(slthem);
                     dgv_CTHD.Rows[i].Cells["SoLuong"].Value = slcosan;
+                    int giagoccosan = Convert.ToInt32(dgv_CTHD.Rows[i].Cells["GiaGoc"].Value);
+                    giagoccosan += Convert.ToInt32(giagocthem);
+                    dgv_CTHD.Rows[i].Cells["GiaGoc"].Value = giagoccosan;
+                    int thanhtiencosan = Convert.ToInt32(dgv_CTHD.Rows[i].Cells["ThanhTien"].Value);
+                    thanhtiencosan += Convert.ToInt32(thanhtienthem);
+                    dgv_CTHD.Rows[i].Cells["ThanhTien"].Value = thanhtiencosan;
+
                 }
             }
+        }
+
+        private void printDocument1_PrintPage(object sender, System.Drawing.Printing.PrintPageEventArgs e)
+        {
+            if (dgv_DanhSach.Rows.Count <= 0) return;
+            e.Graphics.DrawString("Ngay: " + DateTime.Now, new Font("Arial", 16, FontStyle.Regular), Brushes.Black, new Point(10, 10));
+            e.Graphics.DrawString("Nhan Vien Lap: " + lbl_nhanVien.Text, new Font("Arial", 16, FontStyle.Regular), Brushes.Black, new Point(10, 40));
+            e.Graphics.DrawString("-----------------------------------------------------------------------------------------------------------------", new Font("Arial", 16, FontStyle.Regular), Brushes.Black, new Point(10, 80));
+            e.Graphics.DrawString("Ten San Pham", new Font("Arial", 16, FontStyle.Regular), Brushes.Black, new Point(10, 100));
+            e.Graphics.DrawString("So Luong", new Font("Arial", 16, FontStyle.Regular), Brushes.Black, new Point(200, 100));
+            e.Graphics.DrawString("Size", new Font("Arial", 16, FontStyle.Regular), Brushes.Black, new Point(340, 100));
+            e.Graphics.DrawString("Don Gia", new Font("Arial", 16, FontStyle.Regular), Brushes.Black, new Point(420, 100));
+            e.Graphics.DrawString("Khuyen Mai", new Font("Arial", 16, FontStyle.Regular), Brushes.Black, new Point(530, 100));
+            e.Graphics.DrawString("Thanh Tien", new Font("Arial", 16, FontStyle.Regular), Brushes.Black, new Point(680, 100));
+            e.Graphics.DrawString("-----------------------------------------------------------------------------------------------------------------", new Font("Arial", 16, FontStyle.Regular), Brushes.Black, new Point(10, 130));
+
+            int yPos = 160;
+
+            for (int i = 0; i < dgv_CTHD.Rows.Count; i++)
+            {
+                DataSet getSize = c.LayDuLieu("Select * from Size where MaSize = '" + dgv_CTHD.Rows[i].Cells["MaSize"].Value.ToString() + "'");
+                DataSet getTenSanPham = c.LayDuLieu("Select * from SanPham where MaSP = '" + dgv_CTHD.Rows[i].Cells["MaSP"].Value.ToString() + "'");
+                string size = getSize.Tables[0].Rows[0]["TenSize"].ToString();
+                string tenSP = getTenSanPham.Tables[0].Rows[0]["TenSP"].ToString();
+                e.Graphics.DrawString(tenSP, new Font("Arial", 16, FontStyle.Regular), Brushes.Black, new Point(10, yPos));
+                e.Graphics.DrawString(dgv_CTHD.Rows[i].Cells["SoLuong"].Value.ToString(), new Font("Arial", 16, FontStyle.Regular), Brushes.Black, new Point(230, yPos));
+                e.Graphics.DrawString(size, new Font("Arial", 16, FontStyle.Regular), Brushes.Black, new Point(340, yPos));
+                e.Graphics.DrawString(dgv_CTHD.Rows[i].Cells["DonGia"].Value.ToString(), new Font("Arial", 16, FontStyle.Regular), Brushes.Black, new Point(420, yPos));
+                e.Graphics.DrawString(dgv_CTHD.Rows[i].Cells["KhuyenMai"].Value.ToString() + "%", new Font("Arial", 16, FontStyle.Regular), Brushes.Black, new Point(530, yPos));
+                e.Graphics.DrawString(dgv_CTHD.Rows[i].Cells["ThanhTien"].Value.ToString(), new Font("Arial", 16, FontStyle.Regular), Brushes.Black, new Point(680, yPos));
+                yPos += 30;
+            }
+            e.Graphics.DrawString("-----------------------------------------------------------------------------------------------------------------", new Font("Arial", 16, FontStyle.Regular), Brushes.Black, new Point(10, yPos));
+            e.Graphics.DrawString("Tong Phai Tra: " + dgv_DanhSach.Rows[0].Cells["TongTien"].Value.ToString() + "VND", new Font("Arial", 16, FontStyle.Regular), Brushes.Black, new Point(600, yPos + 30));
+        }
+        void loadData_cboFromList(ComboBox cbo, string disMember)
+        {
+
+            string value = dgv_CTHD.CurrentRow.Cells[disMember].Value.ToString();
+            foreach (DataRowView rowView in cbo.Items)
+            {
+                string val = rowView.Row[0].ToString();
+                string name = rowView.Row[1].ToString();
+                if (val == value)
+                {
+                    cbo.Text = name;
+                    break;
+                }
+
+            }
+        }
+        private void dgv_CTHD_CellClick(object sender, DataGridViewCellEventArgs e)
+        {
+            txt_SoLuong.Text = dgv_CTHD.CurrentRow.Cells["SoLuong"].Value.ToString();
+            txt_GiaGoc.Text = dgv_CTHD.CurrentRow.Cells["GiaGoc"].Value.ToString();
+            txt_ThanhTien.Text = dgv_CTHD.CurrentRow.Cells["ThanhTien"].Value.ToString();
+            txt_KhuyenMai.Text = dgv_CTHD.CurrentRow.Cells["KhuyenMai"].Value.ToString();
+            loadData_cboFromList(cbo_Size, "MaSize");
+            loadData_cboFromList(cbo_SanPham, "MaSP");
         }
     }
 }
