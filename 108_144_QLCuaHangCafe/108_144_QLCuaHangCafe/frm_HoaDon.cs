@@ -13,29 +13,27 @@ namespace _108_144_QLCuaHangCafe
     public partial class frm_HoaDon : Form
     {
         cls_QLCHCAFE c = new cls_QLCHCAFE();
-        int vt = 0;
         DataSet ds = new DataSet();
         int flag = 0;
-        string Old_Value = "";
-        public string roles;
+        public string manv;
         public frm_HoaDon()
         {
             InitializeComponent();
         }
-        public frm_HoaDon(string roles)
+        public frm_HoaDon(string manv)
         {
-            this.roles = roles;
+            this.manv = manv;
             InitializeComponent();
         }
-
+        
         private void frm_HoaDon_Load(object sender, EventArgs e)
         {
             XuLiTextBox_hd(false);
             XuLiButton_ct(false, false, false, false);
             XuLiTextBox_ct(false);
             //loadData_DataGrid(dgv_DanhSach, "select * from HoaDon where TrangThai='1'");
-            loadData_cbo(cbo_LoaiHD, "select MaLoaiHD,TenLoaiHD from LoaiHoaDon where TrangThai='1'", "MaLoaiHD", "TenLoaiHD");
             loadData_cbo(cbo_NhanVien, "select MaNV,TenNV from NhanVien where TrangThai='1'", "MaNV", "TenNV");
+            DataRowView rowView = cbo_NhanVien
             loadData_cbo(cbo_SanPham, "select MaSP,TenSP from SanPham where TrangThai='1'", "MaSP", "TenSP");
             loadData_cbo(cbo_Size, "select MaSize,TenSize from Size where TrangThai='1'", "MaSize", "TenSize");
         }
@@ -66,7 +64,6 @@ namespace _108_144_QLCuaHangCafe
         }
         void XuLiTextBox_hd(bool key)
         {
-            cbo_LoaiHD.Enabled = key;
             cbo_NhanVien.Enabled = key;
             txt_tenKH.ReadOnly = !key;
         }
@@ -94,62 +91,10 @@ namespace _108_144_QLCuaHangCafe
             return NgayDayDu;
         }
 
-
-        void loadData_cboFromList(DataTable dt, ComboBox cbo, string disMember, int vt)
-        {
-
-            string value = dt.Rows[vt][disMember].ToString();
-            if (disMember == "TrangThai")
-            {
-                for (int i = 0; i < cbo.Items.Count; i++)
-                {
-                    if (cbo.Items[i].ToString() == value) cbo.SelectedIndex = i;
-                }
-            }
-            else
-            {
-                foreach (DataRowView rowView in cbo.Items)
-                {
-                    string val = rowView.Row[0].ToString();
-                    string name = rowView.Row[1].ToString();
-                    if (val == value)
-                    {
-                        cbo.Text = name;
-                        break;
-                    }
-
-                }
-            }
-        }
-        void hienThiTextBox(DataTable dt, int vt)
-        {
-
-            if (dgv_DanhSach.CurrentRow != null)
-            {
-                DataGridViewRow row = dgv_DanhSach.CurrentRow;
-                if (row.Cells["MaHD"].Value == DBNull.Value)
-                {
-                    txt_MaHD.Text = "";
-                    btn_Reset.Enabled = false;
-                }
-                else
-                {
-                    txt_MaHD.Text = ds.Tables[0].Rows[vt]["MaHD"].ToString();
-                    loadData_cboFromList(dt, cbo_LoaiHD, "MaLoaiHD", vt);
-                    loadData_cboFromList(dt, cbo_NhanVien, "MaNV", vt);
-                }
-            }
-
-        }
-        private void dgv_DanhSach_CellClick(object sender, DataGridViewCellEventArgs e)
-        {
-
-
-        }
         void clearTextbox()
         {
             txt_MaHD.Text = "";
-            cbo_LoaiHD.SelectedIndex = 0;
+
             cbo_NhanVien.SelectedIndex = 0;
 
         }
@@ -179,11 +124,10 @@ namespace _108_144_QLCuaHangCafe
         void AddRowHoaDon(string tenKH = "Unknown")
         {
             string maHD = autoCode("P");
-            string loaiHD = cbo_LoaiHD.SelectedValue.ToString();
             string maNV = cbo_NhanVien.SelectedValue.ToString();
             string tongtien = "0";
             string trangthai = "1";
-            dgv_DanhSach.Rows.Add(maHD, NgayHienTai(), loaiHD, maNV, tenKH, tongtien, trangthai);
+            dgv_DanhSach.Rows.Add(maHD, NgayHienTai(), "K01" , maNV, tenKH, tongtien, trangthai);
             XuLiButton_ct(true, false, false, false);
         }
         private void cbo_NhanVien_SelectedIndexChanged(object sender, EventArgs e)
@@ -213,16 +157,21 @@ namespace _108_144_QLCuaHangCafe
             XuLiTextBox_ct(true);
             ResetTextBox_CT();
             dgv_CTHD.Enabled = false;
+            flag = 1;
         }
 
         private void btn_SuaCT_Click(object sender, EventArgs e)
         {
-
+            XuLiButton_ct(false, false, false, true);
+            XuLiTextBox_ct(true);
+            btn_LuuCT.Enabled = true;
+            flag = 2;
         }
 
         private void btn_XoaCT_Click(object sender, EventArgs e)
         {
-
+            dgv_CTHD.Rows.RemoveAt(dgv_CTHD.CurrentRow.Index);
+            capnhatThanhTien(sender,e);
         }
         string getDonGia(string masp, string masize)
         {
@@ -237,7 +186,7 @@ namespace _108_144_QLCuaHangCafe
             return dongia;
         }
         void AddRowCTHoaDon(object sender, EventArgs e)
-        {;
+        {
             string soluong = txt_SoLuong.Text;
             string khuyenmai = txt_KhuyenMai.Text;
             string maSize = cbo_Size.SelectedValue.ToString();
@@ -248,6 +197,19 @@ namespace _108_144_QLCuaHangCafe
             string giagoc = txt_GiaGoc.Text;
             string thanhtien = txt_ThanhTien.Text;
             dgv_CTHD.Rows.Add(maCTHD, maSP, maSize, soluong, dongia.ToString(), giagoc, khuyenmai, thanhtien);
+        }
+        void SuaCTHoaDon(object sender, EventArgs e)
+        {
+            string soluong = txt_SoLuong.Text;
+            string khuyenmai = txt_KhuyenMai.Text;
+            string maSize = cbo_Size.SelectedValue.ToString();
+            string maSP = cbo_SanPham.SelectedValue.ToString();
+            string dongia = getDonGia(maSP, maSize);
+            string maCTHD = txt_MaHD.Text + maSP + maSize;
+            string giagoc = txt_GiaGoc.Text;
+            string thanhtien = txt_ThanhTien.Text;
+            dgv_CTHD.CurrentRow.SetValues(maCTHD, maSP, maSize, soluong, dongia.ToString(), giagoc, khuyenmai, thanhtien);
+
         }
         void ResetTextBox_CT()
         {
@@ -302,17 +264,28 @@ namespace _108_144_QLCuaHangCafe
         }
         private void btn_LuuCT_Click(object sender, EventArgs e)
         {
-            string masp = cbo_SanPham.SelectedValue.ToString();
-            string masize = cbo_Size.SelectedValue.ToString();
+            //string masp = cbo_SanPham.SelectedValue.ToString();
+            //string masize = cbo_Size.SelectedValue.ToString();
             XuLiButton_ct(true, false, false, false);
+            switch (flag)
+            {
+                case 1:
+                    {
+                        AddRowCTHoaDon(sender, e);
+                    };break;
+                case 2:
+                    {
+                        SuaCTHoaDon(sender, e);
+                    }; break;
+            }
+
             //if (kiemTraGiong(masp, masize))
             //{
-                //MessageBox.Show("có sản phẩm trùng lặp", "thông báo");
+            //MessageBox.Show("có sản phẩm trùng lặp", "thông báo");
             //    ThemTienCTHD_CTHD(txt_SoLuong.Text,txt_GiaGoc.Text,txt_ThanhTien.Text, masp, masize);
             //}
             //else
-            AddRowCTHoaDon(sender, e);
-            dgv_DanhSach.Rows[0].Cells["TongTien"].Value = (double.Parse(dgv_DanhSach.Rows[0].Cells["TongTien"].Value.ToString()) + double.Parse(txt_ThanhTien.Text)).ToString();
+            capnhatThanhTien(sender,e);
             txt_TongTien.Text = dgv_DanhSach.Rows[0].Cells["TongTien"].Value.ToString();
             dgv_CTHD.Enabled = true;
             XuLiTextBox_ct(false);
@@ -327,6 +300,13 @@ namespace _108_144_QLCuaHangCafe
                 txt_GiaGoc.Text = "0";
                 txt_ThanhTien.Text = "0";
             }
+        }
+        void capnhatThanhTien(object sender, EventArgs e)
+        {
+            int thanhtien = 0;
+            for(int i = 0; i < dgv_CTHD.Rows.Count; i++)
+                thanhtien +=Convert.ToInt32( dgv_CTHD.Rows[i].Cells["ThanhTien"].Value.ToString());
+            dgv_DanhSach.Rows[0].Cells["TongTien"].Value = thanhtien;
         }
         bool kiemTraGiong(string masp, string masize)
         {
@@ -421,6 +401,7 @@ namespace _108_144_QLCuaHangCafe
             txt_KhuyenMai.Text = dgv_CTHD.CurrentRow.Cells["KhuyenMai"].Value.ToString();
             loadData_cboFromList(cbo_Size, "MaSize");
             loadData_cboFromList(cbo_SanPham, "MaSP");
+            XuLiButton_ct(false, true, true, false);
         }
     }
 }

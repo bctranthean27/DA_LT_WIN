@@ -113,7 +113,7 @@ namespace _108_144_QLCuaHangCafe
 
         private void mnu_HoaDon_Click(object sender, EventArgs e)
         {
-            Form f = new frm_HoaDon(roles);
+            Form f = new frm_HoaDon(idUser);
             xulyfrm(f);
         }
 
