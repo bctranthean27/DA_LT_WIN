@@ -38,10 +38,8 @@
             this.mnu_Size = new System.Windows.Forms.ToolStripMenuItem();
             this.mnu_NhanVien = new System.Windows.Forms.ToolStripMenuItem();
             this.mnu_SanPham = new System.Windows.Forms.ToolStripMenuItem();
-            this.mnu_KhachHang = new System.Windows.Forms.ToolStripMenuItem();
             this.mnu_HoaDon = new System.Windows.Forms.ToolStripMenuItem();
             this.mnu_TimKiem = new System.Windows.Forms.ToolStripMenuItem();
-            this.mnu_SearchKH = new System.Windows.Forms.ToolStripMenuItem();
             this.mnu_SearchSP = new System.Windows.Forms.ToolStripMenuItem();
             this.mnu_SearchHD = new System.Windows.Forms.ToolStripMenuItem();
             this.mnu_ThongKe = new System.Windows.Forms.ToolStripMenuItem();
@@ -49,6 +47,7 @@
             this.mnu_ThongKeThang = new System.Windows.Forms.ToolStripMenuItem();
             this.mnu_ThongKeNam = new System.Windows.Forms.ToolStripMenuItem();
             this.mnu_ThongKeNV = new System.Windows.Forms.ToolStripMenuItem();
+            this.mnu_DangXuat = new System.Windows.Forms.ToolStripMenuItem();
             this.menuStrip1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -70,7 +69,8 @@
             this.menuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.mnu_NhapThongTin,
             this.mnu_TimKiem,
-            this.mnu_ThongKe});
+            this.mnu_ThongKe,
+            this.mnu_DangXuat});
             this.menuStrip1.Location = new System.Drawing.Point(0, 0);
             this.menuStrip1.Name = "menuStrip1";
             this.menuStrip1.Size = new System.Drawing.Size(1737, 36);
@@ -87,7 +87,6 @@
             this.mnu_Size,
             this.mnu_NhanVien,
             this.mnu_SanPham,
-            this.mnu_KhachHang,
             this.mnu_HoaDon});
             this.mnu_NhapThongTin.Font = new System.Drawing.Font("Segoe UI Semibold", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.mnu_NhapThongTin.Name = "mnu_NhapThongTin";
@@ -150,18 +149,10 @@
             this.mnu_SanPham.Text = "Sản Phẩm";
             this.mnu_SanPham.Click += new System.EventHandler(this.mnu_SanPham_Click);
             // 
-            // mnu_KhachHang
-            // 
-            this.mnu_KhachHang.Name = "mnu_KhachHang";
-            this.mnu_KhachHang.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.D8)));
-            this.mnu_KhachHang.Size = new System.Drawing.Size(298, 32);
-            this.mnu_KhachHang.Text = "Khách Hàng";
-            this.mnu_KhachHang.Click += new System.EventHandler(this.mnu_KhachHang_Click);
-            // 
             // mnu_HoaDon
             // 
             this.mnu_HoaDon.Name = "mnu_HoaDon";
-            this.mnu_HoaDon.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.D9)));
+            this.mnu_HoaDon.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.D8)));
             this.mnu_HoaDon.Size = new System.Drawing.Size(298, 32);
             this.mnu_HoaDon.Text = "Hoá Đơn";
             this.mnu_HoaDon.Click += new System.EventHandler(this.mnu_HoaDon_Click);
@@ -169,7 +160,6 @@
             // mnu_TimKiem
             // 
             this.mnu_TimKiem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.mnu_SearchKH,
             this.mnu_SearchSP,
             this.mnu_SearchHD});
             this.mnu_TimKiem.Font = new System.Drawing.Font("Segoe UI Semibold", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -177,27 +167,19 @@
             this.mnu_TimKiem.Size = new System.Drawing.Size(111, 32);
             this.mnu_TimKiem.Text = "Tìm kiếm";
             // 
-            // mnu_SearchKH
-            // 
-            this.mnu_SearchKH.Name = "mnu_SearchKH";
-            this.mnu_SearchKH.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Alt | System.Windows.Forms.Keys.D1)));
-            this.mnu_SearchKH.Size = new System.Drawing.Size(267, 32);
-            this.mnu_SearchKH.Text = "Khách Hàng";
-            this.mnu_SearchKH.Click += new System.EventHandler(this.mnu_SearchKH_Click);
-            // 
             // mnu_SearchSP
             // 
             this.mnu_SearchSP.Name = "mnu_SearchSP";
-            this.mnu_SearchSP.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Alt | System.Windows.Forms.Keys.D2)));
-            this.mnu_SearchSP.Size = new System.Drawing.Size(267, 32);
+            this.mnu_SearchSP.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Alt | System.Windows.Forms.Keys.D1)));
+            this.mnu_SearchSP.Size = new System.Drawing.Size(248, 32);
             this.mnu_SearchSP.Text = "Sản Phẩm";
             this.mnu_SearchSP.Click += new System.EventHandler(this.mnu_SearchSP_Click);
             // 
             // mnu_SearchHD
             // 
             this.mnu_SearchHD.Name = "mnu_SearchHD";
-            this.mnu_SearchHD.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Alt | System.Windows.Forms.Keys.D3)));
-            this.mnu_SearchHD.Size = new System.Drawing.Size(267, 32);
+            this.mnu_SearchHD.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Alt | System.Windows.Forms.Keys.D2)));
+            this.mnu_SearchHD.Size = new System.Drawing.Size(248, 32);
             this.mnu_SearchHD.Text = "Hoá Đơn";
             this.mnu_SearchHD.Click += new System.EventHandler(this.mnu_SearchHD_Click);
             // 
@@ -245,10 +227,18 @@
             this.mnu_ThongKeNV.Text = "Nhân Viên";
             this.mnu_ThongKeNV.Click += new System.EventHandler(this.mnu_ThongKeNV_Click);
             // 
+            // mnu_DangXuat
+            // 
+            this.mnu_DangXuat.Alignment = System.Windows.Forms.ToolStripItemAlignment.Right;
+            this.mnu_DangXuat.Font = new System.Drawing.Font("Segoe UI Semibold", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.mnu_DangXuat.Name = "mnu_DangXuat";
+            this.mnu_DangXuat.Size = new System.Drawing.Size(119, 32);
+            this.mnu_DangXuat.Text = "Đăng xuất";
+            this.mnu_DangXuat.Click += new System.EventHandler(this.mnu_DangXuat_Click);
+            // 
             // frm_Menu
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
-            this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.None;
             this.ClientSize = new System.Drawing.Size(1737, 909);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.menuStrip1);
@@ -256,6 +246,8 @@
             this.MainMenuStrip = this.menuStrip1;
             this.Name = "frm_Menu";
             this.Text = "frm_Menu";
+            this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
+            this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.frm_Menu_FormClosing);
             this.Load += new System.EventHandler(this.frm_Menu_Load);
             this.menuStrip1.ResumeLayout(false);
             this.menuStrip1.PerformLayout();
@@ -276,10 +268,8 @@
         private System.Windows.Forms.ToolStripMenuItem mnu_Size;
         private System.Windows.Forms.ToolStripMenuItem mnu_NhanVien;
         private System.Windows.Forms.ToolStripMenuItem mnu_SanPham;
-        private System.Windows.Forms.ToolStripMenuItem mnu_KhachHang;
         private System.Windows.Forms.ToolStripMenuItem mnu_HoaDon;
         private System.Windows.Forms.ToolStripMenuItem mnu_TimKiem;
-        private System.Windows.Forms.ToolStripMenuItem mnu_SearchKH;
         private System.Windows.Forms.ToolStripMenuItem mnu_SearchSP;
         private System.Windows.Forms.ToolStripMenuItem mnu_SearchHD;
         private System.Windows.Forms.ToolStripMenuItem mnu_ThongKe;
@@ -287,5 +277,6 @@
         private System.Windows.Forms.ToolStripMenuItem mnu_ThongKeThang;
         private System.Windows.Forms.ToolStripMenuItem mnu_ThongKeNam;
         private System.Windows.Forms.ToolStripMenuItem mnu_ThongKeNV;
+        private System.Windows.Forms.ToolStripMenuItem mnu_DangXuat;
     }
 }
