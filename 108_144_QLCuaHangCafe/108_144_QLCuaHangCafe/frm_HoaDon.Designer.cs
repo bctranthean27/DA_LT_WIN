@@ -31,6 +31,13 @@
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frm_HoaDon));
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.dgv_DanhSach = new System.Windows.Forms.DataGridView();
+            this.MaHD = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.NgayLap = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.MaLoaiHD = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.MaNV = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.TenKhachHang = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.TongTien = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.TrangThai = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.label6 = new System.Windows.Forms.Label();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
             this.txt_tenKH = new System.Windows.Forms.TextBox();
@@ -78,13 +85,6 @@
             this.printDocument1 = new System.Drawing.Printing.PrintDocument();
             this.txt_TongTien = new System.Windows.Forms.TextBox();
             this.lbl = new System.Windows.Forms.Label();
-            this.MaHD = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.NgayLap = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.MaLoaiHD = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.MaNV = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.TenKhachHang = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.TongTien = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.TrangThai = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgv_DanhSach)).BeginInit();
             this.groupBox2.SuspendLayout();
@@ -100,7 +100,7 @@
             this.groupBox1.ForeColor = System.Drawing.Color.Black;
             this.groupBox1.Location = new System.Drawing.Point(0, 302);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(622, 435);
+            this.groupBox1.Size = new System.Drawing.Size(622, 355);
             this.groupBox1.TabIndex = 115;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Danh Sách Hoá Đơn";
@@ -124,8 +124,66 @@
             this.dgv_DanhSach.ReadOnly = true;
             this.dgv_DanhSach.RowHeadersWidth = 50;
             this.dgv_DanhSach.RowTemplate.Height = 24;
-            this.dgv_DanhSach.Size = new System.Drawing.Size(616, 406);
+            this.dgv_DanhSach.Size = new System.Drawing.Size(616, 326);
             this.dgv_DanhSach.TabIndex = 0;
+            // 
+            // MaHD
+            // 
+            this.MaHD.DataPropertyName = "MaHD";
+            this.MaHD.HeaderText = "Mã Hoá Đơn";
+            this.MaHD.MinimumWidth = 6;
+            this.MaHD.Name = "MaHD";
+            this.MaHD.ReadOnly = true;
+            // 
+            // NgayLap
+            // 
+            this.NgayLap.DataPropertyName = "NgayLap";
+            this.NgayLap.HeaderText = "Ngày Lập";
+            this.NgayLap.MinimumWidth = 6;
+            this.NgayLap.Name = "NgayLap";
+            this.NgayLap.ReadOnly = true;
+            // 
+            // MaLoaiHD
+            // 
+            this.MaLoaiHD.DataPropertyName = "MaLoaiHD";
+            this.MaLoaiHD.HeaderText = "Loại Hoá Đơn";
+            this.MaLoaiHD.MinimumWidth = 6;
+            this.MaLoaiHD.Name = "MaLoaiHD";
+            this.MaLoaiHD.ReadOnly = true;
+            this.MaLoaiHD.Visible = false;
+            // 
+            // MaNV
+            // 
+            this.MaNV.DataPropertyName = "MaNV";
+            this.MaNV.HeaderText = "Mã Nhân Viên";
+            this.MaNV.MinimumWidth = 6;
+            this.MaNV.Name = "MaNV";
+            this.MaNV.ReadOnly = true;
+            // 
+            // TenKhachHang
+            // 
+            this.TenKhachHang.DataPropertyName = "TenKhachHang";
+            this.TenKhachHang.HeaderText = "Tên Khách Hàng";
+            this.TenKhachHang.MinimumWidth = 6;
+            this.TenKhachHang.Name = "TenKhachHang";
+            this.TenKhachHang.ReadOnly = true;
+            // 
+            // TongTien
+            // 
+            this.TongTien.DataPropertyName = "TongTien";
+            this.TongTien.HeaderText = "Tổng Tiền";
+            this.TongTien.MinimumWidth = 6;
+            this.TongTien.Name = "TongTien";
+            this.TongTien.ReadOnly = true;
+            // 
+            // TrangThai
+            // 
+            this.TrangThai.DataPropertyName = "TrangThai";
+            this.TrangThai.HeaderText = "Trạng Thái";
+            this.TrangThai.MinimumWidth = 6;
+            this.TrangThai.Name = "TrangThai";
+            this.TrangThai.ReadOnly = true;
+            this.TrangThai.Visible = false;
             // 
             // label6
             // 
@@ -216,6 +274,7 @@
             // 
             // cbo_NhanVien
             // 
+            this.cbo_NhanVien.BackColor = System.Drawing.Color.White;
             this.cbo_NhanVien.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cbo_NhanVien.Font = new System.Drawing.Font("Segoe UI Semibold", 13.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.cbo_NhanVien.FormattingEnabled = true;
@@ -226,7 +285,6 @@
             this.cbo_NhanVien.Name = "cbo_NhanVien";
             this.cbo_NhanVien.Size = new System.Drawing.Size(295, 39);
             this.cbo_NhanVien.TabIndex = 127;
-            this.cbo_NhanVien.SelectedIndexChanged += new System.EventHandler(this.cbo_NhanVien_SelectedIndexChanged);
             // 
             // lbl_nhanVien
             // 
@@ -545,7 +603,7 @@
             this.groupBox4.ForeColor = System.Drawing.Color.Black;
             this.groupBox4.Location = new System.Drawing.Point(628, 302);
             this.groupBox4.Name = "groupBox4";
-            this.groupBox4.Size = new System.Drawing.Size(886, 435);
+            this.groupBox4.Size = new System.Drawing.Size(886, 355);
             this.groupBox4.TabIndex = 116;
             this.groupBox4.TabStop = false;
             this.groupBox4.Text = "Danh Sách Chi Tiết";
@@ -570,7 +628,7 @@
             this.dgv_CTHD.ReadOnly = true;
             this.dgv_CTHD.RowHeadersWidth = 50;
             this.dgv_CTHD.RowTemplate.Height = 24;
-            this.dgv_CTHD.Size = new System.Drawing.Size(880, 406);
+            this.dgv_CTHD.Size = new System.Drawing.Size(880, 326);
             this.dgv_CTHD.TabIndex = 0;
             this.dgv_CTHD.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgv_CTHD_CellClick);
             // 
@@ -655,7 +713,7 @@
             // txt_TongTien
             // 
             this.txt_TongTien.Font = new System.Drawing.Font("Segoe UI Semibold", 13.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txt_TongTien.Location = new System.Drawing.Point(1220, 753);
+            this.txt_TongTien.Location = new System.Drawing.Point(1222, 669);
             this.txt_TongTien.Name = "txt_TongTien";
             this.txt_TongTien.ReadOnly = true;
             this.txt_TongTien.Size = new System.Drawing.Size(292, 38);
@@ -668,69 +726,11 @@
             this.lbl.AutoSize = true;
             this.lbl.Font = new System.Drawing.Font("Segoe UI Semibold", 13.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lbl.ForeColor = System.Drawing.Color.Black;
-            this.lbl.Location = new System.Drawing.Point(1072, 753);
+            this.lbl.Location = new System.Drawing.Point(1074, 669);
             this.lbl.Name = "lbl";
             this.lbl.Size = new System.Drawing.Size(113, 31);
             this.lbl.TabIndex = 146;
             this.lbl.Text = "Tổng tiền";
-            // 
-            // MaHD
-            // 
-            this.MaHD.DataPropertyName = "MaHD";
-            this.MaHD.HeaderText = "Mã Hoá Đơn";
-            this.MaHD.MinimumWidth = 6;
-            this.MaHD.Name = "MaHD";
-            this.MaHD.ReadOnly = true;
-            // 
-            // NgayLap
-            // 
-            this.NgayLap.DataPropertyName = "NgayLap";
-            this.NgayLap.HeaderText = "Ngày Lập";
-            this.NgayLap.MinimumWidth = 6;
-            this.NgayLap.Name = "NgayLap";
-            this.NgayLap.ReadOnly = true;
-            // 
-            // MaLoaiHD
-            // 
-            this.MaLoaiHD.DataPropertyName = "MaLoaiHD";
-            this.MaLoaiHD.HeaderText = "Loại Hoá Đơn";
-            this.MaLoaiHD.MinimumWidth = 6;
-            this.MaLoaiHD.Name = "MaLoaiHD";
-            this.MaLoaiHD.ReadOnly = true;
-            this.MaLoaiHD.Visible = false;
-            // 
-            // MaNV
-            // 
-            this.MaNV.DataPropertyName = "MaNV";
-            this.MaNV.HeaderText = "Mã Nhân Viên";
-            this.MaNV.MinimumWidth = 6;
-            this.MaNV.Name = "MaNV";
-            this.MaNV.ReadOnly = true;
-            // 
-            // TenKhachHang
-            // 
-            this.TenKhachHang.DataPropertyName = "TenKhachHang";
-            this.TenKhachHang.HeaderText = "Tên Khách Hàng";
-            this.TenKhachHang.MinimumWidth = 6;
-            this.TenKhachHang.Name = "TenKhachHang";
-            this.TenKhachHang.ReadOnly = true;
-            // 
-            // TongTien
-            // 
-            this.TongTien.DataPropertyName = "TongTien";
-            this.TongTien.HeaderText = "Tổng Tiền";
-            this.TongTien.MinimumWidth = 6;
-            this.TongTien.Name = "TongTien";
-            this.TongTien.ReadOnly = true;
-            // 
-            // TrangThai
-            // 
-            this.TrangThai.DataPropertyName = "TrangThai";
-            this.TrangThai.HeaderText = "Trạng Thái";
-            this.TrangThai.MinimumWidth = 6;
-            this.TrangThai.Name = "TrangThai";
-            this.TrangThai.ReadOnly = true;
-            this.TrangThai.Visible = false;
             // 
             // frm_HoaDon
             // 
