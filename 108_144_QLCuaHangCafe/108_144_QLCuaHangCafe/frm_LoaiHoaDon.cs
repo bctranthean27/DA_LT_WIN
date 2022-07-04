@@ -25,10 +25,10 @@ namespace _108_144_QLCuaHangCafe
         private void frm_LoaiHoaDon_Load(object sender, EventArgs e)
         {
             XuLiTextBox(true);
-            XuLiButton(true);
+            XuLiButton(true, false, false, false);
+            dgv_DanhSach.Enabled = true;
             loadData_DataGrid(dgv_DanhSach, "select * from LoaiHoaDon where TrangThai='1'");
-            cbo_TrangThai.SelectedIndex = 0;
-            cbo_TrangThai.DropDownStyle = ComboBoxStyle.DropDownList;
+
         }
         void loadData_DataGrid(DataGridView d, string sql)
         {
@@ -38,17 +38,14 @@ namespace _108_144_QLCuaHangCafe
         }
         void XuLiTextBox(Boolean t)
         {
-            txt_MaLoaiHD.ReadOnly = t;
             txt_TenLoaiHD.ReadOnly = t;
-            cbo_TrangThai.Enabled = !t;
         }
-        void XuLiButton(Boolean t)
+        void XuLiButton(bool key_them, bool key_xoa, bool key_sua, bool key_luu)
         {
-            btn_Them.Enabled = t;
-            btn_Sua.Enabled = t;
-            btn_Xoa.Enabled = t;
-            btn_Luu.Enabled = !t;
-            dgv_DanhSach.Enabled = t;
+            btn_Them.Enabled = key_them;
+            btn_Xoa.Enabled = key_xoa;
+            btn_Sua.Enabled = key_sua;
+            btn_Luu.Enabled = key_luu;
         }
         string autoCode(DataSet ds, string pri)
         {
@@ -64,15 +61,15 @@ namespace _108_144_QLCuaHangCafe
             clearTextbox();
             txt_MaLoaiHD.Text = autoCode(ds, "K");
             XuLiTextBox(false);
-            XuLiButton(false);
-            txt_MaLoaiHD.ReadOnly = true;
+            XuLiButton(false,false, false, true);
+            dgv_DanhSach.Enabled = false;
             flag = 1;
         }
         private void btn_Sua_Click(object sender, EventArgs e)
         {
             XuLiTextBox(false);
-            XuLiButton(false);
-            txt_MaLoaiHD.ReadOnly = true;
+            XuLiButton(false, false, false, true);
+            dgv_DanhSach.Enabled = false;
             flag = 2;
         }
         void them(object sender, EventArgs e, string m1, string m2)
@@ -137,10 +134,9 @@ namespace _108_144_QLCuaHangCafe
         private void btn_Luu_Click(object sender, EventArgs e)
         {
             XuLiTextBox(true);
-            XuLiButton(true);
+            XuLiButton(true, false, false, false);
             string m1 = txt_MaLoaiHD.Text;
             string m2 = txt_TenLoaiHD.Text;
-            string m3 = cbo_TrangThai.SelectedItem.ToString();
             switch (flag)
             {
                 case 1:
@@ -148,7 +144,7 @@ namespace _108_144_QLCuaHangCafe
                     them(sender, e, m1, m2);
                     break;
                 case 2:
-                    sua(sender, e, m1, m2, m3);
+                    sua(sender, e, m1, m2, "1");
                     break;
 
             }
@@ -191,7 +187,6 @@ namespace _108_144_QLCuaHangCafe
                 {
                     txt_MaLoaiHD.Text = row.Cells["MaLoaiHD"].Value.ToString();
                     txt_TenLoaiHD.Text = row.Cells["TenLoaiHD"].Value.ToString();
-                    loadData_cboFromList(dt, cbo_TrangThai, "TrangThai");
                 }
             }
         }
@@ -201,18 +196,18 @@ namespace _108_144_QLCuaHangCafe
             int vt = dgv_DanhSach.CurrentCell.RowIndex;
             hienThiTextBox(ds.Tables[0], vt);
             Old_Value = txt_MaLoaiHD.Text; // lấy giá trị cũ để sửa đổi
+            XuLiButton(true, true, true, false);
         }
         void clearTextbox()
         {
             txt_MaLoaiHD.Text = "";
             txt_TenLoaiHD.Text = "";
-            cbo_TrangThai.SelectedIndex = 0;
         }
 
         private void btn_Xoa_Click(object sender, EventArgs e)
         {
             sua(sender, e);
-            clearTextbox();
+            frm_LoaiHoaDon_Load(sender, e);
             //try
             //{
             //    if (txt_MaLoaiHD.Text == "")
@@ -242,18 +237,9 @@ namespace _108_144_QLCuaHangCafe
             if (dgv_DanhSach.CurrentRow != null)
             {
                 DataGridViewRow row = dgv_DanhSach.CurrentRow;//get row at select row
-                string val1 = row.Cells["TenLoaiHD"].Value == DBNull.Value ? "" : row.Cells["TenLoaiHD"].Value.ToString();
-                string val2 = row.Cells["TrangThai"].Value == DBNull.Value ? "" : row.Cells["TrangThai"].Value.ToString();
-                string ma = row.Cells["MaLoaiHD"].Value == DBNull.Value ? "" : row.Cells["MaLoaiHD"].Value.ToString();
-                if (row.Cells["MaLoaiHD"].Value == DBNull.Value)
-                {
-                    them(sender, null, autoCode(ds, "K"), val1);
-                }
-                else
-                {
-                    sua(sender, null, ma, val1, val2);
-                }
-
+                string val1 = row.Cells["TenLoaiHD"].Value.ToString() ;
+                string ma = row.Cells["MaLoaiHD"].Value.ToString();
+                sua(sender, null, ma, val1, "1");
             }
         }
     }

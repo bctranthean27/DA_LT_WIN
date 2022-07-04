@@ -23,26 +23,21 @@ namespace _108_144_QLCuaHangCafe
         }
         void XuLiTextBox(Boolean t)
         {
-            txt_MaLoaiSP.ReadOnly = t;
             txt_TenLoaiSP.ReadOnly = t;
-            cbo_TrangThai.Enabled = !t;
         }
-        void XuLiButton(Boolean t)
+        void XuLiButton(bool key_them, bool key_xoa, bool key_sua, bool key_luu)
         {
-            btn_Them.Enabled = t;
-            btn_Sua.Enabled = t;
-            btn_Xoa.Enabled = t;
-            btn_Luu.Enabled = !t;
-            dgv_DanhSach.Enabled = t;
+            btn_Them.Enabled = key_them;
+            btn_Xoa.Enabled = key_xoa;
+            btn_Sua.Enabled = key_sua;
+            btn_Luu.Enabled = key_luu;
         }
 
         private void frm_LoaiSanPham_Load(object sender, EventArgs e)
         {
             XuLiTextBox(true);
-            XuLiButton(true);
+            XuLiButton(true, false, false, false);
             loadData_DataGrid(dgv_DanhSach, "select * from LoaiSanPham where TrangThai='1'");
-            cbo_TrangThai.SelectedIndex = 0;
-            cbo_TrangThai.DropDownStyle = ComboBoxStyle.DropDownList;
         }
         void loadData_DataGrid(DataGridView d, string sql)
         {
@@ -65,17 +60,17 @@ namespace _108_144_QLCuaHangCafe
             clearTextbox();
             txt_MaLoaiSP.Text = autoCode(ds,"L");
             XuLiTextBox(false);
-            XuLiButton(false);
-            txt_MaLoaiSP.ReadOnly = true;
+            XuLiButton(false,false,false,true);
+            dgv_DanhSach.Enabled = false;
             flag = 1;
         }
         private void btn_Sua_Click(object sender, EventArgs e)
         {
             XuLiTextBox(false);
-            XuLiButton(false);
-            
+            XuLiButton(false, false, false, true);
+            dgv_DanhSach.Enabled = false;
             flag = 2;
-            txt_MaLoaiSP.ReadOnly = true;
+
         }
         void them(object sender, EventArgs e, string m1, string m2, string m3 = "1")
         {
@@ -136,22 +131,20 @@ namespace _108_144_QLCuaHangCafe
         }
         private void btn_Luu_Click(object sender, EventArgs e)
         {
-            XuLiTextBox(true);
-            XuLiButton(true);
             string m1 = txt_MaLoaiSP.Text;
             string m2 = txt_TenLoaiSP.Text;
-            string m3 = cbo_TrangThai.SelectedItem.ToString();
             switch (flag)
             {
                 case 1:
                     clearTextbox();
-                    them(sender, e, m1, m2, m3);
+                    them(sender, e, m1, m2, "1");
                     break;
                 case 2:
-                    sua(sender, e, m1, m2, m3);
+                    sua(sender, e, m1, m2, "1");
                     break;
 
             }
+            dgv_DanhSach.Enabled = true;
         }
         void loadData_cboFromList(DataTable dt, ComboBox cbo, string disMember)
         {
@@ -174,64 +167,28 @@ namespace _108_144_QLCuaHangCafe
         }
         void hienThiTextBox(DataTable dt, int vt)
         {
-            if (dgv_DanhSach.CurrentRow != null)
-            {
-                DataGridViewRow row = dgv_DanhSach.CurrentRow;
-                if (row.Cells["MaLoai"].Value == DBNull.Value)
-                {
-                    txt_MaLoaiSP.Text = "";
-                    txt_TenLoaiSP.Text = "";
-                    btn_Sua.Enabled = false;
-                    btn_Xoa.Enabled = false;
-                }
-                else
-                {
-                    txt_MaLoaiSP.Text = row.Cells["MaLoai"].Value.ToString();
-                    txt_TenLoaiSP.Text = row.Cells["TenLoai"].Value.ToString();
-                    loadData_cboFromList(dt, cbo_TrangThai, "TrangThai");
-                }
-            }
+            DataGridViewRow row = dgv_DanhSach.CurrentRow;
+            txt_MaLoaiSP.Text = row.Cells["MaLoai"].Value.ToString();
+            txt_TenLoaiSP.Text = row.Cells["TenLoai"].Value.ToString();
         }
         private void dgv_DanhSach_CellClick(object sender, DataGridViewCellEventArgs e)
         {
-            
-
-                ds = c.LayDuLieu("select * from LoaiSanPham where TrangThai = '1'");
-                int vt = dgv_DanhSach.CurrentCell.RowIndex;
-                hienThiTextBox(ds.Tables[0], vt);
-                Old_Value = txt_MaLoaiSP.Text; // lấy giá trị cũ để sửa đổi
-            
-
-
+            ds = c.LayDuLieu("select * from LoaiSanPham where TrangThai = '1'");
+            int vt = dgv_DanhSach.CurrentCell.RowIndex;
+            hienThiTextBox(ds.Tables[0], vt);
+            Old_Value = txt_MaLoaiSP.Text; // lấy giá trị cũ để sửa đổi
+            XuLiButton(false, true, true, false);
         }
         void clearTextbox()
         {
             txt_MaLoaiSP.Text = "";
             txt_TenLoaiSP.Text = "";
-            cbo_TrangThai.SelectedIndex = 0;
         }
 
         private void btn_Xoa_Click(object sender, EventArgs e)
         {
             sua(sender, e);
-            clearTextbox();
-            //try
-            //{
-            //    if (txt_MaLoaiSP.Text == "")
-            //        throw new Exception("Lỗi cập nhật\nHãy chắc chắn bạn chọn đúng cột muốn xoá");
-            //    string sql = "DELETE from LoaiSanPham where MaLoai='" + Old_Value + "'";
-            //    if (c.CapNhatDulieu(sql) > 0)
-            //    {
-            //        MessageBox.Show("Cập nhật thành công", "Thông báo", MessageBoxButtons.OK);
-            //        frm_LoaiSanPham_Load(sender, e);
-            //        clearTextbox();
-            //    }
-            //}
-            //catch (Exception err)
-            //{
-            //    MessageBox.Show(err.Message, "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
-            //    frm_LoaiSanPham_Load(sender, e);
-            //}
+            frm_LoaiSanPham_Load(sender, e);
         }
 
         private void btn_Exit_Click(object sender, EventArgs e)
@@ -244,18 +201,9 @@ namespace _108_144_QLCuaHangCafe
             if (dgv_DanhSach.CurrentRow != null)
             {
                 DataGridViewRow row = dgv_DanhSach.CurrentRow;//get row at select row
-                string val1 = row.Cells["TenLoai"].Value == DBNull.Value ? "" : row.Cells["TenLoai"].Value.ToString();
-                string val2 = row.Cells["TrangThai"].Value == DBNull.Value ? "" : row.Cells["TrangThai"].Value.ToString();
-                string ma = row.Cells["MaLoai"].Value == DBNull.Value ? "" : row.Cells["MaLoai"].Value.ToString();
-                if (row.Cells["MaLoai"].Value == DBNull.Value)
-                {
-                    them(sender, null, autoCode(ds, "L"), val1);
-                }
-                else
-                {
-                    sua(sender, null, ma, val1, val2);
-                }
-
+                string val1 = row.Cells["TenLoai"].Value.ToString();
+                string ma = row.Cells["MaLoai"].Value.ToString();
+                sua(sender, null, ma, val1, "1");
             }
         }
     }
