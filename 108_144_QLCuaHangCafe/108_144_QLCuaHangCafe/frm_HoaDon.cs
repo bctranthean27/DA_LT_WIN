@@ -114,7 +114,6 @@ namespace _108_144_QLCuaHangCafe
 
         private void btn_XuatHD_Click(object sender, EventArgs e)
         {
-
             if (dgv_CTHD.Rows.Count == 0)
                 MessageBox.Show("Vui lòng không xuất hoá đơn trống", "Lưu ý", MessageBoxButtons.OK);
             else
@@ -350,18 +349,29 @@ namespace _108_144_QLCuaHangCafe
         private void printDocument1_PrintPage(object sender, System.Drawing.Printing.PrintPageEventArgs e)
         {
             if (dgv_DanhSach.Rows.Count <= 0) return;
-            e.Graphics.DrawString("Ngày: " + DateTime.Now, new Font("Arial", 16, FontStyle.Regular), Brushes.Black, new Point(10, 10));
-            e.Graphics.DrawString("Nhân Viên Lập: " + cbo_NhanVien.Text, new Font("Arial", 16, FontStyle.Regular), Brushes.Black, new Point(10, 40));
-            e.Graphics.DrawString("-----------------------------------------------------------------------------------------------------------------", new Font("Arial", 16, FontStyle.Regular), Brushes.Black, new Point(10, 80));
-            e.Graphics.DrawString("Tên Sản Phẩm", new Font("Arial", 16, FontStyle.Regular), Brushes.Black, new Point(10, 100));
-            e.Graphics.DrawString("Số Lượng", new Font("Arial", 16, FontStyle.Regular), Brushes.Black, new Point(180, 100));
-            e.Graphics.DrawString("Size", new Font("Arial", 16, FontStyle.Regular), Brushes.Black, new Point(300, 100));
-            e.Graphics.DrawString("Đơn Giá", new Font("Arial", 16, FontStyle.Regular), Brushes.Black, new Point(420, 100));
-            e.Graphics.DrawString("Khuyến Mãi", new Font("Arial", 16, FontStyle.Regular), Brushes.Black, new Point(530, 100));
-            e.Graphics.DrawString("Thành Tiền", new Font("Arial", 16, FontStyle.Regular), Brushes.Black, new Point(680, 100));
-            e.Graphics.DrawString("-----------------------------------------------------------------------------------------------------------------", new Font("Arial", 16, FontStyle.Regular), Brushes.Black, new Point(10, 130));
+            double tongTien = double.Parse(dgv_DanhSach.Rows[0].Cells["TongTien"].Value.ToString());
+            // thêm 1 textbox nhận vào tiền khách rồi sửa lại chỗ này
+            double tienNhan = double.Parse(dgv_DanhSach.Rows[0].Cells["TongTien"].Value.ToString());
+            double tienTra = tongTien - tienNhan;
 
-            int yPos = 160;
+            e.Graphics.DrawString("Ngày: " + DateTime.Now, new Font("Arial", 12, FontStyle.Regular), Brushes.Black, new Point(10, 10));
+            e.Graphics.DrawString("Nhân Viên Lập: " + cbo_NhanVien.Text, new Font("Arial", 12, FontStyle.Regular), Brushes.Black, new Point(10, 40));
+
+            e.Graphics.DrawString("BLF COFFEE", new Font("Arial", 26, FontStyle.Regular), Brushes.Black, new Point(300, 80));
+            e.Graphics.DrawString("HÓA ĐƠN BÁN HÀNG", new Font("Arial", 26, FontStyle.Regular), Brushes.Black, new Point(220, 120));
+
+            e.Graphics.DrawString("Tên khách hàng: " + dgv_DanhSach.Rows[0].Cells["TenKhachHang"].Value.ToString(), new Font("Arial", 12, FontStyle.Regular), Brushes.Black, new Point(10, 160));
+
+            e.Graphics.DrawString("-----------------------------------------------------------------------------------------------------------------", new Font("Arial", 16, FontStyle.Regular), Brushes.Black, new Point(10, 180));
+            e.Graphics.DrawString("Tên Sản Phẩm", new Font("Arial", 12, FontStyle.Regular), Brushes.Black, new Point(10, 200));
+            e.Graphics.DrawString("Số Lượng", new Font("Arial", 12, FontStyle.Regular), Brushes.Black, new Point(180, 200));
+            e.Graphics.DrawString("Size", new Font("Arial", 12, FontStyle.Regular), Brushes.Black, new Point(300, 200));
+            e.Graphics.DrawString("Đơn Giá", new Font("Arial", 12, FontStyle.Regular), Brushes.Black, new Point(420, 200));
+            e.Graphics.DrawString("Khuyến Mãi", new Font("Arial", 12, FontStyle.Regular), Brushes.Black, new Point(530, 200));
+            e.Graphics.DrawString("Thành Tiền", new Font("Arial", 12, FontStyle.Regular), Brushes.Black, new Point(680, 200));
+            e.Graphics.DrawString("-----------------------------------------------------------------------------------------------------------------", new Font("Arial", 16, FontStyle.Regular), Brushes.Black, new Point(10, 220));
+
+            int yPos = 240;
 
             for (int i = 0; i < dgv_CTHD.Rows.Count; i++)
             {
@@ -369,16 +379,18 @@ namespace _108_144_QLCuaHangCafe
                 DataSet getTenSanPham = c.LayDuLieu("Select * from SanPham where MaSP = '" + dgv_CTHD.Rows[i].Cells["MaSP"].Value.ToString() + "'");
                 string size = getSize.Tables[0].Rows[0]["TenSize"].ToString();
                 string tenSP = getTenSanPham.Tables[0].Rows[0]["TenSP"].ToString();
-                e.Graphics.DrawString(tenSP, new Font("Arial", 16, FontStyle.Regular), Brushes.Black, new Point(10, yPos));
-                e.Graphics.DrawString(dgv_CTHD.Rows[i].Cells["SoLuong"].Value.ToString(), new Font("Arial", 16, FontStyle.Regular), Brushes.Black, new Point(200, yPos));
-                e.Graphics.DrawString(size, new Font("Arial", 16, FontStyle.Regular), Brushes.Black, new Point(300, yPos));
-                e.Graphics.DrawString(dgv_CTHD.Rows[i].Cells["DonGia"].Value.ToString(), new Font("Arial", 16, FontStyle.Regular), Brushes.Black, new Point(420, yPos));
-                e.Graphics.DrawString(dgv_CTHD.Rows[i].Cells["KhuyenMai"].Value.ToString() + "%", new Font("Arial", 16, FontStyle.Regular), Brushes.Black, new Point(530, yPos));
-                e.Graphics.DrawString(dgv_CTHD.Rows[i].Cells["ThanhTien"].Value.ToString(), new Font("Arial", 16, FontStyle.Regular), Brushes.Black, new Point(680, yPos));
+                e.Graphics.DrawString(tenSP, new Font("Arial", 12, FontStyle.Regular), Brushes.Black, new Point(10, yPos));
+                e.Graphics.DrawString(dgv_CTHD.Rows[i].Cells["SoLuong"].Value.ToString(), new Font("Arial", 12, FontStyle.Regular), Brushes.Black, new Point(200, yPos));
+                e.Graphics.DrawString(size, new Font("Arial", 12, FontStyle.Regular), Brushes.Black, new Point(300, yPos));
+                e.Graphics.DrawString(dgv_CTHD.Rows[i].Cells["DonGia"].Value.ToString(), new Font("Arial", 12, FontStyle.Regular), Brushes.Black, new Point(420, yPos));
+                e.Graphics.DrawString(dgv_CTHD.Rows[i].Cells["KhuyenMai"].Value.ToString() + "%", new Font("Arial", 12, FontStyle.Regular), Brushes.Black, new Point(530, yPos));
+                e.Graphics.DrawString(dgv_CTHD.Rows[i].Cells["ThanhTien"].Value.ToString(), new Font("Arial", 12, FontStyle.Regular), Brushes.Black, new Point(680, yPos));
                 yPos += 30;
             }
             e.Graphics.DrawString("-----------------------------------------------------------------------------------------------------------------", new Font("Arial", 16, FontStyle.Regular), Brushes.Black, new Point(10, yPos));
-            e.Graphics.DrawString("Tổng phải trả: " + dgv_DanhSach.Rows[0].Cells["TongTien"].Value.ToString() + " VNĐ", new Font("Arial", 16, FontStyle.Regular), Brushes.Black, new Point(500, yPos + 30));
+            e.Graphics.DrawString("Tổng phải trả: " + tongTien.ToString() + " VNĐ", new Font("Arial", 12, FontStyle.Regular), Brushes.Black, new Point(500, yPos + 30));
+            e.Graphics.DrawString("Tiền nhận từ khách: " + tienNhan.ToString() + " VNĐ", new Font("Arial", 12, FontStyle.Regular), Brushes.Black, new Point(500, yPos + 60));
+            e.Graphics.DrawString("Tiền trả khách: " + tienTra.ToString() + " VNĐ", new Font("Arial", 12, FontStyle.Regular), Brushes.Black, new Point(500, yPos + 90));
         }
         void loadData_cboFromList(ComboBox cbo, string disMember)
         {
