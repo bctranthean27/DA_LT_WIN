@@ -10,32 +10,34 @@ using System.Windows.Forms;
 
 namespace _108_144_QLCuaHangCafe
 {
-    public partial class frm_HoaDon : Form
+    public partial class frm_HoaDonNhap : Form
     {
-        cls_QLCHCAFE c = new cls_QLCHCAFE();
-        DataSet ds = new DataSet();
-        int flag = 0;
-        public string manv;
-        public frm_HoaDon()
+        public frm_HoaDonNhap()
         {
             InitializeComponent();
         }
-        public frm_HoaDon(string manv)
+        public frm_HoaDonNhap(string manv)
         {
             this.manv = manv;
             InitializeComponent();
         }
-        
-        private void frm_HoaDon_Load(object sender, EventArgs e)
+        private void frm_HoaDonNhap_Load(object sender, EventArgs e)
         {
-            XuLiTextBox_hd(false);
-            XuLiButton_ct(false, false, false, false);
+            XuLiButton_ct(false, false, false);
             XuLiTextBox_ct(false);
             //loadData_DataGrid(dgv_DanhSach, "select * from HoaDon where TrangThai='1'");
             loadNhanVien(sender, e);
             loadData_cbo(cbo_SanPham, "select MaSP,TenSP from SanPham where TrangThai='1'", "MaSP", "TenSP");
             loadData_cbo(cbo_Size, "select MaSize,TenSize from Size where TrangThai='1'", "MaSize", "TenSize");
         }
+        cls_QLCHCAFE c = new cls_QLCHCAFE();
+        DataSet ds = new DataSet();
+        int flag = 0;
+        public string manv;
+        
+        
+
+
         void loadNhanVien(object sender, EventArgs e)
         {
             DataSet dl = c.LayDuLieu("select MaNV,TenNV from NhanVien where MaNV='" + manv + "'");
@@ -59,23 +61,18 @@ namespace _108_144_QLCuaHangCafe
                 cbo.DisplayMember = disMember;
             }
         }
-        void XuLiButton_ct(bool key_them, bool key_xoa, bool key_sua, bool key_sp)
+        void XuLiButton_ct(bool key_them, bool key_xoa, bool key_sua)
         {
             btn_ThemCT.Enabled = key_them;
             btn_LuuCT.Enabled = !key_them;
             btn_XoaCT.Enabled = key_xoa;
             btn_SuaCT.Enabled = key_sua;
-            btn_tangSL.Enabled = btn_giamSL.Enabled = key_sp;
-            btn_GiamKM.Enabled = btn_themKM.Enabled = key_sp;
-        }
-        void XuLiTextBox_hd(bool key)
-        {
-            txt_tenKH.ReadOnly = !key;
         }
         void XuLiTextBox_ct(bool key)
         {
             cbo_SanPham.Enabled = key;
             cbo_Size.Enabled = key;
+            txt_SoLuong.Enabled = key;
         }
         string autoCode(string pri)
         {
@@ -95,70 +92,37 @@ namespace _108_144_QLCuaHangCafe
             string NgayDayDu = ngay + "/" + thang + "/" + nam;
             return NgayDayDu;
         }
-
-        void clearTextbox()
-        {
-            txt_MaHD.Text = "";
-        }
         private void btn_ThemHD_Click(object sender, EventArgs e)
         {
-            clearTextbox();
             btn_ThemHD.Enabled = false;
             txt_MaHD.Text = autoCode("P");
             AddRowHoaDon();
             btn_Reset.Enabled = true;
             btn_ThemCT.Enabled = true;
-            XuLiTextBox_hd(true);
         }
-
-
         private void btn_XuatHD_Click(object sender, EventArgs e)
         {
-            
+
             if (dgv_CTHD.Rows.Count == 0)
                 MessageBox.Show("Vui lòng không xuất hoá đơn trống", "Lưu ý", MessageBoxButtons.OK);
             else
             {
-                if (txt_TienKhachGui.Text == "0")
-                    MessageBox.Show("Vui lòng nhập tiền khách gửi", "Lưu ý", MessageBoxButtons.OK);
-                else
-                {
-                    if (ConDuSoLuong())
-                    {
-                        LuuVeSQL(sender, e);
-                        printPreviewDialog1.Document = printDocument1;
-                        printPreviewDialog1.ShowDialog();
-                        frm_HoaDon_Load(sender, e);
-                    }
-                    else MessageBox.Show("Có chi tiết trong danh sách không còn đủ số lượng, vui lòng chọn sản phẩm khác", "Lưu ý", MessageBoxButtons.OK);
-                }
+                LuuVeSQL(sender, e);
+                printPreviewDialog1.Document = printDocument1;
+                printPreviewDialog1.ShowDialog();
+                frm_HoaDonNhap_Load(sender, e);
             }
         }
-        void AddRowHoaDon(string tenKH = "Unknown")
+        void AddRowHoaDon()
         {
             string maHD = autoCode("P");
-
-            string tongtien = "0";
-            string trangthai = "1";
-            dgv_DanhSach.Rows.Add(maHD, NgayHienTai(), "K01" , manv, tenKH, tongtien, trangthai);
-            XuLiButton_ct(true, false, false, false);
-        }
-        private void txt_tenKH_TextChanged(object sender, EventArgs e)
-        {
-            DataGridViewRow row = new DataGridViewRow();
-            if (dgv_DanhSach != null)
-                row = dgv_DanhSach.CurrentRow;
-            if (row != null)
-            {
-                row.Cells["TenKhachHang"].Value = txt_tenKH.Text;
-                if (txt_tenKH.Text == "")
-                    row.Cells["TenKhachHang"].Value = "Unknown";
-            }
+            dgv_DanhSach.Rows.Add(maHD, NgayHienTai(), "K01", manv, "0", "1");
+            XuLiButton_ct(true, false, false);
         }
 
         private void btn_ThemCT_Click(object sender, EventArgs e)
         {
-            XuLiButton_ct(false, false, false, true);
+            XuLiButton_ct(false, false, false);
             XuLiTextBox_ct(true);
             ResetTextBox_CT();
             dgv_CTHD.Enabled = false;
@@ -167,9 +131,10 @@ namespace _108_144_QLCuaHangCafe
 
         private void btn_SuaCT_Click(object sender, EventArgs e)
         {
-            XuLiButton_ct(false, false, false, true);
+            XuLiButton_ct(false, false, false);
             XuLiTextBox_ct(true);
             btn_LuuCT.Enabled = true;
+            dgv_CTHD.Enabled = false;
             flag = 2;
         }
 
@@ -178,9 +143,7 @@ namespace _108_144_QLCuaHangCafe
             dgv_CTHD.Rows.RemoveAt(dgv_CTHD.CurrentRow.Index);
             dgv_CTHD.Enabled = true;
             XuLiTextBox_ct(false);
-            capnhatThanhTien(sender,e);
-            txt_TongTien.Text = dgv_DanhSach.Rows[0].Cells["TongTien"].Value.ToString();
-            txt_TienKhachGui_TextChanged(sender, e);
+            capnhatThanhTien(sender, e);
             ResetTextBox_CT();
         }
         string getDonGia(string masp, string masize)
@@ -191,34 +154,31 @@ namespace _108_144_QLCuaHangCafe
                 string mactsp = masp + masize;
                 DataSet data = c.LayDuLieu("select * from ChiTietSanPham where MaCTSP = '" + mactsp + "' ");
 
-                dongia = data.Tables[0].Rows[0]["GiaBan"].ToString();
+                dongia = data.Tables[0].Rows[0]["GiaNhap"].ToString();
             }
             return dongia;
         }
         void AddRowCTHoaDon(object sender, EventArgs e)
         {
             string soluong = txt_SoLuong.Text;
-            string khuyenmai = txt_KhuyenMai.Text;
             string maSize = cbo_Size.SelectedValue.ToString();
             string maSP = cbo_SanPham.SelectedValue.ToString();
             string dongia = getDonGia(maSP, maSize);
             string maCTHD = txt_MaHD.Text + maSP + maSize;
-            capNhatGia(cbo_SanPham.SelectedValue.ToString(), cbo_Size.SelectedValue.ToString(), int.Parse(txt_SoLuong.Text), int.Parse(txt_KhuyenMai.Text));
-            string giagoc = txt_GiaGoc.Text;
+            capNhatGia(cbo_SanPham.SelectedValue.ToString(), cbo_Size.SelectedValue.ToString(), int.Parse(txt_SoLuong.Text));
             string thanhtien = txt_ThanhTien.Text;
-            dgv_CTHD.Rows.Add(maCTHD, maSP, maSize, soluong, dongia.ToString(), giagoc, khuyenmai, thanhtien);
+            dgv_CTHD.Rows.Add(maCTHD, maSP, maSize, soluong, dongia.ToString(),thanhtien,"-1", thanhtien);
         }
         void SuaCTHoaDon(object sender, EventArgs e)
         {
             string soluong = txt_SoLuong.Text;
-            string khuyenmai = txt_KhuyenMai.Text;
+
             string maSize = cbo_Size.SelectedValue.ToString();
             string maSP = cbo_SanPham.SelectedValue.ToString();
             string dongia = getDonGia(maSP, maSize);
             string maCTHD = txt_MaHD.Text + maSP + maSize;
-            string giagoc = txt_GiaGoc.Text;
             string thanhtien = txt_ThanhTien.Text;
-            dgv_CTHD.CurrentRow.SetValues(maCTHD, maSP, maSize, soluong, dongia.ToString(), giagoc, khuyenmai, thanhtien);
+            dgv_CTHD.CurrentRow.SetValues(maCTHD, maSP, maSize, soluong, dongia.ToString(), thanhtien, "-1", thanhtien);
 
         }
         void ResetTextBox_CT()
@@ -226,50 +186,14 @@ namespace _108_144_QLCuaHangCafe
             cbo_SanPham.SelectedIndex = 0;
             cbo_Size.SelectedIndex = 0;
             txt_SoLuong.Text = "1";
-            txt_KhuyenMai.Text = "0";
             string masp = cbo_SanPham.SelectedValue.ToString();
             string masize = cbo_Size.SelectedValue.ToString();
-            txt_ThanhTien.Text = txt_GiaGoc.Text = getDonGia(masp, masize).ToString();
+            txt_ThanhTien.Text = getDonGia(masp, masize).ToString();
         }
-
-        private void btn_tangSL_Click(object sender, EventArgs e)
-        {
-            int SoLuong = Convert.ToInt32(txt_SoLuong.Text);
-            txt_SoLuong.Text = (++SoLuong).ToString();
-            if (SoLuong >= 10) txt_SoLuong.Text = "10";
-            capNhatGia(cbo_SanPham.SelectedValue.ToString(), cbo_Size.SelectedValue.ToString(), int.Parse(txt_SoLuong.Text), int.Parse(txt_KhuyenMai.Text));
-        }
-        private void btn_giamSL_Click(object sender, EventArgs e)
-        {
-            int SoLuong = Convert.ToInt32(txt_SoLuong.Text);
-            if (SoLuong > 0)
-                txt_SoLuong.Text = (--SoLuong).ToString();
-            if (SoLuong == 1) txt_SoLuong.Text = "1";
-            capNhatGia(cbo_SanPham.SelectedValue.ToString(), cbo_Size.SelectedValue.ToString(), int.Parse(txt_SoLuong.Text), int.Parse(txt_KhuyenMai.Text));
-        }
-
-        private void btn_themKM_Click(object sender, EventArgs e)
-        {
-            int KM = Convert.ToInt32(txt_KhuyenMai.Text);
-            txt_KhuyenMai.Text = (KM += 5).ToString();
-            capNhatGia(cbo_SanPham.SelectedValue.ToString(), cbo_Size.SelectedValue.ToString(), int.Parse(txt_SoLuong.Text), int.Parse(txt_KhuyenMai.Text));
-        }
-
-        private void btn_GiamKM_Click(object sender, EventArgs e)
-        {
-            int KM = Convert.ToInt32(txt_KhuyenMai.Text);
-            if (KM > 0)
-                txt_KhuyenMai.Text = (KM -= 5).ToString();
-            if (KM == 0) txt_KhuyenMai.Text = "0";
-            capNhatGia(cbo_SanPham.SelectedValue.ToString(), cbo_Size.SelectedValue.ToString(), int.Parse(txt_SoLuong.Text), int.Parse(txt_KhuyenMai.Text));
-        }
-
-        void capNhatGia(string maSP, string maSize, int soluong = 1, int khuyenmai = 0)
+        void capNhatGia(string maSP, string maSize, int soluong = 1)
         {
             string dongia = getDonGia(maSP, maSize);
-            int giagoc = Convert.ToInt32(dongia) * soluong;
-            txt_GiaGoc.Text = giagoc.ToString();
-            double thanhtien = (100 - Convert.ToInt32(khuyenmai)) * giagoc / 100;
+            int thanhtien = Convert.ToInt32(dongia) * soluong;
             txt_ThanhTien.Text = thanhtien.ToString();
         }
         private void btn_LuuCT_Click(object sender, EventArgs e)
@@ -277,21 +201,19 @@ namespace _108_144_QLCuaHangCafe
             string masp = cbo_SanPham.SelectedValue.ToString();
             string masize = cbo_Size.SelectedValue.ToString();
             string sl = txt_SoLuong.Text;
-            string giagoc = txt_GiaGoc.Text;
             switch (flag)
             {
                 case 1:
                     {
                         if (kiemTraGiong(masp, masize))
                         {
-                            DialogResult kq = MessageBox.Show("Sản phầm đã tồn tại, nhấn YES để gộp hai chi tiết với cùng khuyến mãi đã có," +
+                            DialogResult kq = MessageBox.Show("Sản phầm đã tồn tại, nhấn YES để gộp hai chi tiết," +
                                 " nhấn NO đề chọn chi tiết khác", "Thông báo", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
                             if (kq == DialogResult.Yes)
                             {
-                                ThemTienCTHD(sl,giagoc, masp,masize);
-                                XuLiButton_ct(true, false, false, false);
+                                ThemTienCTHD(sl, masp, masize);
+                                XuLiButton_ct(true, false, false);
                                 capnhatThanhTien(sender, e);
-                                txt_TongTien.Text = dgv_DanhSach.Rows[0].Cells["TongTien"].Value.ToString();
                                 dgv_CTHD.Enabled = true;
                                 XuLiTextBox_ct(false);
                                 ResetTextBox_CT();
@@ -300,50 +222,46 @@ namespace _108_144_QLCuaHangCafe
                         else
                         {
                             AddRowCTHoaDon(sender, e);
-                            XuLiButton_ct(true, false, false, false);
+                            XuLiButton_ct(true, false, false);
                             capnhatThanhTien(sender, e);
-                            txt_TongTien.Text = dgv_DanhSach.Rows[0].Cells["TongTien"].Value.ToString();
                             dgv_CTHD.Enabled = true;
                             XuLiTextBox_ct(false);
                             ResetTextBox_CT();
                         }
-                        
-                    };break;
+
+                    }; break;
                 case 2:
                     {
-                        XuLiButton_ct(true, false, false, false);
+                        XuLiButton_ct(true, false, false);
                         SuaCTHoaDon(sender, e);
                         capnhatThanhTien(sender, e);
-                        txt_TongTien.Text = dgv_DanhSach.Rows[0].Cells["TongTien"].Value.ToString();
                         dgv_CTHD.Enabled = true;
                         XuLiTextBox_ct(false);
                         ResetTextBox_CT();
                     }; break;
             }
-            txt_TienKhachGui_TextChanged(sender, e);
         }
         private void cbo_SanPham_SelectionChangeCommitted(object sender, EventArgs e)
         {
             if (cbo_Size.SelectedValue.ToString() == "") return;
             if (txt_SoLuong.Text != "0")
-            capNhatGia(cbo_SanPham.SelectedValue.ToString(), cbo_Size.SelectedValue.ToString(),int.Parse(txt_SoLuong.Text));
+                capNhatGia(cbo_SanPham.SelectedValue.ToString(), cbo_Size.SelectedValue.ToString(),Convert.ToInt32(txt_SoLuong.Text));
             else
             {
-                txt_GiaGoc.Text = "0";
                 txt_ThanhTien.Text = "0";
             }
         }
         void capnhatThanhTien(object sender, EventArgs e)
         {
             int thanhtien = 0;
-            for(int i = 0; i < dgv_CTHD.Rows.Count; i++)
-                thanhtien +=Convert.ToInt32( dgv_CTHD.Rows[i].Cells["ThanhTien"].Value.ToString());
+            for (int i = 0; i < dgv_CTHD.Rows.Count; i++)
+                thanhtien += Convert.ToInt32(dgv_CTHD.Rows[i].Cells["ThanhTien"].Value.ToString());
             dgv_DanhSach.Rows[0].Cells["TongTien"].Value = thanhtien;
         }
         bool kiemTraGiong(string masp, string masize)
         {
             bool kq = false;
-            
+
 
             for (int i = 0; i < dgv_CTHD.Rows.Count; i++)
             {
@@ -352,11 +270,11 @@ namespace _108_144_QLCuaHangCafe
                 //MessageBox.Show(masp + " " + masp2, masize + " " + masize2);
                 if (masp == masp2 && masize == masize2)
                     kq = true;
-                
+
             }
             return kq;
         }
-        void ThemTienCTHD(string slthem,string giagocthem, string masp, string masize)
+        void ThemTienCTHD(string slthem, string masp, string masize)
         {
             for (int i = 0; i < dgv_CTHD.Rows.Count; i++)
             {
@@ -365,12 +283,8 @@ namespace _108_144_QLCuaHangCafe
                     int sl = Convert.ToInt32(dgv_CTHD.Rows[i].Cells["SoLuong"].Value);
                     sl += Convert.ToInt32(slthem);
                     dgv_CTHD.Rows[i].Cells["SoLuong"].Value = sl;
-                    int giagoc = Convert.ToInt32(dgv_CTHD.Rows[i].Cells["GiaGoc"].Value);
-                    giagoc += Convert.ToInt32(giagocthem);
-                    dgv_CTHD.Rows[i].Cells["GiaGoc"].Value = giagoc;
-                    int khuyenmai = Convert.ToInt32(dgv_CTHD.Rows[i].Cells["KhuyenMai"].Value);
-                    int thanhtien = giagoc * (100-khuyenmai) / 100;
-                    dgv_CTHD.Rows[i].Cells["ThanhTien"].Value = thanhtien;
+                    int thanhtien = sl * int.Parse(getDonGia(masp, masize));
+                    dgv_CTHD.Rows[i].Cells["GiaGoc"].Value = dgv_CTHD.Rows[i].Cells["ThanhTien"].Value = thanhtien;
 
                 }
             }
@@ -383,17 +297,14 @@ namespace _108_144_QLCuaHangCafe
             e.Graphics.DrawString("Nhân Viên Lập: " + cbo_NhanVien.Text, new Font("Arial", 16, FontStyle.Regular), Brushes.Black, new Point(10, 40));
 
             e.Graphics.DrawString("BLF COFFEE", new Font("Arial", 26, FontStyle.Regular), Brushes.Black, new Point(300, 80));
-            e.Graphics.DrawString("HÓA ĐƠN BÁN HÀNG", new Font("Arial", 26, FontStyle.Regular), Brushes.Black, new Point(220, 120));
-
-            e.Graphics.DrawString("Tên khách hàng: " + dgv_DanhSach.Rows[0].Cells["TenKhachHang"].Value.ToString(), new Font("Arial", 16, FontStyle.Regular), Brushes.Black, new Point(10, 160));
+            e.Graphics.DrawString("HÓA ĐƠN NHẬP HÀNG", new Font("Arial", 26, FontStyle.Regular), Brushes.Black, new Point(220, 120));
 
             e.Graphics.DrawString("-----------------------------------------------------------------------------------------------------------------", new Font("Arial", 16, FontStyle.Regular), Brushes.Black, new Point(10, 180));
             e.Graphics.DrawString("Tên Sản Phẩm", new Font("Arial", 16, FontStyle.Regular), Brushes.Black, new Point(10, 200));
             e.Graphics.DrawString("Số Lượng", new Font("Arial", 16, FontStyle.Regular), Brushes.Black, new Point(180, 200));
             e.Graphics.DrawString("Size", new Font("Arial", 16, FontStyle.Regular), Brushes.Black, new Point(300, 200));
             e.Graphics.DrawString("Đơn Giá", new Font("Arial", 16, FontStyle.Regular), Brushes.Black, new Point(420, 200));
-            e.Graphics.DrawString("Khuyến Mãi", new Font("Arial", 16, FontStyle.Regular), Brushes.Black, new Point(530, 200));
-            e.Graphics.DrawString("Thành Tiền", new Font("Arial", 16, FontStyle.Regular), Brushes.Black, new Point(680, 200));
+            e.Graphics.DrawString("Thành Tiền", new Font("Arial", 16, FontStyle.Regular), Brushes.Black, new Point(550, 200));
             e.Graphics.DrawString("-----------------------------------------------------------------------------------------------------------------", new Font("Arial", 16, FontStyle.Regular), Brushes.Black, new Point(10, 220));
             int yPos = 240;
 
@@ -407,14 +318,11 @@ namespace _108_144_QLCuaHangCafe
                 e.Graphics.DrawString(dgv_CTHD.Rows[i].Cells["SoLuong"].Value.ToString(), new Font("Arial", 16, FontStyle.Regular), Brushes.Black, new Point(200, yPos));
                 e.Graphics.DrawString(size, new Font("Arial", 16, FontStyle.Regular), Brushes.Black, new Point(300, yPos));
                 e.Graphics.DrawString(dgv_CTHD.Rows[i].Cells["DonGia"].Value.ToString(), new Font("Arial", 16, FontStyle.Regular), Brushes.Black, new Point(420, yPos));
-                e.Graphics.DrawString(dgv_CTHD.Rows[i].Cells["KhuyenMai"].Value.ToString() + "%", new Font("Arial", 16, FontStyle.Regular), Brushes.Black, new Point(530, yPos));
-                e.Graphics.DrawString(dgv_CTHD.Rows[i].Cells["ThanhTien"].Value.ToString(), new Font("Arial", 16, FontStyle.Regular), Brushes.Black, new Point(680, yPos));
+                e.Graphics.DrawString(dgv_CTHD.Rows[i].Cells["ThanhTien"].Value.ToString(), new Font("Arial", 16, FontStyle.Regular), Brushes.Black, new Point(550, yPos));
                 yPos += 30;
             }
             e.Graphics.DrawString("-----------------------------------------------------------------------------------------------------------------", new Font("Arial", 16, FontStyle.Regular), Brushes.Black, new Point(10, yPos));
-            e.Graphics.DrawString("Tổng phải trả: " + txt_TongTien.Text + " VNĐ", new Font("Arial", 16, FontStyle.Regular), Brushes.Black, new Point(500, yPos + 30));
-            e.Graphics.DrawString("Tiền nhận từ khách: " + txt_TienKhachGui.Text+ " VNĐ", new Font("Arial", 16, FontStyle.Regular), Brushes.Black, new Point(500, yPos + 60));
-            e.Graphics.DrawString("Tiền trả khách: " + txt_TienGuiLai.Text + " VNĐ", new Font("Arial", 16, FontStyle.Regular), Brushes.Black, new Point(500, yPos + 90));
+            e.Graphics.DrawString("Tổng thanh toán: " + dgv_DanhSach.Rows[0].Cells["TongTien"].Value.ToString() + " VNĐ", new Font("Arial", 16, FontStyle.Regular), Brushes.Black, new Point(500, yPos + 30));
         }
         void loadData_cboFromList(ComboBox cbo, string disMember)
         {
@@ -435,12 +343,10 @@ namespace _108_144_QLCuaHangCafe
         private void dgv_CTHD_CellClick(object sender, DataGridViewCellEventArgs e)
         {
             txt_SoLuong.Text = dgv_CTHD.CurrentRow.Cells["SoLuong"].Value.ToString();
-            txt_GiaGoc.Text = dgv_CTHD.CurrentRow.Cells["GiaGoc"].Value.ToString();
             txt_ThanhTien.Text = dgv_CTHD.CurrentRow.Cells["ThanhTien"].Value.ToString();
-            txt_KhuyenMai.Text = dgv_CTHD.CurrentRow.Cells["KhuyenMai"].Value.ToString();
             loadData_cboFromList(cbo_Size, "MaSize");
             loadData_cboFromList(cbo_SanPham, "MaSP");
-            XuLiButton_ct(false, true, true, false);
+            XuLiButton_ct(true, true, true);
         }
         void LuuVeSQL(object sender, EventArgs e)
         {
@@ -449,8 +355,7 @@ namespace _108_144_QLCuaHangCafe
             string ngayLap = NgayHienTai();
             string maloaiHD = "K02";
             string tongtien = dgv_DanhSach.Rows[0].Cells["TongTien"].Value.ToString();
-            string tenKH = dgv_DanhSach.Rows[0].Cells["TenKhachHang"].Value.ToString();
-            string sql_hoadon = "EXEC them_hd @mahd = '" + maHD + "',@ngaylap = '" + ngayLap + "', @maloaihd = '" + maloaiHD + "',@manv = '" + manv + "',@tongtien = " + tongtien + ",@tenKH = '" + tenKH + "'";
+            string sql_hoadon = "EXEC them_hd @mahd = '" + maHD + "',@ngaylap = '" + ngayLap + "', @maloaihd = '" + maloaiHD + "',@manv = '" + manv + "',@tongtien = " + tongtien + ",@tenKH = ''";
             if (c.CapNhatDulieu(sql_hoadon) > 0)
                 MessageBox.Show("Cập nhật hoá đơn thành công", "Thông báo", MessageBoxButtons.OK);
             //Luu chi tiet hoa don
@@ -464,10 +369,10 @@ namespace _108_144_QLCuaHangCafe
                 string khuyenMai = dgv_CTHD.Rows[i].Cells["KhuyenMai"].Value.ToString();
                 string thanhTien = dgv_CTHD.Rows[i].Cells["ThanhTien"].Value.ToString();
                 string sql_chitiethoadon = "EXEC capnhat_cthd @mahd = '" + maHD + "', @masp = '" + maSP + "', @masize = '" + maSize + "', @sl = " + soLuong + ", @dongia = " + donGia + ", @giagoc = " + giaGoc + ", @khuyenmai = " + khuyenMai + ", @thanhtien = " + thanhTien;
-                if (c.CapNhatDulieu(sql_chitiethoadon) > 0 && i == dgv_CTHD.Rows.Count-1)
+                if (c.CapNhatDulieu(sql_chitiethoadon) > 0 && i == dgv_CTHD.Rows.Count - 1)
                 {
                     MessageBox.Show("Cập nhật các chi tiết hoá đơn thành công", "Thông báo", MessageBoxButtons.OK);
-                    frm_HoaDon_Load(sender, e);
+                    frm_HoaDonNhap_Load(sender, e);
                 }
             }
         }
@@ -475,72 +380,44 @@ namespace _108_144_QLCuaHangCafe
         private void btn_Reset_Click(object sender, EventArgs e)
         {
             txt_MaHD.Text = "";
-            txt_tenKH.Text = "";
-            txt_TongTien.Text = "0";
-            txt_TienKhachGui.Text = "0";
-            txt_TienGuiLai.Text = "0";
             ResetTextBox_CT();
             dgv_CTHD.Rows.Clear();
             dgv_DanhSach.Rows.Clear();
             btn_ThemHD.Enabled = true;
-            XuLiButton_ct(false, false, false, false);
+            XuLiButton_ct(false, false, false);
+            btn_ThemHD.Enabled = true;
+            btn_LuuCT.Enabled = false;
         }
 
-        private void txt_TienKhachGui_TextChanged(object sender, EventArgs e)
-        {
-            if (txt_TienKhachGui.Text == "") txt_TienKhachGui.Text = "0";
-            int tienkhachgui = Convert.ToInt32(txt_TienKhachGui.Text);
-            int tienthanhtoan = Convert.ToInt32(txt_TongTien.Text);
-            int tienguilai = 0;
-            if (tienthanhtoan > tienkhachgui)
-            {
-                if (tienkhachgui < 0)
-                {
-                    txt_TienKhachGui.Text = "0";
-                    
-                }
-                tienguilai = 0;
-            }
-            else if (tienkhachgui == 0 || tienthanhtoan == 0)
-            {
-                txt_TienKhachGui.Text = "0";
-                tienguilai = 0;
-            }
-            else
-                    tienguilai = tienkhachgui - tienthanhtoan;
-            
-            int sodu = tienguilai % 1000;
-            tienguilai -= sodu;
-            txt_TienGuiLai.Text = tienguilai.ToString();
-            
-        }
+        
         private void txt_Input_KeyPress(object sender, KeyPressEventArgs e)
         {
             if (char.IsDigit(e.KeyChar) == false && char.IsControl(e.KeyChar) == false)
                 e.Handled = true;
         }
-        bool ConDuSoLuong()
-        {
-            DataSet dataSet = new DataSet();
-            for (int i = 0; i < dgv_CTHD.Rows.Count; i++) 
-            {
-                string maSP = dgv_CTHD.Rows[i].Cells["MaSP"].Value.ToString();
-                string maSize = dgv_CTHD.Rows[i].Cells["MaSize"].Value.ToString();
-                int slTon = SoLuongTon(maSP, maSize);
-                int sldangcan = Convert.ToInt32(dgv_CTHD.Rows[i].Cells["SoLuong"].Value);
-                if (sldangcan > slTon) return false;
-            }
-            return true;
-        }
-
         private void btn_Exit_Click(object sender, EventArgs e)
         {
             Close();
         }
 
-        private void cbo_Size_SelectedIndexChanged(object sender, EventArgs e)
+        private void txt_SoLuong_TextChanged(object sender, EventArgs e)
         {
+            if (txt_SoLuong.Text == "")
+            {
+                txt_SoLuong.Text = "0";
+                MessageBox.Show("Vui lòng không để trống số lượng", "Thông báo", MessageBoxButtons.OK);
 
+            }
+            else
+            {
+                int sl = int.Parse(txt_SoLuong.Text); 
+                if (sl < 0)
+                    txt_SoLuong.Text = "0";
+                else if (sl > 1000)
+                    txt_SoLuong.Text = "1000";
+            } 
+            capNhatGia(cbo_SanPham.SelectedValue.ToString(), cbo_Size.SelectedValue.ToString(), Convert.ToInt32(txt_SoLuong.Text));
         }
     }
 }
+

@@ -182,5 +182,11 @@ namespace _108_144_QLCuaHangCafe
             }
             
         }
+
+        private void hoáĐơnNhậpToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            Form f = new frm_HoaDonNhap(idUser);
+            xulyfrm(f);
+        }
     }
 }

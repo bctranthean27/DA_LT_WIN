@@ -64,3 +64,4 @@ C:\text\WinForm\108_144_QLCuaHangCafe\108_144_QLCuaHangCafe\obj\Debug\_108_144_Q
 E:\DA c#\DA_LT_WIN\108_144_QLCuaHangCafe\108_144_QLCuaHangCafe\obj\Debug\_108_144_QLCuaHangCafe.DangNhap.resources
 E:\DA c#\DA_LT_WIN\108_144_QLCuaHangCafe\108_144_QLCuaHangCafe\obj\Debug\_108_144_QLCuaHangCafe.HienThiHoaDon.resources
 C:\text\WinForm\108_144_QLCuaHangCafe\108_144_QLCuaHangCafe\obj\Debug\_108_144_QLCuaHangCafe.HienThiHoaDon.resources
+C:\text\WinForm\108_144_QLCuaHangCafe\108_144_QLCuaHangCafe\obj\Debug\_108_144_QLCuaHangCafe.frm_HoaDonNhap.resources

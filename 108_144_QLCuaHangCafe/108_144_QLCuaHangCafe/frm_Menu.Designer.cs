@@ -39,6 +39,7 @@
             this.mnu_NhanVien = new System.Windows.Forms.ToolStripMenuItem();
             this.mnu_SanPham = new System.Windows.Forms.ToolStripMenuItem();
             this.mnu_HoaDon = new System.Windows.Forms.ToolStripMenuItem();
+            this.hoáĐơnNhậpToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.mnu_TimKiem = new System.Windows.Forms.ToolStripMenuItem();
             this.mnu_SearchSP = new System.Windows.Forms.ToolStripMenuItem();
             this.mnu_SearchHD = new System.Windows.Forms.ToolStripMenuItem();
@@ -87,9 +88,11 @@
             this.mnu_Size,
             this.mnu_NhanVien,
             this.mnu_SanPham,
-            this.mnu_HoaDon});
+            this.mnu_HoaDon,
+            this.hoáĐơnNhậpToolStripMenuItem});
             this.mnu_NhapThongTin.Font = new System.Drawing.Font("Segoe UI Semibold", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.mnu_NhapThongTin.Name = "mnu_NhapThongTin";
+            this.mnu_NhapThongTin.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.D9)));
             this.mnu_NhapThongTin.Size = new System.Drawing.Size(166, 32);
             this.mnu_NhapThongTin.Text = "Nhập thông tin";
             // 
@@ -97,7 +100,7 @@
             // 
             this.mnu_LoaiSP.Name = "mnu_LoaiSP";
             this.mnu_LoaiSP.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.D1)));
-            this.mnu_LoaiSP.Size = new System.Drawing.Size(298, 32);
+            this.mnu_LoaiSP.Size = new System.Drawing.Size(302, 32);
             this.mnu_LoaiSP.Text = "Loại Sản Phẩm";
             this.mnu_LoaiSP.Click += new System.EventHandler(this.mnu_LoaiSP_Click);
             // 
@@ -105,7 +108,7 @@
             // 
             this.mnu_LoaiHD.Name = "mnu_LoaiHD";
             this.mnu_LoaiHD.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.D2)));
-            this.mnu_LoaiHD.Size = new System.Drawing.Size(298, 32);
+            this.mnu_LoaiHD.Size = new System.Drawing.Size(302, 32);
             this.mnu_LoaiHD.Text = "Loại Hoá Đơn";
             this.mnu_LoaiHD.Click += new System.EventHandler(this.mnuLoaiHD_Click);
             // 
@@ -113,7 +116,7 @@
             // 
             this.mnu_ChucVu.Name = "mnu_ChucVu";
             this.mnu_ChucVu.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.D3)));
-            this.mnu_ChucVu.Size = new System.Drawing.Size(298, 32);
+            this.mnu_ChucVu.Size = new System.Drawing.Size(302, 32);
             this.mnu_ChucVu.Text = "Chức Vụ";
             this.mnu_ChucVu.Click += new System.EventHandler(this.mnu_ChucVu_Click);
             // 
@@ -121,7 +124,7 @@
             // 
             this.mnu_NCC.Name = "mnu_NCC";
             this.mnu_NCC.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.D4)));
-            this.mnu_NCC.Size = new System.Drawing.Size(298, 32);
+            this.mnu_NCC.Size = new System.Drawing.Size(302, 32);
             this.mnu_NCC.Text = "Nhà Cung Cấp";
             this.mnu_NCC.Click += new System.EventHandler(this.mnu_NCC_Click);
             // 
@@ -129,7 +132,7 @@
             // 
             this.mnu_Size.Name = "mnu_Size";
             this.mnu_Size.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.D5)));
-            this.mnu_Size.Size = new System.Drawing.Size(298, 32);
+            this.mnu_Size.Size = new System.Drawing.Size(302, 32);
             this.mnu_Size.Text = "Size";
             this.mnu_Size.Click += new System.EventHandler(this.mnu_Size_Click);
             // 
@@ -137,7 +140,7 @@
             // 
             this.mnu_NhanVien.Name = "mnu_NhanVien";
             this.mnu_NhanVien.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.D6)));
-            this.mnu_NhanVien.Size = new System.Drawing.Size(298, 32);
+            this.mnu_NhanVien.Size = new System.Drawing.Size(302, 32);
             this.mnu_NhanVien.Text = "Nhân Viên";
             this.mnu_NhanVien.Click += new System.EventHandler(this.mnu_NhanVien_Click);
             // 
@@ -145,7 +148,7 @@
             // 
             this.mnu_SanPham.Name = "mnu_SanPham";
             this.mnu_SanPham.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.D7)));
-            this.mnu_SanPham.Size = new System.Drawing.Size(298, 32);
+            this.mnu_SanPham.Size = new System.Drawing.Size(302, 32);
             this.mnu_SanPham.Text = "Sản Phẩm";
             this.mnu_SanPham.Click += new System.EventHandler(this.mnu_SanPham_Click);
             // 
@@ -153,9 +156,17 @@
             // 
             this.mnu_HoaDon.Name = "mnu_HoaDon";
             this.mnu_HoaDon.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.D8)));
-            this.mnu_HoaDon.Size = new System.Drawing.Size(298, 32);
-            this.mnu_HoaDon.Text = "Hoá Đơn";
+            this.mnu_HoaDon.Size = new System.Drawing.Size(302, 32);
+            this.mnu_HoaDon.Text = "Hoá Đơn Bán";
             this.mnu_HoaDon.Click += new System.EventHandler(this.mnu_HoaDon_Click);
+            // 
+            // hoáĐơnNhậpToolStripMenuItem
+            // 
+            this.hoáĐơnNhậpToolStripMenuItem.Name = "hoáĐơnNhậpToolStripMenuItem";
+            this.hoáĐơnNhậpToolStripMenuItem.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.D9)));
+            this.hoáĐơnNhậpToolStripMenuItem.Size = new System.Drawing.Size(302, 32);
+            this.hoáĐơnNhậpToolStripMenuItem.Text = "Hoá Đơn Nhập";
+            this.hoáĐơnNhậpToolStripMenuItem.Click += new System.EventHandler(this.hoáĐơnNhậpToolStripMenuItem_Click);
             // 
             // mnu_TimKiem
             // 
@@ -278,5 +289,6 @@
         private System.Windows.Forms.ToolStripMenuItem mnu_ThongKeNam;
         private System.Windows.Forms.ToolStripMenuItem mnu_ThongKeNV;
         private System.Windows.Forms.ToolStripMenuItem mnu_DangXuat;
+        private System.Windows.Forms.ToolStripMenuItem hoáĐơnNhậpToolStripMenuItem;
     }
 }

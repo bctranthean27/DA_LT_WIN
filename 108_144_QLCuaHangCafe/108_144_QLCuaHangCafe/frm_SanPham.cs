@@ -96,23 +96,23 @@ namespace _108_144_QLCuaHangCafe
             pic_HinhAnh.Visible = false;
             maLoaiAnh = "";
             tool_HinhAnh = "";
+            pic_HinhAnh.Image = null;
             flag = 1;
         }
         private void btn_Sua_Click(object sender, EventArgs e)
         {
+            maLoaiAnh = "";
+            tool_HinhAnh = "";
             if (txt_SoLuong.Text != "") XuLiTextBox_ctsp(false);
             else XuLiTextBox(false);
             XuLiButton(false, false, false, true, true);
             dgv_DanhSach.Enabled = false;
             dgv_CTSP.Enabled = false;
-            
+            pic_HinhAnh.Image = null;
             flag = 2;
         }
         void them(object sender, EventArgs e, string m1, string m2, string m3, string m4,string maLoaiAnh,string tenAnh)
         {
-
-            try
-            {
                 if (m1.Trim() == "" || m2.Trim() == "" || m3.Trim() == "" || m4.Trim() == "")
                     throw new Exception("Vui lòng điền đủ thông tin");
                 string maA = autoCode(ds, "A");
@@ -127,19 +127,12 @@ namespace _108_144_QLCuaHangCafe
                     MessageBox.Show("Cập nhật hình ảnh sản phẩm thành công", "Thông báo", MessageBoxButtons.OK);
                     frm_SanPham_Load(sender, e);
                 }
-                string sql3 = "EXEC them_ctsp @masp = '"+ m1 +"', @soLuong = " + 100 + " , @giaBan =  " + 25000 + ", @giaNhap = " + 15000;
+                string sql3 = "EXEC them_ctsp @masp = '"+ m1 +"', @soLuong = " + 0 + " , @giaBan =  " + 25000 + ", @giaNhap = " + 15000;
                 if (c.CapNhatDulieu(sql3) > 0)
                 {
                     MessageBox.Show("Cập nhật chi tiết sản phẩm thành công", "Thông báo", MessageBoxButtons.OK);
                     frm_SanPham_Load(sender, e);
-                }
-            }
-            catch (Exception err)
-            {
-                MessageBox.Show(err.Message, "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                c.DongKetNoi();
-                btn_Them_Click(sender, e);
-            }
+                }    
         }
         void sua(object sender, EventArgs e, string maSP = "", string tenSP = "", string maLoai = "", string maNCC = "", string trangThai = "0", string maLoaiAnh = "", string tenAnh = "")
         {
@@ -283,7 +276,8 @@ namespace _108_144_QLCuaHangCafe
                 MessageBox.Show("Cập nhật thành công", "Thông báo", MessageBoxButtons.OK);
                 c.DongKetNoi();
             }
-            clearTextbox();
+            frm_SanPham_Load(sender,e);
+
         }
 
         private void btn_Exit_Click(object sender, EventArgs e)
@@ -332,6 +326,7 @@ namespace _108_144_QLCuaHangCafe
         private void dgv_CTSP_CellClick(object sender, DataGridViewCellEventArgs e)
         {
             dx = c.LayDuLieu("select * from ChiTietSanPham where MaSanPham ='" + Old_Value + "'");
+            if (dgv_CTSP.DataSource == null) return;    
             int vt2 = dgv_CTSP.CurrentCell.RowIndex;
             hienThiTextBox2(null,vt2);
             XuLiButton(true, false, true, false, false);
