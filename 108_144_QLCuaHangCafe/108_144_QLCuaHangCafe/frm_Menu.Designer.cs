@@ -49,6 +49,7 @@
             this.mnu_ThongKeNam = new System.Windows.Forms.ToolStripMenuItem();
             this.mnu_ThongKeNV = new System.Windows.Forms.ToolStripMenuItem();
             this.mnu_DangXuat = new System.Windows.Forms.ToolStripMenuItem();
+            this.nhânViênToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.menuStrip1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -172,7 +173,8 @@
             // 
             this.mnu_TimKiem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.mnu_SearchSP,
-            this.mnu_SearchHD});
+            this.mnu_SearchHD,
+            this.nhânViênToolStripMenuItem});
             this.mnu_TimKiem.Font = new System.Drawing.Font("Segoe UI Semibold", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.mnu_TimKiem.Name = "mnu_TimKiem";
             this.mnu_TimKiem.Size = new System.Drawing.Size(111, 32);
@@ -247,9 +249,18 @@
             this.mnu_DangXuat.Text = "Đăng xuất";
             this.mnu_DangXuat.Click += new System.EventHandler(this.mnu_DangXuat_Click);
             // 
+            // nhânViênToolStripMenuItem
+            // 
+            this.nhânViênToolStripMenuItem.Name = "nhânViênToolStripMenuItem";
+            this.nhânViênToolStripMenuItem.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Alt | System.Windows.Forms.Keys.D3)));
+            this.nhânViênToolStripMenuItem.Size = new System.Drawing.Size(256, 32);
+            this.nhânViênToolStripMenuItem.Text = "Nhân Viên";
+            this.nhânViênToolStripMenuItem.Click += new System.EventHandler(this.nhânViênToolStripMenuItem_Click);
+            // 
             // frm_Menu
             // 
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.None;
+            this.BackColor = System.Drawing.Color.White;
             this.ClientSize = new System.Drawing.Size(1737, 909);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.menuStrip1);
@@ -290,5 +301,6 @@
         private System.Windows.Forms.ToolStripMenuItem mnu_ThongKeNV;
         private System.Windows.Forms.ToolStripMenuItem mnu_DangXuat;
         private System.Windows.Forms.ToolStripMenuItem hoáĐơnNhậpToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem nhânViênToolStripMenuItem;
     }
 }

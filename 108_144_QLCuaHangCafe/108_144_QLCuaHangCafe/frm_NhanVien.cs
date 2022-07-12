@@ -27,8 +27,6 @@ namespace _108_144_QLCuaHangCafe
             XuLiButton(true);
             loadData_DataGrid(dgv_DanhSach, "select * from NhanVien where TrangThai='1'");
             loadData_cbo(cbo_ChucVu, "select MaChucVu,TenChucVu from ChucVu where TrangThai='1'", "MaChucVu", "TenChucVu");
-            cbo_TrangThai.SelectedIndex = 0;
-            cbo_TrangThai.DropDownStyle = ComboBoxStyle.DropDownList;
             cbo_ChucVu.DropDownStyle = ComboBoxStyle.DropDownList;
             cbo_ChucVu.SelectedIndex = 1;
         }
@@ -52,7 +50,6 @@ namespace _108_144_QLCuaHangCafe
             txt_MaNV.ReadOnly = t;
             txt_DiaChi.ReadOnly = t;
             cbo_ChucVu.Enabled = !t;
-            cbo_TrangThai.Enabled = !t;
             dtp_NgayVaoLam.Enabled = !t;
         }
         void XuLiButton(Boolean t)
@@ -98,7 +95,7 @@ namespace _108_144_QLCuaHangCafe
             return NgayDayDu;
         }
 
-        void them(object sender, EventArgs e, string m1, string m2, string m3, string m4, string m5, string m6, string roles, string m7  = "1")
+        void them(object sender, EventArgs e, string m1, string m2, string m3, string m4, string m5, string m6, string roles)
         {
             DataSet dstk = c.LayDuLieu("select * from TaiKhoan");
             string maTK = autoCode(dstk, "TK");
@@ -191,39 +188,14 @@ namespace _108_144_QLCuaHangCafe
             XuLiButton(true);
             string m1 = txt_MaNV.Text;
             string m2 = txt_HoNV.Text;
- void loadData_cboFromList(DataTable dt, ComboBox cbo, string disMember,int vt)
-        {
-
-            string value = dt.Rows[vt][disMember].ToString();
-            if (disMember == "TrangThai")
-            {
-                for (int i = 0; i < cbo.Items.Count; i++)
-                {
-                    if (cbo.Items[i].ToString() == value) cbo.SelectedIndex = i;
-                }
-            }
-            else
-            {
-                foreach(DataRowView rowView in cbo.Items)
-                {
-                    string val = rowView.Row[0].ToString();
-                    string name = rowView.Row[1].ToString();
-                    if(val == value)
-                    {
-                        cbo.Text = name;
-                        break;
-                    }
-
-                }
-            }
-        }           string m3 = txt_TenNV.Text;
+            string m3 = txt_TenNV.Text;
             string m4 = txt_DiaChi.Text;
             string m5 = NgayThangNam(dtp_NgayVaoLam);
             string m6 = cbo_ChucVu.SelectedValue.ToString();
             string roles = "";
             if (m6 == "C01") roles = "QL";
             if (m6 == "C02") roles = "NV";
-            string m7 = cbo_TrangThai.SelectedItem.ToString();
+
             switch (flag)
             {
                 case 1:
@@ -236,34 +208,24 @@ namespace _108_144_QLCuaHangCafe
 
             }
         }
-
         void loadData_cboFromList(DataTable dt, ComboBox cbo, string disMember, int vt)
         {
-
             string value = dt.Rows[vt][disMember].ToString();
-            if (disMember == "TrangThai")
-            {
-                for (int i = 0; i < cbo.Items.Count; i++)
-                {
-                    if (cbo.Items[i].ToString() == value) cbo.SelectedIndex = i;
-                }
-            }
-            else
-            {
-                foreach (DataRowView rowView in cbo.Items)
-                {
-                    string val = rowView.Row[0].ToString();
-                    string name = rowView.Row[1].ToString();
-                    if (val == value)
-                    {
-                        cbo.Text = name;
-                        break;
-                    }
 
+            foreach (DataRowView rowView in cbo.Items)
+            {
+                string val = rowView.Row[0].ToString();
+                string name = rowView.Row[1].ToString();
+                if (val == value)
+                {
+                    cbo.Text = name;
+                    break;
                 }
+
             }
+
+
         }
-
         void hienThiTextBox(DataTable dt, int vt)
         {
             
@@ -287,7 +249,6 @@ namespace _108_144_QLCuaHangCafe
                     txt_TenNV.Text = dt.Rows[vt]["TenNV"].ToString();
                     txt_DiaChi.Text = dt.Rows[vt]["DChi"].ToString();
                     loadData_cboFromList(dt, cbo_ChucVu, "MaChucVu", vt);
-                    loadData_cboFromList(dt, cbo_TrangThai, "TrangThai", vt);
                     dtp_NgayVaoLam.Value = DateTime.Parse(dt.Rows[vt]["NgayVaoLam"].ToString());
                 }
             }
@@ -306,9 +267,8 @@ namespace _108_144_QLCuaHangCafe
             txt_HoNV.Text = "";
             txt_TenNV.Text = "";
             txt_DiaChi.Text = "";
-            cbo_TrangThai.SelectedIndex = 0;
             dtp_NgayVaoLam.Value = DateTime.Now;
-            cbo_TrangThai.SelectedIndex = 0;
+
         }
 
         private void btn_Xoa_Click(object sender, EventArgs e)

@@ -177,7 +177,7 @@ namespace _108_144_QLCuaHangCafe
             int vt = dgv_DanhSach.CurrentCell.RowIndex;
             hienThiTextBox(ds.Tables[0], vt);
             Old_Value = txt_MaLoaiSP.Text; // lấy giá trị cũ để sửa đổi
-            XuLiButton(false, true, true, false);
+            XuLiButton(true, true, true, false);
         }
         void clearTextbox()
         {

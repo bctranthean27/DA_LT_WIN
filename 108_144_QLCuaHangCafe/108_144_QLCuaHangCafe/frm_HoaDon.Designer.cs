@@ -119,6 +119,7 @@
             // 
             this.dgv_DanhSach.AllowUserToAddRows = false;
             this.dgv_DanhSach.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
+            this.dgv_DanhSach.BackgroundColor = System.Drawing.Color.White;
             this.dgv_DanhSach.BorderStyle = System.Windows.Forms.BorderStyle.None;
             dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
             dataGridViewCellStyle1.BackColor = System.Drawing.Color.White;
@@ -283,7 +284,7 @@
             // 
             // btn_Reset
             // 
-            this.btn_Reset.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(230)))), ((int)(((byte)(240)))), ((int)(((byte)(242)))));
+            this.btn_Reset.BackColor = System.Drawing.Color.White;
             this.btn_Reset.Enabled = false;
             this.btn_Reset.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
             this.btn_Reset.Font = new System.Drawing.Font("Segoe UI Semibold", 13.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -298,7 +299,7 @@
             // 
             // btn_ThemHD
             // 
-            this.btn_ThemHD.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(230)))), ((int)(((byte)(240)))), ((int)(((byte)(242)))));
+            this.btn_ThemHD.BackColor = System.Drawing.Color.White;
             this.btn_ThemHD.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
             this.btn_ThemHD.Font = new System.Drawing.Font("Segoe UI Semibold", 13.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btn_ThemHD.ForeColor = System.Drawing.Color.MediumBlue;
@@ -382,7 +383,7 @@
             // 
             // btn_LuuCT
             // 
-            this.btn_LuuCT.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(230)))), ((int)(((byte)(240)))), ((int)(((byte)(242)))));
+            this.btn_LuuCT.BackColor = System.Drawing.Color.White;
             this.btn_LuuCT.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
             this.btn_LuuCT.Font = new System.Drawing.Font("Segoe UI Semibold", 13.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btn_LuuCT.ForeColor = System.Drawing.Color.MediumBlue;
@@ -444,7 +445,7 @@
             // 
             // btn_XoaCT
             // 
-            this.btn_XoaCT.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(230)))), ((int)(((byte)(240)))), ((int)(((byte)(242)))));
+            this.btn_XoaCT.BackColor = System.Drawing.Color.White;
             this.btn_XoaCT.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
             this.btn_XoaCT.Font = new System.Drawing.Font("Segoe UI Semibold", 13.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btn_XoaCT.ForeColor = System.Drawing.Color.MediumBlue;
@@ -458,7 +459,7 @@
             // 
             // btn_SuaCT
             // 
-            this.btn_SuaCT.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(230)))), ((int)(((byte)(240)))), ((int)(((byte)(242)))));
+            this.btn_SuaCT.BackColor = System.Drawing.Color.White;
             this.btn_SuaCT.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
             this.btn_SuaCT.Font = new System.Drawing.Font("Segoe UI Semibold", 13.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btn_SuaCT.ForeColor = System.Drawing.Color.MediumBlue;
@@ -472,7 +473,7 @@
             // 
             // btn_ThemCT
             // 
-            this.btn_ThemCT.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(230)))), ((int)(((byte)(240)))), ((int)(((byte)(242)))));
+            this.btn_ThemCT.BackColor = System.Drawing.Color.White;
             this.btn_ThemCT.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
             this.btn_ThemCT.Font = new System.Drawing.Font("Segoe UI Semibold", 13.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btn_ThemCT.ForeColor = System.Drawing.Color.MediumBlue;
@@ -532,7 +533,7 @@
             // 
             // btn_Exit
             // 
-            this.btn_Exit.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(230)))), ((int)(((byte)(240)))), ((int)(((byte)(242)))));
+            this.btn_Exit.BackColor = System.Drawing.Color.White;
             this.btn_Exit.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
             this.btn_Exit.Font = new System.Drawing.Font("Segoe UI Semibold", 13.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btn_Exit.ForeColor = System.Drawing.Color.MediumBlue;
@@ -546,7 +547,7 @@
             // 
             // btn_XuatHD
             // 
-            this.btn_XuatHD.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(230)))), ((int)(((byte)(240)))), ((int)(((byte)(242)))));
+            this.btn_XuatHD.BackColor = System.Drawing.Color.White;
             this.btn_XuatHD.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
             this.btn_XuatHD.Font = new System.Drawing.Font("Segoe UI Semibold", 13.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btn_XuatHD.ForeColor = System.Drawing.Color.MediumBlue;
@@ -676,6 +677,7 @@
             // 
             this.dgv_CTHD.AllowUserToAddRows = false;
             this.dgv_CTHD.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
+            this.dgv_CTHD.BackgroundColor = System.Drawing.Color.White;
             this.dgv_CTHD.BorderStyle = System.Windows.Forms.BorderStyle.None;
             dataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
             dataGridViewCellStyle4.BackColor = System.Drawing.Color.White;

@@ -117,11 +117,6 @@ namespace _108_144_QLCuaHangCafe
             xulyfrm(f);
         }
 
-        private void mnu_SearchKH_Click(object sender, EventArgs e)
-        {
-            Form f = new frm_SearchKH();
-            xulyfrm(f);
-        }
 
         private void mnu_SearchSP_Click(object sender, EventArgs e)
         {
@@ -186,6 +181,12 @@ namespace _108_144_QLCuaHangCafe
         private void hoáĐơnNhậpToolStripMenuItem_Click(object sender, EventArgs e)
         {
             Form f = new frm_HoaDonNhap(idUser);
+            xulyfrm(f);
+        }
+
+        private void nhânViênToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            Form f = new frm_SearchNV();
             xulyfrm(f);
         }
     }

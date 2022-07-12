@@ -107,11 +107,11 @@
     <Compile Include="frm_SearchHD.Designer.cs">
       <DependentUpon>frm_SearchHD.cs</DependentUpon>
     </Compile>
-    <Compile Include="frm_SearchKH.cs">
+    <Compile Include="frm_SearchNV.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="frm_SearchKH.Designer.cs">
-      <DependentUpon>frm_SearchKH.cs</DependentUpon>
+    <Compile Include="frm_SearchNV.Designer.cs">
+      <DependentUpon>frm_SearchNV.cs</DependentUpon>
     </Compile>
     <Compile Include="frm_SearchSP.cs">
       <SubType>Form</SubType>
@@ -142,12 +142,6 @@
     </Compile>
     <Compile Include="frm_ThongKeThang.Designer.cs">
       <DependentUpon>frm_ThongKeThang.cs</DependentUpon>
-    </Compile>
-    <Compile Include="HienThiHoaDon.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="HienThiHoaDon.Designer.cs">
-      <DependentUpon>HienThiHoaDon.cs</DependentUpon>
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -193,8 +187,8 @@
     <EmbeddedResource Include="frm_SearchHD.resx">
       <DependentUpon>frm_SearchHD.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="frm_SearchKH.resx">
-      <DependentUpon>frm_SearchKH.cs</DependentUpon>
+    <EmbeddedResource Include="frm_SearchNV.resx">
+      <DependentUpon>frm_SearchNV.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="frm_SearchSP.resx">
       <DependentUpon>frm_SearchSP.cs</DependentUpon>
@@ -210,9 +204,6 @@
     </EmbeddedResource>
     <EmbeddedResource Include="frm_ThongKeThang.resx">
       <DependentUpon>frm_ThongKeThang.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="HienThiHoaDon.resx">
-      <DependentUpon>HienThiHoaDon.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>

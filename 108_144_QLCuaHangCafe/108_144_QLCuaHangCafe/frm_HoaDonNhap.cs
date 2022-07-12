@@ -353,7 +353,7 @@ namespace _108_144_QLCuaHangCafe
             //Luu hoa don
             string maHD = txt_MaHD.Text;
             string ngayLap = NgayHienTai();
-            string maloaiHD = "K02";
+            string maloaiHD = "K01";
             string tongtien = dgv_DanhSach.Rows[0].Cells["TongTien"].Value.ToString();
             string sql_hoadon = "EXEC them_hd @mahd = '" + maHD + "',@ngaylap = '" + ngayLap + "', @maloaihd = '" + maloaiHD + "',@manv = '" + manv + "',@tongtien = " + tongtien + ",@tenKH = ''";
             if (c.CapNhatDulieu(sql_hoadon) > 0)

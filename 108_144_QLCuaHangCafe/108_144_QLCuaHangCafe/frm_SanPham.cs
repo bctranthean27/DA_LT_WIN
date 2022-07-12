@@ -108,7 +108,8 @@ namespace _108_144_QLCuaHangCafe
             XuLiButton(false, false, false, true, true);
             dgv_DanhSach.Enabled = false;
             dgv_CTSP.Enabled = false;
-            pic_HinhAnh.Image = null;
+            if(txt_SoLuong.Text == "")
+                pic_HinhAnh.Image = null;
             flag = 2;
         }
         void them(object sender, EventArgs e, string m1, string m2, string m3, string m4,string maLoaiAnh,string tenAnh)
@@ -326,24 +327,10 @@ namespace _108_144_QLCuaHangCafe
         private void dgv_CTSP_CellClick(object sender, DataGridViewCellEventArgs e)
         {
             dx = c.LayDuLieu("select * from ChiTietSanPham where MaSanPham ='" + Old_Value + "'");
-            if (dgv_CTSP.DataSource == null) return;    
+            if (dgv_CTSP.DataSource == null) return;
             int vt2 = dgv_CTSP.CurrentCell.RowIndex;
-            hienThiTextBox2(null,vt2);
+            hienThiTextBox2(null, vt2);
             XuLiButton(true, false, true, false, false);
-        }
-
-        private void dgv_CTSP_CellValueChanged(object sender, DataGridViewCellEventArgs e)
-        {
-
-            DataGridViewRow row = dgv_CTSP.CurrentRow;//get row at select row
-            if(row != null)
-            {
-                string maSize = row.Cells["MaSize"].Value.ToString();
-                string soLuong = row.Cells["SoLuong"].Value.ToString();
-                string giaBan = row.Cells["GiaBan"].Value.ToString();
-                string giaNhap = row.Cells["GiaNhap"].Value.ToString();
-                sua(sender, e, maSize, soLuong, giaBan, giaNhap);
-            }
         }
     }
 }

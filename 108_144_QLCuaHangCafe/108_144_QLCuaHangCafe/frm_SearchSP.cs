@@ -14,7 +14,6 @@ namespace _108_144_QLCuaHangCafe
     {
         cls_QLCHCAFE c = new cls_QLCHCAFE();
         DataSet ds = new DataSet();
-        int vt = 0;
         public frm_SearchSP()
         {
             InitializeComponent();
@@ -23,12 +22,10 @@ namespace _108_144_QLCuaHangCafe
         private void frm_SearchSP_Load(object sender, EventArgs e)
         {
             loadData_DataGrid(dgv_DanhSach, "select * from SanPham");
-            cbo_TrangThai.SelectedIndex = 0;
             loadData_cbo(cbo_LoaiSP, "select MaLoai,TenLoai from LoaiSanPham", "MaLoai", "TenLoai");
             loadData_cbo(cbo_NCC, "select MaNCC,TenNCC from NhaCungCap", "MaNCC", "TenNCC");
             cbo_LoaiSP.DropDownStyle = ComboBoxStyle.DropDownList;
             cbo_NCC.DropDownStyle = ComboBoxStyle.DropDownList;
-            cbo_TrangThai.DropDownStyle = ComboBoxStyle.DropDownList;
         }
         void loadData_DataGrid(DataGridView d, string sql)
         {
@@ -56,29 +53,16 @@ namespace _108_144_QLCuaHangCafe
         }
         private void btn_Search_Click(object sender, EventArgs e)
         {
-            int giaMax = 0;
-            int giaMin = txt_MinGiaSP.Text.Trim() != "" ? int.Parse(txt_MinGiaSP.Text) : 0;
-            string dk_MaLoai = ((DataRowView)cbo_LoaiSP.SelectedItem)["MaLoai"].ToString();
-            string dk_Ncc = ((DataRowView)cbo_NCC.SelectedItem)["MaNCC"].ToString();
-            string dk_TrangThai = cbo_TrangThai.Text;
-            string tk = "select * from SanPham where DonGia >= "+giaMin;
-            if (txt_MaxGiaSP.Text != "")
-            {
-                giaMax = int.Parse(txt_MaxGiaSP.Text);
-                tk += " and DonGia <= " + giaMax;
-            }
-            if (int.Parse(dk_MaLoai) != 0)
-            {
-                tk += " and MaLoai = " + int.Parse(dk_MaLoai);
-            }
 
-            if (int.Parse(dk_Ncc) != 0)
-            {
-                tk += " and MaNCC = " + int.Parse(dk_Ncc);
-            }
-
-            tk += " and TrangThai = " + int.Parse(dk_TrangThai);
-            loadData_DataGrid(dgv_DanhSach, tk);
+            //string dk_MaLoai = ((DataRowView)cbo_LoaiSP.SelectedItem)["MaLoai"].ToString();
+            //string dk_Ncc = ((DataRowView)cbo_NCC.SelectedItem)["MaNCC"].ToString();
+            string sql = "select * from SanPham where TenSP like N'%" + txt_TenSP.Text + "%' ";
+            if (cbo_LoaiSP.SelectedValue.ToString() != "0")
+                sql += " and MaLoai = '" + cbo_LoaiSP.SelectedValue.ToString() + "' ";
+            if (cbo_NCC.SelectedValue.ToString() != "0")
+                sql += " and MaNCC = '" + cbo_NCC.SelectedValue.ToString() + "' ";
+            sql += " and TrangThai ='1'";
+            loadData_DataGrid(dgv_DanhSach, sql);
         }
     }
 }

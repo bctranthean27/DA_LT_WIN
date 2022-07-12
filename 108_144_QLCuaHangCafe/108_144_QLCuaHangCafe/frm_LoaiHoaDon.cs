@@ -24,7 +24,6 @@ namespace _108_144_QLCuaHangCafe
 
         private void frm_LoaiHoaDon_Load(object sender, EventArgs e)
         {
-            XuLiTextBox(true);
             XuLiButton(true, false, false, false);
             dgv_DanhSach.Enabled = true;
             loadData_DataGrid(dgv_DanhSach, "select * from LoaiHoaDon where TrangThai='1'");
@@ -35,10 +34,6 @@ namespace _108_144_QLCuaHangCafe
             ds = c.LayDuLieu(sql);
             d.DataSource = ds.Tables[0];
 
-        }
-        void XuLiTextBox(Boolean t)
-        {
-            txt_TenLoaiHD.ReadOnly = t;
         }
         void XuLiButton(bool key_them, bool key_xoa, bool key_sua, bool key_luu)
         {
@@ -60,14 +55,12 @@ namespace _108_144_QLCuaHangCafe
             ds = c.LayDuLieu("select * from LoaiHoaDon");
             clearTextbox();
             txt_MaLoaiHD.Text = autoCode(ds, "K");
-            XuLiTextBox(false);
             XuLiButton(false,false, false, true);
             dgv_DanhSach.Enabled = false;
             flag = 1;
         }
         private void btn_Sua_Click(object sender, EventArgs e)
         {
-            XuLiTextBox(false);
             XuLiButton(false, false, false, true);
             dgv_DanhSach.Enabled = false;
             flag = 2;
@@ -133,7 +126,7 @@ namespace _108_144_QLCuaHangCafe
         }
         private void btn_Luu_Click(object sender, EventArgs e)
         {
-            XuLiTextBox(true);
+
             XuLiButton(true, false, false, false);
             string m1 = txt_MaLoaiHD.Text;
             string m2 = txt_TenLoaiHD.Text;
@@ -152,25 +145,6 @@ namespace _108_144_QLCuaHangCafe
         }
 
         
-        void loadData_cboFromList(DataTable dt, ComboBox cbo, string disMember)
-        {
-
-            string value = dt.Rows[vt][disMember].ToString();
-            if (disMember == "TrangThai")
-            {
-                for (int i = 0; i < cbo.Items.Count; i++)
-                {
-                    if (cbo.Items[i].ToString() == value) cbo.SelectedIndex = i;
-                }
-            }
-            else
-            {
-                for (int i = 0; i < cbo.Items.Count; i++)
-                {
-                    if (cbo.ValueMember == value) cbo.SelectedIndex = i;
-                }
-            }
-        }
         void hienThiTextBox(DataTable dt, int vt)
         {
             if (dgv_DanhSach.CurrentRow != null)

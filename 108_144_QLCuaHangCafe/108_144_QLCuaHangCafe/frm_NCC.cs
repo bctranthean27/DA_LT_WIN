@@ -28,8 +28,7 @@ namespace _108_144_QLCuaHangCafe
             XuLiTextBox(true);
             XuLiButton(true);
             loadData_DataGrid(dgv_DanhSach, "select * from NhaCungCap where TrangThai = '1'");
-            cbo_TrangThai.SelectedIndex = 0;
-            cbo_TrangThai.DropDownStyle = ComboBoxStyle.DropDownList;
+            txt_DienThoai.Text = "0";
         }
         void loadData_DataGrid(DataGridView d, string sql)
         {
@@ -52,7 +51,6 @@ namespace _108_144_QLCuaHangCafe
             txt_DiaChiMail.ReadOnly = t;
             txt_DienThoai.ReadOnly = t;
             txt_DiaChi.ReadOnly = t;
-            cbo_TrangThai.Enabled = !t;
         }
         void XuLiButton(Boolean t)
         {
@@ -156,15 +154,14 @@ namespace _108_144_QLCuaHangCafe
             string m3 = txt_DienThoai.Text;
             string m4 = txt_DiaChiMail.Text;
             string m5 = txt_DiaChi.Text;
-            string m6 = cbo_TrangThai.SelectedItem.ToString();
             switch (flag)
             {
                 case 1:
                     clearTextbox();
-                    them(sender, e, m1, m2, m3, m4, m5, m6);
+                    them(sender, e, m1, m2, m3, m4, m5, "1");
                     break;
                 case 2:
-                    sua(sender, e, m1, m2, m3, m4, m5, m6);
+                    sua(sender, e, m1, m2, m3, m4, m5, "1");
                     break;
 
             }
@@ -194,7 +191,6 @@ namespace _108_144_QLCuaHangCafe
                     txt_DiaChiMail.Text = dt.Rows[vt]["Mail"].ToString();
                     txt_DienThoai.Text = dt.Rows[vt]["SDT"].ToString();
                     txt_TenNCC.Text = dt.Rows[vt]["TenNCC"].ToString();
-                    loadData_cboFromList(dt, cbo_TrangThai, "TrangThai");
                 }
             }
 
@@ -212,7 +208,6 @@ namespace _108_144_QLCuaHangCafe
             txt_DiaChi.Text = "";
             txt_DiaChiMail.Text = "";
             txt_DienThoai.Text = "";
-            cbo_TrangThai.SelectedIndex = 0;
         }
 
         private void btn_Xoa_Click(object sender, EventArgs e)
@@ -235,20 +230,28 @@ namespace _108_144_QLCuaHangCafe
                 string val2 = row.Cells["DChi"].Value == DBNull.Value ? "" : row.Cells["DChi"].Value.ToString();
                 string val3 = row.Cells["SDT"].Value == DBNull.Value ? "" : row.Cells["SDT"].Value.ToString();
                 string val4 = row.Cells["Mail"].Value == DBNull.Value ? "" : row.Cells["Mail"].Value.ToString();
-                string val5 = row.Cells["TrangThai"].Value == DBNull.Value ? "" : row.Cells["TrangThai"].Value.ToString();
                 string ma = row.Cells["MaNCC"].Value == DBNull.Value ? "" : row.Cells["MaNCC"].Value.ToString();
-                if (row.Cells["MaNCC"].Value == DBNull.Value)
-                {
-                    string sql = "EXEC them_ncc @mancc = '" + autoCode(ds,"N") + "', @tenncc = N'" + val1 + "', @dchi = N'" + val2 + "', @sdt = '" + val3 + "', @mail = '" + val4 + "';";
-                    if (c.CapNhatDulieu(sql) > 0)
-                        frm_NCC_Load(sender, e);
-                }
-                else
-                {
-                    sua(sender, e, ma, val1, val2, val3, val4, val5);
-                }
-                
+                sua(sender, e, ma, val1, val2, val3, val4, "1"); 
             }
+        }
+
+        private void txt_Input_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (char.IsDigit(e.KeyChar) == false && char.IsControl(e.KeyChar) == false)
+            {
+                e.Handled = true;
+            }
+            if (txt_DienThoai.Text == "")
+            {
+                txt_DienThoai.Text = "0";
+                txt_DienThoai.SelectionStart = txt_DienThoai.Text.Length;
+            }
+        }
+
+        private void txt_DienThoai_Click(object sender, EventArgs e)
+        {
+            txt_DienThoai.Text = "0";
+            txt_DienThoai.SelectionStart = txt_DienThoai.Text.Length;
         }
     }
 }

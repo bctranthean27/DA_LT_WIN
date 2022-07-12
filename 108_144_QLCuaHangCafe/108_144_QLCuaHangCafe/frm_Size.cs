@@ -26,8 +26,6 @@ namespace _108_144_QLCuaHangCafe
             XuLiTextBox(true);
             XuLiButton(true);
             loadData_DataGrid(dgv_DanhSach, "select * from Size where TrangThai='1'");
-            cbo_TrangThai.SelectedIndex = 0;
-            cbo_TrangThai.DropDownStyle = ComboBoxStyle.DropDownList;
         }
         void loadData_DataGrid(DataGridView d, string sql)
         {
@@ -39,7 +37,6 @@ namespace _108_144_QLCuaHangCafe
         {
             txt_MaSize.ReadOnly = t;
             txt_TenSize.ReadOnly = t;
-            cbo_TrangThai.Enabled = !t;
         }
         void XuLiButton(Boolean t)
         {
@@ -130,7 +127,6 @@ namespace _108_144_QLCuaHangCafe
             XuLiButton(true);
             string m1 = txt_MaSize.Text;
             string m2 = txt_TenSize.Text;
-            string m3 = cbo_TrangThai.SelectedItem.ToString();
             switch (flag)
             {
                 case 1:
@@ -138,7 +134,7 @@ namespace _108_144_QLCuaHangCafe
                     them(sender, e, m1, m2);
                     break;
                 case 2:
-                    sua(sender, e, m1, m2, m3);
+                    sua(sender, e, m1, m2, "1");
                     break;
 
             }
@@ -155,19 +151,9 @@ namespace _108_144_QLCuaHangCafe
         {
 
             string value = dt.Rows[vt][disMember].ToString();
-            if (disMember == "TrangThai")
+            for (int i = 0; i < cbo.Items.Count; i++)
             {
-                for (int i = 0; i < cbo.Items.Count; i++)
-                {
-                    if (cbo.Items[i].ToString() == value) cbo.SelectedIndex = i;
-                }
-            }
-            else
-            {
-                for (int i = 0; i < cbo.Items.Count; i++)
-                {
-                    if (cbo.ValueMember == value) cbo.SelectedIndex = i;
-                }
+                if (cbo.ValueMember == value) cbo.SelectedIndex = i;
             }
         }
         void hienThiTextBox(DataTable dt, int vt)
@@ -186,7 +172,6 @@ namespace _108_144_QLCuaHangCafe
                 {
                     txt_MaSize.Text = row.Cells["MaSize"].Value.ToString();
                     txt_TenSize.Text = row.Cells["TenSize"].Value.ToString();
-                    loadData_cboFromList(dt, cbo_TrangThai, "TrangThai");
                 }
             }
         }
@@ -201,29 +186,11 @@ namespace _108_144_QLCuaHangCafe
         {
             txt_MaSize.Text = "";
             txt_TenSize.Text = "";
-            cbo_TrangThai.SelectedIndex = 0;
         }
 
         private void btn_Xoa_Click(object sender, EventArgs e)
         {
             sua(sender, e);
-            //try
-            //{
-            //    if (txt_MaSize.Text == "")
-            //        throw new Exception("Lỗi cập nhật\nHãy chắc chắn bạn chọn đúng cột muốn xoá");
-            //    string sql = "DELETE from Size where MaSize='" + Old_Value + "'";
-            //    if (c.CapNhatDulieu(sql) > 0)
-            //    {
-            //        MessageBox.Show("Cập nhật thành công", "Thông báo", MessageBoxButtons.OK);
-            //        frm_Size_Load(sender, e);
-            //        clearTextbox();
-            //    }
-            //}
-            //catch (Exception err)
-            //{
-            //    MessageBox.Show(err.Message, "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
-            //    frm_Size_Load(sender, e);
-            //}
         }
         private void dgv_DanhSach_CellValueChanged(object sender, DataGridViewCellEventArgs e)
         {
@@ -232,17 +199,8 @@ namespace _108_144_QLCuaHangCafe
             {
                 DataGridViewRow row = dgv_DanhSach.CurrentRow;//get row at select row
                 string val1 = row.Cells["TenSize"].Value == DBNull.Value ? "" : row.Cells["TenSize"].Value.ToString();
-                string val2 = row.Cells["TrangThai"].Value == DBNull.Value ? "" : row.Cells["TrangThai"].Value.ToString();
                 string ma = row.Cells["MaSize"].Value == DBNull.Value ? "" : row.Cells["MaSize"].Value.ToString();
-                if (row.Cells["MaSize"].Value == DBNull.Value)
-                {
-                    them(sender, null, autoCode(ds, "S"), val1);
-                }
-                else
-                {
-                    sua(sender, null, ma, val1, val2);
-                }
-
+                sua(sender, null, ma, val1, "1");
             }
         }
         private void btn_Exit_Click(object sender, EventArgs e)
