@@ -31,12 +31,13 @@
             this.label2 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
             this.dgv_ThongKeNam = new System.Windows.Forms.DataGridView();
+            this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.cbo_Nam = new System.Windows.Forms.ComboBox();
             this.Thang = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.SoLuongDon = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.TongTien = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.TrungBinh = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.groupBox1 = new System.Windows.Forms.GroupBox();
-            this.txt_ThongKeNam = new System.Windows.Forms.TextBox();
+            this.btn_TopDoanhThu = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.dgv_ThongKeNam)).BeginInit();
             this.groupBox1.SuspendLayout();
             this.SuspendLayout();
@@ -80,30 +81,6 @@
             this.dgv_ThongKeNam.Size = new System.Drawing.Size(1433, 554);
             this.dgv_ThongKeNam.TabIndex = 0;
             // 
-            // Thang
-            // 
-            this.Thang.HeaderText = "Tháng";
-            this.Thang.MinimumWidth = 6;
-            this.Thang.Name = "Thang";
-            // 
-            // SoLuongDon
-            // 
-            this.SoLuongDon.HeaderText = "Số Lượng Đơn";
-            this.SoLuongDon.MinimumWidth = 6;
-            this.SoLuongDon.Name = "SoLuongDon";
-            // 
-            // TongTien
-            // 
-            this.TongTien.HeaderText = "Tổng Tiền";
-            this.TongTien.MinimumWidth = 6;
-            this.TongTien.Name = "TongTien";
-            // 
-            // TrungBinh
-            // 
-            this.TrungBinh.HeaderText = "Trung Bình";
-            this.TrungBinh.MinimumWidth = 6;
-            this.TrungBinh.Name = "TrungBinh";
-            // 
             // groupBox1
             // 
             this.groupBox1.Controls.Add(this.dgv_ThongKeNam);
@@ -116,20 +93,61 @@
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Bảng Thống Kê Hoá Đơn Theo Năm";
             // 
-            // txt_ThongKeNam
+            // cbo_Nam
             // 
-            this.txt_ThongKeNam.Font = new System.Drawing.Font("Segoe UI Semibold", 16.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txt_ThongKeNam.Location = new System.Drawing.Point(743, 86);
-            this.txt_ThongKeNam.Name = "txt_ThongKeNam";
-            this.txt_ThongKeNam.Size = new System.Drawing.Size(336, 43);
-            this.txt_ThongKeNam.TabIndex = 127;
+            this.cbo_Nam.FormattingEnabled = true;
+            this.cbo_Nam.ItemHeight = 16;
+            this.cbo_Nam.Location = new System.Drawing.Point(730, 103);
+            this.cbo_Nam.Name = "cbo_Nam";
+            this.cbo_Nam.Size = new System.Drawing.Size(299, 24);
+            this.cbo_Nam.TabIndex = 127;
+            this.cbo_Nam.SelectedIndexChanged += new System.EventHandler(this.cbo_Nam_SelectedIndexChanged);
+            // 
+            // Thang
+            // 
+            this.Thang.DataPropertyName = "Thang";
+            this.Thang.HeaderText = "Tháng";
+            this.Thang.MinimumWidth = 6;
+            this.Thang.Name = "Thang";
+            // 
+            // SoLuongDon
+            // 
+            this.SoLuongDon.DataPropertyName = "SoLuongDon";
+            this.SoLuongDon.HeaderText = "Số Lượng Đơn";
+            this.SoLuongDon.MinimumWidth = 6;
+            this.SoLuongDon.Name = "SoLuongDon";
+            // 
+            // TongTien
+            // 
+            this.TongTien.DataPropertyName = "TongTien";
+            this.TongTien.HeaderText = "Tổng Tiền";
+            this.TongTien.MinimumWidth = 6;
+            this.TongTien.Name = "TongTien";
+            // 
+            // TrungBinh
+            // 
+            this.TrungBinh.DataPropertyName = "TrungBinh";
+            this.TrungBinh.HeaderText = "Trung Bình";
+            this.TrungBinh.MinimumWidth = 6;
+            this.TrungBinh.Name = "TrungBinh";
+            // 
+            // btn_TopDoanhThu
+            // 
+            this.btn_TopDoanhThu.Location = new System.Drawing.Point(1095, 91);
+            this.btn_TopDoanhThu.Name = "btn_TopDoanhThu";
+            this.btn_TopDoanhThu.Size = new System.Drawing.Size(145, 55);
+            this.btn_TopDoanhThu.TabIndex = 128;
+            this.btn_TopDoanhThu.Text = "Tháng có doanh thu cao nhất";
+            this.btn_TopDoanhThu.UseVisualStyleBackColor = true;
+            this.btn_TopDoanhThu.Click += new System.EventHandler(this.btn_TopDoanhThu_Click);
             // 
             // frm_ThongKeNam
             // 
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.None;
             this.AutoSize = true;
             this.ClientSize = new System.Drawing.Size(1439, 735);
-            this.Controls.Add(this.txt_ThongKeNam);
+            this.Controls.Add(this.btn_TopDoanhThu);
+            this.Controls.Add(this.cbo_Nam);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.groupBox1);
@@ -149,10 +167,11 @@
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.DataGridView dgv_ThongKeNam;
         private System.Windows.Forms.GroupBox groupBox1;
+        private System.Windows.Forms.ComboBox cbo_Nam;
         private System.Windows.Forms.DataGridViewTextBoxColumn Thang;
         private System.Windows.Forms.DataGridViewTextBoxColumn SoLuongDon;
         private System.Windows.Forms.DataGridViewTextBoxColumn TongTien;
         private System.Windows.Forms.DataGridViewTextBoxColumn TrungBinh;
-        private System.Windows.Forms.TextBox txt_ThongKeNam;
+        private System.Windows.Forms.Button btn_TopDoanhThu;
     }
 }

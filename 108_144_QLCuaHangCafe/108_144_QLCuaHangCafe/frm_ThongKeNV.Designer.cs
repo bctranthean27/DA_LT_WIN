@@ -31,12 +31,12 @@
             this.label2 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
             this.dgv_ThongKeNV = new System.Windows.Forms.DataGridView();
+            this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.cbo_NhanVien = new System.Windows.Forms.ComboBox();
             this.Ngay = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.SoLuongDon = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.TongTien = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.TrungBinh = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.groupBox1 = new System.Windows.Forms.GroupBox();
-            this.txt_ThongKeNam = new System.Windows.Forms.TextBox();
             ((System.ComponentModel.ISupportInitialize)(this.dgv_ThongKeNV)).BeginInit();
             this.groupBox1.SuspendLayout();
             this.SuspendLayout();
@@ -47,7 +47,7 @@
             this.label2.Font = new System.Drawing.Font("Segoe UI Semibold", 13.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label2.Location = new System.Drawing.Point(585, 89);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(140, 31);
+            this.label2.Size = new System.Drawing.Size(144, 32);
             this.label2.TabIndex = 129;
             this.label2.Text = "NHÂN VIÊN";
             // 
@@ -80,30 +80,6 @@
             this.dgv_ThongKeNV.Size = new System.Drawing.Size(1447, 554);
             this.dgv_ThongKeNV.TabIndex = 0;
             // 
-            // Ngay
-            // 
-            this.Ngay.HeaderText = "Ngày";
-            this.Ngay.MinimumWidth = 6;
-            this.Ngay.Name = "Ngay";
-            // 
-            // SoLuongDon
-            // 
-            this.SoLuongDon.HeaderText = "Số Lượng Đơn";
-            this.SoLuongDon.MinimumWidth = 6;
-            this.SoLuongDon.Name = "SoLuongDon";
-            // 
-            // TongTien
-            // 
-            this.TongTien.HeaderText = "Tổng Tiền";
-            this.TongTien.MinimumWidth = 6;
-            this.TongTien.Name = "TongTien";
-            // 
-            // TrungBinh
-            // 
-            this.TrungBinh.HeaderText = "Trung Bình";
-            this.TrungBinh.MinimumWidth = 6;
-            this.TrungBinh.Name = "TrungBinh";
-            // 
             // groupBox1
             // 
             this.groupBox1.Controls.Add(this.dgv_ThongKeNV);
@@ -116,25 +92,55 @@
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Bảng Thống Kê Hoá Đơn Theo Nhân Viên";
             // 
-            // txt_ThongKeNam
+            // cbo_NhanVien
             // 
-            this.txt_ThongKeNam.Font = new System.Drawing.Font("Segoe UI", 13.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txt_ThongKeNam.Location = new System.Drawing.Point(752, 89);
-            this.txt_ThongKeNam.Name = "txt_ThongKeNam";
-            this.txt_ThongKeNam.Size = new System.Drawing.Size(279, 38);
-            this.txt_ThongKeNam.TabIndex = 131;
+            this.cbo_NhanVien.FormattingEnabled = true;
+            this.cbo_NhanVien.Location = new System.Drawing.Point(791, 95);
+            this.cbo_NhanVien.Name = "cbo_NhanVien";
+            this.cbo_NhanVien.Size = new System.Drawing.Size(249, 24);
+            this.cbo_NhanVien.TabIndex = 131;
+            this.cbo_NhanVien.SelectedIndexChanged += new System.EventHandler(this.cbo_NhanVien_SelectedIndexChanged);
+            // 
+            // Ngay
+            // 
+            this.Ngay.DataPropertyName = "Ngay";
+            this.Ngay.HeaderText = "Ngày";
+            this.Ngay.MinimumWidth = 6;
+            this.Ngay.Name = "Ngay";
+            // 
+            // SoLuongDon
+            // 
+            this.SoLuongDon.DataPropertyName = "SoLuongDon";
+            this.SoLuongDon.HeaderText = "Số Lượng Đơn";
+            this.SoLuongDon.MinimumWidth = 6;
+            this.SoLuongDon.Name = "SoLuongDon";
+            // 
+            // TongTien
+            // 
+            this.TongTien.DataPropertyName = "TongTien";
+            this.TongTien.HeaderText = "Tổng Tiền";
+            this.TongTien.MinimumWidth = 6;
+            this.TongTien.Name = "TongTien";
+            // 
+            // TrungBinh
+            // 
+            this.TrungBinh.DataPropertyName = "TrungBinh";
+            this.TrungBinh.HeaderText = "Trung Bình";
+            this.TrungBinh.MinimumWidth = 6;
+            this.TrungBinh.Name = "TrungBinh";
             // 
             // frm_ThongKeNV
             // 
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.None;
             this.ClientSize = new System.Drawing.Size(1453, 752);
+            this.Controls.Add(this.cbo_NhanVien);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.groupBox1);
-            this.Controls.Add(this.txt_ThongKeNam);
             this.Name = "frm_ThongKeNV";
             this.Text = "frm_ThongKeNV";
             this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
+            this.Load += new System.EventHandler(this.frm_ThongKeNV_Load);
             ((System.ComponentModel.ISupportInitialize)(this.dgv_ThongKeNV)).EndInit();
             this.groupBox1.ResumeLayout(false);
             this.ResumeLayout(false);
@@ -148,7 +154,7 @@
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.DataGridView dgv_ThongKeNV;
         private System.Windows.Forms.GroupBox groupBox1;
-        private System.Windows.Forms.TextBox txt_ThongKeNam;
+        private System.Windows.Forms.ComboBox cbo_NhanVien;
         private System.Windows.Forms.DataGridViewTextBoxColumn Ngay;
         private System.Windows.Forms.DataGridViewTextBoxColumn SoLuongDon;
         private System.Windows.Forms.DataGridViewTextBoxColumn TongTien;

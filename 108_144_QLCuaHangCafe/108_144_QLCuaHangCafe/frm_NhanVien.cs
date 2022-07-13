@@ -185,58 +185,6 @@ namespace _108_144_QLCuaHangCafe
             }
         }
 
-        private void btn_Luu_Click(object sender, EventArgs e)
-        {
-            XuLiTextBox(true);
-            XuLiButton(true);
-            string m1 = txt_MaNV.Text;
-            string m2 = txt_HoNV.Text;
- void loadData_cboFromList(DataTable dt, ComboBox cbo, string disMember,int vt)
-        {
-
-            string value = dt.Rows[vt][disMember].ToString();
-            if (disMember == "TrangThai")
-            {
-                for (int i = 0; i < cbo.Items.Count; i++)
-                {
-                    if (cbo.Items[i].ToString() == value) cbo.SelectedIndex = i;
-                }
-            }
-            else
-            {
-                foreach(DataRowView rowView in cbo.Items)
-                {
-                    string val = rowView.Row[0].ToString();
-                    string name = rowView.Row[1].ToString();
-                    if(val == value)
-                    {
-                        cbo.Text = name;
-                        break;
-                    }
-
-                }
-            }
-        }           string m3 = txt_TenNV.Text;
-            string m4 = txt_DiaChi.Text;
-            string m5 = NgayThangNam(dtp_NgayVaoLam);
-            string m6 = cbo_ChucVu.SelectedValue.ToString();
-            string roles = "";
-            if (m6 == "C01") roles = "QL";
-            if (m6 == "C02") roles = "NV";
-            string m7 = cbo_TrangThai.SelectedItem.ToString();
-            switch (flag)
-            {
-                case 1:
-                    clearTextbox();
-                    them(sender, e, m1, m2, m3, m4, m5, m6, roles);
-                    break;
-                case 2:
-                    sua(sender, e, m1, m2, m3, m4, m5, m6, roles);
-                    break;
-
-            }
-        }
-
         void loadData_cboFromList(DataTable dt, ComboBox cbo, string disMember, int vt)
         {
 
@@ -261,6 +209,32 @@ namespace _108_144_QLCuaHangCafe
                     }
 
                 }
+            }
+        }
+        private void btn_Luu_Click(object sender, EventArgs e)
+        {
+            XuLiTextBox(true);
+            XuLiButton(true);
+            string m1 = txt_MaNV.Text;
+            string m2 = txt_HoNV.Text;
+           string m3 = txt_TenNV.Text;
+            string m4 = txt_DiaChi.Text;
+            string m5 = NgayThangNam(dtp_NgayVaoLam);
+            string m6 = cbo_ChucVu.SelectedValue.ToString();
+            string roles = "";
+            if (m6 == "C01") roles = "QL";
+            if (m6 == "C02") roles = "NV";
+            string m7 = cbo_TrangThai.SelectedItem.ToString();
+            switch (flag)
+            {
+                case 1:
+                    clearTextbox();
+                    them(sender, e, m1, m2, m3, m4, m5, m6, roles);
+                    break;
+                case 2:
+                    sua(sender, e, m1, m2, m3, m4, m5, m6, roles);
+                    break;
+
             }
         }
 
