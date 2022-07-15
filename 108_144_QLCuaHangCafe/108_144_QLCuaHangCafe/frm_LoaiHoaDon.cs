@@ -24,6 +24,8 @@ namespace _108_144_QLCuaHangCafe
 
         private void frm_LoaiHoaDon_Load(object sender, EventArgs e)
         {
+            dgv_DanhSach.Enabled = true;
+            txt_TenLoaiHD.ReadOnly = true;
             XuLiButton(true, false, false, false);
             dgv_DanhSach.Enabled = true;
             loadData_DataGrid(dgv_DanhSach, "select * from LoaiHoaDon where TrangThai='1'");
@@ -58,10 +60,12 @@ namespace _108_144_QLCuaHangCafe
             XuLiButton(false,false, false, true);
             dgv_DanhSach.Enabled = false;
             flag = 1;
+            txt_TenLoaiHD.ReadOnly = false;
         }
         private void btn_Sua_Click(object sender, EventArgs e)
         {
             XuLiButton(false, false, false, true);
+            txt_TenLoaiHD.ReadOnly = false;
             dgv_DanhSach.Enabled = false;
             flag = 2;
         }

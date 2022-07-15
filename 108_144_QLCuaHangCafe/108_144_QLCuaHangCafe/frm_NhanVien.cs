@@ -195,6 +195,8 @@ namespace _108_144_QLCuaHangCafe
             string roles = "";
             if (m6 == "C01") roles = "QL";
             if (m6 == "C02") roles = "NV";
+            if (m6 == "C03") roles = "KT";
+            if (m6 == "C04") roles = "TK";
 
             switch (flag)
             {

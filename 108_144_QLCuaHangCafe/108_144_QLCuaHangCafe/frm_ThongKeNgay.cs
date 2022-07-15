@@ -38,7 +38,7 @@ namespace _108_144_QLCuaHangCafe
             string ngay = dtp.Value.Day.ToString();
             string thang = dtp.Value.Month.ToString();
             string nam = dtp.Value.Year.ToString();
-            NgayDayDu = ngay + "/" + thang + "/" + nam;
+            NgayDayDu = thang + "/" + ngay + "/" + nam;
             return NgayDayDu;
         }
         void XuLiTinhToan()

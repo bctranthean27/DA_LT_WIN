@@ -151,9 +151,9 @@ namespace _108_144_QLCuaHangCafe
             XuLiButton(true);
             string m1 = txt_NCC.Text;
             string m2 = txt_TenNCC.Text;
-            string m3 = txt_DienThoai.Text;
-            string m4 = txt_DiaChiMail.Text;
-            string m5 = txt_DiaChi.Text;
+            string m3 = txt_DiaChi.Text;
+            string m4 = txt_DienThoai.Text;
+            string m5 = txt_DiaChiMail.Text;
             switch (flag)
             {
                 case 1:

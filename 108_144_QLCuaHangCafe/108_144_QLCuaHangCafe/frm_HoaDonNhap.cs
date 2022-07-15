@@ -89,7 +89,7 @@ namespace _108_144_QLCuaHangCafe
             string ngay = DateTime.Now.Day.ToString();
             string thang = DateTime.Now.Month.ToString();
             string nam = DateTime.Now.Year.ToString();
-            string NgayDayDu = ngay + "/" + thang + "/" + nam;
+            string NgayDayDu = thang + "/" + ngay + "/" + nam;
             return NgayDayDu;
         }
         private void btn_ThemHD_Click(object sender, EventArgs e)

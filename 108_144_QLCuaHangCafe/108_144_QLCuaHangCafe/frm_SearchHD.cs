@@ -42,7 +42,7 @@ namespace _108_144_QLCuaHangCafe
             string ngay = dtp.Value.Day.ToString();
             string thang = dtp.Value.Month.ToString();
             string nam = dtp.Value.Year.ToString();
-            NgayDayDu = ngay + "/" + thang + "/" + nam;
+            NgayDayDu = thang + "/" + ngay + "/" + nam;
             return NgayDayDu;
         }
         private void btn_Search_Click(object sender, EventArgs e)
@@ -57,6 +57,12 @@ namespace _108_144_QLCuaHangCafe
                 dgv_DanhSach.Columns["TenKhachHang"].Visible = false;
             }
             else dgv_DanhSach.Columns["TenKhachHang"].Visible = true;
+        }
+
+        private void dgv_DanhSach_CellClick(object sender, DataGridViewCellEventArgs e)
+        {
+            string mahd = dgv_DanhSach.CurrentRow.Cells["MaHD"].Value.ToString();
+            loadData_DataGrid(dgv_cthd, "select * from ChiTietHoaDon where MaHD = '"+mahd+"'");
         }
     }
 }

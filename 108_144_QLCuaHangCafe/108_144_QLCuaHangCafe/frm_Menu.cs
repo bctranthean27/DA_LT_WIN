@@ -34,7 +34,9 @@ namespace _108_144_QLCuaHangCafe
         }
 
         void phanQuyen(string role) {
-            if (role.ToUpper() == "NV") {
+            if (role.ToUpper() == "NV") 
+            {
+                mnu_HoaDonNhap.Visible = false;
                 mnu_NhanVien.Visible = false;
                 mnu_ThongKe.Visible = false;
                 mnu_LoaiHD.Visible = false;
@@ -42,6 +44,31 @@ namespace _108_144_QLCuaHangCafe
                 mnu_Size.Visible = false;
                 mnu_ChucVu.Visible = false;
                 mnu_NCC.Visible = false;
+                mnu_SanPham.Visible = false;
+                mnu_SearchNV.Visible = false;
+            }
+            if (role.ToUpper() == "TK")
+            {
+                mnu_NhanVien.Visible = false;
+                mnu_ThongKe.Visible = false;
+                mnu_LoaiHD.Visible = false;
+                mnu_LoaiSP.Visible = false;
+                mnu_Size.Visible = false;
+                mnu_ChucVu.Visible = false;
+                mnu_NCC.Visible = false;
+                mnu_HoaDon.Visible = false;
+                mnu_SearchNV.Visible = false;
+            }
+            if (role.ToUpper() == "KT")
+            {
+                mnu_NhanVien.Visible = false;
+                mnu_LoaiHD.Visible = false;
+                mnu_LoaiSP.Visible = false;
+                mnu_Size.Visible = false;
+                mnu_ChucVu.Visible = false;
+                mnu_NCC.Visible = false;
+                mnu_HoaDon.Visible = false;
+                mnu_HoaDonNhap.Visible = false;
             }
         }
 
@@ -187,6 +214,12 @@ namespace _108_144_QLCuaHangCafe
         private void nhânViênToolStripMenuItem_Click(object sender, EventArgs e)
         {
             Form f = new frm_SearchNV();
+            xulyfrm(f);
+        }
+
+        private void munu_LoiNhuan_Click(object sender, EventArgs e)
+        {
+            Form f = new frm_ThongKeLoiNhuan();
             xulyfrm(f);
         }
     }

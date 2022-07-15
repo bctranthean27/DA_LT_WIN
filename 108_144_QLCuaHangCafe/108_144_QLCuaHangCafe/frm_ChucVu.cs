@@ -26,6 +26,7 @@ namespace _108_144_QLCuaHangCafe
         
         private void frm_ChucVu_Load(object sender, EventArgs e)
         {
+            dgv_DanhSach.Enabled = true;
             XuLiTextBox(true);
             XuLiButton(true,false,false,false);
             loadData_DataGrid(dgv_DanhSach, "select * from ChucVu where TrangThai = '1'");
