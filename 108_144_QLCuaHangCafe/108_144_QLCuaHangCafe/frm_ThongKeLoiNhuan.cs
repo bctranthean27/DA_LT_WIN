@@ -12,6 +12,7 @@ namespace _108_144_QLCuaHangCafe
 {
     public partial class frm_ThongKeLoiNhuan : Form
     {
+        bool flag = true;
         public frm_ThongKeLoiNhuan()
         {
             InitializeComponent();
@@ -19,7 +20,9 @@ namespace _108_144_QLCuaHangCafe
 
         private void frm_ThongKeLoiNhuan_Load(object sender, EventArgs e)
         {
+
             loadData_cbo(cbo_Nam, "select DISTINCT YEAR(NgayLap) as 'nam' from HoaDon", "nam", "nam");
+            flag = false;
         }
         cls_QLCHCAFE c = new cls_QLCHCAFE();
         void loadData_cbo(ComboBox cbo, string sql, string valMember, string disMember)
@@ -86,7 +89,9 @@ namespace _108_144_QLCuaHangCafe
         }
         private void cbo_Nam_SelectedIndexChanged(object sender, EventArgs e)
         {
-            if (cbo_Nam.SelectedIndex == -1) return;
+            if (cbo_Nam.SelectedIndex == -1 || flag )
+                return;
+            
             try
             {
                 int nam;
@@ -97,6 +102,7 @@ namespace _108_144_QLCuaHangCafe
                     loadData_DataGrid(dgv_ThongKeNam, "exec thong_ke_loi_nhuan @nam=" + nam);
                     XuLiTinhToan();
                 }
+                
 
 
             }

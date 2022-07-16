@@ -114,13 +114,18 @@ namespace _108_144_QLCuaHangCafe
 
         private void btn_XuatHD_Click(object sender, EventArgs e)
         {
-            
+            int tienthanhtoan = Convert.ToInt32(txt_TongTien.Text);
+            int tienkhachgui = Convert.ToInt32(txt_TienKhachGui.Text);
             if (dgv_CTHD.Rows.Count == 0)
                 MessageBox.Show("Vui lòng không xuất hoá đơn trống", "Lưu ý", MessageBoxButtons.OK);
             else
             {
                 if (txt_TienKhachGui.Text == "0")
                     MessageBox.Show("Vui lòng nhập tiền khách gửi", "Lưu ý", MessageBoxButtons.OK);
+                else
+                
+                    if(tienthanhtoan > tienkhachgui)
+                        MessageBox.Show("Tiền khách gửi phải lớn hơn hoặc bằng tiền thanh toán", "Lưu ý", MessageBoxButtons.OK);
                 else
                 {
                     if (ConDuSoLuong())

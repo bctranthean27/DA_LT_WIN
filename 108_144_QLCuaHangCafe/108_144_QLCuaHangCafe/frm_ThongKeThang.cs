@@ -14,6 +14,7 @@ namespace _108_144_QLCuaHangCafe
     public partial class frm_ThongKeThang : Form
     {
         cls_QLCHCAFE c = new cls_QLCHCAFE();
+        bool flag = true;
         public frm_ThongKeThang()
         {
             InitializeComponent();
@@ -23,6 +24,7 @@ namespace _108_144_QLCuaHangCafe
         {
             loadData_cbo(cbo_Nam, "select DISTINCT YEAR(NgayLap) as 'nam' from HoaDon", "nam", "nam");
             cbo_Nam.SelectedIndex = -1;
+            flag = false;
         }
         void loadData_cbo(ComboBox cbo, string sql, string valMember, string disMember)
         {
@@ -91,8 +93,29 @@ namespace _108_144_QLCuaHangCafe
         }
         private void cbo_Nam_SelectedIndexChanged(object sender, EventArgs e)
         {
-            if (cbo_Nam.SelectedIndex == -1) cbo_ThongKeThang.Enabled = false;
-            else cbo_ThongKeThang.Enabled = true;
+            if (cbo_Nam.SelectedIndex == -1 || flag)
+            {
+                cbo_ThongKeThang.Enabled = false;
+                return;
+            }
+            else
+            {
+                cbo_ThongKeThang.Enabled = true;
+                if(cbo_ThongKeThang.SelectedIndex != -1)
+                    try
+                    {
+                        if (cbo_ThongKeThang.SelectedIndex == -1 || cbo_Nam.SelectedIndex == -1)
+                        {
+                            throw new Exception("Vui chọn tháng và năm cần thống kê");
+                        }
+                        loadData_DataGrid(dgv_DanhSach, "exec thong_ke_thang @thang='" + cbo_ThongKeThang.Text + "', @nam='" + cbo_Nam.Text + "'");
+                        XuLiTinhToan();
+                    }
+                    catch (Exception err)
+                    {
+                        MessageBox.Show(err.ToString(), "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    }
+            }
         }
     }
 }

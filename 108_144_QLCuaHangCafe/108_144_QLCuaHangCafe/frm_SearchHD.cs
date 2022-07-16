@@ -62,7 +62,9 @@ namespace _108_144_QLCuaHangCafe
         private void dgv_DanhSach_CellClick(object sender, DataGridViewCellEventArgs e)
         {
             string mahd = dgv_DanhSach.CurrentRow.Cells["MaHD"].Value.ToString();
-            loadData_DataGrid(dgv_cthd, "select * from ChiTietHoaDon where MaHD = '"+mahd+"'");
+            string maloaihd = dgv_DanhSach.CurrentRow.Cells["MaLoaiHD"].Value.ToString();
+            loadData_DataGrid(dgv_cthd, "select MaCTHD,MaSP,MaSize,SoLuong,DonGia,GiaGoc,KhuyenMai,ThanhTien from ChiTietHoaDon where MaHD = '" + mahd+"'");
+
         }
     }
 }
