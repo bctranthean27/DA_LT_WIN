@@ -15,9 +15,7 @@ C:\text\WinForm\108_144_QLCuaHangCafe\108_144_QLCuaHangCafe\bin\Debug\108_144_QL
 C:\text\WinForm\108_144_QLCuaHangCafe\108_144_QLCuaHangCafe\obj\Debug\108_144_QLCuaHangCafe.csproj.AssemblyReference.cache
 C:\text\WinForm\108_144_QLCuaHangCafe\108_144_QLCuaHangCafe\obj\Debug\108_144_QLCuaHangCafe.csproj.SuggestedBindingRedirects.cache
 C:\text\WinForm\108_144_QLCuaHangCafe\108_144_QLCuaHangCafe\obj\Debug\_108_144_QLCuaHangCafe.frm_ChucVu.resources
-C:\text\WinForm\108_144_QLCuaHangCafe\108_144_QLCuaHangCafe\obj\Debug\_108_144_QLCuaHangCafe.frm_HinhAnh.resources
 C:\text\WinForm\108_144_QLCuaHangCafe\108_144_QLCuaHangCafe\obj\Debug\_108_144_QLCuaHangCafe.frm_HoaDon.resources
-C:\text\WinForm\108_144_QLCuaHangCafe\108_144_QLCuaHangCafe\obj\Debug\_108_144_QLCuaHangCafe.frm_KhachHang.resources
 C:\text\WinForm\108_144_QLCuaHangCafe\108_144_QLCuaHangCafe\obj\Debug\_108_144_QLCuaHangCafe.frm_LoaiHoaDon.resources
 C:\text\WinForm\108_144_QLCuaHangCafe\108_144_QLCuaHangCafe\obj\Debug\_108_144_QLCuaHangCafe.frm_LoaiSanPham.resources
 C:\text\WinForm\108_144_QLCuaHangCafe\108_144_QLCuaHangCafe\obj\Debug\_108_144_QLCuaHangCafe.frm_NhanVien.resources
@@ -35,9 +33,7 @@ E:\DA c#\DA_LT_WIN\108_144_QLCuaHangCafe\108_144_QLCuaHangCafe\bin\Debug\108_144
 E:\DA c#\DA_LT_WIN\108_144_QLCuaHangCafe\108_144_QLCuaHangCafe\bin\Debug\108_144_QLCuaHangCafe.pdb
 E:\DA c#\DA_LT_WIN\108_144_QLCuaHangCafe\108_144_QLCuaHangCafe\obj\Debug\108_144_QLCuaHangCafe.csproj.AssemblyReference.cache
 E:\DA c#\DA_LT_WIN\108_144_QLCuaHangCafe\108_144_QLCuaHangCafe\obj\Debug\_108_144_QLCuaHangCafe.frm_ChucVu.resources
-E:\DA c#\DA_LT_WIN\108_144_QLCuaHangCafe\108_144_QLCuaHangCafe\obj\Debug\_108_144_QLCuaHangCafe.frm_HinhAnh.resources
 E:\DA c#\DA_LT_WIN\108_144_QLCuaHangCafe\108_144_QLCuaHangCafe\obj\Debug\_108_144_QLCuaHangCafe.frm_HoaDon.resources
-E:\DA c#\DA_LT_WIN\108_144_QLCuaHangCafe\108_144_QLCuaHangCafe\obj\Debug\_108_144_QLCuaHangCafe.frm_KhachHang.resources
 E:\DA c#\DA_LT_WIN\108_144_QLCuaHangCafe\108_144_QLCuaHangCafe\obj\Debug\_108_144_QLCuaHangCafe.frm_LoaiHoaDon.resources
 E:\DA c#\DA_LT_WIN\108_144_QLCuaHangCafe\108_144_QLCuaHangCafe\obj\Debug\_108_144_QLCuaHangCafe.frm_LoaiSanPham.resources
 E:\DA c#\DA_LT_WIN\108_144_QLCuaHangCafe\108_144_QLCuaHangCafe\obj\Debug\_108_144_QLCuaHangCafe.frm_Menu.resources
@@ -51,14 +47,11 @@ E:\DA c#\DA_LT_WIN\108_144_QLCuaHangCafe\108_144_QLCuaHangCafe\obj\Debug\108_144
 E:\DA c#\DA_LT_WIN\108_144_QLCuaHangCafe\108_144_QLCuaHangCafe\obj\Debug\108_144_QLCuaHangCafe.exe
 E:\DA c#\DA_LT_WIN\108_144_QLCuaHangCafe\108_144_QLCuaHangCafe\obj\Debug\108_144_QLCuaHangCafe.pdb
 C:\text\WinForm\108_144_QLCuaHangCafe\108_144_QLCuaHangCafe\obj\Debug\_108_144_QLCuaHangCafe.frm_SearchHD.resources
-C:\text\WinForm\108_144_QLCuaHangCafe\108_144_QLCuaHangCafe\obj\Debug\_108_144_QLCuaHangCafe.frm_SearchKH.resources
 C:\text\WinForm\108_144_QLCuaHangCafe\108_144_QLCuaHangCafe\obj\Debug\_108_144_QLCuaHangCafe.frm_SearchSP.resources
 C:\text\WinForm\108_144_QLCuaHangCafe\108_144_QLCuaHangCafe\obj\Debug\_108_144_QLCuaHangCafe.frm_ThongKeNam.resources
 C:\text\WinForm\108_144_QLCuaHangCafe\108_144_QLCuaHangCafe\obj\Debug\_108_144_QLCuaHangCafe.frm_ThongKeNV.resources
 C:\text\WinForm\108_144_QLCuaHangCafe\108_144_QLCuaHangCafe\obj\Debug\_108_144_QLCuaHangCafe.frm_ThongKeThang.resources
 C:\text\WinForm\108_144_QLCuaHangCafe\108_144_QLCuaHangCafe\obj\Debug\_108_144_QLCuaHangCafe.frm_ThongKeNgay.resources
-<<<<<<< HEAD
-=======
 E:\DA c#\DA_LT_WIN\108_144_QLCuaHangCafe\108_144_QLCuaHangCafe\obj\Debug\_108_144_QLCuaHangCafe.frm_SearchHD.resources
 E:\DA c#\DA_LT_WIN\108_144_QLCuaHangCafe\108_144_QLCuaHangCafe\obj\Debug\_108_144_QLCuaHangCafe.frm_SearchKH.resources
 E:\DA c#\DA_LT_WIN\108_144_QLCuaHangCafe\108_144_QLCuaHangCafe\obj\Debug\_108_144_QLCuaHangCafe.frm_SearchSP.resources
@@ -66,4 +59,9 @@ E:\DA c#\DA_LT_WIN\108_144_QLCuaHangCafe\108_144_QLCuaHangCafe\obj\Debug\_108_14
 E:\DA c#\DA_LT_WIN\108_144_QLCuaHangCafe\108_144_QLCuaHangCafe\obj\Debug\_108_144_QLCuaHangCafe.frm_ThongKeNV.resources
 E:\DA c#\DA_LT_WIN\108_144_QLCuaHangCafe\108_144_QLCuaHangCafe\obj\Debug\_108_144_QLCuaHangCafe.frm_ThongKeThang.resources
 E:\DA c#\DA_LT_WIN\108_144_QLCuaHangCafe\108_144_QLCuaHangCafe\obj\Debug\_108_144_QLCuaHangCafe.frm_ThongKeNgay.resources
->>>>>>> master
+C:\text\WinForm\108_144_QLCuaHangCafe\108_144_QLCuaHangCafe\obj\Debug\_108_144_QLCuaHangCafe.DangNhap.resources
+E:\DA c#\DA_LT_WIN\108_144_QLCuaHangCafe\108_144_QLCuaHangCafe\obj\Debug\_108_144_QLCuaHangCafe.DangNhap.resources
+E:\DA c#\DA_LT_WIN\108_144_QLCuaHangCafe\108_144_QLCuaHangCafe\obj\Debug\_108_144_QLCuaHangCafe.HienThiHoaDon.resources
+C:\text\WinForm\108_144_QLCuaHangCafe\108_144_QLCuaHangCafe\obj\Debug\_108_144_QLCuaHangCafe.frm_HoaDonNhap.resources
+C:\text\WinForm\108_144_QLCuaHangCafe\108_144_QLCuaHangCafe\obj\Debug\_108_144_QLCuaHangCafe.frm_SearchNV.resources
+C:\text\WinForm\108_144_QLCuaHangCafe\108_144_QLCuaHangCafe\obj\Debug\_108_144_QLCuaHangCafe.frm_ThongKeLoiNhuan.resources

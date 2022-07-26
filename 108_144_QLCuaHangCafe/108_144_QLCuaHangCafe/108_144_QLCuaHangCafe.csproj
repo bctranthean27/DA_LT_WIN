@@ -46,17 +46,18 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="cls_QLCHCAFE.cs" />
+    <Compile Include="DangNhap.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="DangNhap.Designer.cs">
+      <DependentUpon>DangNhap.cs</DependentUpon>
+    </Compile>
     <Compile Include="frm_ChucVu.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="frm_ChucVu.Designer.cs">
       <DependentUpon>frm_ChucVu.cs</DependentUpon>
-    </Compile>
-    <Compile Include="frm_HinhAnh.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="frm_HinhAnh.Designer.cs">
-      <DependentUpon>frm_HinhAnh.cs</DependentUpon>
     </Compile>
     <Compile Include="frm_HoaDon.cs">
       <SubType>Form</SubType>
@@ -64,11 +65,11 @@
     <Compile Include="frm_HoaDon.Designer.cs">
       <DependentUpon>frm_HoaDon.cs</DependentUpon>
     </Compile>
-    <Compile Include="frm_KhachHang.cs">
+    <Compile Include="frm_HoaDonNhap.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="frm_KhachHang.Designer.cs">
-      <DependentUpon>frm_KhachHang.cs</DependentUpon>
+    <Compile Include="frm_HoaDonNhap.Designer.cs">
+      <DependentUpon>frm_HoaDonNhap.cs</DependentUpon>
     </Compile>
     <Compile Include="frm_LoaiHoaDon.cs">
       <SubType>Form</SubType>
@@ -106,11 +107,11 @@
     <Compile Include="frm_SearchHD.Designer.cs">
       <DependentUpon>frm_SearchHD.cs</DependentUpon>
     </Compile>
-    <Compile Include="frm_SearchKH.cs">
+    <Compile Include="frm_SearchNV.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="frm_SearchKH.Designer.cs">
-      <DependentUpon>frm_SearchKH.cs</DependentUpon>
+    <Compile Include="frm_SearchNV.Designer.cs">
+      <DependentUpon>frm_SearchNV.cs</DependentUpon>
     </Compile>
     <Compile Include="frm_SearchSP.cs">
       <SubType>Form</SubType>
@@ -123,6 +124,12 @@
     </Compile>
     <Compile Include="frm_Size.Designer.cs">
       <DependentUpon>frm_Size.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frm_ThongKeLoiNhuan.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frm_ThongKeLoiNhuan.Designer.cs">
+      <DependentUpon>frm_ThongKeLoiNhuan.cs</DependentUpon>
     </Compile>
     <Compile Include="frm_ThongKeNam.cs">
       <SubType>Form</SubType>
@@ -156,17 +163,17 @@
     <Compile Include="frm_ThongKeNgay.Designer.cs">
       <DependentUpon>frm_ThongKeNgay.cs</DependentUpon>
     </Compile>
+    <EmbeddedResource Include="DangNhap.resx">
+      <DependentUpon>DangNhap.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="frm_ChucVu.resx">
       <DependentUpon>frm_ChucVu.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="frm_HinhAnh.resx">
-      <DependentUpon>frm_HinhAnh.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="frm_HoaDon.resx">
       <DependentUpon>frm_HoaDon.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="frm_KhachHang.resx">
-      <DependentUpon>frm_KhachHang.cs</DependentUpon>
+    <EmbeddedResource Include="frm_HoaDonNhap.resx">
+      <DependentUpon>frm_HoaDonNhap.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="frm_LoaiHoaDon.resx">
       <DependentUpon>frm_LoaiHoaDon.cs</DependentUpon>
@@ -186,14 +193,17 @@
     <EmbeddedResource Include="frm_SearchHD.resx">
       <DependentUpon>frm_SearchHD.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="frm_SearchKH.resx">
-      <DependentUpon>frm_SearchKH.cs</DependentUpon>
+    <EmbeddedResource Include="frm_SearchNV.resx">
+      <DependentUpon>frm_SearchNV.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="frm_SearchSP.resx">
       <DependentUpon>frm_SearchSP.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="frm_Size.resx">
       <DependentUpon>frm_Size.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frm_ThongKeLoiNhuan.resx">
+      <DependentUpon>frm_ThongKeLoiNhuan.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="frm_ThongKeNam.resx">
       <DependentUpon>frm_ThongKeNam.cs</DependentUpon>
@@ -206,13 +216,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
-      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
       <SubType>Designer</SubType>
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
     </EmbeddedResource>
-    <Compile Include="Properties\Resources.Designer.cs">
-      <AutoGen>True</AutoGen>
-      <DependentUpon>Resources.resx</DependentUpon>
-    </Compile>
     <EmbeddedResource Include="frm_SanPham.resx">
       <DependentUpon>frm_SanPham.cs</DependentUpon>
     </EmbeddedResource>
@@ -223,6 +229,11 @@
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
     </None>
+    <Compile Include="Properties\Resources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Resources.resx</DependentUpon>
+    </Compile>
     <Compile Include="Properties\Settings.Designer.cs">
       <AutoGen>True</AutoGen>
       <DependentUpon>Settings.settings</DependentUpon>
@@ -232,5 +243,12 @@
   <ItemGroup>
     <None Include="App.config" />
   </ItemGroup>
+  <ItemGroup>
+    <None Include="bin\Image\logo.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="bin\Image\icon\them.png" />
+  </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

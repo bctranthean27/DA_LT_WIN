@@ -14,6 +14,10 @@ namespace _108_144_QLCuaHangCafe
     {
         Form frm;
         Boolean check = false;
+        cls_QLCHCAFE c = new cls_QLCHCAFE();
+        public string idUser { get; set; }
+        public string roles { get; set; }
+        bool isExit = true;
 
         void xulyfrm(Form f) {
             if (check)
@@ -27,6 +31,64 @@ namespace _108_144_QLCuaHangCafe
             frm = f;
             frm.MdiParent = this;
             frm.Show();
+        }
+
+        void phanQuyen(string role) {
+            if (role.ToUpper() == "NV") 
+            {
+                mnu_HoaDonNhap.Visible = false;
+                mnu_NhanVien.Visible = false;
+                mnu_ThongKe.Visible = false;
+                mnu_LoaiHD.Visible = false;
+                mnu_LoaiSP.Visible = false;
+                mnu_Size.Visible = false;
+                mnu_ChucVu.Visible = false;
+                mnu_NCC.Visible = false;
+                mnu_SanPham.Visible = false;
+                mnu_SearchNV.Visible = false;
+            }
+            if (role.ToUpper() == "TK")
+            {
+                mnu_NhanVien.Visible = false;
+                mnu_ThongKe.Visible = false;
+                mnu_LoaiHD.Visible = false;
+                mnu_LoaiSP.Visible = false;
+                mnu_Size.Visible = false;
+                mnu_ChucVu.Visible = false;
+                mnu_NCC.Visible = false;
+                mnu_HoaDon.Visible = false;
+                mnu_SearchNV.Visible = false;
+            }
+            if (role.ToUpper() == "KT")
+            {
+                mnu_NhanVien.Visible = false;
+                mnu_LoaiHD.Visible = false;
+                mnu_LoaiSP.Visible = false;
+                mnu_Size.Visible = false;
+                mnu_ChucVu.Visible = false;
+                mnu_NCC.Visible = false;
+                mnu_HoaDon.Visible = false;
+                mnu_HoaDonNhap.Visible = false;
+            }
+        }
+
+        private void frm_Menu_Load(object sender, EventArgs e)
+        {
+            string query = "SELECT * FROM NhanVien WHERE MaNV= '" + idUser + "'";
+            
+            DataSet data = c.LayDuLieu(query);
+
+            if (data.Tables[0].Rows.Count == 1)
+            {
+                //set ma chuc vu de phan quyen
+                roles = data.Tables[0].Rows[0]["roles"].ToString();
+                phanQuyen(roles);
+            }
+            else
+            {
+                MessageBox.Show("Nhân viên chưa được phân công.");
+            }
+            
         }
         public frm_Menu()
         {
@@ -48,6 +110,7 @@ namespace _108_144_QLCuaHangCafe
         {
             Form f  = new frm_ChucVu();
             xulyfrm(f);
+
         }
 
         private void mnu_NCC_Click(object sender, EventArgs e)
@@ -56,10 +119,7 @@ namespace _108_144_QLCuaHangCafe
             xulyfrm(f);
         }
 
-        private void frm_Menu_Load(object sender, EventArgs e)
-        {
-
-        }
+        
         private void mnu_Size_Click(object sender, EventArgs e)
         {
             Form f  = new frm_Size();
@@ -77,23 +137,13 @@ namespace _108_144_QLCuaHangCafe
             Form f = new frm_SanPham();
             xulyfrm(f);
         }
-        private void mnu_KhachHang_Click(object sender, EventArgs e)
-        {
-            Form f = new frm_KhachHang();
-            xulyfrm(f);
-        }
 
         private void mnu_HoaDon_Click(object sender, EventArgs e)
         {
-            Form f = new frm_HoaDon();
+            Form f = new frm_HoaDon(idUser);
             xulyfrm(f);
         }
 
-        private void mnu_SearchKH_Click(object sender, EventArgs e)
-        {
-            Form f = new frm_SearchKH();
-            xulyfrm(f);
-        }
 
         private void mnu_SearchSP_Click(object sender, EventArgs e)
         {
@@ -128,6 +178,48 @@ namespace _108_144_QLCuaHangCafe
         private void mnu_ThongKeNV_Click(object sender, EventArgs e)
         {
             Form f = new frm_ThongKeNV();
+            xulyfrm(f);
+        }
+
+        private void mnu_DangXuat_Click(object sender, EventArgs e)
+        {
+            DialogResult result = MessageBox.Show("Bạn chắc chắn muốn đăng xuất?", "Thông báo", MessageBoxButtons.YesNo);
+            if (result == DialogResult.Yes)
+            {
+                isExit = false;
+                this.Close();
+                DangNhap dangNhap = new DangNhap();
+
+                dangNhap.Show();
+            }
+            
+            
+            
+        }
+
+        private void frm_Menu_FormClosing(object sender, FormClosingEventArgs e)
+        {
+            if (isExit) {
+                Application.Exit();
+            }
+            
+        }
+
+        private void hoáĐơnNhậpToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            Form f = new frm_HoaDonNhap(idUser);
+            xulyfrm(f);
+        }
+
+        private void nhânViênToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            Form f = new frm_SearchNV();
+            xulyfrm(f);
+        }
+
+        private void munu_LoiNhuan_Click(object sender, EventArgs e)
+        {
+            Form f = new frm_ThongKeLoiNhuan();
             xulyfrm(f);
         }
     }

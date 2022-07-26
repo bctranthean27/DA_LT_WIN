@@ -10,9 +10,9 @@ using System.Windows.Forms;
 
 namespace _108_144_QLCuaHangCafe
 {
-    public partial class frm_HinhAnh : Form
+    public partial class HoaDon : Form
     {
-        public frm_HinhAnh()
+        public HoaDon()
         {
             InitializeComponent();
         }
